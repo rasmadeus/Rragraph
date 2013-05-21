@@ -1,0 +1,32 @@
+td.img{
+	width: 24px;	
+}
+
+td.shortcut{
+	text-align: center;
+	width: 13%;
+}
+
+td.string_name{
+	text-align: center;
+	width: 15%;
+}
+
+td.center{
+	text-align:center;
+}
+
+td.desc{
+	text-align: justify;
+}
+
+td{
+	border-collapse: collapse;
+	border: 1px solid #000;
+}
+
+table{
+	border-collapse: collapse;
+	width: 100%;
+	border: 1px solid #000;
+}
