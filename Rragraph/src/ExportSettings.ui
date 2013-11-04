@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ExportSettings</class>
+ <widget class="QWidget" name="ExportSettings">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>217</width>
+    <height>221</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>3</number>
+   </property>
+   <property name="leftMargin">
+    <number>3</number>
+   </property>
+   <property name="topMargin">
+    <number>3</number>
+   </property>
+   <property name="rightMargin">
+    <number>3</number>
+   </property>
+   <property name="bottomMargin">
+    <number>3</number>
+   </property>
+   <item>
+    <widget class="QDoubleSpinBox" name="width">
+     <property name="toolTip">
+      <string>Set export width of plot.</string>
+     </property>
+     <property name="whatsThis">
+      <string>Set export width of plot.</string>
+     </property>
+     <property name="prefix">
+      <string>Width </string>
+     </property>
+     <property name="suffix">
+      <string> mm</string>
+     </property>
+     <property name="decimals">
+      <number>1</number>
+     </property>
+     <property name="minimum">
+      <double>100.000000000000000</double>
+     </property>
+     <property name="maximum">
+      <double>10000.000000000000000</double>
+     </property>
+     <property name="singleStep">
+      <double>10.000000000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDoubleSpinBox" name="height">
+     <property name="toolTip">
+      <string>Set export height of plot.</string>
+     </property>
+     <property name="whatsThis">
+      <string>Set export height of plot.</string>
+     </property>
+     <property name="prefix">
+      <string>Height </string>
+     </property>
+     <property name="suffix">
+      <string> mm</string>
+     </property>
+     <property name="decimals">
+      <number>1</number>
+     </property>
+     <property name="minimum">
+      <double>100.000000000000000</double>
+     </property>
+     <property name="maximum">
+      <double>10000.000000000000000</double>
+     </property>
+     <property name="singleStep">
+      <double>10.000000000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1">
+     <property name="spacing">
+      <number>3</number>
+     </property>
+     <item>
+      <widget class="QToolButton" name="print">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Print this plot on one page.</string>
+       </property>
+       <property name="whatsThis">
+        <string>Print this plot on one page.</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{
+    border-style: outset;
+    border-width: 1px;
+    font: bold 14px;
+    border-radius: 3px;
+color: #444444;
+}
+QToolButton:pressed {
+color: #999999;
+}</string>
+       </property>
+       <property name="text">
+        <string>Print</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="exportTo">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Export this plot to a document.</string>
+       </property>
+       <property name="whatsThis">
+        <string>Export this plot to a document.</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton{
+    border-style: outset;
+    border-width: 1px;
+    font: bold 14px;
+    border-radius: 3px;
+color: #444444;
+}
+QToolButton:pressed {
+color: #999999;
+}</string>
+       </property>
+       <property name="text">
+        <string>Export</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QToolButton" name="dublicate">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dublicate these values to other plots.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="whatsThis">
+      <string>Dublicate these values to other plots.</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QToolButton{
+    border-style: outset;
+    border-width: 1px;
+    font: bold 14px;
+    border-radius: 3px;
+color: #444444;
+}
+QToolButton:pressed {
+color: #999999;
+}</string>
+     </property>
+     <property name="text">
+      <string>Dublicate values</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

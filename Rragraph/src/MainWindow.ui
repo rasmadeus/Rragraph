@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Rragraph</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="res.qrc">
+    <normaloff>:/res/icon.ico</normaloff>:/res/icon.ico</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"> QMainWindow::separator {
+     background: rgb(100, 100, 100);
+     width: 1px; /* when vertical */
+     height: 1px; /* when horizontal */
+ }
+
+ QMainWindow::separator:hover {
+     background: red;
+ }</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>3</number>
+    </property>
+    <property name="leftMargin">
+     <number>3</number>
+    </property>
+    <property name="topMargin">
+     <number>3</number>
+    </property>
+    <property name="rightMargin">
+     <number>3</number>
+    </property>
+    <property name="bottomMargin">
+     <number>3</number>
+    </property>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QMenu {
+    background-color: white;
+    margin: 1px; /* some spacing around the menu */
+}
+
+QMenu::item {
+    padding: 2px 25px 2px 20px;
+    border: 1px solid transparent; /* reserve space for selection border */
+}
+
+QMenu::item:selected {
+    border-color: #555555;
+}
+
+QMenu::icon:checked { /* appearance of a 'checked' icon */
+    background: gray;
+    border: 1px inset gray;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    left: 1px;
+}
+
+QMenu::separator {
+    height: 2px;
+    background: darkgray;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+QMenu::indicator {
+    width: 13px;
+    height: 13px;
+}
+QMenuBar {
+background: qlineargradient(
+    x1: 0, y1: 0, x2: 0, y2: 1,
+    stop: 0      #777777, 
+	stop: 0.25 #999999,
+    stop: 0.5   #aaaaaa, 
+    stop: 0.75 #cccccc, 
+    stop: 1.0    #dddddd
+);
+color:black;
+}
+
+QMenuBar::item {
+    spacing: 3px; /* spacing between menu bar items */
+    padding: 1px 4px;
+background: transparent;
+    border-radius: 2px;
+}
+
+QMenuBar::item:selected { /* when selected using mouse or keyboard */
+color: white;
+}
+
+</string>
+   </property>
+   <widget class="QMenu" name="menuProject">
+    <property name="title">
+     <string>Project</string>
+    </property>
+    <addaction name="actionLoad"/>
+    <addaction name="actionReload"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSaveAs"/>
+   </widget>
+   <widget class="QMenu" name="menuWindows">
+    <property name="title">
+     <string>Settings</string>
+    </property>
+    <addaction name="actionShowProjectsToolBar"/>
+    <addaction name="actionShowPlotSettings"/>
+    <addaction name="actionShowHeaders"/>
+   </widget>
+   <widget class="QMenu" name="menuWindows_2">
+    <property name="title">
+     <string>Windows</string>
+    </property>
+    <addaction name="actionInsertPlot"/>
+    <addaction name="actionCloseAllWindows"/>
+    <addaction name="actionTile"/>
+    <addaction name="actionCascade"/>
+    <addaction name="separator"/>
+    <addaction name="actionPngExport"/>
+    <addaction name="actionPrint"/>
+    <addaction name="actionAutoScale"/>
+   </widget>
+   <addaction name="menuProject"/>
+   <addaction name="menuWindows_2"/>
+   <addaction name="menuWindows"/>
+  </widget>
+  <widget class="QToolBar" name="projectsToolBar">
+   <property name="windowTitle">
+    <string>Project's operations</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QToolBar
+{
+     border: 1px outset rgb(100, 100, 100)
+}</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionAddFiles"/>
+   <addaction name="actionInsertPlot"/>
+   <addaction name="actionPngExport"/>
+   <addaction name="actionAutoScale"/>
+   <addaction name="actionReload"/>
+  </widget>
+  <widget class="QDockWidget" name="plotSettings">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Plot settings</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="headers">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="floating">
+    <bool>false</bool>
+   </property>
+   <property name="features">
+    <set>QDockWidget::AllDockWidgetFeatures</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Headers</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents"/>
+  </widget>
+  <action name="actionAddFiles">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/addFiles.png</normaloff>:/res/addFiles.png</iconset>
+   </property>
+   <property name="text">
+    <string>addFiles</string>
+   </property>
+   <property name="toolTip">
+    <string>If you want to add some raw files to your projects then you have to click this button.</string>
+   </property>
+   <property name="whatsThis">
+    <string>If you want to add some raw files to your projects then you have to click this button.</string>
+   </property>
+  </action>
+  <action name="actionShowProjectsToolBar">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show projects tool bar</string>
+   </property>
+   <property name="toolTip">
+    <string>Show projects tool bar.</string>
+   </property>
+   <property name="whatsThis">
+    <string>Show projects tool bar.</string>
+   </property>
+  </action>
+  <action name="actionInsertPlot">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/addPlot.png</normaloff>:/res/addPlot.png</iconset>
+   </property>
+   <property name="text">
+    <string>Insert Plot</string>
+   </property>
+   <property name="toolTip">
+    <string>Insert new plot.</string>
+   </property>
+   <property name="whatsThis">
+    <string>Insert new plot.</string>
+   </property>
+  </action>
+  <action name="actionCloseAllWindows">
+   <property name="text">
+    <string>Close all plots</string>
+   </property>
+   <property name="toolTip">
+    <string>Close all plots.</string>
+   </property>
+   <property name="whatsThis">
+    <string>Close all plots.</string>
+   </property>
+  </action>
+  <action name="actionTile">
+   <property name="text">
+    <string>Tile</string>
+   </property>
+   <property name="toolTip">
+    <string>Tile all plots.</string>
+   </property>
+   <property name="whatsThis">
+    <string>Tile all plots.</string>
+   </property>
+  </action>
+  <action name="actionCascade">
+   <property name="text">
+    <string>Cascade</string>
+   </property>
+   <property name="toolTip">
+    <string>Cascade all plots.</string>
+   </property>
+   <property name="whatsThis">
+    <string>Cascade all plots.</string>
+   </property>
+  </action>
+  <action name="actionShowPlotSettings">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show plot' settings</string>
+   </property>
+   <property name="toolTip">
+    <string>Show plot' settings.</string>
+   </property>
+   <property name="whatsThis">
+    <string>Show plot' settings.</string>
+   </property>
+  </action>
+  <action name="actionShowHeaders">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show headers</string>
+   </property>
+   <property name="toolTip">
+    <string>Show headers.</string>
+   </property>
+   <property name="whatsThis">
+    <string>Show headers.</string>
+   </property>
+  </action>
+  <action name="actionPngExport">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/pngExport.png</normaloff>:/res/pngExport.png</iconset>
+   </property>
+   <property name="text">
+    <string>Export</string>
+   </property>
+   <property name="toolTip">
+    <string>Export all plots to PNG images.</string>
+   </property>
+   <property name="whatsThis">
+    <string>Export all plots to PNG images.</string>
+   </property>
+  </action>
+  <action name="actionPrint">
+   <property name="text">
+    <string>Print</string>
+   </property>
+   <property name="toolTip">
+    <string>Print all plots.</string>
+   </property>
+   <property name="whatsThis">
+    <string>Print all plots.</string>
+   </property>
+  </action>
+  <action name="actionAutoScale">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/autoscale.png</normaloff>:/res/autoscale.png</iconset>
+   </property>
+   <property name="text">
+    <string>Autoscale</string>
+   </property>
+   <property name="toolTip">
+    <string>Autoscale all plots.</string>
+   </property>
+   <property name="whatsThis">
+    <string>Autoscale all plots.</string>
+   </property>
+  </action>
+  <action name="actionLoad">
+   <property name="text">
+    <string>Load</string>
+   </property>
+   <property name="toolTip">
+    <string>Load a project.</string>
+   </property>
+   <property name="whatsThis">
+    <string>Load a project.</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+L</string>
+   </property>
+  </action>
+  <action name="actionReload">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/reload.png</normaloff>:/res/reload.png</iconset>
+   </property>
+   <property name="text">
+    <string>Reload</string>
+   </property>
+   <property name="toolTip">
+    <string>Reload the project.</string>
+   </property>
+   <property name="whatsThis">
+    <string>Reload the project.</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+   <property name="toolTip">
+    <string>Save this project.</string>
+   </property>
+   <property name="whatsThis">
+    <string>Save this project.</string>
+   </property>
+  </action>
+  <action name="actionSaveAs">
+   <property name="text">
+    <string>Save as</string>
+   </property>
+   <property name="toolTip">
+    <string>Save this project as...</string>
+   </property>
+   <property name="whatsThis">
+    <string>Save this project as...</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>actionShowProjectsToolBar</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>projectsToolBar</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>36</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>projectsToolBar</sender>
+   <signal>visibilityChanged(bool)</signal>
+   <receiver>actionShowProjectsToolBar</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>399</x>
+     <y>36</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>plotSettings</sender>
+   <signal>visibilityChanged(bool)</signal>
+   <receiver>actionShowPlotSettings</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>28</x>
+     <y>582</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionShowPlotSettings</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>plotSettings</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>28</x>
+     <y>582</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionShowHeaders</sender>
+   <signal>triggered(bool)</signal>
+   <receiver>headers</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>770</x>
+     <y>327</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>headers</sender>
+   <signal>visibilityChanged(bool)</signal>
+   <receiver>actionShowHeaders</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>770</x>
+     <y>327</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

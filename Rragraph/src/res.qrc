@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/addFiles.png</file>
+        <file>res/addPlot.png</file>
+        <file>res/icon.ico</file>
+        <file>res/pngExport.png</file>
+        <file>res/autoscale.png</file>
+        <file>res/reload.png</file>
+    </qresource>
+</RCC>
