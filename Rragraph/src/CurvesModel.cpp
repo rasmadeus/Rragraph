@@ -7,11 +7,6 @@ CurvesModel::CurvesModel(QObject *parent) :
     curves(nullptr)
 {
     connect(Files::getInstance(), SIGNAL(wasLoaded(int)), SLOT(wasLoaded(int)));
-    connect(
-        HeaderSamples::getInstance(),
-        SIGNAL(headerWasChanged(int,int,QString)),
-        SLOT(headerWasChanged(int,int,QString))
-    );
 }
 
 Qt::ItemFlags CurvesModel::flags(const QModelIndex& index) const{
@@ -31,12 +26,14 @@ void CurvesModel::setCurves(Curves* curves)
     endResetModel();
 }
 
-int CurvesModel::rowCount(const QModelIndex& parent) const{
+int CurvesModel::rowCount(const QModelIndex& parent) const
+{
     Q_UNUSED(parent)
     return curves && !curves->isLoading() ? curves->rowCount() : 0;
 }
 
-int CurvesModel::columnCount(const QModelIndex& parent) const{
+int CurvesModel::columnCount(const QModelIndex& parent) const
+{
     Q_UNUSED(parent)
     return !curves || curves->isLoading() ? 0 : 5;
 }
@@ -135,12 +132,4 @@ void CurvesModel::wasLoaded(int iFile)
     beginResetModel();
         curves->wasLoaded(iFile);
     endResetModel();
-}
-
-void CurvesModel::headerWasChanged(int iFile, int i, const QString& header)
-{
-    if(!curves){
-        return;
-    }
-    curves->headerWasChanged(iFile, i, header);
 }

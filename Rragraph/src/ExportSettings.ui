@@ -47,7 +47,7 @@
       <number>1</number>
      </property>
      <property name="minimum">
-      <double>100.000000000000000</double>
+      <double>50.000000000000000</double>
      </property>
      <property name="maximum">
       <double>10000.000000000000000</double>
@@ -75,7 +75,7 @@
       <number>1</number>
      </property>
      <property name="minimum">
-      <double>100.000000000000000</double>
+      <double>50.000000000000000</double>
      </property>
      <property name="maximum">
       <double>10000.000000000000000</double>
@@ -110,7 +110,8 @@
     border-width: 1px;
     font: bold 14px;
     border-radius: 3px;
-color: #444444;
+    color: #444444;
+    height: 15px;
 }
 QToolButton:pressed {
 color: #999999;
@@ -141,7 +142,8 @@ color: #999999;
     border-width: 1px;
     font: bold 14px;
     border-radius: 3px;
-color: #444444;
+    color: #444444;
+    height: 15px;
 }
 QToolButton:pressed {
 color: #999999;
@@ -163,10 +165,13 @@ color: #999999;
       </sizepolicy>
      </property>
      <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dublicate these values to other plots.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>Duplicate these values to other plots.</string>
+     </property>
+     <property name="statusTip">
+      <string>Duplicate these values to other plots.</string>
      </property>
      <property name="whatsThis">
-      <string>Dublicate these values to other plots.</string>
+      <string>Duplicate these values to other plots.</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QToolButton{
@@ -174,14 +179,15 @@ color: #999999;
     border-width: 1px;
     font: bold 14px;
     border-radius: 3px;
-color: #444444;
+    color: #444444;
+    height: 15px;
 }
 QToolButton:pressed {
 color: #999999;
 }</string>
      </property>
      <property name="text">
-      <string>Dublicate values</string>
+      <string>Duplicate values</string>
      </property>
     </widget>
    </item>

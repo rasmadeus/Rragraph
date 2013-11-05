@@ -5,10 +5,12 @@
 #include "Grid.h"
 #include "Files.h"
 #include "LegendItem.h"
+#include "HeaderSamples.h"
 Plot::Plot(QWidget *parent) :
     QwtPlot(parent),
     controlIsPressed(false),
-    exportSize(100, 100)
+    exportSize(100, 100),
+    curvesIsRestoring(false)
 {
     grid = new Grid(this);
     legend = new LegendItem(this);
@@ -25,16 +27,26 @@ Plot::Plot(QWidget *parent) :
     connect(canvas, SIGNAL(zoomed()), SIGNAL(zoomed()));
     connect(Files::getInstance(), SIGNAL(wasAdded(int)), SLOT(wasAdded(int)));
     connect(Files::getInstance(), SIGNAL(wasRemoved(int)), SLOT(wasRemoved(int)));
+
+    connect(
+        HeaderSamples::getInstance(),
+        SIGNAL(headerWasChanged(int,int,QString)),
+        SLOT(headerWasChanged(int,int,QString))
+    );
+
 }
 
 #include "Curves.h"
 Plot::~Plot(){
     delete legend;
-    qDeleteAll(samples);
+    qDeleteAll(curves);
 }
 
 Curves* Plot::getCurves(int iFile){
-    return samples.value(iFile, nullptr);
+    if(iFile < 0 || iFile >= curves.size()){
+        return nullptr;
+    }
+    return curves[iFile];
 }
 
 LegendItem* Plot::getLegend(){
@@ -42,13 +54,23 @@ LegendItem* Plot::getLegend(){
 }
 
 void Plot::wasRemoved(int iFile){
-    delete samples.take(iFile);
+    for(int i = iFile + 1; i < this->curves.size(); ++i){
+        this->curves[i]->wasRemoved();
+    }
+    Curves* curves = this->curves[iFile];
+    this->curves.remove(iFile);
+    delete curves;
 }
 
 void Plot::wasAdded(int iFile)
 {
-    wasRemoved(iFile);
-    samples[iFile] = new Curves(iFile, this);
+    if(iFile < curves.size()){
+        delete this->curves[iFile];
+        curves[iFile] = new Curves(iFile, this);
+    }
+    else{
+        curves.push_back(new Curves(iFile, this));
+    }
 }
 
 #include <QKeyEvent>
@@ -77,6 +99,10 @@ void Plot::mousePressEvent(QMouseEvent* evt)
     }
 }
 
+void Plot::headerWasChanged(int iFile, int i, const QString& header){
+    curves[iFile]->headerWasChanged(iFile, i, header);
+}
+
 void Plot::autoSize()
 {
     setAxisAutoScale(xBottom);
@@ -85,7 +111,6 @@ void Plot::autoSize()
     setAxisAutoScale(xBottom, false);
     setAxisAutoScale(yLeft, false);
 }
-
 
 void Plot::mouseDoubleClickEvent(QMouseEvent* evt)
 {
@@ -104,9 +129,10 @@ const QSizeF& Plot::getExportSize() const{
 double Plot::axiStep(Axis axis) const
 {
     const QList<double> ticks = axisScaleDiv(axis).ticks(QwtScaleDiv::MajorTick);
-    return ticks.size() > 1 ? ticks[1] - ticks[0] : 0;
+    return (ticks.size() > 1) ? (ticks[1] - ticks[0]) : 0;
 }
 
+#include <QJsonObject>
 static QJsonObject serializeAxis(const Plot* plot, Plot::Axis axis)
 {
     QJsonObject obj;
@@ -150,18 +176,48 @@ static void parseSizeF(Plot* plot, const QJsonObject& obj)
     );
 }
 
-QJsonObject Plot::serialize() const
+#include <QJsonArray>
+void Plot::serialize(QJsonArray& plots) const
 {
-    QJsonObject obj;
-    obj["exportSize"] = serializeSizeF(exportSize);
-    obj["absciss"] = serializeAxis(this, xBottom);
-    obj["ordinate"] = serializeAxis(this, yLeft);
-    return obj;
+    QJsonObject plot;
+    plot["axisX"] = serializeAxis(this, xBottom);
+    plot["axisY"] = serializeAxis(this, yLeft);
+    plot["exportSize"] = serializeSizeF(exportSize);
+    legend->serialize(plot);
+    plots.push_back(plot);
 }
 
-void Plot::restore(const QJsonObject& obj)
+void Plot::restore(const QJsonValue& value)
 {
-    parseSizeF(this, obj.value("exportSize").toObject());
-    parseAxis(this, xBottom, obj.value("absciss").toObject());
-    parseAxis(this, yLeft, obj.value("ordinate").toObject());
+    const QJsonObject plot = value.toObject();
+    parseAxis(this, xBottom, plot.value("axisX").toObject());
+    parseAxis(this, yLeft, plot.value("axisY").toObject());
+    parseSizeF(this, plot.value("exportSize").toObject());
+    legend->restore(plot);
+    replot();
+}
+
+void Plot::serializeCurves(QJsonArray& plots) const
+{
+    QJsonArray curves;
+    foreach(Curves* item, this->curves){
+        QJsonObject plot;
+        item->serialize(plot);
+        curves.push_back(plot);
+    }
+    plots.push_back(curves);
+}
+
+void Plot::restoreCurves(int iFile, const QJsonObject& plot)
+{
+    if(iFile < 0 || iFile >= this->curves.size()){
+        return;
+    }
+    curvesIsRestoring = true;
+        this->curves[iFile]->restore(plot);
+    curvesIsRestoring = false;
+}
+
+bool Plot::isCurvesRestoring() const{
+    return curvesIsRestoring;
 }

@@ -5,23 +5,22 @@
     class PrivateData; \
     PrivateData* d;
 
-#define SINGLETON_HEADER(Class) \
+#define SINGLETON_HEADER(Class, Parent) \
     Q_DISABLE_COPY(Class) \
-    explicit Class(QObject* parent = 0); \
+    explicit Class(Parent* parent = 0); \
     static Class* instance; \
 public: \
-    static Class* getInstance(QObject* parent = 0);
+    static void make(Parent* parent = 0); \
+    static Class* getInstance();
 
-#define SINGLETON_IMPLEMENTATION(Class) \
+#define SINGLETON_IMPLEMENTATION(Class, Parent) \
 Class* Class::instance = nullptr; \
-Class* Class::getInstance(QObject* parent) \
-{ \
-    if(instance == nullptr){ \
-        instance = new Class(parent); \
-    } \
+Class* Class::getInstance(){ \
     return instance; \
+} \
+void Class::make(Parent* parent){ \
+    instance = new Class(parent); \
 }
-
 
 #endif // GLOBAL_H
 

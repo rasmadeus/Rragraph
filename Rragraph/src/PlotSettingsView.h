@@ -16,6 +16,7 @@ class PlotSettingsView : public QWidget
 public:
     explicit PlotSettingsView(QWidget *parent = 0);
     ~PlotSettingsView();
+    void localeWasChanged();
 public slots:
     void setOwner(QMdiSubWindow* window);
 private:

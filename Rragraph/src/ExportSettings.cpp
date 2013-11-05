@@ -30,6 +30,10 @@ void ExportSettings::dublicateValues(Plot* plot){
     plot->setExportSize(QSizeF(ui->width->value(), ui->height->value()));
 }
 
+void ExportSettings::localeWasChanged(){
+    ui->retranslateUi(this);
+}
+
 void ExportSettings::setExportSize()
 {
     if(!owner){

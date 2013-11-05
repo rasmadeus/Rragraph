@@ -7,11 +7,11 @@ LegendSettings::LegendSettings(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->horizontalAlign->addItem(tr("Left"), Qt::AlignLeft);
+    ui->horizontalAlign->addItem(tr("Left"),   Qt::AlignLeft);
     ui->horizontalAlign->addItem(tr("Center"), Qt::AlignHCenter);
-    ui->horizontalAlign->addItem(tr("Right"), Qt::AlignRight);
+    ui->horizontalAlign->addItem(tr("Right"),  Qt::AlignRight);
 
-    ui->verticalAlign->addItem(tr("Top"), Qt::AlignTop);
+    ui->verticalAlign->addItem(tr("Top"),    Qt::AlignTop);
     ui->verticalAlign->addItem(tr("Center"), Qt::AlignVCenter);
     ui->verticalAlign->addItem(tr("Bottom"), Qt::AlignBottom);
 
@@ -24,13 +24,32 @@ LegendSettings::LegendSettings(QWidget *parent) :
     connect(ui->columns,         SIGNAL(valueChanged(int)),        SLOT(setMaximumColumns(int)));
 }
 
+void LegendSettings::alignmentChanged(){
+    setAlignment(owner);
+}
+
+void LegendSettings::setOpacity(int opacity){
+    setOpacity(owner, opacity);
+}
+
+void LegendSettings::localeWasChanged(){
+    ui->retranslateUi(this);
+    ui->horizontalAlign->setItemText(0, tr("Left"));
+    ui->horizontalAlign->setItemText(1, tr("Center"));
+    ui->horizontalAlign->setItemText(2, tr("Right"));
+    ui->verticalAlign->setItemText(0, tr("Top"));
+    ui->verticalAlign->setItemText(1, tr("Center"));
+    ui->verticalAlign->setItemText(2, tr("Bottom"));
+}
+
 LegendSettings::~LegendSettings(){
     delete ui;
 }
 
 #include "Plot.h"
 #include "LegendItem.h"
-void LegendSettings::setMaximumColumns(int count){
+void LegendSettings::setMaximumColumns(int count)
+{
     owner->getLegend()->setMaxColumns(count);
     owner->replot();
 }
@@ -64,25 +83,16 @@ void LegendSettings::turnLegend(bool on)
 void LegendSettings::setFont()
 {
     bool ok;
-    QFont font = QFontDialog::getFont(&ok, QFont(), this, tr("Set legend font"));
+    QFont font = QFontDialog::getFont(&ok, owner->getLegend()->font(), this, tr("Set legend font"));
     if(ok){
         owner->getLegend()->setFont(font);
         owner->replot();
     }
 }
 
-void LegendSettings::alignmentChanged(){
-    setAlignment(owner);
-}
-
-void LegendSettings::setOpacity(int opacity){
-    setOpacity(owner, opacity);
-}
-
 void LegendSettings::setOpacity(Plot* plot, int opacity)
 {
-    plot->getLegend()->setBackgroundBrush(QColor(255, 255, 255, opacity));
-    plot->getLegend()->setBorderPen(QColor(0, 0, 0, opacity));
+    plot->getLegend()->setBackgroundOpacity(opacity);
     plot->replot();
 }
 

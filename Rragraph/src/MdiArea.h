@@ -4,25 +4,34 @@
 class Plot;
 #include "global.h"
 #include <QMdiArea>
-#include "Savable.h"
 
-class MdiArea : public QMdiArea, public Savable
+class MdiArea : public QMdiArea
 {
     Q_OBJECT
-    explicit MdiArea(QWidget *parent = 0);
-    static MdiArea* instance;
-public:
-    QJsonObject serialize() const;
-    void restore(const QJsonObject& obj);
+    SINGLETON_HEADER(MdiArea, QWidget)
 public slots:
-    static void create(QWidget* parent);
-    static MdiArea* getInstance();
-    Plot *insertPlot();
+    Plot* insertPlot();
     void exportToPng();
     void print();
     void autoscale();
+    void tile();
+    void changeTileType(QAction* action);
+public:
+    enum TileType
+    {
+        GRID_HORIZONTAL,
+        VERTICAL_STRAIGHT,
+        VERTICAL_REVERSE
+    };
+    void localeWasChanged();
+    void serialize(QJsonObject& root) const;
+    void restore(const QJsonObject& root);
+    void serializeCurves(QJsonObject& root) const;
+    void restoreCurves(int iFile, const QJsonObject &root);
 private slots:
     void retitle();
+private:
+    TileType tileType;
 };
 
 #endif // MDIAREA_H

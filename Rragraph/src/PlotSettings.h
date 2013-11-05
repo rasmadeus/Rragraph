@@ -10,6 +10,7 @@ class PlotSettings : public QWidget
 public:
     explicit PlotSettings(QWidget *parent = 0);
     void setOwner(Plot* owner);
+    virtual void localeWasChanged() = 0;
 protected slots:    
     virtual void setNativeValues() = 0;
     void dublicateValues();

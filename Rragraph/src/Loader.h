@@ -7,7 +7,6 @@ class Samples;
 class Loader : public QThread
 {
     Q_OBJECT
-    Samples* samples;
 public:
     explicit Loader(Samples* samples, QObject *parent = 0);
     ~Loader();
@@ -19,6 +18,7 @@ private:
     void fillHeaders(const QString& firstRow);
     void append(const QString& row);
     void rearrange(QStringList& column);
+    Samples* samples;
 };
 
 #endif // LOADER_H

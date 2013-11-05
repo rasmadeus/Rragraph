@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>178</width>
-    <height>134</height>
+    <height>136</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -126,10 +126,10 @@
       </sizepolicy>
      </property>
      <property name="toolTip">
-      <string>Dublicate these values to other plots.</string>
+      <string>Duplicate these values to other plots.</string>
      </property>
      <property name="whatsThis">
-      <string>Dublicate these values to other plots.</string>
+      <string>Duplicate these values to other plots.</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QToolButton{
@@ -138,14 +138,15 @@
     font: bold 14px;
     border-radius: 3px;
     min-width: 10em;
-color: #444444;
+    color: #444444;
+    height: 15px;
 }
 QToolButton:pressed {
 color: #999999;
 }</string>
      </property>
      <property name="text">
-      <string>Dublicate values</string>
+      <string>Duplicate values</string>
      </property>
     </widget>
    </item>

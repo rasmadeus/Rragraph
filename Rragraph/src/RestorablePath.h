@@ -2,15 +2,21 @@
 #define RESTORABLEPATH_H
 
 #include <QString>
+#include <QFileInfo>
+
 class RestorablePath
 {
-    QString path;
-    const QString key;
 public:
     RestorablePath(const QString& key);
     ~RestorablePath();
     QString operator () ();
     void operator = (const QString& path);
+    QFileInfo getInfoPath() const;
+    const QString& getPath() const;
+    void clearPath();
+private:
+    QString path;
+    const QString key;
 };
 
 #endif // RESTORABLEPATH_H

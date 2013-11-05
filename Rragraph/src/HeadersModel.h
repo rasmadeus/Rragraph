@@ -8,8 +8,6 @@ class HeaderSamples;
 class HeadersModel : public QAbstractListModel
 {
     Q_OBJECT
-    int iFile;
-    HeaderSamples* samples;
 public:
     explicit HeadersModel(QObject *parent = 0);
     int rowCount(const QModelIndex& parent) const;
@@ -19,6 +17,9 @@ public:
 public slots:
     void wasChoosen(int iFile);
     void reset(int iFile);
+private:
+    int iFile;
+    HeaderSamples* samples;
 };
 
 #endif // HEADERSMODEL_H

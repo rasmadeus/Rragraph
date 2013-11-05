@@ -10,10 +10,10 @@ class LegendSettings;
 class LegendSettings : public PlotSettings
 {
     Q_OBJECT
-    Ui::LegendSettings *ui;
 public:
     explicit LegendSettings(QWidget *parent = 0);
     ~LegendSettings();
+    void localeWasChanged();
 protected slots:
     void setNativeValues();
 private slots:
@@ -27,6 +27,7 @@ protected:
 private:
     void setAlignment(Plot* plot);
     void setOpacity(Plot* plot, int opacity);
+    Ui::LegendSettings* ui;
 };
 
 #endif // LEGENDSETTINGS_H

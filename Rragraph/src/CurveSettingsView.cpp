@@ -1,25 +1,14 @@
 #include "CurveSettingsView.h"
 #include "ui_CurveSettingsView.h"
 
-CurveSettingsView* CurveSettingsView::instance = nullptr;
-
-CurveSettingsView* CurveSettingsView::getInstance(){
-    return instance;
-}
-
-void CurveSettingsView::create(QWidget* parent)
-{
-    if(instance){
-        delete instance;
-    }
-    instance = new CurveSettingsView(parent);
-}
+SINGLETON_IMPLEMENTATION(CurveSettingsView, QWidget)
 
 #include "FilesModel.h"
 #include "CurvesModel.h"
 #include "Files.h"
 #include "DoubleDelegate.h"
 #include "CurveSettings.h"
+#include <QSettings>
 CurveSettingsView::CurveSettingsView(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::CurveSettingsView),
@@ -41,19 +30,35 @@ CurveSettingsView::CurveSettingsView(QWidget *parent) :
     connect(ui->curveSettings,    SIGNAL(clicked(QModelIndex)), SLOT(clickedToCurvesView(QModelIndex)));
     connect(ui->insert,           SIGNAL(clicked()),            SLOT(loadFiles()));
     connect(ui->replace,          SIGNAL(clicked()),            SLOT(reloadFile()));
+    connect(Files::getInstance(), SIGNAL(wasRemovedAll()),      SLOT(wasRemovedAllFiles()));
 
+    restoreGeometry(QSettings().value("CurveSettingsView/geometry").toByteArray());
 }
 
 CurveSettingsView::~CurveSettingsView(){
+    QSettings().setValue("CurveSettingsView/geometry", saveGeometry());
     delete ui;
+}
+
+void CurveSettingsView::localeWasChanged(){
+    ui->retranslateUi(this);
+    curveSettings->localeWasChanged();
 }
 
 #include "Plot.h"
 void CurveSettingsView::setCurves(const QModelIndex& index){
-    curvesModel->setCurves(owner->getCurves(index.row()));
+    if(index.isValid()){
+        setWindowTitle(Files::getInstance()->getPath(index.row()).absoluteFilePath());
+    }
+    curvesModel->setCurves(owner ? owner->getCurves(index.row()) : nullptr);
 }
 
-void CurveSettingsView::setOwner(Plot* owner){
+void CurveSettingsView::wasRemovedAllFiles(){
+    setWindowTitle(tr("Curves' creator"));
+}
+
+void CurveSettingsView::setOwner(Plot* owner)
+{
     this->owner = owner;
     setCurves(ui->files->currentIndex());
 }
@@ -100,6 +105,7 @@ void CurveSettingsView::removeSamples(){
         if(!nFiles){
             curvesModel->setCurves(nullptr);
             ui->curveSettings->reset();
+            setWindowTitle(tr("Curves' creator"));
         }
         else{
             const QModelIndex& index = FilesModel::getInstance()->index(currentRow ? currentRow - 1 : 0);

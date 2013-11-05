@@ -5,7 +5,8 @@
 AxisPlotSettings::AxisPlotSettings(QwtPlot::Axis axis, QWidget *parent) :
     PlotSettings(parent),
     ui(new Ui::AxisPlotSettings),
-    axis(axis)
+    axis(axis),
+    lockUpdatingOwner(false)
 {
     ui->setupUi(this);
 
@@ -14,11 +15,14 @@ AxisPlotSettings::AxisPlotSettings(QwtPlot::Axis axis, QWidget *parent) :
     connect(ui->step,  SIGNAL(valueChanged(double)), SLOT(updateOwnerScale()));
     connect(ui->title, SIGNAL(textEdited(QString)),  SLOT(updateAxisTitle(QString)));
     connect(ui->dublicate, SIGNAL(clicked()), SLOT(dublicateValues()));
-
 }
 
 AxisPlotSettings::~AxisPlotSettings(){
     delete ui;
+}
+
+void AxisPlotSettings::localeWasChanged(){
+    ui->retranslateUi(this);
 }
 
 void AxisPlotSettings::updateAxisTitle(const QString &title){
@@ -42,7 +46,7 @@ void AxisPlotSettings::setPlot(Plot* plot)
 
 void AxisPlotSettings::updateOwnerScale()
 {
-    if(!owner){
+    if(lockUpdatingOwner || !owner){
         return;
     }
     updateAxiScale(owner);
@@ -52,11 +56,12 @@ void AxisPlotSettings::updateOwnerScale()
 void AxisPlotSettings::setNativeValues()
 {
     const QwtInterval interval = owner->axisInterval(axis);
-
-    ui->min->setValue(interval.minValue());
-    ui->max->setValue(interval.maxValue());
-    ui->step->setValue(owner->axiStep(axis));
-    ui->title->setText(owner->axisTitle(axis).text());
+    lockUpdatingOwner = true;
+        ui->step->setValue(owner->axiStep(axis)); //It must be invoked before other
+        ui->min->setValue(interval.minValue());
+        ui->max->setValue(interval.maxValue());
+        ui->title->setText(owner->axisTitle(axis).text());
+    lockUpdatingOwner = false;
 }
 
 void AxisPlotSettings::updateAxiScale(Plot* plot)

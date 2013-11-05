@@ -8,11 +8,12 @@ class Zoomer;
 class Canvas : public QwtPlotCanvas
 {
     Q_OBJECT
-    Zoomer* zoomer;
 public:
     explicit Canvas(QwtPlot* parent);
 signals:
     void zoomed();
+private:
+    Zoomer* zoomer;
 };
 
 #endif // CANVAS_H

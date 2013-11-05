@@ -5,6 +5,7 @@
 #include "AxisPlotSettings.h"
 #include "LegendSettings.h"
 #include "ExportSettings.h"
+#include "Translator.h"
 PlotSettingsView::PlotSettingsView(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::PlotSettingsView),
@@ -16,12 +17,21 @@ PlotSettingsView::PlotSettingsView(QWidget *parent) :
     addView(new AxisPlotSettings(QwtPlot::yLeft, ui->toolBox), tr("Ordinate"));
     addView(new LegendSettings(ui->toolBox), tr("Legend"));
     addView(new ExportSettings(ui->toolBox), tr("Export"));
-
-    ui->toolBox->installEventFilter(this);
 }
 
 PlotSettingsView::~PlotSettingsView(){
     delete ui;
+}
+
+void PlotSettingsView::localeWasChanged()
+{
+    ui->toolBox->setItemText(0, tr("Absciss"));
+    ui->toolBox->setItemText(1, tr("Ordinate"));
+    ui->toolBox->setItemText(2, tr("Legend"));
+    ui->toolBox->setItemText(3, tr("Export"));
+    foreach (PlotSettings* plotSettings, views) {
+       plotSettings->localeWasChanged();
+    }
 }
 
 void PlotSettingsView::addView(PlotSettings* view, const QString& title)

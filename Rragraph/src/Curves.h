@@ -8,14 +8,11 @@ class Plot;
 
 class Curves
 {
-    int iFile ;
-    int iX;
-    Plot* owner;
-    QHash<int, Curve*> curves;
 public:
     Curves(int iFile, Plot* owner);
     ~Curves();
     Curve* getCurve(int i) const;
+    void wasRemoved();
     int rowCount() const;
     void setX(int i);
     void setY(int i);
@@ -34,11 +31,17 @@ public:
     void wasLoaded(int iFile);
     void headerWasChanged(int iFile, int i, const QString& header);
     void ifSetY(int i);
+    void serialize(QJsonObject& plot) const;
+    void restore(const QJsonObject& plot);
 private:
     void resamples();
     void insertNewCurve(int i);
     void ifReplotOwner();
     void setSamples(int i, Curve* curve = nullptr);
+    int iFile ;
+    int iX;
+    Plot* owner;
+    QHash<int, Curve*> curves;
 };
 
 #endif // CURVES_H

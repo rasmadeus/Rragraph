@@ -7,9 +7,6 @@
 
 class Samples
 {
-    QStringList headers;
-    QVector<QVector<qreal> > samples;
-    QString path;
 public:
     Samples(const QString& path);
     void pushBack(const QString& header);
@@ -19,6 +16,10 @@ public:
     void setPath(const QString& path);
     QFileInfo getPath() const;
     void clear();
+private:
+    QStringList headers;
+    QVector<QVector<qreal> > samples;
+    QString path;
 };
 
 #endif // SAMPLES_H

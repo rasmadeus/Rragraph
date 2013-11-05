@@ -56,6 +56,16 @@ void CurveSettings::setWidth(int width){
     curves->setWidth(row, width);
 }
 
+void CurveSettings::localeWasChanged(){
+    ui->retranslateUi(this);
+    ui->symbolType->setItemText(0, tr("Ellipse"));
+    ui->symbolType->setItemText(1, tr("Rect"));
+    ui->symbolType->setItemText(2, tr("Diamond"));
+    ui->symbolType->setItemText(3, tr("Up triangle"));
+    ui->symbolType->setItemText(4, tr("Down triangle"));
+    ui->symbolType->setItemText(5, tr("HLine"));
+}
+
 void CurveSettings::setScale(double scale){
     curves->setScale(row, scale);
 }

@@ -74,7 +74,7 @@ QGroupBox::title {
        <number>3</number>
       </property>
       <property name="topMargin">
-       <number>3</number>
+       <number>6</number>
       </property>
       <property name="rightMargin">
        <number>3</number>
@@ -365,7 +365,8 @@ QGroupBox::title {
     font: bold 14px;
     border-radius: 3px;
     min-width: 10em;
-color: #444444;
+    color: #444444;
+    height:15px;
 }
 QToolButton:pressed {
 color: #999999;

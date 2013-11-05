@@ -10,10 +10,10 @@ class ExportSettings;
 class ExportSettings : public PlotSettings
 {
     Q_OBJECT    
-    Ui::ExportSettings *ui;
 public:
     explicit ExportSettings(QWidget *parent = 0);
     ~ExportSettings();
+    void localeWasChanged();
 protected slots:
     void setNativeValues();
 protected:
@@ -22,6 +22,8 @@ private slots:
     void setExportSize();
     void exportPlot();
     void printPlot();
+private:
+    Ui::ExportSettings* ui;
 };
 
 #endif // EXPORTSETTINGS_H

@@ -20,8 +20,19 @@ RestorablePath::~RestorablePath()
 QString RestorablePath::operator ()(){
     if(path.isEmpty()){
         QSettings s;
-        path = s.value(key).toString();
+        return s.value(key).toString();
     }
     return path;
 }
 
+QFileInfo RestorablePath::getInfoPath() const{
+    return QFileInfo(path);
+}
+
+const QString& RestorablePath::getPath() const{
+    return path;
+}
+
+void RestorablePath::clearPath(){
+    path = "";
+}

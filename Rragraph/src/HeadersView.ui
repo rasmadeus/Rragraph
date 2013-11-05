@@ -51,13 +51,13 @@
        <property name="minimumSize">
         <size>
          <width>0</width>
-         <height>24</height>
+         <height>22</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
          <width>50</width>
-         <height>24</height>
+         <height>22</height>
         </size>
        </property>
        <property name="styleSheet">
@@ -67,6 +67,7 @@
     font: bold 14px;
     border-radius: 3px;
     color: #444444;
+    height:15px;
 }
 QToolButton:pressed {
 	color: #999999;
@@ -88,13 +89,13 @@ QToolButton:pressed {
        <property name="minimumSize">
         <size>
          <width>90</width>
-         <height>24</height>
+         <height>22</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
          <width>16777215</width>
-         <height>24</height>
+         <height>22</height>
         </size>
        </property>
        <property name="styleSheet">

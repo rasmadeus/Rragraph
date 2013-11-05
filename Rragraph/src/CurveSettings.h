@@ -16,6 +16,7 @@ public:
     explicit CurveSettings(QWidget *parent = 0);
     ~CurveSettings();
     void setModel(Curves* curves, int row);
+    void localeWasChanged();
 private slots:
     void setWidth(int width);
     void setScale(double scale);
@@ -26,7 +27,7 @@ private slots:
     void setStep(int step);
     void setColor();
 private:
-    Ui::CurveSettings *ui;
+    Ui::CurveSettings* ui;
     Curve* curve;
     Curves* curves;
     int row;

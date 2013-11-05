@@ -12,16 +12,18 @@ class HeadersView;
 class HeadersView : public QWidget
 {
     Q_OBJECT
-    Ui::HeadersView *ui;
-    FilesModel* filesModel;
-    HeadersModel* headersModel;
 public:
     explicit HeadersView(QWidget *parent = 0);
     ~HeadersView();
 private slots:
+    void localeWasChanged();
     void wasAdded(int iFile);
     void wasRemoved(int iFile);
     void resetClicked();
+private:
+    Ui::HeadersView *ui;
+    FilesModel* filesModel;
+    HeadersModel* headersModel;
 };
 
 #endif // HEADERSVIEW_H

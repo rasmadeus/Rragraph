@@ -90,7 +90,8 @@
     border-width: 1px;
     font: bold 14px;
     border-radius: 3px;
-color: #444444;
+    color: #444444;
+    height:15px;
 }
 QToolButton:pressed {
 color: #999999;
@@ -121,7 +122,8 @@ color: #999999;
     border-width: 1px;
     font: bold 14px;
     border-radius: 3px;
-color: #444444;
+    color: #444444;
+    height:15px;
 }
 QToolButton:pressed {
 color: #999999;
@@ -152,7 +154,8 @@ color: #999999;
     border-width: 1px;
     font: bold 14px;
     border-radius: 3px;
-color: #444444;
+    color: #444444;
+    height:15px;
 }
 QToolButton:pressed {
 color: #999999;

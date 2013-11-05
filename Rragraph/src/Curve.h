@@ -18,12 +18,9 @@ public:
     void setSamples(const QVector<double>& xData, const QVector<double>& yData);
     int getSymbolStyle() const;
     void setSymbolStyle(int style);
+    void serialize(QJsonObject& curves) const;
+    void restore(const QJsonObject& curves);
 protected:
-    int step;
-    double addendY;
-    double addendX;
-    double multY;
-    int symbolStyle;
     void drawSymbols(
         QPainter* painter,
         const QwtSymbol& symbol,
@@ -33,6 +30,11 @@ protected:
         int from,
         int to
     ) const;
+    int step;
+    double addendY;
+    double addendX;
+    double multY;
+    int symbolStyle;
 };
 
 #endif // CURVE_H

@@ -1,16 +1,21 @@
-#-------------------------------------------------
+z#-------------------------------------------------
 #
 # Project created by QtCreator 2013-09-16T21:06:42
 #
 #-------------------------------------------------
 
-QT       += core gui svg quick printsupport
+QT       += core gui svg printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = src
+TARGET = rragraph
 TEMPLATE = app
 CONFIG   += c++11
+DESTDIR = $$PWD/installer
+
+TRANSLATIONS += $$PWD/translations/ru.ts \
+    $$PWD/translations/kr.ts \
+    $$PWD/translations/ar.ts
 
 include ($$PWD/FilesLoader.pri)
 include ($$PWD/Plot.pri)
@@ -22,17 +27,18 @@ include ($$PWD/CurveSettings.pri)
 SOURCES += main.cpp \
     MainWindow.cpp \
     MdiArea.cpp \
-    Project.cpp
+    Project.cpp \
+    MdiAreaRearranger.cpp \
+    Translator.cpp
 
 HEADERS  += \
     MainWindow.h \
     MdiArea.h \
-    Project.h
+    Project.h \
+    Translator.h
 
 FORMS += \
     MainWindow.ui
 
 RESOURCES += \
     res.qrc
-
-OTHER_FILES +=

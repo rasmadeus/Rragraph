@@ -20,7 +20,6 @@ public:
     Curves* getCurves() const;
 private slots:
     void wasLoaded(int iFile);
-    void headerWasChanged(int iFile, int i, const QString& header);
 private:
     Curves* curves;
 };

@@ -1,6 +1,6 @@
 #include "FilesModel.h"
 
-SINGLETON_IMPLEMENTATION(FilesModel)
+SINGLETON_IMPLEMENTATION(FilesModel, QObject)
 
 #include "Files.h"
 FilesModel::FilesModel(QObject *parent) :
@@ -17,9 +17,8 @@ int FilesModel::rowCount(const QModelIndex& parent) const
     return files->countSamples();
 }
 
-QVariant FilesModel::data(const QModelIndex& index, int role) const
-{
-    return role == Qt::DisplayRole ? files->getPath(index.row()).fileName() : QVariant();
+QVariant FilesModel::data(const QModelIndex& index, int role) const{
+    return role == Qt::DisplayRole ? files->getRelativePath(index.row()) : QVariant();
 }
 
 void FilesModel::reset()
@@ -27,3 +26,4 @@ void FilesModel::reset()
     beginResetModel();
     endResetModel();
 }
+

@@ -1,22 +1,13 @@
 #include "MdiArea.h"
 
-MdiArea* MdiArea::instance = nullptr;
-
-void MdiArea::create(QWidget* parent)
-{
-    if(!instance){
-        instance = new MdiArea(parent);
-    }
-}
-
-MdiArea* MdiArea::getInstance(){
-    return instance;
-}
+SINGLETON_IMPLEMENTATION(MdiArea, QWidget)
 
 MdiArea::MdiArea(QWidget *parent) :
-    QMdiArea(parent)
+    QMdiArea(parent),
+    tileType(GRID_HORIZONTAL)
 {
-
+    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 }
 
 #include <QMdiSubWindow>
@@ -24,15 +15,24 @@ MdiArea::MdiArea(QWidget *parent) :
 #include <QIcon>
 Plot* MdiArea::insertPlot()
 {
-    QMdiSubWindow* window = new QMdiSubWindow(this);
+    QMdiSubWindow* window = new QMdiSubWindow;
+    window->setMinimumSize(250, 150);
+    window->setWindowIcon(QIcon(":/res/addPlot.png"));
     Plot* plot = new Plot(window);
+    plot->connect(plot, SIGNAL(destroyed()), this, SLOT(retitle()));
     window->setWidget(plot);
     window->setAttribute(Qt::WA_DeleteOnClose);
-    plot->connect(plot, SIGNAL(destroyed()), this, SLOT(retitle()));
+    addSubWindow(window);
     window->show();
-    window->setWindowIcon(QIcon(":/res/addPlot.png"));
     retitle();
     return plot;
+}
+
+#include <QAction>
+void MdiArea::changeTileType(QAction* action)
+{
+    tileType = TileType(action->data().toInt());
+    tile();
 }
 
 void MdiArea::retitle()
@@ -45,7 +45,7 @@ void MdiArea::retitle()
         );
     }
     if(!subWindowList().isEmpty()){
-        tileSubWindows();
+        tile();
     }
 }
 
@@ -108,26 +108,61 @@ void MdiArea::print()
 }
 
 #include <QJsonArray>
-#include <QJsonValue>
-QJsonObject MdiArea::serialize() const
+#include <QJsonObject>
+void MdiArea::serialize(QJsonObject& root) const
+{
+    QJsonArray plots;   
+    foreach(QMdiSubWindow* window, subWindowList()){
+        Plot* plot = static_cast<Plot*>(window->widget());
+        plot->serialize(plots);
+    }
+    root["plots"] = plots;
+    root["tileType"] = int(tileType);
+}
+
+void MdiArea::restore(const QJsonObject& root)
+{
+    tileType = TileType(root.value("tileType").toVariant().toInt());
+    foreach(const QJsonValue& value, root.value("plots").toArray()) {
+        insertPlot()->restore(value);
+    }
+    if(subWindowList().size()){
+        QMdiSubWindow* activeWindow = subWindowList().at(subWindowList().size() - 1);
+        setActiveSubWindow(activeWindow);
+        emit subWindowActivated(activeWindow);
+    }
+}
+
+void MdiArea::serializeCurves(QJsonObject& root) const
 {
     QJsonArray plots;
     foreach(QMdiSubWindow* window, subWindowList()){
         Plot* plot = static_cast<Plot*>(window->widget());
-        plots.push_back(plot->serialize());
+        plot->serializeCurves(plots);
     }
-    QJsonObject obj;
-    obj["plots"] = plots;
-    return obj;
+    root["plotsCurves"] = plots;
 }
 
-void MdiArea::restore(const QJsonObject& obj)
+void MdiArea::restoreCurves(int iFile, const QJsonObject& root)
 {
-    foreach(const QJsonValue& item, obj.value("plots").toArray()){
-        Plot* plot = insertPlot();
-        plot->restore(item.toObject());
+    QJsonArray curves = root.value("plotsCurves").toArray();
+    int iPlot = 0;
+    foreach(QMdiSubWindow* window, subWindowList()){
+        Plot* plot = static_cast<Plot*>(window->widget());
+        plot->restoreCurves(iFile, curves.at(iPlot).toArray().at(iFile).toObject());
+        ++iPlot;
     }
-    if(subWindowList().size() > 0){
-        setActiveSubWindow(subWindowList().at(0));
+}
+
+#include "CurveSettingsView.h"
+void MdiArea::localeWasChanged()
+{
+    CurveSettingsView::getInstance()->localeWasChanged();
+    foreach(QMdiSubWindow* window, subWindowList()){
+        window->setWindowTitle(
+            tr("Plot №%1").arg(
+                subWindowList().indexOf(window) + 1
+            )
+        );
     }
 }

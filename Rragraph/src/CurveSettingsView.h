@@ -5,6 +5,7 @@ class CurvesModel;
 class Plot;
 class CurveSettings;
 #include <QDialog>
+#include "global.h"
 
 namespace Ui {
 class CurveSettingsView;
@@ -13,17 +14,11 @@ class CurveSettingsView;
 class CurveSettingsView : public QDialog
 {
     Q_OBJECT
-    static CurveSettingsView* instance ;
-    Ui::CurveSettingsView* ui;
-    CurvesModel* curvesModel;
-    Plot* owner;
-    CurveSettings* curveSettings;
-    explicit CurveSettingsView(QWidget* parent = 0);
+    SINGLETON_HEADER(CurveSettingsView, QWidget)
 public:
-    static CurveSettingsView* getInstance();
-    static void create(QWidget* parent = 0);
     void setOwner(Plot* owner);
     ~CurveSettingsView();
+    void localeWasChanged();
 public slots:
     void show();
 private:
@@ -31,12 +26,18 @@ private:
     void setColorData(const QModelIndex& index);
     void setOtherData(const QModelIndex& index);
 private slots:
+    void wasRemovedAllFiles();
     void loadFiles();
     void reloadFile();
     void setCurves(const QModelIndex& index);
     void wasLoaded(int iFile);
     void removeSamples();
     void clickedToCurvesView(const QModelIndex& index);
+private:
+    Ui::CurveSettingsView* ui;
+    CurvesModel* curvesModel;
+    Plot* owner;
+    CurveSettings* curveSettings;
 };
 
 #endif // CURVESETTINGSVIEW_H

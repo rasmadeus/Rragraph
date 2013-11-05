@@ -140,3 +140,32 @@ void Curve::drawSymbols(
         }
     }
 }
+
+#include <QJsonObject>
+void Curve::serialize(QJsonObject& curves) const
+{
+    QJsonObject curve;
+    curve["step"]        = step;
+    curve["addendY"]     = addendY;
+    curve["addendX"]     = addendX;
+    curve["multY"]       = multY;
+    curve["symbolStyle"] = symbolStyle;
+    curve["penColor"]    = QJsonValue::fromVariant(pen().color());
+    curve["penWidth"]    = pen().width();
+    curves["curveSettings"] = curve;
+}
+
+void Curve::restore(const QJsonObject& curves)
+{
+    const QJsonObject curve = curves.value("curveSettings").toObject();
+    step = curve.value("step").toVariant().toInt();
+    addendY = curve.value("addendY").toDouble(0);
+    addendX = curve.value("addendX").toDouble(0);
+    multY = curve.value("multY").toDouble(1);
+    const QColor penColor = curve.value("penColor").toVariant().value<QColor>();
+    const int penWidth = curve.value("penWidth").toVariant().toInt();
+    QPen pen(penColor);
+    pen.setWidth(penWidth);
+    setPen(pen);
+    setSymbolStyle(curve.value("symbolStyle").toVariant().toInt());
+}

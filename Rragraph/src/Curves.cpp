@@ -4,14 +4,13 @@ Curves::Curves(int iFile, Plot* owner):
     iFile(iFile),
     iX(0),
     owner(owner)
-{
+{    
 }
 
 #include "Curve.h"
 #include "Plot.h"
 Curves::~Curves(){
     qDeleteAll(curves);
-    owner->replot();
 }
 
 Curve* Curves::getCurve(int i) const{
@@ -49,6 +48,10 @@ void Curves::setX(int i)
         iX = i;
         resamples();
     }
+}
+
+void Curves::wasRemoved(){
+    --iFile;
 }
 
 void Curves::wasLoaded(int iFile)
@@ -112,6 +115,10 @@ void Curves::setY(int i)
 
 void Curves::ifReplotOwner()
 {
+    if(owner->isCurvesRestoring()){
+        owner->replot();
+        return;
+    }
     int countAbilityCurves = 0;
     foreach (Curve* curve, curves) {
         if(curve->isVisible()){
@@ -208,4 +215,40 @@ void Curves::resamples()
         );
     }
     owner->replot();
+}
+
+#include <QJsonArray>
+#include <QJsonObject>
+void Curves::serialize(QJsonObject& plot) const
+{
+    QJsonObject curves;
+    curves["absciss"] = iX;
+    QJsonArray ordinates;
+    foreach(int iY, this->curves.keys()){
+        QJsonObject curve;
+        curve["curveIndex"] = iY;
+        this->curves.value(iY)->serialize(curve);
+        ordinates.push_back(curve);
+    }
+    curves["ordinates"] = ordinates;
+    plot["curves"] = curves;
+}
+
+void Curves::restore(const QJsonObject& plot)
+{
+    const QJsonObject curves = plot.value("curves").toObject();
+    const int iX = curves.value("absciss").toVariant().toInt();
+    if(Files::getInstance()->isOutOfRange(iFile, iX)){
+        return;
+    }
+    setX(iX);
+    foreach(const QJsonValue& y, curves.value("ordinates").toArray()){
+        const QJsonObject curve = y.toObject();
+        const int iY = curve.value("curveIndex").toVariant().toInt();
+        if(Files::getInstance()->isOutOfRange(iFile, iY)){
+            return;
+        }
+        setY(iY);
+        this->curves.value(iY)->restore(curve);
+    }
 }

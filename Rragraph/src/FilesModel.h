@@ -8,13 +8,14 @@ class Files;
 class FilesModel : public QAbstractListModel
 {
     Q_OBJECT
-    SINGLETON_HEADER(FilesModel)
-    Files* files;
+    SINGLETON_HEADER(FilesModel, QObject)
 public:
     int rowCount(const QModelIndex& parent) const;
     QVariant data(const QModelIndex& index, int role) const;
 private slots:
     void reset();
+private:
+    Files* files;
 };
 
 #endif // FILESMODEL_H

@@ -59,7 +59,7 @@ QGroupBox::title {
        <number>2</number>
       </property>
       <property name="topMargin">
-       <number>3</number>
+       <number>6</number>
       </property>
       <property name="rightMargin">
        <number>2</number>
@@ -131,7 +131,21 @@ QGroupBox::title {
          <string>Set the legend font.</string>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QToolButton{
+    border-style: outset;
+    border-width: 1px;
+    font: bold 14px;
+    border-radius: 3px;
+    min-width: 10em;
+    color: #444444;
+    height: 15px;
+}
+QToolButton:pressed {
+color: #999999;
+}
+QToolButton:disabled {
+color: #999999;
+}</string>
         </property>
         <property name="text">
          <string>Set font</string>
@@ -172,10 +186,10 @@ QGroupBox::title {
       </sizepolicy>
      </property>
      <property name="toolTip">
-      <string>Dublicate these values to other plots.</string>
+      <string>Duplicate these values to other plots.</string>
      </property>
      <property name="whatsThis">
-      <string>Dublicate these values to other plots.</string>
+      <string>Duplicate these values to other plots.</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QToolButton{
@@ -184,14 +198,15 @@ QGroupBox::title {
     font: bold 14px;
     border-radius: 3px;
     min-width: 10em;
-color: #444444;
+    color: #444444;
+    height: 15px;
 }
 QToolButton:pressed {
 color: #999999;
 }</string>
      </property>
      <property name="text">
-      <string>Dublicate values</string>
+      <string>Duplicate values</string>
      </property>
     </widget>
    </item>

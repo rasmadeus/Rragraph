@@ -6,13 +6,15 @@
 #include "StringDelegate.h"
 #include "FilesModel.h"
 #include "Files.h"
+#include "Translator.h"
 HeadersView::HeadersView(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::HeadersView)
 {
     ui->setupUi(this);
 
-    filesModel = FilesModel::getInstance(ui->filesChooser);
+    FilesModel::make(ui->filesChooser);
+    filesModel = FilesModel::getInstance();
     headersModel = new HeadersModel(ui->view);
 
     ui->filesChooser->setModel(filesModel);
@@ -24,11 +26,15 @@ HeadersView::HeadersView(QWidget *parent) :
     connect(ui->view, SIGNAL(clicked(QModelIndex)), ui->view, SLOT(edit(QModelIndex)));
     connect(ui->filesChooser, SIGNAL(currentIndexChanged(int)), headersModel, SLOT(wasChoosen(int)));
     connect(ui->reset, SIGNAL(clicked()), SLOT(resetClicked()));
+    connect(Translator::getInstance(), SIGNAL(localeWasChanged()), SLOT(localeWasChanged()));
 }
 
-HeadersView::~HeadersView()
-{    
+HeadersView::~HeadersView(){    
     delete ui;
+}
+
+void HeadersView::localeWasChanged(){
+    ui->retranslateUi(this);
 }
 
 void HeadersView::wasAdded(int iFile)

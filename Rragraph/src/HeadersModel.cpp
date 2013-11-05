@@ -6,7 +6,7 @@ HeadersModel::HeadersModel(QObject *parent) :
     QAbstractListModel(parent),
     iFile(-1)
 {   
-    samples = HeaderSamples::getInstance(this);
+    samples = HeaderSamples::getInstance();
     connect(Files::getInstance(), SIGNAL(headersWasParsed(int)), SLOT(reset(int)));
 }
 
@@ -41,9 +41,19 @@ void HeadersModel::wasChoosen(int iFile)
     endResetModel();
 }
 
+#include <stdexcept>
 void HeadersModel::reset(int iFile)
 {
-    samples->reset(iFile);
+    //It need in try catch because of Files' signal wasRemoved(iFile) and
+    //this invoke(iFile) reset may be in the same time.
+    try{
+        samples->reset(iFile);
+    }
+    catch(const std::out_of_range& err){
+        Q_UNUSED(err)
+        return;
+    }
+
     if(this->iFile == iFile){
         wasChoosen(iFile);
     }

@@ -12,11 +12,10 @@ class AxisPlotSettings;
 class AxisPlotSettings : public PlotSettings
 {
     Q_OBJECT
-    Ui::AxisPlotSettings* ui;
-    QwtPlot::Axis axis;
 public:
     explicit AxisPlotSettings(QwtPlot::Axis axis, QWidget* parent = 0);
     ~AxisPlotSettings();
+    void localeWasChanged();
 protected slots:
     void setNativeValues();
     void setPlot(Plot* owner);
@@ -27,6 +26,9 @@ protected:
     void dublicateValues(Plot* plot);
 private:
     void updateAxiScale(Plot* plot);
+    Ui::AxisPlotSettings* ui;
+    QwtPlot::Axis axis;
+    bool lockUpdatingOwner;
 };
 
 #endif // AXISPLOTSETTINGS_H

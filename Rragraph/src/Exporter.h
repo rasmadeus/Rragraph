@@ -7,7 +7,6 @@ class Plot;
 
 class Exporter : public QwtPlotRenderer
 {
-    RestorablePath exportPath;
 public:
     Exporter();
     void exportOne(Plot* src);
@@ -15,6 +14,8 @@ public:
     void printOne(Plot* src);
     void setExportPath(const QString& path);
     QString getExportPath();
+private:
+    RestorablePath exportPath;
 };
 
 #endif // EXPORTER_H
