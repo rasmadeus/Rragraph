@@ -436,8 +436,9 @@
     <name>MainWindow</name>
     <message>
         <location filename="../MainWindow.ui" line="14"/>
-        <source>Painting plots with RRAGRAPH - it is very easy</source>
-        <translation>RRAGRAPH와 플롯을 그림 - 그것은 매우 간단합니다</translation>
+        <source>Rragraph</source>
+        <translatorcomment>Rragraph</translatorcomment>
+        <translation>Rragraph</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="122"/>
@@ -773,8 +774,9 @@
     </message>
     <message>
         <location filename="../Project.cpp" line="99"/>
-        <source>Painting plots with RRAGRAPH - it is very easy</source>
-        <translation>RRAGRAPH와 플롯을 그림 - 그것은 매우 간단합니다</translation>
+        <source>Rragraph</source>
+        <translatorcomment>Rragraph</translatorcomment>
+        <translation>Rragraph</translation>
     </message>
     <message>
         <location filename="../Project.cpp" line="144"/>

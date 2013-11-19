@@ -2,8 +2,8 @@
 #define HEADERSAMPLES_H
 
 #include "global.h"
-#include <QStringList>
 #include <QVector>
+#include <QStringList>
 #include <QObject>
 
 class HeaderSamples : public QObject

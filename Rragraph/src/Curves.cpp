@@ -1,5 +1,5 @@
 #include "Curves.h"
-#include <QDebug>
+
 Curves::Curves(int iFile, Plot* owner):
     iFile(iFile),
     iX(0),

@@ -2,7 +2,7 @@
 #define RESTORABLEPATH_H
 
 #include <QString>
-#include <QFileInfo>
+class QFileInfo;
 
 class RestorablePath
 {

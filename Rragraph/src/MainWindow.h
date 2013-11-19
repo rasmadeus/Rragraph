@@ -6,9 +6,9 @@ class Files;
 class HeadersView;
 class PlotSettingsView;
 class Project;
+class QActionGroup;
 
 #include <QMainWindow>
-#include <QActionGroup>
 
 namespace Ui {
 class MainWindow;

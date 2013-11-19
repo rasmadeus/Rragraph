@@ -1,4 +1,5 @@
 #include "RestorablePath.h"
+#include <QFileInfo>
 
 RestorablePath::RestorablePath(const QString& key):
     key(key){

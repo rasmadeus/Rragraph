@@ -14,6 +14,7 @@ const RestorablePath& Project::getPath() const{
     return lastPath;
 }
 
+#include <QDir>
 QDir Project::getProjectDir() const{
     return lastPath.getInfoPath().absoluteDir();
 }
@@ -28,7 +29,6 @@ void Project::load()
         tr("Rragraph file(*.rgf);;All files(*)")
     );
     if(!path.isEmpty()){
-        path.replace("\\", "/");
         clearWindowsAndFiles();
         lastPath = path;
         reloadPath();
@@ -96,7 +96,7 @@ void Project::close()
 {
     clearWindowsAndFiles();
     lastPath.clearPath();
-    emit wasClosed(tr("Painting plots with RRAGRAPH - it is very easy"));
+    emit wasClosed(tr("Rragraph"));
 }
 
 #include <QFile>
@@ -117,6 +117,8 @@ void Project::reloadPath()
     ifSaveLastPathToSettings();
 }
 
+#include <QDir>
+#include <QAction>
 void Project::loadProjectFrom(QAction* action)
 {
     lastPath = action->data().toString();

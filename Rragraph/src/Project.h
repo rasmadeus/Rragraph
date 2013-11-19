@@ -1,12 +1,12 @@
 #ifndef PROJECT_H
 #define PROJECT_H
 
+class QDir;
+class QAction;
 #include "global.h"
 #include "RestorablePath.h"
 #include <QObject>
 #include <QJsonDocument>
-#include <QDir>
-#include <QAction>
 
 class Project : public QObject
 {

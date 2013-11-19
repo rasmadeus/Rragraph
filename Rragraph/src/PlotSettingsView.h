@@ -3,8 +3,8 @@
 
 class Plot;
 class PlotSettings;
+class QMdiSubWindow;
 #include <QWidget>
-#include <QMdiSubWindow>
 
 namespace Ui {
 class PlotSettingsView;

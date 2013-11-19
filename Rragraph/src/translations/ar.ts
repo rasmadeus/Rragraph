@@ -436,8 +436,8 @@
     <name>MainWindow</name>
     <message>
         <location filename="../MainWindow.ui" line="14"/>
-        <source>Painting plots with RRAGRAPH - it is very easy</source>
-        <translation>اللوحة المؤامرات مع RRAGRAPH - فمن السهل جدا</translation>
+        <source>Rragraph</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="122"/>
@@ -773,8 +773,8 @@
     </message>
     <message>
         <location filename="../Project.cpp" line="99"/>
-        <source>Painting plots with RRAGRAPH - it is very easy</source>
-        <translation>اللوحة المؤامرات مع RRAGRAPH - فمن السهل جدا</translation>
+        <source>Rragraph</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../Project.cpp" line="144"/>

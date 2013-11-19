@@ -17,6 +17,7 @@ Loader::~Loader()
 #include <QFile>
 #include <QTextStream>
 #include "Samples.h"
+#include <QFileInfo>
 void Loader::run()
 {    
     QFile file(samples->getPath().absoluteFilePath());

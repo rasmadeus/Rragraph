@@ -40,6 +40,7 @@ void PlotSettingsView::addView(PlotSettings* view, const QString& title)
     ui->toolBox->addItem(view, title);
 }
 
+#include <QMdiSubWindow>
 void PlotSettingsView::setOwner(QMdiSubWindow* window)
 {    
     owner = window ? static_cast<Plot*>(window->widget()) : nullptr;

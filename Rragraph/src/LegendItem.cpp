@@ -45,6 +45,7 @@ Qt::AlignmentFlag LegendItem::getVerPos() const
 
 #include <QJsonArray>
 #include <QFlags>
+#include <QJsonObject>
 void LegendItem::serialize(QJsonObject& plot)
 {
     QJsonObject legend;
@@ -55,7 +56,6 @@ void LegendItem::serialize(QJsonObject& plot)
     legend["font"] = QJsonValue::fromVariant(font());
     legend["backgroundAlpha"] = QJsonValue::fromVariant(borderPen().color().alpha());
     plot["legend"] = legend;
-    qDebug() << alignment() << getHorPos() << getVerPos();
 }
 
 void LegendItem::restore(const QJsonObject& plot)

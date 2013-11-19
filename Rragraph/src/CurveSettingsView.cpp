@@ -46,6 +46,7 @@ void CurveSettingsView::localeWasChanged(){
 }
 
 #include "Plot.h"
+#include <QFileInfo>
 void CurveSettingsView::setCurves(const QModelIndex& index){
     if(index.isValid()){
         setWindowTitle(Files::getInstance()->getPath(index.row()).absoluteFilePath());

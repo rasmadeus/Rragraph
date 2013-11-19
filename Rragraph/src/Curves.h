@@ -3,9 +3,10 @@
 
 class Curve;
 class Plot;
-#include <QColor>
-#include <QHash>
+class QColor;
+class QJsonObject;
 
+#include <QHash>
 class Curves
 {
 public:

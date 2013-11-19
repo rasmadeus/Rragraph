@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Painting plots with RRAGRAPH - it is very easy</string>
+   <string>Rragraph</string>
   </property>
   <property name="windowIcon">
    <iconset resource="res.qrc">

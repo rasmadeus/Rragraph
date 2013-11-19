@@ -7,7 +7,7 @@ Files::Files(QObject* parent) :
     lastLoadedFilePath("Files/lastLoadedFilePath")
 {
 }
-#include <QDebug>
+
 #include <QSettings>
 Files::~Files()
 {
@@ -130,7 +130,7 @@ void Files::reload(int iFile)
         reload(iFile, path);
     }
 }
-#include <QDebug>
+
 #include "Project.h"
 QString Files::getRelativePath(int iFile) const{
     const QString projectPath = Project::getInstance()->getPath().getPath();

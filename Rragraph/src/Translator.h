@@ -1,8 +1,10 @@
 #ifndef TRANSLATOR_H
 #define TRANSLATOR_H
 
+class QActionGroup;
+class QMenu;
+class QAction;
 #include <QObject>
-#include <QActionGroup>
 #include "global.h"
 #include <QTranslator>
 #include <QDir>

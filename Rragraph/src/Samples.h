@@ -1,9 +1,9 @@
 #ifndef SAMPLES_H
 #define SAMPLES_H
 
+class QFileInfo;
 #include <QStringList>
 #include <QVector>
-#include <QFileInfo>
 
 class Samples
 {

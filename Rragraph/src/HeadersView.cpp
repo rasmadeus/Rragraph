@@ -44,7 +44,7 @@ void HeadersView::wasAdded(int iFile)
         ui->filesChooser->setCurrentIndex(0);
     }    
 }
-#include <QDebug>
+
 void HeadersView::wasRemoved(int iFile)
 {
     if(iFile){

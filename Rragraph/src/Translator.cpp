@@ -3,6 +3,7 @@
 SINGLETON_IMPLEMENTATION(Translator, QObject)
 
 #include <QApplication>
+#include <QActionGroup>
 Translator::Translator(QObject* parent) :
     QObject(parent),
     nativeLocale("English"),
@@ -60,7 +61,6 @@ void Translator::createNewAction(const QString& language, const QString& locale)
 }
 
 #include <QSettings>
-#include <QDebug>
 void Translator::serialize() const
 {
     QSettings s;
