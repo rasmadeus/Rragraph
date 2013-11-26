@@ -8,13 +8,20 @@ AxisPlotSettings::AxisPlotSettings(QwtPlot::Axis axis, QWidget *parent) :
     axis(axis),
     lockUpdatingOwner(false)
 {
+
     ui->setupUi(this);
 
-    connect(ui->min,   SIGNAL(valueChanged(double)), SLOT(updateOwnerScale()));
-    connect(ui->max,   SIGNAL(valueChanged(double)), SLOT(updateOwnerScale()));
-    connect(ui->step,  SIGNAL(valueChanged(double)), SLOT(updateOwnerScale()));
-    connect(ui->title, SIGNAL(textEdited(QString)),  SLOT(updateAxisTitle(QString)));
-    connect(ui->dublicate, SIGNAL(clicked()), SLOT(dublicateValues()));
+    connect(ui->min,       SIGNAL(valueChanged(double)), SLOT(updateOwnerScale()));
+    connect(ui->max,       SIGNAL(valueChanged(double)), SLOT(updateOwnerScale()));
+    connect(ui->step,      SIGNAL(valueChanged(double)), SLOT(updateOwnerScale()));
+    connect(ui->title,     SIGNAL(textEdited(QString)),  SLOT(updateAxisTitle(QString)));
+    connect(ui->dublicate, SIGNAL(clicked()),            SLOT(dublicateValues()));   
+
+}
+
+void AxisPlotSettings::loseTitleFocus()
+{
+    ui->title->deselect();
 }
 
 AxisPlotSettings::~AxisPlotSettings(){
@@ -26,10 +33,9 @@ void AxisPlotSettings::localeWasChanged(){
 }
 
 void AxisPlotSettings::updateAxisTitle(const QString &title){
-    if(!owner){
-        return;
+    if(owner){
+        owner->setAxisTitle(axis, title);
     }
-    owner->setAxisTitle(axis, title);
 }
 
 #include <qwt_interval.h>
@@ -43,13 +49,12 @@ void AxisPlotSettings::setPlot(Plot* plot)
     }
     owner = plot;
 }
-
+#include "MdiArea.h"
 void AxisPlotSettings::updateOwnerScale()
 {
-    if(lockUpdatingOwner || !owner){
-        return;
+    if(!lockUpdatingOwner && owner){
+        updateAxiScale(owner);
     }
-    updateAxiScale(owner);
 }
 
 #include <qwt_scale_div.h>
@@ -57,7 +62,7 @@ void AxisPlotSettings::setNativeValues()
 {
     const QwtInterval interval = owner->axisInterval(axis);
     lockUpdatingOwner = true;
-        ui->step->setValue(owner->axiStep(axis)); //It must be invoked before other
+        ui->step->setValue(owner->axiStep(axis)); //It must be invoked before others
         ui->min->setValue(interval.minValue());
         ui->max->setValue(interval.maxValue());
         ui->title->setText(owner->axisTitle(axis).text());
@@ -72,11 +77,11 @@ void AxisPlotSettings::updateAxiScale(Plot* plot)
         ui->max->value(),
         ui->step->value()
     );
-    plot->replot();
+    plot->replot();    
 }
 
 void AxisPlotSettings::dublicateValues(Plot* plot)
 {
     updateAxiScale(plot);
-    plot->setAxisTitle(axis, ui->title->text());
+    plot->setAxisTitle(axis, ui->title->text());    
 }

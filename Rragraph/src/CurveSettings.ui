@@ -74,7 +74,7 @@ QGroupBox::title {
        <number>3</number>
       </property>
       <property name="topMargin">
-       <number>6</number>
+       <number>8</number>
       </property>
       <property name="rightMargin">
        <number>3</number>
@@ -165,7 +165,7 @@ QGroupBox::title {
        <number>3</number>
       </property>
       <property name="topMargin">
-       <number>3</number>
+       <number>8</number>
       </property>
       <property name="rightMargin">
        <number>3</number>
@@ -296,7 +296,7 @@ QGroupBox::title {
        <number>3</number>
       </property>
       <property name="topMargin">
-       <number>3</number>
+       <number>8</number>
       </property>
       <property name="rightMargin">
        <number>3</number>
@@ -363,7 +363,7 @@ QGroupBox::title {
     border-style: outset;
     border-width: 1px;
     font: bold 14px;
-    border-radius: 3px;
+    border-radius: 8px;
     min-width: 10em;
     color: #444444;
     height:15px;

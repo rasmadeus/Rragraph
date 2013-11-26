@@ -251,4 +251,5 @@ void Curves::restore(const QJsonObject& plot)
         setY(iY);
         this->curves.value(iY)->restore(curve);
     }
+    resamples();
 }

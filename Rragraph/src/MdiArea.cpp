@@ -65,7 +65,6 @@ void MdiArea::exportToPng()
     }
 }
 
-
 void MdiArea::autoscale()
 {
     foreach(QMdiSubWindow* window, subWindowList()){
@@ -92,7 +91,6 @@ void MdiArea::print()
             exporter.setDiscardFlag(QwtPlotRenderer::DiscardCanvasFrame);
             exporter.setLayoutFlag(QwtPlotRenderer::FrameWithScales);
         }
-
         bool needNewPage = false;
         foreach(QMdiSubWindow* window, subWindowList()){
             if(needNewPage){

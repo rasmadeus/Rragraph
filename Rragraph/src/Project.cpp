@@ -96,7 +96,7 @@ void Project::close()
 {
     clearWindowsAndFiles();
     lastPath.clearPath();
-    emit wasClosed(tr("Rragraph"));
+    emit wasClosed(tr("Rragraph")); //Set title to MainWindow
 }
 
 #include <QFile>
@@ -129,11 +129,12 @@ void Project::loadProjectFrom(QAction* action)
 void Project::resave()
 {
     QFile file(lastPath.getPath());
-    if(!file.open(QFile::WriteOnly)){
+    if(!file.open(QFile::WriteOnly | QFile::Text)){
         showSavingError();
         return;
     }
     QTextStream out(&file);
+    out.setCodec("UTF-8");
     fillProject();
     out << doc.toJson(QJsonDocument::Indented);
     emit wasSavedAs(lastPath.getPath());

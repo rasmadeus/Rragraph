@@ -109,7 +109,8 @@
     border-style: outset;
     border-width: 1px;
     font: bold 14px;
-    border-radius: 3px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
     color: #444444;
     height: 15px;
 }
@@ -141,7 +142,8 @@ color: #999999;
     border-style: outset;
     border-width: 1px;
     font: bold 14px;
-    border-radius: 3px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
     color: #444444;
     height: 15px;
 }
@@ -178,7 +180,7 @@ color: #999999;
     border-style: outset;
     border-width: 1px;
     font: bold 14px;
-    border-radius: 3px;
+    border-radius: 8px;
     color: #444444;
     height: 15px;
 }

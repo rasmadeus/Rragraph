@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>249</width>
-    <height>292</height>
+    <width>228</width>
+    <height>137</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -59,7 +59,7 @@ QGroupBox::title {
        <number>2</number>
       </property>
       <property name="topMargin">
-       <number>6</number>
+       <number>8</number>
       </property>
       <property name="rightMargin">
        <number>2</number>
@@ -135,7 +135,7 @@ QGroupBox::title {
     border-style: outset;
     border-width: 1px;
     font: bold 14px;
-    border-radius: 3px;
+    border-radius: 8px;
     min-width: 10em;
     color: #444444;
     height: 15px;
@@ -196,7 +196,7 @@ color: #999999;
     border-style: outset;
     border-width: 1px;
     font: bold 14px;
-    border-radius: 3px;
+    border-radius: 8px;
     min-width: 10em;
     color: #444444;
     height: 15px;

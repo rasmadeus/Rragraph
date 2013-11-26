@@ -33,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent) :
     mdiArea          = MdiArea::getInstance();
     project          = Project::getInstance();
     headersView      = new HeadersView(this);
-    plotSettings     = new PlotSettingsView(this);
+    plotSettings     = new PlotSettingsView();
     lastProjectPaths = new QActionGroup(this);
     tileBehavior     = new QActionGroup(this);
 

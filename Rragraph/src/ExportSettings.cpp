@@ -36,27 +36,22 @@ void ExportSettings::localeWasChanged(){
 
 void ExportSettings::setExportSize()
 {
-    if(!owner){
-        return;
-    }
-    dublicateValues(owner);
+    if(owner){
+        dublicateValues(owner);
+    }    
 }
 
 #include "Exporter.h"
 void ExportSettings::exportPlot()
 {
-    if(!owner){
-        return;
+    if(owner){
+        Exporter().exportOne(owner);
     }
-    Exporter exporter;
-    exporter.exportOne(owner);
 }
 
 void ExportSettings::printPlot()
 {
-    if(!owner){
-        return;
-    }
-    Exporter exporter;
-    exporter.printOne(owner);
+    if(owner){
+        Exporter().printOne(owner);
+    }    
 }

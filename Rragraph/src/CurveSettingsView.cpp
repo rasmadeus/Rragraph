@@ -24,13 +24,14 @@ CurveSettingsView::CurveSettingsView(QWidget *parent) :
     ui->curveSettings->resizeColumnsToContents();
     ui->curveSettings->setItemDelegateForColumn(3, new DoubleDelegate(ui->curveSettings));
 
-    connect(ui->files,            SIGNAL(clicked(QModelIndex)), SLOT(setCurves(QModelIndex)));
-    connect(Files::getInstance(), SIGNAL(wasLoaded(int)),       SLOT(wasLoaded(int)));
-    connect(ui->remove,           SIGNAL(clicked()),            SLOT(removeSamples()));
-    connect(ui->curveSettings,    SIGNAL(clicked(QModelIndex)), SLOT(clickedToCurvesView(QModelIndex)));
-    connect(ui->insert,           SIGNAL(clicked()),            SLOT(loadFiles()));
-    connect(ui->replace,          SIGNAL(clicked()),            SLOT(reloadFile()));
-    connect(Files::getInstance(), SIGNAL(wasRemovedAll()),      SLOT(wasRemovedAllFiles()));
+    connect(ui->files,            SIGNAL(clicked(QModelIndex)),   SLOT(setCurves(QModelIndex)));
+    connect(ui->files,            SIGNAL(activated(QModelIndex)), SLOT(setCurves(QModelIndex)));
+    connect(Files::getInstance(), SIGNAL(wasLoaded(int)),         SLOT(wasLoaded(int)));
+    connect(ui->remove,           SIGNAL(clicked()),              SLOT(removeSamples()));
+    connect(ui->curveSettings,    SIGNAL(clicked(QModelIndex)),   SLOT(clickedToCurvesView(QModelIndex)));
+    connect(ui->insert,           SIGNAL(clicked()),              SLOT(loadFiles()));
+    connect(ui->replace,          SIGNAL(clicked()),              SLOT(reloadFile()));
+    connect(Files::getInstance(), SIGNAL(wasRemovedAll()),        SLOT(wasRemovedAllFiles()));
 
     restoreGeometry(QSettings().value("CurveSettingsView/geometry").toByteArray());
 }

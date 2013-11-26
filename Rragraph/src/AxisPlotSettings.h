@@ -22,6 +22,7 @@ protected slots:
 private slots:
     void updateOwnerScale();
     void updateAxisTitle(const QString& title);
+    void loseTitleFocus();
 protected:
     void dublicateValues(Plot* plot);
 private:

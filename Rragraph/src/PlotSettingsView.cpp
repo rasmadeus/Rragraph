@@ -6,6 +6,7 @@
 #include "LegendSettings.h"
 #include "ExportSettings.h"
 #include "Translator.h"
+
 PlotSettingsView::PlotSettingsView(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::PlotSettingsView),
@@ -17,6 +18,8 @@ PlotSettingsView::PlotSettingsView(QWidget *parent) :
     addView(new AxisPlotSettings(QwtPlot::yLeft, ui->toolBox), tr("Ordinate"));
     addView(new LegendSettings(ui->toolBox), tr("Legend"));
     addView(new ExportSettings(ui->toolBox), tr("Export"));
+
+    ui->toolBox->widget(0)->setFocusProxy(ui->toolBox);
 }
 
 PlotSettingsView::~PlotSettingsView(){

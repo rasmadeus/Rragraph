@@ -65,7 +65,7 @@
     border-style: outset;
     border-width: 1px;
     font: bold 14px;
-    border-radius: 3px;
+    border-radius: 5px;
     color: #444444;
     height:15px;
 }

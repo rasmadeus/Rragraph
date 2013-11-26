@@ -53,7 +53,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>17</height>
+     <height>18</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -597,7 +597,7 @@ color: white;
    <hints>
     <hint type="sourcelabel">
      <x>28</x>
-     <y>582</y>
+     <y>579</y>
     </hint>
     <hint type="destinationlabel">
      <x>-1</x>
@@ -617,7 +617,7 @@ color: white;
     </hint>
     <hint type="destinationlabel">
      <x>28</x>
-     <y>582</y>
+     <y>579</y>
     </hint>
    </hints>
   </connection>

@@ -11,7 +11,11 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = rragraph
 TEMPLATE = app
 CONFIG   += c++11
-DESTDIR = $$PWD/installer
+DESTDIR = $$PWD/installer/packages/plotter/data
+
+win32{
+    RC_FILE = res/icon.rc
+}
 
 TRANSLATIONS += $$PWD/translations/ru.ts \
     $$PWD/translations/kr.ts \

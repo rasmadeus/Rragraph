@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Package>
+    <DisplayName>Plotter</DisplayName>
+    <Description>Install plotter.</Description>
+    <Version>4.1</Version>
+    <ReleaseDate>2013-11-26</ReleaseDate>
+    <Name>rragraph</Name>
+    <Licenses>
+        <License name="LGPL" file="LICENSE.LGPL" />
+    </Licenses>
+    <Default>script</Default>
+    <Script>installscript.qs</Script>
+</Package>
