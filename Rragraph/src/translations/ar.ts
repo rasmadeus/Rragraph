@@ -2,44 +2,62 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="ar" sourcelanguage="en">
 <context>
-    <name>AxisPlotSettings</name>
+    <name>Axes</name>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="20"/>
+        <location filename="../Axes.ui" line="14"/>
         <source>Form</source>
         <translation>شكل</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="44"/>
-        <location filename="../AxisPlotSettings.ui" line="47"/>
+        <location filename="../Axes.ui" line="47"/>
+        <source>Absciss</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../Axes.ui" line="86"/>
+        <source>Ordinate</source>
+        <translation>تنسيق</translation>
+    </message>
+</context>
+<context>
+    <name>AxisPlotSettings</name>
+    <message>
+        <location filename="../AxisPlotSettings.ui" line="29"/>
+        <source>Form</source>
+        <translation>شكل</translation>
+    </message>
+    <message>
+        <location filename="../AxisPlotSettings.ui" line="53"/>
+        <location filename="../AxisPlotSettings.ui" line="56"/>
         <source>Set axis&apos; plot minimum.</source>
         <translation>تعيين محور &apos;مؤامرة الحد الأدنى.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="66"/>
-        <location filename="../AxisPlotSettings.ui" line="69"/>
+        <location filename="../AxisPlotSettings.ui" line="75"/>
+        <location filename="../AxisPlotSettings.ui" line="78"/>
         <source>Set axis&apos; plot maximum.</source>
         <translation>تعيين محور &quot;الحد الأقصى للمؤامرة.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="88"/>
-        <location filename="../AxisPlotSettings.ui" line="91"/>
+        <location filename="../AxisPlotSettings.ui" line="97"/>
+        <location filename="../AxisPlotSettings.ui" line="100"/>
         <source>Set axis&apos; plot step.</source>
         <translation>تعيين محور &apos;خطوة مؤامرة.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="113"/>
-        <location filename="../AxisPlotSettings.ui" line="116"/>
+        <location filename="../AxisPlotSettings.ui" line="122"/>
+        <location filename="../AxisPlotSettings.ui" line="125"/>
         <source>Axis title.</source>
         <translation>عنوان المحور.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="129"/>
-        <location filename="../AxisPlotSettings.ui" line="132"/>
+        <location filename="../AxisPlotSettings.ui" line="138"/>
+        <location filename="../AxisPlotSettings.ui" line="141"/>
         <source>Duplicate these values to other plots.</source>
         <translation>تكرار هذه القيم إلى مؤامرات أخرى.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="149"/>
+        <location filename="../AxisPlotSettings.ui" line="158"/>
         <source>Duplicate values</source>
         <translation>القيم المكررة</translation>
     </message>
@@ -189,8 +207,8 @@
     <name>CurveSettingsView</name>
     <message>
         <location filename="../CurveSettingsView.ui" line="17"/>
-        <location filename="../CurveSettingsView.cpp" line="57"/>
-        <location filename="../CurveSettingsView.cpp" line="108"/>
+        <location filename="../CurveSettingsView.cpp" line="59"/>
+        <location filename="../CurveSettingsView.cpp" line="110"/>
         <source>Curves&apos; creator</source>
         <translation>الخالق المنحنيات &apos;</translation>
     </message>
@@ -210,7 +228,7 @@
         <translation>نزع</translation>
     </message>
     <message>
-        <location filename="../CurveSettingsView.cpp" line="131"/>
+        <location filename="../CurveSettingsView.cpp" line="133"/>
         <source>Set the curve color</source>
         <translation>تعيين لون منحنى</translation>
     </message>
@@ -257,30 +275,30 @@
         <translation>طباعة هذه المؤامرة على صفحة واحدة.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="121"/>
+        <location filename="../ExportSettings.ui" line="122"/>
         <source>Print</source>
         <translation>طباعة</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="134"/>
-        <location filename="../ExportSettings.ui" line="137"/>
+        <location filename="../ExportSettings.ui" line="135"/>
+        <location filename="../ExportSettings.ui" line="138"/>
         <source>Export this plot to a document.</source>
         <translation>تصدير هذه مؤامرة لمستند.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="153"/>
+        <location filename="../ExportSettings.ui" line="155"/>
         <source>Export</source>
         <translation>تصدير</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="168"/>
-        <location filename="../ExportSettings.ui" line="171"/>
-        <location filename="../ExportSettings.ui" line="174"/>
+        <location filename="../ExportSettings.ui" line="170"/>
+        <location filename="../ExportSettings.ui" line="173"/>
+        <location filename="../ExportSettings.ui" line="176"/>
         <source>Duplicate these values to other plots.</source>
         <translation>تكرار هذه القيم إلى مؤامرات أخرى.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="190"/>
+        <location filename="../ExportSettings.ui" line="192"/>
         <source>Duplicate values</source>
         <translation>القيم المكررة</translation>
     </message>
@@ -717,7 +735,7 @@
     <name>MdiArea</name>
     <message>
         <location filename="../MdiArea.cpp" line="42"/>
-        <location filename="../MdiArea.cpp" line="163"/>
+        <location filename="../MdiArea.cpp" line="161"/>
         <source>Plot №%1</source>
         <translation>مؤامرة %1</translation>
     </message>
@@ -735,16 +753,9 @@
         <translation>شكل</translation>
     </message>
     <message>
-        <location filename="../PlotSettingsView.cpp" line="16"/>
-        <location filename="../PlotSettingsView.cpp" line="28"/>
-        <source>Absciss</source>
-        <translation>يستأصل</translation>
-    </message>
-    <message>
         <location filename="../PlotSettingsView.cpp" line="17"/>
-        <location filename="../PlotSettingsView.cpp" line="29"/>
-        <source>Ordinate</source>
-        <translation>تنسيق</translation>
+        <source>Axes</source>
+        <translation>محاور</translation>
     </message>
     <message>
         <location filename="../PlotSettingsView.cpp" line="18"/>
@@ -758,16 +769,26 @@
         <source>Export</source>
         <translation>تصدير</translation>
     </message>
+    <message>
+        <location filename="../PlotSettingsView.cpp" line="28"/>
+        <source>Absciss</source>
+        <translation>يستأص</translation>
+    </message>
+    <message>
+        <location filename="../PlotSettingsView.cpp" line="29"/>
+        <source>Ordinate</source>
+        <translation>تنسيق</translation>
+    </message>
 </context>
 <context>
     <name>Project</name>
     <message>
-        <location filename="../Project.cpp" line="26"/>
+        <location filename="../Project.cpp" line="27"/>
         <source>Open a project</source>
         <translation>فتح مشروع</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="28"/>
+        <location filename="../Project.cpp" line="29"/>
         <source>Rragraph file(*.rgf);;All files(*)</source>
         <translation>ملف Rragraph (* قوات الحكومة الرواندية.)؛؛ جميع الملفات (*)</translation>
     </message>
@@ -777,32 +798,32 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="144"/>
+        <location filename="../Project.cpp" line="147"/>
         <source>Save this project as</source>
         <translation>حفظ هذا المشروع</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="146"/>
+        <location filename="../Project.cpp" line="149"/>
         <source>Rragraph file(*.rgf)</source>
         <translation>ملف(*rgf)</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="186"/>
+        <location filename="../Project.cpp" line="189"/>
         <source>Project loading error</source>
         <translation>خطأ في تحميل المشروع</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="187"/>
+        <location filename="../Project.cpp" line="190"/>
         <source>The project file is invalid!</source>
         <translation>ملف المشروع غير صالح!</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="195"/>
+        <location filename="../Project.cpp" line="198"/>
         <source>Project saving error</source>
         <translation>حدث خطأ أثناء حفظ المشروع</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="196"/>
+        <location filename="../Project.cpp" line="199"/>
         <source>The file for saving is not available!</source>
         <translation>ملف لتوفير غير متوفر!</translation>
     </message>
@@ -853,7 +874,7 @@
 <context>
     <name>Translator</name>
     <message>
-        <location filename="../Translator.cpp" line="41"/>
+        <location filename="../Translator.cpp" line="42"/>
         <source>English</source>
         <translation>تصديرالعربية</translation>
     </message>

@@ -2,44 +2,62 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="ko" sourcelanguage="en">
 <context>
-    <name>AxisPlotSettings</name>
+    <name>Axes</name>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="20"/>
+        <location filename="../Axes.ui" line="14"/>
         <source>Form</source>
         <translation>형태</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="44"/>
-        <location filename="../AxisPlotSettings.ui" line="47"/>
+        <location filename="../Axes.ui" line="47"/>
+        <source>Absciss</source>
+        <translation>엑스</translation>
+    </message>
+    <message>
+        <location filename="../Axes.ui" line="86"/>
+        <source>Ordinate</source>
+        <translation>좌표</translation>
+    </message>
+</context>
+<context>
+    <name>AxisPlotSettings</name>
+    <message>
+        <location filename="../AxisPlotSettings.ui" line="29"/>
+        <source>Form</source>
+        <translation>형태</translation>
+    </message>
+    <message>
+        <location filename="../AxisPlotSettings.ui" line="53"/>
+        <location filename="../AxisPlotSettings.ui" line="56"/>
         <source>Set axis&apos; plot minimum.</source>
         <translation>축 &apos;플롯 최소를 설정합니다.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="66"/>
-        <location filename="../AxisPlotSettings.ui" line="69"/>
+        <location filename="../AxisPlotSettings.ui" line="75"/>
+        <location filename="../AxisPlotSettings.ui" line="78"/>
         <source>Set axis&apos; plot maximum.</source>
         <translation>축 &apos;플롯 최대로 설정합니다.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="88"/>
-        <location filename="../AxisPlotSettings.ui" line="91"/>
+        <location filename="../AxisPlotSettings.ui" line="97"/>
+        <location filename="../AxisPlotSettings.ui" line="100"/>
         <source>Set axis&apos; plot step.</source>
         <translation>축 &apos;플롯 단계를 설정합니다.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="113"/>
-        <location filename="../AxisPlotSettings.ui" line="116"/>
+        <location filename="../AxisPlotSettings.ui" line="122"/>
+        <location filename="../AxisPlotSettings.ui" line="125"/>
         <source>Axis title.</source>
         <translation>축 제목입니다.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="129"/>
-        <location filename="../AxisPlotSettings.ui" line="132"/>
+        <location filename="../AxisPlotSettings.ui" line="138"/>
+        <location filename="../AxisPlotSettings.ui" line="141"/>
         <source>Duplicate these values to other plots.</source>
         <translation>다른 플롯이 값을 복제합니다.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="149"/>
+        <location filename="../AxisPlotSettings.ui" line="158"/>
         <source>Duplicate values</source>
         <translation>중복 값을</translation>
     </message>
@@ -189,8 +207,8 @@
     <name>CurveSettingsView</name>
     <message>
         <location filename="../CurveSettingsView.ui" line="17"/>
-        <location filename="../CurveSettingsView.cpp" line="57"/>
-        <location filename="../CurveSettingsView.cpp" line="108"/>
+        <location filename="../CurveSettingsView.cpp" line="59"/>
+        <location filename="../CurveSettingsView.cpp" line="110"/>
         <source>Curves&apos; creator</source>
         <translation>곡선 &apos;창조자</translation>
     </message>
@@ -210,7 +228,7 @@
         <translation>제거</translation>
     </message>
     <message>
-        <location filename="../CurveSettingsView.cpp" line="131"/>
+        <location filename="../CurveSettingsView.cpp" line="133"/>
         <source>Set the curve color</source>
         <translation>곡선의 색상을 설정</translation>
     </message>
@@ -257,30 +275,30 @@
         <translation>한 페이지에이 음모를 인쇄 할 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="121"/>
+        <location filename="../ExportSettings.ui" line="122"/>
         <source>Print</source>
         <translation>인쇄</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="134"/>
-        <location filename="../ExportSettings.ui" line="137"/>
+        <location filename="../ExportSettings.ui" line="135"/>
+        <location filename="../ExportSettings.ui" line="138"/>
         <source>Export this plot to a document.</source>
         <translation>문서에이 음모를 보냅니다.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="153"/>
+        <location filename="../ExportSettings.ui" line="155"/>
         <source>Export</source>
         <translation>수출</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="168"/>
-        <location filename="../ExportSettings.ui" line="171"/>
-        <location filename="../ExportSettings.ui" line="174"/>
+        <location filename="../ExportSettings.ui" line="170"/>
+        <location filename="../ExportSettings.ui" line="173"/>
+        <location filename="../ExportSettings.ui" line="176"/>
         <source>Duplicate these values to other plots.</source>
         <translation>다른 플롯이 값을 복제합니다.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="190"/>
+        <location filename="../ExportSettings.ui" line="192"/>
         <source>Duplicate values</source>
         <translation>중복 값을</translation>
     </message>
@@ -718,7 +736,7 @@
     <name>MdiArea</name>
     <message>
         <location filename="../MdiArea.cpp" line="42"/>
-        <location filename="../MdiArea.cpp" line="163"/>
+        <location filename="../MdiArea.cpp" line="161"/>
         <source>Plot №%1</source>
         <translation>플롯 №%1</translation>
     </message>
@@ -736,16 +754,9 @@
         <translation>형태</translation>
     </message>
     <message>
-        <location filename="../PlotSettingsView.cpp" line="16"/>
-        <location filename="../PlotSettingsView.cpp" line="28"/>
-        <source>Absciss</source>
-        <translation>엑스</translation>
-    </message>
-    <message>
         <location filename="../PlotSettingsView.cpp" line="17"/>
-        <location filename="../PlotSettingsView.cpp" line="29"/>
-        <source>Ordinate</source>
-        <translation>좌표</translation>
+        <source>Axes</source>
+        <translation>축</translation>
     </message>
     <message>
         <location filename="../PlotSettingsView.cpp" line="18"/>
@@ -759,16 +770,26 @@
         <source>Export</source>
         <translation>수출</translation>
     </message>
+    <message>
+        <location filename="../PlotSettingsView.cpp" line="28"/>
+        <source>Absciss</source>
+        <translation>엑스</translation>
+    </message>
+    <message>
+        <location filename="../PlotSettingsView.cpp" line="29"/>
+        <source>Ordinate</source>
+        <translation>좌표</translation>
+    </message>
 </context>
 <context>
     <name>Project</name>
     <message>
-        <location filename="../Project.cpp" line="26"/>
+        <location filename="../Project.cpp" line="27"/>
         <source>Open a project</source>
         <translation>프로젝트를 엽니 다</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="28"/>
+        <location filename="../Project.cpp" line="29"/>
         <source>Rragraph file(*.rgf);;All files(*)</source>
         <translation>Rragraph 파일(*.rgf);;모든 파일(*)</translation>
     </message>
@@ -779,32 +800,32 @@
         <translation>Rragraph</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="144"/>
+        <location filename="../Project.cpp" line="147"/>
         <source>Save this project as</source>
         <translation>이 프로젝트로 저장</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="146"/>
+        <location filename="../Project.cpp" line="149"/>
         <source>Rragraph file(*.rgf)</source>
         <translation>Rragraph 파일(*.rgf)</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="186"/>
+        <location filename="../Project.cpp" line="189"/>
         <source>Project loading error</source>
         <translation>프로젝트로드 오류</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="187"/>
+        <location filename="../Project.cpp" line="190"/>
         <source>The project file is invalid!</source>
         <translation>프로젝트 파일이 올바르지 않습니다!</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="195"/>
+        <location filename="../Project.cpp" line="198"/>
         <source>Project saving error</source>
         <translation>프로젝트 저장 오류</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="196"/>
+        <location filename="../Project.cpp" line="199"/>
         <source>The file for saving is not available!</source>
         <translation>절약의 파일을 사용할 수 없습니다!</translation>
     </message>
@@ -855,7 +876,7 @@
 <context>
     <name>Translator</name>
     <message>
-        <location filename="../Translator.cpp" line="41"/>
+        <location filename="../Translator.cpp" line="42"/>
         <source>English</source>
         <translation>한국의</translation>
     </message>

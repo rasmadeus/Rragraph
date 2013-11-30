@@ -11,12 +11,13 @@ public:
     explicit PlotSettings(QWidget *parent = 0);
     void setOwner(Plot* owner);
     virtual void localeWasChanged() = 0;
-protected slots:    
+    virtual void dublicateValues(Plot* plot) = 0;
+    virtual void setPlot(Plot* owner);
+public slots:
     virtual void setNativeValues() = 0;
+protected slots:    
     void dublicateValues();
 protected:
-    virtual void setPlot(Plot* owner);
-    virtual void dublicateValues(Plot* plot) = 0;
     Plot* owner;
 };
 

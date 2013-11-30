@@ -2,44 +2,62 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="ru" sourcelanguage="en">
 <context>
-    <name>AxisPlotSettings</name>
+    <name>Axes</name>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="20"/>
+        <location filename="../Axes.ui" line="14"/>
         <source>Form</source>
         <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="44"/>
-        <location filename="../AxisPlotSettings.ui" line="47"/>
+        <location filename="../Axes.ui" line="47"/>
+        <source>Absciss</source>
+        <translation>Абсцисса</translation>
+    </message>
+    <message>
+        <location filename="../Axes.ui" line="86"/>
+        <source>Ordinate</source>
+        <translation>Ордината</translation>
+    </message>
+</context>
+<context>
+    <name>AxisPlotSettings</name>
+    <message>
+        <location filename="../AxisPlotSettings.ui" line="29"/>
+        <source>Form</source>
+        <translation>Форма</translation>
+    </message>
+    <message>
+        <location filename="../AxisPlotSettings.ui" line="53"/>
+        <location filename="../AxisPlotSettings.ui" line="56"/>
         <source>Set axis&apos; plot minimum.</source>
         <translation>Установить левую границу оси.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="66"/>
-        <location filename="../AxisPlotSettings.ui" line="69"/>
+        <location filename="../AxisPlotSettings.ui" line="75"/>
+        <location filename="../AxisPlotSettings.ui" line="78"/>
         <source>Set axis&apos; plot maximum.</source>
         <translation>Установить правую границу оси.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="88"/>
-        <location filename="../AxisPlotSettings.ui" line="91"/>
+        <location filename="../AxisPlotSettings.ui" line="97"/>
+        <location filename="../AxisPlotSettings.ui" line="100"/>
         <source>Set axis&apos; plot step.</source>
         <translation>Установить шаг для оси.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="113"/>
-        <location filename="../AxisPlotSettings.ui" line="116"/>
+        <location filename="../AxisPlotSettings.ui" line="122"/>
+        <location filename="../AxisPlotSettings.ui" line="125"/>
         <source>Axis title.</source>
         <translation>Подпись оси.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="129"/>
-        <location filename="../AxisPlotSettings.ui" line="132"/>
+        <location filename="../AxisPlotSettings.ui" line="138"/>
+        <location filename="../AxisPlotSettings.ui" line="141"/>
         <source>Duplicate these values to other plots.</source>
         <translation>Копировать эти значения на остальные графики.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="149"/>
+        <location filename="../AxisPlotSettings.ui" line="158"/>
         <source>Duplicate values</source>
         <translation>Дублировать</translation>
     </message>
@@ -189,8 +207,8 @@
     <name>CurveSettingsView</name>
     <message>
         <location filename="../CurveSettingsView.ui" line="17"/>
-        <location filename="../CurveSettingsView.cpp" line="57"/>
-        <location filename="../CurveSettingsView.cpp" line="108"/>
+        <location filename="../CurveSettingsView.cpp" line="59"/>
+        <location filename="../CurveSettingsView.cpp" line="110"/>
         <source>Curves&apos; creator</source>
         <translation>Создавайте кривые</translation>
     </message>
@@ -210,7 +228,7 @@
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="../CurveSettingsView.cpp" line="131"/>
+        <location filename="../CurveSettingsView.cpp" line="133"/>
         <source>Set the curve color</source>
         <translation>Установить цвет кривой</translation>
     </message>
@@ -257,30 +275,30 @@
         <translation>Распечать рисунок на одной странице.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="121"/>
+        <location filename="../ExportSettings.ui" line="122"/>
         <source>Print</source>
         <translation>Печать</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="134"/>
-        <location filename="../ExportSettings.ui" line="137"/>
+        <location filename="../ExportSettings.ui" line="135"/>
+        <location filename="../ExportSettings.ui" line="138"/>
         <source>Export this plot to a document.</source>
         <translation>Экспорт графика в один из графических форматов.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="153"/>
+        <location filename="../ExportSettings.ui" line="155"/>
         <source>Export</source>
         <translation>Экспорт</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="168"/>
-        <location filename="../ExportSettings.ui" line="171"/>
-        <location filename="../ExportSettings.ui" line="174"/>
+        <location filename="../ExportSettings.ui" line="170"/>
+        <location filename="../ExportSettings.ui" line="173"/>
+        <location filename="../ExportSettings.ui" line="176"/>
         <source>Duplicate these values to other plots.</source>
         <translation>Копировать эти значения на остальные графики.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="190"/>
+        <location filename="../ExportSettings.ui" line="192"/>
         <source>Duplicate values</source>
         <translation>Дублировать</translation>
     </message>
@@ -720,7 +738,7 @@
     <name>MdiArea</name>
     <message>
         <location filename="../MdiArea.cpp" line="42"/>
-        <location filename="../MdiArea.cpp" line="163"/>
+        <location filename="../MdiArea.cpp" line="161"/>
         <source>Plot №%1</source>
         <translation>График №%1</translation>
     </message>
@@ -738,16 +756,9 @@
         <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../PlotSettingsView.cpp" line="16"/>
-        <location filename="../PlotSettingsView.cpp" line="28"/>
-        <source>Absciss</source>
-        <translation>Абсцисса</translation>
-    </message>
-    <message>
         <location filename="../PlotSettingsView.cpp" line="17"/>
-        <location filename="../PlotSettingsView.cpp" line="29"/>
-        <source>Ordinate</source>
-        <translation>Ордината</translation>
+        <source>Axes</source>
+        <translation>Оси</translation>
     </message>
     <message>
         <location filename="../PlotSettingsView.cpp" line="18"/>
@@ -761,16 +772,26 @@
         <source>Export</source>
         <translation>Экспорт</translation>
     </message>
+    <message>
+        <location filename="../PlotSettingsView.cpp" line="28"/>
+        <source>Absciss</source>
+        <translation>Абсцисса</translation>
+    </message>
+    <message>
+        <location filename="../PlotSettingsView.cpp" line="29"/>
+        <source>Ordinate</source>
+        <translation>Ордината</translation>
+    </message>
 </context>
 <context>
     <name>Project</name>
     <message>
-        <location filename="../Project.cpp" line="26"/>
+        <location filename="../Project.cpp" line="27"/>
         <source>Open a project</source>
         <translation>Открыть проект</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="28"/>
+        <location filename="../Project.cpp" line="29"/>
         <source>Rragraph file(*.rgf);;All files(*)</source>
         <translation>Rragraph файл(*.rgf);;Все файлы(*)</translation>
     </message>
@@ -780,32 +801,32 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="144"/>
+        <location filename="../Project.cpp" line="147"/>
         <source>Save this project as</source>
         <translation>Сохнать проект под именем</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="146"/>
+        <location filename="../Project.cpp" line="149"/>
         <source>Rragraph file(*.rgf)</source>
         <translation>Rragraph файл(*.rgf)</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="186"/>
+        <location filename="../Project.cpp" line="189"/>
         <source>Project loading error</source>
         <translation>Ошибка загрузки проекта</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="187"/>
+        <location filename="../Project.cpp" line="190"/>
         <source>The project file is invalid!</source>
         <translation>Проектный файл не является ликвидным!</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="195"/>
+        <location filename="../Project.cpp" line="198"/>
         <source>Project saving error</source>
         <translation>Ошибка сохранения проекта</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="196"/>
+        <location filename="../Project.cpp" line="199"/>
         <source>The file for saving is not available!</source>
         <translation>Файл для сохранения проекта недоступен для записи!</translation>
     </message>
@@ -856,7 +877,7 @@
 <context>
     <name>Translator</name>
     <message>
-        <location filename="../Translator.cpp" line="41"/>
+        <location filename="../Translator.cpp" line="42"/>
         <source>English</source>
         <translation>Русский</translation>
     </message>

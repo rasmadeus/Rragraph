@@ -4,7 +4,6 @@ PlotSettings::PlotSettings(QWidget *parent) :
     QWidget(parent),
     owner(nullptr)
 {
-    setFocus();
 }
 
 void PlotSettings::setPlot(Plot* owner){

@@ -145,6 +145,7 @@ void Curve::drawSymbols(
 void Curve::serialize(QJsonObject& curves) const
 {
     QJsonObject curve;
+    curve["visible"]     = isVisible();
     curve["step"]        = step;
     curve["addendY"]     = addendY;
     curve["addendX"]     = addendX;
@@ -158,6 +159,7 @@ void Curve::serialize(QJsonObject& curves) const
 void Curve::restore(const QJsonObject& curves)
 {
     const QJsonObject curve = curves.value("curveSettings").toObject();
+    setVisible(curve.value("visible").toBool(true));
     step = curve.value("step").toVariant().toInt();
     addendY = curve.value("addendY").toDouble(0);
     addendX = curve.value("addendX").toDouble(0);

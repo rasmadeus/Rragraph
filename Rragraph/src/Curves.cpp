@@ -250,6 +250,9 @@ void Curves::restore(const QJsonObject& plot)
         }
         setY(iY);
         this->curves.value(iY)->restore(curve);
+        if(!this->curves.value(iY)->isVisible()){
+            this->curves.value(iY)->detach();
+        }
     }
     resamples();
 }

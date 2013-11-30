@@ -16,15 +16,13 @@ public:
     explicit AxisPlotSettings(QwtPlot::Axis axis, QWidget* parent = 0);
     ~AxisPlotSettings();
     void localeWasChanged();
-protected slots:
+    void dublicateValues(Plot* plot);
+public slots:
     void setNativeValues();
     void setPlot(Plot* owner);
 private slots:
     void updateOwnerScale();
     void updateAxisTitle(const QString& title);
-    void loseTitleFocus();
-protected:
-    void dublicateValues(Plot* plot);
 private:
     void updateAxiScale(Plot* plot);
     Ui::AxisPlotSettings* ui;

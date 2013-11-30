@@ -19,11 +19,6 @@ AxisPlotSettings::AxisPlotSettings(QwtPlot::Axis axis, QWidget *parent) :
 
 }
 
-void AxisPlotSettings::loseTitleFocus()
-{
-    ui->title->deselect();
-}
-
 AxisPlotSettings::~AxisPlotSettings(){
     delete ui;
 }

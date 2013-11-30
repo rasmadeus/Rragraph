@@ -2,7 +2,7 @@
 #include "ui_PlotSettingsView.h"
 #include "Plot.h"
 #include "HeadersView.h"
-#include "AxisPlotSettings.h"
+#include "Axes.h"
 #include "LegendSettings.h"
 #include "ExportSettings.h"
 #include "Translator.h"
@@ -14,12 +14,9 @@ PlotSettingsView::PlotSettingsView(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    addView(new AxisPlotSettings(QwtPlot::xBottom, ui->toolBox), tr("Absciss"));
-    addView(new AxisPlotSettings(QwtPlot::yLeft, ui->toolBox), tr("Ordinate"));
+    addView(new Axes(ui->toolBox), tr("Axes"));
     addView(new LegendSettings(ui->toolBox), tr("Legend"));
     addView(new ExportSettings(ui->toolBox), tr("Export"));
-
-    ui->toolBox->widget(0)->setFocusProxy(ui->toolBox);
 }
 
 PlotSettingsView::~PlotSettingsView(){
@@ -28,19 +25,18 @@ PlotSettingsView::~PlotSettingsView(){
 
 void PlotSettingsView::localeWasChanged()
 {
-    ui->toolBox->setItemText(0, tr("Absciss"));
-    ui->toolBox->setItemText(1, tr("Ordinate"));
-    ui->toolBox->setItemText(2, tr("Legend"));
-    ui->toolBox->setItemText(3, tr("Export"));
+    ui->toolBox->setItemText(0, tr("Axes"));
+    ui->toolBox->setItemText(1, tr("Legend"));
+    ui->toolBox->setItemText(2, tr("Export"));
     foreach (PlotSettings* plotSettings, views) {
-       plotSettings->localeWasChanged();
+        plotSettings->localeWasChanged();
     }
 }
 
 void PlotSettingsView::addView(PlotSettings* view, const QString& title)
 {
     views << view;
-    ui->toolBox->addItem(view, title);
+    ui->toolBox->addItem(view, title);   
 }
 
 #include <QMdiSubWindow>
