@@ -52,8 +52,11 @@
      <property name="toolTip">
       <string>Set axis' plot minimum.</string>
      </property>
-     <property name="whatsThis">
+     <property name="statusTip">
       <string>Set axis' plot minimum.</string>
+     </property>
+     <property name="whatsThis">
+      <string/>
      </property>
      <property name="decimals">
       <number>3</number>
@@ -74,8 +77,11 @@
      <property name="toolTip">
       <string>Set axis' plot maximum.</string>
      </property>
-     <property name="whatsThis">
+     <property name="statusTip">
       <string>Set axis' plot maximum.</string>
+     </property>
+     <property name="whatsThis">
+      <string/>
      </property>
      <property name="decimals">
       <number>3</number>
@@ -96,8 +102,11 @@
      <property name="toolTip">
       <string>Set axis' plot step.</string>
      </property>
-     <property name="whatsThis">
+     <property name="statusTip">
       <string>Set axis' plot step.</string>
+     </property>
+     <property name="whatsThis">
+      <string/>
      </property>
      <property name="styleSheet">
       <string notr="true"/>
@@ -121,8 +130,11 @@
      <property name="toolTip">
       <string>Axis title.</string>
      </property>
-     <property name="whatsThis">
+     <property name="statusTip">
       <string>Axis title.</string>
+     </property>
+     <property name="whatsThis">
+      <string/>
      </property>
     </widget>
    </item>
@@ -137,8 +149,11 @@
      <property name="toolTip">
       <string>Duplicate these values to other plots.</string>
      </property>
-     <property name="whatsThis">
+     <property name="statusTip">
       <string>Duplicate these values to other plots.</string>
+     </property>
+     <property name="whatsThis">
+      <string/>
      </property>
      <property name="styleSheet">
       <string notr="true">QToolButton{

@@ -34,8 +34,11 @@
      <property name="toolTip">
       <string>Set export width of plot.</string>
      </property>
-     <property name="whatsThis">
+     <property name="statusTip">
       <string>Set export width of plot.</string>
+     </property>
+     <property name="whatsThis">
+      <string/>
      </property>
      <property name="prefix">
       <string>Width </string>
@@ -62,8 +65,11 @@
      <property name="toolTip">
       <string>Set export height of plot.</string>
      </property>
-     <property name="whatsThis">
+     <property name="statusTip">
       <string>Set export height of plot.</string>
+     </property>
+     <property name="whatsThis">
+      <string/>
      </property>
      <property name="prefix">
       <string>Height </string>
@@ -101,8 +107,11 @@
        <property name="toolTip">
         <string>Print this plot on one page.</string>
        </property>
-       <property name="whatsThis">
+       <property name="statusTip">
         <string>Print this plot on one page.</string>
+       </property>
+       <property name="whatsThis">
+        <string/>
        </property>
        <property name="styleSheet">
         <string notr="true">QToolButton{
@@ -153,8 +162,11 @@ color: #999999;
        <property name="toolTip">
         <string>Export this plot to a document.</string>
        </property>
-       <property name="whatsThis">
+       <property name="statusTip">
         <string>Export this plot to a document.</string>
+       </property>
+       <property name="whatsThis">
+        <string/>
        </property>
        <property name="styleSheet">
         <string notr="true">QToolButton{
@@ -211,7 +223,7 @@ color: #999999;
       <string>Duplicate these values to other plots.</string>
      </property>
      <property name="whatsThis">
-      <string>Duplicate these values to other plots.</string>
+      <string/>
      </property>
      <property name="styleSheet">
       <string notr="true">QToolButton{

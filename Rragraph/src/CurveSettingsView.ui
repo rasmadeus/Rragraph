@@ -84,6 +84,12 @@
            <height>0</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string>Add a new raw file to project.</string>
+         </property>
+         <property name="statusTip">
+          <string>Add a new raw file to project.</string>
+         </property>
          <property name="styleSheet">
           <string notr="true">QToolButton{
     border-style: outset;
@@ -133,6 +139,12 @@ QToolButton:hover:enabled { color:#000 }</string>
            <height>0</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string>Replace current file.</string>
+         </property>
+         <property name="statusTip">
+          <string>Replace current file.</string>
+         </property>
          <property name="styleSheet">
           <string notr="true">QToolButton{
     border-style: outset;
@@ -180,6 +192,12 @@ QToolButton:hover:enabled { color:#000 }</string>
            <width>67</width>
            <height>0</height>
           </size>
+         </property>
+         <property name="toolTip">
+          <string>Remove current file.</string>
+         </property>
+         <property name="statusTip">
+          <string>Remove current file.</string>
          </property>
          <property name="styleSheet">
           <string notr="true">QToolButton{

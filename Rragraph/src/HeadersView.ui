@@ -60,6 +60,12 @@
          <height>22</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>Set native headers for current file.</string>
+       </property>
+       <property name="statusTip">
+        <string>Set native headers for current file.</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QToolButton{
     border-style: outset;

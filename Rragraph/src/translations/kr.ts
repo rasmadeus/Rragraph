@@ -33,31 +33,31 @@
         <translation>축 &apos;플롯 최소를 설정합니다.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="75"/>
         <location filename="../AxisPlotSettings.ui" line="78"/>
+        <location filename="../AxisPlotSettings.ui" line="81"/>
         <source>Set axis&apos; plot maximum.</source>
         <translation>축 &apos;플롯 최대로 설정합니다.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="97"/>
-        <location filename="../AxisPlotSettings.ui" line="100"/>
+        <location filename="../AxisPlotSettings.ui" line="103"/>
+        <location filename="../AxisPlotSettings.ui" line="106"/>
         <source>Set axis&apos; plot step.</source>
         <translation>축 &apos;플롯 단계를 설정합니다.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="122"/>
-        <location filename="../AxisPlotSettings.ui" line="125"/>
+        <location filename="../AxisPlotSettings.ui" line="131"/>
+        <location filename="../AxisPlotSettings.ui" line="134"/>
         <source>Axis title.</source>
         <translation>축 제목입니다.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="138"/>
-        <location filename="../AxisPlotSettings.ui" line="141"/>
+        <location filename="../AxisPlotSettings.ui" line="150"/>
+        <location filename="../AxisPlotSettings.ui" line="153"/>
         <source>Duplicate these values to other plots.</source>
         <translation>다른 플롯이 값을 복제합니다.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="161"/>
+        <location filename="../AxisPlotSettings.ui" line="192"/>
         <source>Duplicate values</source>
         <translation>중복 값을</translation>
     </message>
@@ -72,29 +72,33 @@
     <message>
         <location filename="../CommonPlotSettings.ui" line="55"/>
         <location filename="../CommonPlotSettings.ui" line="58"/>
-        <location filename="../CommonPlotSettings.ui" line="61"/>
         <source>Set title&apos;s color.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../CommonPlotSettings.ui" line="81"/>
+        <location filename="../CommonPlotSettings.ui" line="97"/>
         <source>Color</source>
         <translation>색</translation>
     </message>
     <message>
-        <location filename="../CommonPlotSettings.ui" line="94"/>
-        <location filename="../CommonPlotSettings.ui" line="97"/>
-        <location filename="../CommonPlotSettings.ui" line="100"/>
+        <location filename="../CommonPlotSettings.ui" line="110"/>
+        <location filename="../CommonPlotSettings.ui" line="113"/>
         <source>Set title&apos;s font.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../CommonPlotSettings.ui" line="120"/>
+        <location filename="../CommonPlotSettings.ui" line="152"/>
         <source>Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../CommonPlotSettings.ui" line="152"/>
+        <location filename="../CommonPlotSettings.ui" line="167"/>
+        <location filename="../CommonPlotSettings.ui" line="170"/>
+        <source>Duplicate these values to other plots.</source>
+        <translation type="unfinished">다른 플롯이 값을 복제합니다.</translation>
+    </message>
+    <message>
+        <location filename="../CommonPlotSettings.ui" line="206"/>
         <source>Duplicate values</source>
         <translation>중복 값을</translation>
     </message>
@@ -128,8 +132,8 @@
         <translation>마커 유형입니다.</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="104"/>
         <location filename="../CurveSettings.ui" line="107"/>
+        <location filename="../CurveSettings.ui" line="110"/>
         <source>The marker step.</source>
         <translation>마커 단계.</translation>
     </message>
@@ -138,98 +142,103 @@
         <translation type="obsolete">단계 </translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="113"/>
+        <location filename="../CurveSettings.ui" line="119"/>
         <source>Step </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="158"/>
+        <location filename="../CurveSettings.ui" line="164"/>
         <source>Scale</source>
         <translation>규모 </translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="185"/>
-        <location filename="../CurveSettings.ui" line="188"/>
+        <location filename="../CurveSettings.ui" line="191"/>
+        <location filename="../CurveSettings.ui" line="194"/>
         <source>Add value to X.</source>
         <translation>X.에 가치를 추가.</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="194"/>
+        <location filename="../CurveSettings.ui" line="203"/>
         <source> + X</source>
         <translation> + X</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="216"/>
-        <location filename="../CurveSettings.ui" line="219"/>
+        <location filename="../CurveSettings.ui" line="225"/>
+        <location filename="../CurveSettings.ui" line="228"/>
         <source>Add a value to Y.</source>
         <translation>Y로 값을 추가.</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="225"/>
+        <location filename="../CurveSettings.ui" line="237"/>
         <source> + Y</source>
         <translation> + Y</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="247"/>
-        <location filename="../CurveSettings.ui" line="250"/>
+        <location filename="../CurveSettings.ui" line="259"/>
+        <location filename="../CurveSettings.ui" line="262"/>
         <source>Multiply a value by Y.</source>
         <translation>Y.하여 값을 곱.</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="256"/>
+        <location filename="../CurveSettings.ui" line="271"/>
         <source> * Y</source>
         <translation> * Y</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="295"/>
+        <location filename="../CurveSettings.ui" line="310"/>
         <source>Pen</source>
         <translation>펜</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="330"/>
-        <location filename="../CurveSettings.ui" line="333"/>
+        <location filename="../CurveSettings.ui" line="345"/>
+        <location filename="../CurveSettings.ui" line="348"/>
         <source>Set curve width.</source>
         <translation>곡선 폭을 설정합니다.</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="336"/>
+        <location filename="../CurveSettings.ui" line="354"/>
         <source> px</source>
         <translation> 픽셀</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="339"/>
+        <location filename="../CurveSettings.ui" line="357"/>
         <source>Width </source>
         <translation>폭</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="366"/>
-        <location filename="../CurveSettings.ui" line="369"/>
+        <location filename="../CurveSettings.ui" line="384"/>
+        <location filename="../CurveSettings.ui" line="387"/>
         <source>Set curve color.</source>
         <translation>곡선의 색상을 설정합니다.</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="386"/>
+        <location filename="../CurveSettings.ui" line="423"/>
         <source>Set curve color</source>
         <translation>곡선의 색상을 설정</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="396"/>
+        <location filename="../CurveSettings.ui" line="433"/>
         <source>Dash pattern</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="420"/>
-        <location filename="../CurveSettings.ui" line="426"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set dash pattern for the current curve.&lt;/p&gt;&lt;p&gt;Example: 21 10 5&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="../CurveSettings.ui" line="457"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set dash pattern for the current curve. Example: 21 10 5 10&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="423"/>
+        <location filename="../CurveSettings.ui" line="460"/>
         <source>Set dash pattern for the current curve.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="453"/>
+        <location filename="../CurveSettings.ui" line="476"/>
+        <location filename="../CurveSettings.ui" line="479"/>
+        <source>Set dash pattern.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CurveSettings.ui" line="512"/>
         <source>Set dash pattern</source>
         <translation type="unfinished"></translation>
     </message>
@@ -279,28 +288,46 @@
     <name>CurveSettingsView</name>
     <message>
         <location filename="../CurveSettingsView.ui" line="17"/>
-        <location filename="../CurveSettingsView.cpp" line="59"/>
-        <location filename="../CurveSettingsView.cpp" line="110"/>
+        <location filename="../CurveSettingsView.cpp" line="60"/>
+        <location filename="../CurveSettingsView.cpp" line="111"/>
         <source>Curves&apos; creator</source>
         <translation>곡선 &apos;창조자</translation>
     </message>
     <message>
-        <location filename="../CurveSettingsView.ui" line="101"/>
+        <location filename="../CurveSettingsView.ui" line="88"/>
+        <location filename="../CurveSettingsView.ui" line="91"/>
+        <source>Add a new raw file to project.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CurveSettingsView.ui" line="124"/>
         <source>Insert</source>
         <translation>삽입</translation>
     </message>
     <message>
-        <location filename="../CurveSettingsView.ui" line="133"/>
+        <location filename="../CurveSettingsView.ui" line="143"/>
+        <location filename="../CurveSettingsView.ui" line="146"/>
+        <source>Replace current file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CurveSettingsView.ui" line="178"/>
         <source>Replace</source>
         <translation>교체</translation>
     </message>
     <message>
-        <location filename="../CurveSettingsView.ui" line="165"/>
+        <location filename="../CurveSettingsView.ui" line="197"/>
+        <location filename="../CurveSettingsView.ui" line="200"/>
+        <source>Remove current file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CurveSettingsView.ui" line="234"/>
         <source>Remove</source>
         <translation>제거</translation>
     </message>
     <message>
-        <location filename="../CurveSettingsView.cpp" line="133"/>
+        <location filename="../CurveSettingsView.cpp" line="134"/>
         <source>Set the curve color</source>
         <translation>곡선의 색상을 설정</translation>
     </message>
@@ -313,28 +340,52 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ExitMessage.ui" line="59"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Would you like to save this project?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <location filename="../ExitMessage.ui" line="62"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Would you like to save this project?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ExitMessage.ui" line="100"/>
+        <location filename="../ExitMessage.ui" line="86"/>
+        <location filename="../ExitMessage.ui" line="89"/>
+        <source>Save current project.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ExitMessage.ui" line="125"/>
         <source>Yes</source>
         <translation type="unfinished">예</translation>
     </message>
     <message>
-        <location filename="../ExitMessage.ui" line="122"/>
+        <location filename="../ExitMessage.ui" line="132"/>
+        <location filename="../ExitMessage.ui" line="135"/>
+        <source>Do not exit.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ExitMessage.ui" line="169"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ExitMessage.ui" line="146"/>
+        <location filename="../ExitMessage.ui" line="176"/>
+        <location filename="../ExitMessage.ui" line="179"/>
+        <source>Do not save a project and exit.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ExitMessage.ui" line="216"/>
         <source>No</source>
         <translation type="unfinished">아니</translation>
     </message>
     <message>
-        <location filename="../ExitMessage.ui" line="171"/>
-        <source>Do not show the dialog in other time!</source>
+        <location filename="../ExitMessage.ui" line="240"/>
+        <location filename="../ExitMessage.ui" line="243"/>
+        <source>If you unchecked this flag, this dialog will not show in other time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ExitMessage.ui" line="246"/>
+        <source>Show this dialog at an exit.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -352,58 +403,57 @@
         <translation>음모의 수출 폭을 설정합니다.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="41"/>
+        <location filename="../ExportSettings.ui" line="44"/>
         <source>Width </source>
         <translation>폭 </translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="44"/>
-        <location filename="../ExportSettings.ui" line="72"/>
+        <location filename="../ExportSettings.ui" line="47"/>
+        <location filename="../ExportSettings.ui" line="78"/>
         <source> mm</source>
         <translation> 밀리미터</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="63"/>
         <location filename="../ExportSettings.ui" line="66"/>
+        <location filename="../ExportSettings.ui" line="69"/>
         <source>Set export height of plot.</source>
         <translation>음모의 수출 높이를 설정합니다.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="69"/>
+        <location filename="../ExportSettings.ui" line="75"/>
         <source>Height </source>
         <translation>신장 </translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="102"/>
-        <location filename="../ExportSettings.ui" line="105"/>
+        <location filename="../ExportSettings.ui" line="108"/>
+        <location filename="../ExportSettings.ui" line="111"/>
         <source>Print this plot on one page.</source>
         <translation>한 페이지에이 음모를 인쇄 할 수 있습니다.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="125"/>
+        <location filename="../ExportSettings.ui" line="150"/>
         <source>Print</source>
         <translation>인쇄</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="138"/>
-        <location filename="../ExportSettings.ui" line="141"/>
+        <location filename="../ExportSettings.ui" line="163"/>
+        <location filename="../ExportSettings.ui" line="166"/>
         <source>Export this plot to a document.</source>
         <translation>문서에이 음모를 보냅니다.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="161"/>
+        <location filename="../ExportSettings.ui" line="205"/>
         <source>Export</source>
         <translation>수출</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="176"/>
-        <location filename="../ExportSettings.ui" line="179"/>
-        <location filename="../ExportSettings.ui" line="182"/>
+        <location filename="../ExportSettings.ui" line="220"/>
+        <location filename="../ExportSettings.ui" line="223"/>
         <source>Duplicate these values to other plots.</source>
         <translation>다른 플롯이 값을 복제합니다.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="201"/>
+        <location filename="../ExportSettings.ui" line="261"/>
         <source>Duplicate values</source>
         <translation>중복 값을</translation>
     </message>
@@ -411,19 +461,15 @@
 <context>
     <name>Exporter</name>
     <message>
-        <location filename="../Exporter.cpp" line="16"/>
-        <location filename="../Exporter.cpp" line="19"/>
-        <location filename="../Exporter.cpp" line="22"/>
         <source>Documents</source>
-        <translation>서류</translation>
+        <translation type="obsolete">서류</translation>
     </message>
     <message>
-        <location filename="../Exporter.cpp" line="26"/>
         <source>Images</source>
-        <translation>이미지</translation>
+        <translation type="obsolete">이미지</translation>
     </message>
     <message>
-        <location filename="../Exporter.cpp" line="41"/>
+        <location filename="../Exporter.cpp" line="15"/>
         <source>Export File Name</source>
         <translation>파일 이름 내보내기</translation>
     </message>
@@ -449,7 +495,13 @@
         <translation>형태</translation>
     </message>
     <message>
-        <location filename="../HeadersView.ui" line="77"/>
+        <location filename="../HeadersView.ui" line="64"/>
+        <location filename="../HeadersView.ui" line="67"/>
+        <source>Set native headers for current file.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../HeadersView.ui" line="100"/>
         <source>Reset</source>
         <translation>재설정</translation>
     </message>
@@ -473,54 +525,53 @@
         <translation>전설 수평 위치를.</translation>
     </message>
     <message>
-        <location filename="../LegendSettings.ui" line="88"/>
         <location filename="../LegendSettings.ui" line="91"/>
+        <location filename="../LegendSettings.ui" line="94"/>
         <source>Legend vertical position.</source>
         <translation>전설 수직 위치를.</translation>
     </message>
     <message>
-        <location filename="../LegendSettings.ui" line="100"/>
-        <location filename="../LegendSettings.ui" line="103"/>
+        <location filename="../LegendSettings.ui" line="106"/>
+        <location filename="../LegendSettings.ui" line="109"/>
         <source>Maximum of columns.</source>
         <translation>열의 최대.</translation>
     </message>
     <message>
-        <location filename="../LegendSettings.ui" line="106"/>
+        <location filename="../LegendSettings.ui" line="115"/>
         <source>Columns count </source>
         <translation>열 계산 </translation>
     </message>
     <message>
-        <location filename="../LegendSettings.ui" line="128"/>
-        <location filename="../LegendSettings.ui" line="131"/>
+        <location filename="../LegendSettings.ui" line="137"/>
+        <location filename="../LegendSettings.ui" line="140"/>
         <source>Set the legend font.</source>
         <translation>전설의 글꼴을 설정합니다.</translation>
     </message>
     <message>
-        <location filename="../LegendSettings.ui" line="151"/>
+        <location filename="../LegendSettings.ui" line="179"/>
         <source>Set font</source>
         <translation>글꼴을 설정</translation>
     </message>
     <message>
-        <location filename="../LegendSettings.ui" line="158"/>
-        <location filename="../LegendSettings.ui" line="161"/>
+        <location filename="../LegendSettings.ui" line="186"/>
+        <location filename="../LegendSettings.ui" line="189"/>
         <source>Set the legend background and border opacity.</source>
         <translation>전설 배경 및 테두리의 투명도를 설정합니다.</translation>
     </message>
     <message>
-        <location filename="../LegendSettings.ui" line="189"/>
-        <location filename="../LegendSettings.ui" line="192"/>
+        <location filename="../LegendSettings.ui" line="220"/>
+        <location filename="../LegendSettings.ui" line="223"/>
         <source>Duplicate these values to other plots.</source>
         <translation>다른 플롯이 값을 복제합니다.</translation>
     </message>
     <message>
-        <location filename="../LegendSettings.ui" line="212"/>
+        <location filename="../LegendSettings.ui" line="262"/>
         <source>Duplicate values</source>
         <translation>중복 값을</translation>
     </message>
     <message>
-        <location filename="../LegendSettings.ui" line="219"/>
-        <location filename="../LegendSettings.ui" line="222"/>
-        <location filename="../LegendSettings.ui" line="225"/>
+        <location filename="../LegendSettings.ui" line="269"/>
+        <location filename="../LegendSettings.ui" line="272"/>
         <source>The plot&apos;s title.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -860,35 +911,37 @@
     </message>
     <message>
         <location filename="../MainWindow.ui" line="583"/>
+        <location filename="../MainWindow.ui" line="586"/>
+        <location filename="../MainWindow.ui" line="589"/>
         <source>Copy the project file to an other place.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="591"/>
+        <location filename="../MainWindow.ui" line="597"/>
         <source>Show exit dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="209"/>
+        <location filename="../MainWindow.cpp" line="191"/>
         <source>About Rragraph</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="210"/>
-        <source>Rragraph is a lightweight plotter. &lt;br&gt;Current version 4.0.&lt;br&gt;Developer: rasmadeus@gmail.com&lt;br&gt;&lt;a href=&quot;https://github.com/rasmadeus/Rragraph&quot;&gt;You can download source code here&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;&quot;&gt;Licence - LGPL v.2.1.&lt;/a&gt;</source>
+        <location filename="../MainWindow.cpp" line="192"/>
+        <source>Rragraph is a lightweight plotter. &lt;br&gt;Current version 4.0.&lt;br&gt;Developer: rasmadeus@gmail.com&lt;br&gt;&lt;a href=&quot;https://github.com/rasmadeus/Rragraph&quot;&gt;You can download source code here&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl.en.html&quot;&gt;Licence - GPL&lt;/a&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MdiArea</name>
     <message>
-        <location filename="../MdiArea.cpp" line="53"/>
-        <location filename="../MdiArea.cpp" line="172"/>
+        <location filename="../MdiArea.cpp" line="63"/>
+        <location filename="../MdiArea.cpp" line="183"/>
         <source>Plot №%1</source>
         <translation>플롯 №%1</translation>
     </message>
     <message>
-        <location filename="../MdiArea.cpp" line="68"/>
+        <location filename="../MdiArea.cpp" line="78"/>
         <source>Save to</source>
         <translation>에 저장</translation>
     </message>
@@ -946,54 +999,60 @@
         <translation>Rragraph 파일(*.rgf);;모든 파일(*)</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="99"/>
+        <location filename="../Project.cpp" line="102"/>
         <source>Rragraph</source>
         <translatorcomment>Rragraph</translatorcomment>
         <translation>Rragraph</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="147"/>
+        <location filename="../Project.cpp" line="151"/>
         <source>Save this project as</source>
         <translation>이 프로젝트로 저장</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="149"/>
+        <location filename="../Project.cpp" line="153"/>
         <source>Rragraph file(*.rgf)</source>
         <translation>Rragraph 파일(*.rgf)</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="189"/>
+        <location filename="../Project.cpp" line="195"/>
         <source>Project loading error</source>
         <translation>프로젝트로드 오류</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="190"/>
+        <location filename="../Project.cpp" line="196"/>
         <source>The project file is invalid!</source>
         <translation>프로젝트 파일이 올바르지 않습니다!</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="198"/>
+        <location filename="../Project.cpp" line="204"/>
         <source>Project saving error</source>
         <translation>프로젝트 저장 오류</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="199"/>
+        <location filename="../Project.cpp" line="205"/>
         <source>The file for saving is not available!</source>
         <translation>절약의 파일을 사용할 수 없습니다!</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="263"/>
+        <location filename="../Project.cpp" line="271"/>
+        <location filename="../Project.cpp" line="295"/>
         <source>Copy error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="263"/>
+        <location filename="../Project.cpp" line="272"/>
         <source>You have to open a project!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="268"/>
+        <location filename="../Project.cpp" line="278"/>
         <source>New name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Project.cpp" line="296"/>
+        <source>It&apos;s impossible to copy the project&apos;s file!</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

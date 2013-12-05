@@ -58,7 +58,7 @@
         <string>Set title's color.</string>
        </property>
        <property name="whatsThis">
-        <string>Set title's color.</string>
+        <string/>
        </property>
        <property name="styleSheet">
         <string notr="true">QToolButton{
@@ -113,7 +113,7 @@ color: #999999;
         <string>Set title's font.</string>
        </property>
        <property name="whatsThis">
-        <string>Set title's font.</string>
+        <string/>
        </property>
        <property name="styleSheet">
         <string notr="true">QToolButton{
@@ -162,6 +162,12 @@ color: #999999;
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+     <property name="toolTip">
+      <string>Duplicate these values to other plots.</string>
+     </property>
+     <property name="statusTip">
+      <string>Duplicate these values to other plots.</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QToolButton{
