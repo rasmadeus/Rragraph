@@ -33,7 +33,7 @@ public:
     void restoreCurves(int iFile, const QJsonObject &root);
 private slots:
     void retitle();
-    void destroyedWindow();
+    void windoWasDestroyed();
 private:
     TileType tileType;
 };

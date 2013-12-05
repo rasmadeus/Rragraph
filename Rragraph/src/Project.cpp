@@ -112,8 +112,7 @@ void Project::reloadPath()
         lastPath.clearPath();
         showLoadingError();
         return;
-    }
-
+    }    
     doc = QJsonDocument::fromJson(file.readAll());
     applyProject();
     emit wasLoadedFrom(lastPath.getPath());
@@ -284,6 +283,9 @@ void Project::copyProjectFile()
             newFile.close();
             QFile currentFile(lastPath.getPath());
             if(currentFile.copy(newPath)){
+                clearWindowsAndFiles();
+                lastPath = newPath;
+                reloadPath();
                 return;
             }
         }

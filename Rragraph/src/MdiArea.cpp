@@ -20,7 +20,7 @@ Plot* MdiArea::insertPlot()
     window->setWindowIcon(QIcon(":/res/addPlot.png"));
     Plot* plot = new Plot(window);
     plot->connect(plot, SIGNAL(destroyed()), this, SLOT(retitle()));
-    plot->connect(plot, SIGNAL(destroyed()), this, SLOT(destroyedWindow()));
+    plot->connect(plot, SIGNAL(destroyed()), this, SLOT(windoWasDestroyed()));
     window->setWidget(plot);
     window->setAttribute(Qt::WA_DeleteOnClose);
     addSubWindow(window);
@@ -29,7 +29,7 @@ Plot* MdiArea::insertPlot()
     return plot;
 }
 
-void MdiArea::destroyedWindow(){
+void MdiArea::windoWasDestroyed(){
     if(subWindowList().isEmpty()){
         emit noMoreWindow(nullptr);
     }
@@ -47,6 +47,9 @@ QList<QMdiSubWindow*> MdiArea::visibleWindows()
     QList<QMdiSubWindow*> windows;
     foreach(QMdiSubWindow* window, subWindowList()){
         if(!window->isMinimized()){
+            if(window->isMaximized()){
+                window->showNormal();
+            }
             windows.push_back(window);
         }
     }

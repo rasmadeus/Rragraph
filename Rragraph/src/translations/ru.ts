@@ -33,31 +33,31 @@
         <translation>Установить левую границу оси.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="75"/>
         <location filename="../AxisPlotSettings.ui" line="78"/>
+        <location filename="../AxisPlotSettings.ui" line="81"/>
         <source>Set axis&apos; plot maximum.</source>
         <translation>Установить правую границу оси.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="97"/>
-        <location filename="../AxisPlotSettings.ui" line="100"/>
+        <location filename="../AxisPlotSettings.ui" line="103"/>
+        <location filename="../AxisPlotSettings.ui" line="106"/>
         <source>Set axis&apos; plot step.</source>
         <translation>Установить шаг для оси.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="122"/>
-        <location filename="../AxisPlotSettings.ui" line="125"/>
+        <location filename="../AxisPlotSettings.ui" line="131"/>
+        <location filename="../AxisPlotSettings.ui" line="134"/>
         <source>Axis title.</source>
         <translation>Подпись оси.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="138"/>
-        <location filename="../AxisPlotSettings.ui" line="141"/>
+        <location filename="../AxisPlotSettings.ui" line="150"/>
+        <location filename="../AxisPlotSettings.ui" line="153"/>
         <source>Duplicate these values to other plots.</source>
         <translation>Копировать эти значения на остальные графики.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="161"/>
+        <location filename="../AxisPlotSettings.ui" line="192"/>
         <source>Duplicate values</source>
         <translation>Дублировать</translation>
     </message>
@@ -72,29 +72,33 @@
     <message>
         <location filename="../CommonPlotSettings.ui" line="55"/>
         <location filename="../CommonPlotSettings.ui" line="58"/>
-        <location filename="../CommonPlotSettings.ui" line="61"/>
         <source>Set title&apos;s color.</source>
         <translation>Установить цвет заголовка.</translation>
     </message>
     <message>
-        <location filename="../CommonPlotSettings.ui" line="81"/>
+        <location filename="../CommonPlotSettings.ui" line="97"/>
         <source>Color</source>
         <translation>Цвет</translation>
     </message>
     <message>
-        <location filename="../CommonPlotSettings.ui" line="94"/>
-        <location filename="../CommonPlotSettings.ui" line="97"/>
-        <location filename="../CommonPlotSettings.ui" line="100"/>
+        <location filename="../CommonPlotSettings.ui" line="110"/>
+        <location filename="../CommonPlotSettings.ui" line="113"/>
         <source>Set title&apos;s font.</source>
         <translation>Установить шрифт заголовка.</translation>
     </message>
     <message>
-        <location filename="../CommonPlotSettings.ui" line="120"/>
+        <location filename="../CommonPlotSettings.ui" line="152"/>
         <source>Font</source>
         <translation>Шрифт</translation>
     </message>
     <message>
-        <location filename="../CommonPlotSettings.ui" line="152"/>
+        <location filename="../CommonPlotSettings.ui" line="167"/>
+        <location filename="../CommonPlotSettings.ui" line="170"/>
+        <source>Duplicate these values to other plots.</source>
+        <translation>Копировать эти значения на остальные графики.</translation>
+    </message>
+    <message>
+        <location filename="../CommonPlotSettings.ui" line="206"/>
         <source>Duplicate values</source>
         <translation>Дублировать</translation>
     </message>
@@ -128,8 +132,8 @@
         <translation>Тип маркера.</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="104"/>
         <location filename="../CurveSettings.ui" line="107"/>
+        <location filename="../CurveSettings.ui" line="110"/>
         <source>The marker step.</source>
         <translation>Через столько точек будет рисоваться маркер.</translation>
     </message>
@@ -138,98 +142,107 @@
         <translation type="obsolete">Шаг </translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="113"/>
+        <location filename="../CurveSettings.ui" line="119"/>
         <source>Step </source>
         <translation>Шаг</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="158"/>
+        <location filename="../CurveSettings.ui" line="164"/>
         <source>Scale</source>
         <translation>Трансформатор</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="185"/>
-        <location filename="../CurveSettings.ui" line="188"/>
+        <location filename="../CurveSettings.ui" line="191"/>
+        <location filename="../CurveSettings.ui" line="194"/>
         <source>Add value to X.</source>
         <translation>Добавка к абсциссе.</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="194"/>
+        <location filename="../CurveSettings.ui" line="203"/>
         <source> + X</source>
         <translation> + Х</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="216"/>
-        <location filename="../CurveSettings.ui" line="219"/>
+        <location filename="../CurveSettings.ui" line="225"/>
+        <location filename="../CurveSettings.ui" line="228"/>
         <source>Add a value to Y.</source>
         <translation>Добавка к ординате.</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="225"/>
+        <location filename="../CurveSettings.ui" line="237"/>
         <source> + Y</source>
         <translation> + Y</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="247"/>
-        <location filename="../CurveSettings.ui" line="250"/>
+        <location filename="../CurveSettings.ui" line="259"/>
+        <location filename="../CurveSettings.ui" line="262"/>
         <source>Multiply a value by Y.</source>
         <translation>Множитель ординаты.</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="256"/>
+        <location filename="../CurveSettings.ui" line="271"/>
         <source> * Y</source>
         <translation> * Y</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="295"/>
+        <location filename="../CurveSettings.ui" line="310"/>
         <source>Pen</source>
         <translation>Перо</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="330"/>
-        <location filename="../CurveSettings.ui" line="333"/>
+        <location filename="../CurveSettings.ui" line="345"/>
+        <location filename="../CurveSettings.ui" line="348"/>
         <source>Set curve width.</source>
         <translation>Установите толщину пера.</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="336"/>
+        <location filename="../CurveSettings.ui" line="354"/>
         <source> px</source>
         <translation> px</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="339"/>
+        <location filename="../CurveSettings.ui" line="357"/>
         <source>Width </source>
         <translation>Ширина </translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="366"/>
-        <location filename="../CurveSettings.ui" line="369"/>
+        <location filename="../CurveSettings.ui" line="384"/>
+        <location filename="../CurveSettings.ui" line="387"/>
         <source>Set curve color.</source>
         <translation>Выберите цвет кривой.</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="386"/>
+        <location filename="../CurveSettings.ui" line="423"/>
         <source>Set curve color</source>
         <translation>Цвет</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="396"/>
+        <location filename="../CurveSettings.ui" line="433"/>
         <source>Dash pattern</source>
         <translation>Шаблон пера</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="420"/>
-        <location filename="../CurveSettings.ui" line="426"/>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set dash pattern for the current curve.&lt;/p&gt;&lt;p&gt;Example: 21 10 5&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Установить шаблон пера для  текущей кривой.&lt;/p&gt;&lt;p&gt;Пример: 21 10 5&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <location filename="../CurveSettings.ui" line="457"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set dash pattern for the current curve. Example: 21 10 5 10&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Установить параметры пунктирной линии. Пример: 21 10 5 10&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="423"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set dash pattern for the current curve.&lt;/p&gt;&lt;p&gt;Example: 21 10 5&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Установить шаблон пера для  текущей кривой.&lt;/p&gt;&lt;p&gt;Пример: 21 10 5&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../CurveSettings.ui" line="460"/>
         <source>Set dash pattern for the current curve.</source>
         <translation>Установить шаблон пера для текущей кривой.</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="453"/>
+        <location filename="../CurveSettings.ui" line="476"/>
+        <location filename="../CurveSettings.ui" line="479"/>
+        <source>Set dash pattern.</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../CurveSettings.ui" line="512"/>
         <source>Set dash pattern</source>
         <translation>Применить шаблон</translation>
     </message>
@@ -279,28 +292,46 @@
     <name>CurveSettingsView</name>
     <message>
         <location filename="../CurveSettingsView.ui" line="17"/>
-        <location filename="../CurveSettingsView.cpp" line="59"/>
-        <location filename="../CurveSettingsView.cpp" line="110"/>
+        <location filename="../CurveSettingsView.cpp" line="60"/>
+        <location filename="../CurveSettingsView.cpp" line="111"/>
         <source>Curves&apos; creator</source>
         <translation>Создавайте кривые</translation>
     </message>
     <message>
-        <location filename="../CurveSettingsView.ui" line="101"/>
+        <location filename="../CurveSettingsView.ui" line="88"/>
+        <location filename="../CurveSettingsView.ui" line="91"/>
+        <source>Add a new raw file to project.</source>
+        <translation>Добавить файл с данными в проект.</translation>
+    </message>
+    <message>
+        <location filename="../CurveSettingsView.ui" line="124"/>
         <source>Insert</source>
         <translation>Добавить</translation>
     </message>
     <message>
-        <location filename="../CurveSettingsView.ui" line="133"/>
+        <location filename="../CurveSettingsView.ui" line="143"/>
+        <location filename="../CurveSettingsView.ui" line="146"/>
+        <source>Replace current file.</source>
+        <translation>Заменить загруженный файл.</translation>
+    </message>
+    <message>
+        <location filename="../CurveSettingsView.ui" line="178"/>
         <source>Replace</source>
         <translation>Заменить</translation>
     </message>
     <message>
-        <location filename="../CurveSettingsView.ui" line="165"/>
+        <location filename="../CurveSettingsView.ui" line="197"/>
+        <location filename="../CurveSettingsView.ui" line="200"/>
+        <source>Remove current file.</source>
+        <translation>Исключить файл с данными из проекта.</translation>
+    </message>
+    <message>
+        <location filename="../CurveSettingsView.ui" line="234"/>
         <source>Remove</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="../CurveSettingsView.cpp" line="133"/>
+        <location filename="../CurveSettingsView.cpp" line="134"/>
         <source>Set the curve color</source>
         <translation>Установить цвет кривой</translation>
     </message>
@@ -313,29 +344,61 @@
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="../ExitMessage.ui" line="59"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Would you like to save this project?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Сохранить проект?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation type="obsolete">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Сохранить проект?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../ExitMessage.ui" line="100"/>
+        <location filename="../ExitMessage.ui" line="62"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Would you like to save this project?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Вы хотите сохранить проект?&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ExitMessage.ui" line="86"/>
+        <location filename="../ExitMessage.ui" line="89"/>
+        <source>Save current project.</source>
+        <translation>Сохранить текущий проект.</translation>
+    </message>
+    <message>
+        <location filename="../ExitMessage.ui" line="125"/>
         <source>Yes</source>
-        <translation>Конечно</translation>
+        <translation>Да</translation>
     </message>
     <message>
-        <location filename="../ExitMessage.ui" line="122"/>
+        <location filename="../ExitMessage.ui" line="132"/>
+        <location filename="../ExitMessage.ui" line="135"/>
+        <source>Do not exit.</source>
+        <translation>Не выходить.</translation>
+    </message>
+    <message>
+        <location filename="../ExitMessage.ui" line="169"/>
         <source>Cancel</source>
-        <translation>Я ошибся</translation>
+        <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../ExitMessage.ui" line="146"/>
+        <location filename="../ExitMessage.ui" line="176"/>
+        <location filename="../ExitMessage.ui" line="179"/>
+        <source>Do not save a project and exit.</source>
+        <translation>Выйти, не сохранив проект.</translation>
+    </message>
+    <message>
+        <location filename="../ExitMessage.ui" line="216"/>
         <source>No</source>
-        <translation>Не надо</translation>
+        <translation>Нет</translation>
     </message>
     <message>
-        <location filename="../ExitMessage.ui" line="171"/>
+        <location filename="../ExitMessage.ui" line="240"/>
+        <location filename="../ExitMessage.ui" line="243"/>
+        <source>If you unchecked this flag, this dialog will not show in other time.</source>
+        <translation>Снимите флажок, если вы не хотите видеть это надоедливое окно.</translation>
+    </message>
+    <message>
+        <location filename="../ExitMessage.ui" line="246"/>
+        <source>Show this dialog at an exit.</source>
+        <translation>Показывать этот надоедливый диалог при выходе.</translation>
+    </message>
+    <message>
         <source>Do not show the dialog in other time!</source>
-        <translation>С глаз долой это окно (навсегда)</translation>
+        <translation type="obsolete">С глаз долой это окно (навсегда)</translation>
     </message>
 </context>
 <context>
@@ -352,58 +415,57 @@
         <translation>Установите ширину в миллиметрах, которую вы хотите получить на экспортируемой картинке.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="41"/>
+        <location filename="../ExportSettings.ui" line="44"/>
         <source>Width </source>
         <translation>Ширина </translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="44"/>
-        <location filename="../ExportSettings.ui" line="72"/>
+        <location filename="../ExportSettings.ui" line="47"/>
+        <location filename="../ExportSettings.ui" line="78"/>
         <source> mm</source>
         <translation> мм</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="63"/>
         <location filename="../ExportSettings.ui" line="66"/>
+        <location filename="../ExportSettings.ui" line="69"/>
         <source>Set export height of plot.</source>
         <translation>Установите высоту в миллиметрах, которую вы хотите получить на экспортируемой картинке.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="69"/>
+        <location filename="../ExportSettings.ui" line="75"/>
         <source>Height </source>
         <translation>Высота </translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="102"/>
-        <location filename="../ExportSettings.ui" line="105"/>
+        <location filename="../ExportSettings.ui" line="108"/>
+        <location filename="../ExportSettings.ui" line="111"/>
         <source>Print this plot on one page.</source>
         <translation>Распечать рисунок на одной странице.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="125"/>
+        <location filename="../ExportSettings.ui" line="150"/>
         <source>Print</source>
         <translation>Печать</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="138"/>
-        <location filename="../ExportSettings.ui" line="141"/>
+        <location filename="../ExportSettings.ui" line="163"/>
+        <location filename="../ExportSettings.ui" line="166"/>
         <source>Export this plot to a document.</source>
         <translation>Экспорт графика в один из графических форматов.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="161"/>
+        <location filename="../ExportSettings.ui" line="205"/>
         <source>Export</source>
         <translation>Экспорт</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="176"/>
-        <location filename="../ExportSettings.ui" line="179"/>
-        <location filename="../ExportSettings.ui" line="182"/>
+        <location filename="../ExportSettings.ui" line="220"/>
+        <location filename="../ExportSettings.ui" line="223"/>
         <source>Duplicate these values to other plots.</source>
         <translation>Копировать эти значения на остальные графики.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="201"/>
+        <location filename="../ExportSettings.ui" line="261"/>
         <source>Duplicate values</source>
         <translation>Дублировать</translation>
     </message>
@@ -411,19 +473,15 @@
 <context>
     <name>Exporter</name>
     <message>
-        <location filename="../Exporter.cpp" line="16"/>
-        <location filename="../Exporter.cpp" line="19"/>
-        <location filename="../Exporter.cpp" line="22"/>
         <source>Documents</source>
-        <translation>График</translation>
+        <translation type="obsolete">График</translation>
     </message>
     <message>
-        <location filename="../Exporter.cpp" line="26"/>
         <source>Images</source>
-        <translation>Графики</translation>
+        <translation type="obsolete">Графики</translation>
     </message>
     <message>
-        <location filename="../Exporter.cpp" line="41"/>
+        <location filename="../Exporter.cpp" line="15"/>
         <source>Export File Name</source>
         <translation>Имя экспортируемого файла</translation>
     </message>
@@ -449,7 +507,13 @@
         <translation>Форма</translation>
     </message>
     <message>
-        <location filename="../HeadersView.ui" line="77"/>
+        <location filename="../HeadersView.ui" line="64"/>
+        <location filename="../HeadersView.ui" line="67"/>
+        <source>Set native headers for current file.</source>
+        <translation>Восстановить до исходного состояния.</translation>
+    </message>
+    <message>
+        <location filename="../HeadersView.ui" line="100"/>
         <source>Reset</source>
         <translation>Сброс</translation>
     </message>
@@ -473,54 +537,53 @@
         <translation>Горизонтальное положение легенды.</translation>
     </message>
     <message>
-        <location filename="../LegendSettings.ui" line="88"/>
         <location filename="../LegendSettings.ui" line="91"/>
+        <location filename="../LegendSettings.ui" line="94"/>
         <source>Legend vertical position.</source>
         <translation>Вертикальное положение легенды.</translation>
     </message>
     <message>
-        <location filename="../LegendSettings.ui" line="100"/>
-        <location filename="../LegendSettings.ui" line="103"/>
+        <location filename="../LegendSettings.ui" line="106"/>
+        <location filename="../LegendSettings.ui" line="109"/>
         <source>Maximum of columns.</source>
         <translation>Максимально возможное количество столбцов с подписями кривых.</translation>
     </message>
     <message>
-        <location filename="../LegendSettings.ui" line="106"/>
+        <location filename="../LegendSettings.ui" line="115"/>
         <source>Columns count </source>
         <translation>Число столбцов </translation>
     </message>
     <message>
-        <location filename="../LegendSettings.ui" line="128"/>
-        <location filename="../LegendSettings.ui" line="131"/>
+        <location filename="../LegendSettings.ui" line="137"/>
+        <location filename="../LegendSettings.ui" line="140"/>
         <source>Set the legend font.</source>
         <translation>Установить шрифт для легенды.</translation>
     </message>
     <message>
-        <location filename="../LegendSettings.ui" line="151"/>
+        <location filename="../LegendSettings.ui" line="179"/>
         <source>Set font</source>
         <translation>Шрифт</translation>
     </message>
     <message>
-        <location filename="../LegendSettings.ui" line="158"/>
-        <location filename="../LegendSettings.ui" line="161"/>
+        <location filename="../LegendSettings.ui" line="186"/>
+        <location filename="../LegendSettings.ui" line="189"/>
         <source>Set the legend background and border opacity.</source>
         <translation>Установить прозрачность для фона и рамки легенды.</translation>
     </message>
     <message>
-        <location filename="../LegendSettings.ui" line="189"/>
-        <location filename="../LegendSettings.ui" line="192"/>
+        <location filename="../LegendSettings.ui" line="220"/>
+        <location filename="../LegendSettings.ui" line="223"/>
         <source>Duplicate these values to other plots.</source>
         <translation>Копировать эти значения на остальные графики.</translation>
     </message>
     <message>
-        <location filename="../LegendSettings.ui" line="212"/>
+        <location filename="../LegendSettings.ui" line="262"/>
         <source>Duplicate values</source>
         <translation>Дублировать</translation>
     </message>
     <message>
-        <location filename="../LegendSettings.ui" line="219"/>
-        <location filename="../LegendSettings.ui" line="222"/>
-        <location filename="../LegendSettings.ui" line="225"/>
+        <location filename="../LegendSettings.ui" line="269"/>
+        <location filename="../LegendSettings.ui" line="272"/>
         <source>The plot&apos;s title.</source>
         <translation>Загловок графика.</translation>
     </message>
@@ -862,35 +925,41 @@
     </message>
     <message>
         <location filename="../MainWindow.ui" line="583"/>
+        <location filename="../MainWindow.ui" line="586"/>
+        <location filename="../MainWindow.ui" line="589"/>
         <source>Copy the project file to an other place.</source>
         <translation>Копировать файл проекта в другое место.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="591"/>
+        <location filename="../MainWindow.ui" line="597"/>
         <source>Show exit dialog</source>
         <translation>Спрашивать о сохранении при выходе</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="209"/>
+        <location filename="../MainWindow.cpp" line="191"/>
         <source>About Rragraph</source>
         <translation>О Rragraph</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="210"/>
+        <location filename="../MainWindow.cpp" line="192"/>
+        <source>Rragraph is a lightweight plotter. &lt;br&gt;Current version 4.0.&lt;br&gt;Developer: rasmadeus@gmail.com&lt;br&gt;&lt;a href=&quot;https://github.com/rasmadeus/Rragraph&quot;&gt;You can download source code here&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl.en.html&quot;&gt;Licence - GPL&lt;/a&gt;</source>
+        <translation>Rragraph- легковесный графопостроитель. &lt;br&gt;Текущая версия 4.0.&lt;br&gt;Разработчик: rasmadeus@gmail.com&lt;br&gt;&lt;a href=&quot;https://github.com/rasmadeus/Rragraph&quot;&gt;Исходный код доступен для скачивания отсюда&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.gnu.org/licenses/gpl.en.html&quot;&gt;Лицензия - GPL&lt;/a&gt;</translation>
+    </message>
+    <message>
         <source>Rragraph is a lightweight plotter. &lt;br&gt;Current version 4.0.&lt;br&gt;Developer: rasmadeus@gmail.com&lt;br&gt;&lt;a href=&quot;https://github.com/rasmadeus/Rragraph&quot;&gt;You can download source code here&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;&quot;&gt;Licence - LGPL v.2.1.&lt;/a&gt;</source>
-        <translation>Rragraph - небольшая программа для построения графиков. &lt;br&gt;Текущая версия 4.0.&lt;br&gt;Разработчик: rasmadeus@gmail.com&lt;br&gt;&lt;a href=&quot;https://github.com/rasmadeus/Rragraph&quot;&gt;Исходный код доступен отсюда&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;&quot;&gt;Лицензия - LGPL v.2.1.&lt;/a&gt; </translation>
+        <translation type="obsolete">Rragraph - небольшая программа для построения графиков. &lt;br&gt;Текущая версия 4.0.&lt;br&gt;Разработчик: rasmadeus@gmail.com&lt;br&gt;&lt;a href=&quot;https://github.com/rasmadeus/Rragraph&quot;&gt;Исходный код доступен отсюда&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;&quot;&gt;Лицензия - LGPL v.2.1.&lt;/a&gt; </translation>
     </message>
 </context>
 <context>
     <name>MdiArea</name>
     <message>
-        <location filename="../MdiArea.cpp" line="53"/>
-        <location filename="../MdiArea.cpp" line="172"/>
+        <location filename="../MdiArea.cpp" line="63"/>
+        <location filename="../MdiArea.cpp" line="183"/>
         <source>Plot №%1</source>
         <translation>График №%1</translation>
     </message>
     <message>
-        <location filename="../MdiArea.cpp" line="68"/>
+        <location filename="../MdiArea.cpp" line="78"/>
         <source>Save to</source>
         <translation>Сохранить как</translation>
     </message>
@@ -948,54 +1017,60 @@
         <translation>Rragraph файл(*.rgf);;Все файлы(*)</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="99"/>
+        <location filename="../Project.cpp" line="102"/>
         <source>Rragraph</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="147"/>
+        <location filename="../Project.cpp" line="151"/>
         <source>Save this project as</source>
         <translation>Сохнать проект под именем</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="149"/>
+        <location filename="../Project.cpp" line="153"/>
         <source>Rragraph file(*.rgf)</source>
         <translation>Rragraph файл(*.rgf)</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="189"/>
+        <location filename="../Project.cpp" line="195"/>
         <source>Project loading error</source>
         <translation>Ошибка загрузки проекта</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="190"/>
+        <location filename="../Project.cpp" line="196"/>
         <source>The project file is invalid!</source>
         <translation>Проектный файл не является ликвидным!</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="198"/>
+        <location filename="../Project.cpp" line="204"/>
         <source>Project saving error</source>
         <translation>Ошибка сохранения проекта</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="199"/>
+        <location filename="../Project.cpp" line="205"/>
         <source>The file for saving is not available!</source>
         <translation>Файл для сохранения проекта недоступен для записи!</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="263"/>
+        <location filename="../Project.cpp" line="271"/>
+        <location filename="../Project.cpp" line="295"/>
         <source>Copy error</source>
         <translation>Ошибка копирования</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="263"/>
+        <location filename="../Project.cpp" line="272"/>
         <source>You have to open a project!</source>
         <translation>Нет загруженного проекта!</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="268"/>
+        <location filename="../Project.cpp" line="278"/>
         <source>New name</source>
         <translation>Новое имя</translation>
+    </message>
+    <message>
+        <location filename="../Project.cpp" line="296"/>
+        <source>It&apos;s impossible to copy the project&apos;s file!</source>
+        <translation>Проектный файл невозможно копировать в другое место!</translation>
     </message>
 </context>
 <context>

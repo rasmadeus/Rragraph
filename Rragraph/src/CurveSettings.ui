@@ -93,8 +93,11 @@ QGroupBox::title {
         <property name="toolTip">
          <string>The marker type.</string>
         </property>
-        <property name="whatsThis">
+        <property name="statusTip">
          <string>The marker type.</string>
+        </property>
+        <property name="whatsThis">
+         <string/>
         </property>
        </widget>
       </item>
@@ -103,8 +106,11 @@ QGroupBox::title {
         <property name="toolTip">
          <string>The marker step.</string>
         </property>
-        <property name="whatsThis">
+        <property name="statusTip">
          <string>The marker step.</string>
+        </property>
+        <property name="whatsThis">
+         <string/>
         </property>
         <property name="suffix">
          <string/>
@@ -184,8 +190,11 @@ QGroupBox::title {
         <property name="toolTip">
          <string>Add value to X.</string>
         </property>
-        <property name="whatsThis">
+        <property name="statusTip">
          <string>Add value to X.</string>
+        </property>
+        <property name="whatsThis">
+         <string/>
         </property>
         <property name="prefix">
          <string/>
@@ -215,8 +224,11 @@ QGroupBox::title {
         <property name="toolTip">
          <string>Add a value to Y.</string>
         </property>
-        <property name="whatsThis">
+        <property name="statusTip">
          <string>Add a value to Y.</string>
+        </property>
+        <property name="whatsThis">
+         <string/>
         </property>
         <property name="prefix">
          <string/>
@@ -246,8 +258,11 @@ QGroupBox::title {
         <property name="toolTip">
          <string>Multiply a value by Y.</string>
         </property>
-        <property name="whatsThis">
+        <property name="statusTip">
          <string>Multiply a value by Y.</string>
+        </property>
+        <property name="whatsThis">
+         <string/>
         </property>
         <property name="prefix">
          <string/>
@@ -329,8 +344,11 @@ QGroupBox::title {
           <property name="toolTip">
            <string>Set curve width.</string>
           </property>
-          <property name="whatsThis">
+          <property name="statusTip">
            <string>Set curve width.</string>
+          </property>
+          <property name="whatsThis">
+           <string/>
           </property>
           <property name="suffix">
            <string> px</string>
@@ -365,8 +383,11 @@ QGroupBox::title {
         <property name="toolTip">
          <string>Set curve color.</string>
         </property>
-        <property name="whatsThis">
+        <property name="statusTip">
          <string>Set curve color.</string>
+        </property>
+        <property name="whatsThis">
+         <string/>
         </property>
         <property name="styleSheet">
          <string notr="true">QToolButton{
@@ -433,13 +454,13 @@ QToolButton:pressed {
       <item>
        <widget class="QLineEdit" name="dashPattern">
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set dash pattern for the current curve.&lt;/p&gt;&lt;p&gt;Example: 21 10 5&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set dash pattern for the current curve. Example: 21 10 5 10&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="statusTip">
          <string>Set dash pattern for the current curve.</string>
         </property>
         <property name="whatsThis">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set dash pattern for the current curve.&lt;/p&gt;&lt;p&gt;Example: 21 10 5&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string/>
         </property>
        </widget>
       </item>
@@ -450,6 +471,12 @@ QToolButton:pressed {
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Set dash pattern.</string>
+        </property>
+        <property name="statusTip">
+         <string>Set dash pattern.</string>
         </property>
         <property name="styleSheet">
          <string notr="true">QToolButton{

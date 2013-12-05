@@ -9,12 +9,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>270</width>
+    <width>287</width>
     <height>65</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -27,7 +27,7 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>270</width>
+    <width>500</width>
     <height>65</height>
    </size>
   </property>
@@ -82,6 +82,12 @@
      </property>
      <item>
       <widget class="QPushButton" name="yes">
+       <property name="toolTip">
+        <string>Save current project.</string>
+       </property>
+       <property name="statusTip">
+        <string>Save current project.</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
     border-style: outset;
@@ -122,6 +128,12 @@ color: #999999;
      </item>
      <item>
       <widget class="QPushButton" name="cancel">
+       <property name="toolTip">
+        <string>Do not exit.</string>
+       </property>
+       <property name="statusTip">
+        <string>Do not exit.</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
     border-style: outset;
@@ -160,6 +172,12 @@ color: #999999;
      </item>
      <item>
       <widget class="QPushButton" name="no">
+       <property name="toolTip">
+        <string>Do not save a project and exit.</string>
+       </property>
+       <property name="statusTip">
+        <string>Do not save a project and exit.</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton{
     border-style: outset;
@@ -218,6 +236,12 @@ color: #999999;
      </item>
      <item>
       <widget class="QCheckBox" name="isShow">
+       <property name="toolTip">
+        <string>If you unchecked this flag, this dialog will not show in other time.</string>
+       </property>
+       <property name="statusTip">
+        <string>If you unchecked this flag, this dialog will not show in other time.</string>
+       </property>
        <property name="text">
         <string>Show this dialog at an exit.</string>
        </property>

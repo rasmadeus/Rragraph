@@ -77,8 +77,11 @@ QGroupBox::title {
           <property name="toolTip">
            <string>Legend horizontal position.</string>
           </property>
-          <property name="whatsThis">
+          <property name="statusTip">
            <string>Legend horizontal position.</string>
+          </property>
+          <property name="whatsThis">
+           <string/>
           </property>
          </widget>
         </item>
@@ -87,8 +90,11 @@ QGroupBox::title {
           <property name="toolTip">
            <string>Legend vertical position.</string>
           </property>
-          <property name="whatsThis">
+          <property name="statusTip">
            <string>Legend vertical position.</string>
+          </property>
+          <property name="whatsThis">
+           <string/>
           </property>
          </widget>
         </item>
@@ -99,8 +105,11 @@ QGroupBox::title {
         <property name="toolTip">
          <string>Maximum of columns.</string>
         </property>
-        <property name="whatsThis">
+        <property name="statusTip">
          <string>Maximum of columns.</string>
+        </property>
+        <property name="whatsThis">
+         <string/>
         </property>
         <property name="prefix">
          <string>Columns count </string>
@@ -127,8 +136,11 @@ QGroupBox::title {
         <property name="toolTip">
          <string>Set the legend font.</string>
         </property>
-        <property name="whatsThis">
+        <property name="statusTip">
          <string>Set the legend font.</string>
+        </property>
+        <property name="whatsThis">
+         <string/>
         </property>
         <property name="styleSheet">
          <string notr="true">QToolButton{
@@ -173,8 +185,11 @@ color: #999999;
         <property name="toolTip">
          <string>Set the legend background and border opacity.</string>
         </property>
-        <property name="whatsThis">
+        <property name="statusTip">
          <string>Set the legend background and border opacity.</string>
+        </property>
+        <property name="whatsThis">
+         <string/>
         </property>
         <property name="minimum">
          <number>0</number>
@@ -204,8 +219,11 @@ color: #999999;
      <property name="toolTip">
       <string>Duplicate these values to other plots.</string>
      </property>
-     <property name="whatsThis">
+     <property name="statusTip">
       <string>Duplicate these values to other plots.</string>
+     </property>
+     <property name="whatsThis">
+      <string/>
      </property>
      <property name="styleSheet">
       <string notr="true">QToolButton{
@@ -254,7 +272,7 @@ color: #999999;
       <string>The plot's title.</string>
      </property>
      <property name="whatsThis">
-      <string>The plot's title.</string>
+      <string/>
      </property>
      <property name="accessibleName">
       <string/>

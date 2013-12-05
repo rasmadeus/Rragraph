@@ -20,8 +20,8 @@ int main(int argc, char *argv[])
         std::cout << "Would you like to clean the register from Rragraph? y/n" << std::endl;
         std::cout << "Your answer: "; std::cin >> ch;
         switch(ch){
-            case 'y': clearRegisterFromRragraph(); QCoreApplication::quit(); break;
-        case 'n' : RragraphRegCleaner.quit(); QCoreApplication::quit(); break;
+            case 'y': clearRegisterFromRragraph(); RragraphRegCleaner.exit(0); return 0;
+            case 'n' : RragraphRegCleaner.exit(0); return 0;
             default: std::cout << "I do not know what you said. Repeat, please." << std::endl; break;
         }
 
