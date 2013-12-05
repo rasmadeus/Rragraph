@@ -20,6 +20,8 @@ public:
     void setSymbolStyle(int style);
     void serialize(QJsonObject& curves) const;
     void restore(const QJsonObject& curves);
+    static QPen fillPenWithDashPattern(const QPen& src, const QString& dashes);
+    static QString fromPenDashPattern(const QPen& pen);
 protected:
     void drawSymbols(
         QPainter* painter,

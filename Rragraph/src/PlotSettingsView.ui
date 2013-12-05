@@ -48,11 +48,11 @@
 {
 background: qlineargradient(
     x1: 0, y1: 0, x2: 0, y2: 1,
-    stop: 0      #777777, 
-	stop: 0.25 #999999,
-    stop: 0.5   #aaaaaa, 
-    stop: 0.75 #cccccc, 
-    stop: 1.0    #dddddd
+    stop: 0      #555, 
+	stop: 0.25 #777,
+    stop: 0.5   #888, 
+    stop: 0.75 #aaa, 
+    stop: 1.0    #bbb
 );
     border-radius: 3px;
     color: black;

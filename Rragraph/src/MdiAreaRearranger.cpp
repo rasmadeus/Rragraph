@@ -7,7 +7,7 @@ public:
     Rearranger(MdiArea* mdiArea):
         mdiArea(mdiArea)
     {
-        windows = mdiArea->subWindowList();
+        windows = mdiArea->visibleWindows();
     }
     virtual void rearrange() = 0;
 protected:
@@ -112,7 +112,7 @@ protected:
 private:
     int i;
 };
-
+#include <QDebug>
 #include <QtMath>
 class GridHorizontal: public Rearranger
 {
@@ -156,9 +156,6 @@ private:
     void tileGeometry(int& i, int& x, const int& width, const int& height, bool isLast, int y = 0)
     {
         QMdiSubWindow* window = windows.at(i--);
-        if(window->isMinimized()){
-            window->showNormal();
-        }
         int error = 0;
         if(isLast){
             error = x + width - mdiArea->viewport()->geometry().right();

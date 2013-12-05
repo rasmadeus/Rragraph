@@ -23,6 +23,8 @@ void Axes::setPlot(Plot* owner)
 {
     x->setPlot(owner);
     y->setPlot(owner);
+    x->setEnabled(owner);
+    y->setEnabled(owner);
 }
 
 void Axes::localeWasChanged()
@@ -43,3 +45,4 @@ void Axes::dublicateValues(Plot* plot)
     x->dublicateValues(plot);
     y->dublicateValues(plot);
 }
+

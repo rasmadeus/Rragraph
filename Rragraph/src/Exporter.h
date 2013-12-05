@@ -10,7 +10,6 @@ class Exporter : public QwtPlotRenderer
 public:
     Exporter();
     void exportOne(Plot* src);
-    void exportOne(Plot* src, const QString& path);
     void printOne(Plot* src);
     void setExportPath(const QString& path);
     QString getExportPath();

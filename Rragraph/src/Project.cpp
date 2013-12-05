@@ -43,6 +43,7 @@ void Project::loadFromArgs()
     load(args);
 }
 
+#include "MdiArea.h"
 void Project::load(const QStringList& paths)
 {
     if(paths.isEmpty()){
@@ -57,18 +58,20 @@ void Project::load(const QStringList& paths)
         Files::getInstance()->load(paths);
     }
     else{
+        close();
         lastPath = *i;
         reloadPath();
     }
+    MdiArea::getInstance()->tile();
 }
 
-void Project::save()
+bool Project::save()
 {
     if(lastPath.getPath().isEmpty()){
-        saveAs();
+        return saveAs();
     }
     else{
-        resave();
+        return resave();
     }
 }
 
@@ -83,7 +86,7 @@ void Project::reload()
     }
 }
 
-#include "MdiArea.h"
+
 #include "CurveSettingsView.h"
 void Project::clearWindowsAndFiles()
 {
@@ -126,21 +129,22 @@ void Project::loadProjectFrom(QAction* action)
     reloadPath();
 }
 
-void Project::resave()
+bool Project::resave()
 {
     QFile file(lastPath.getPath());
     if(!file.open(QFile::WriteOnly | QFile::Text)){
         showSavingError();
-        return;
+        return false;
     }
     QTextStream out(&file);
     out.setCodec("UTF-8");
     fillProject();
     out << doc.toJson(QJsonDocument::Indented);
     emit wasSavedAs(lastPath.getPath());
+    return true;
 }
 
-void Project::saveAs()
+bool Project::saveAs()
 {
     const QString path = QFileDialog::getSaveFileName(
             static_cast<QWidget*>(parent()),
@@ -150,9 +154,11 @@ void Project::saveAs()
         );
     if(!path.isEmpty()){
         lastPath = path;
-        resave();
+        bool ok = resave();
         ifSaveLastPathToSettings();
+        return ok;
     }   
+    return false;
 }
 
 #include <QJsonObject>
@@ -255,4 +261,36 @@ QStringList Project::lastLoadedPaths() const
     QSettings s;
     fillPaths(s, paths);
     return paths;
+}
+
+void Project::copyProjectFile()
+{
+    if(lastPath.getPath().isEmpty()){
+        QMessageBox::warning(
+            static_cast<QWidget*>(parent()),
+            tr("Copy error"),
+            tr("You have to open a project!")
+        );
+        return;
+    }
+    QString newPath = QFileDialog::getSaveFileName(
+        static_cast<QWidget*>(parent()),
+        tr("New name"),
+        lastPath()
+    );
+    if(!newPath.isEmpty()){
+        QFile newFile(newPath);
+        if(newFile.remove()){
+            newFile.close();
+            QFile currentFile(lastPath.getPath());
+            if(currentFile.copy(newPath)){
+                return;
+            }
+        }
+        QMessageBox::warning(
+            static_cast<QWidget*>(parent()),
+            tr("Copy error"),
+            tr("It's impossible to copy the project's file!")
+        );
+    }
 }

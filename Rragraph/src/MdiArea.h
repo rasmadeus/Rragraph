@@ -16,6 +16,9 @@ public slots:
     void autoscale();
     void tile();
     void changeTileType(QAction* action);
+    QList<QMdiSubWindow*> visibleWindows();
+signals:
+    void noMoreWindow(Plot* null);
 public:
     enum TileType
     {
@@ -30,6 +33,7 @@ public:
     void restoreCurves(int iFile, const QJsonObject &root);
 private slots:
     void retitle();
+    void destroyedWindow();
 private:
     TileType tileType;
 };

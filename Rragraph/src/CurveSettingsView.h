@@ -16,11 +16,13 @@ class CurveSettingsView : public QDialog
     Q_OBJECT
     SINGLETON_HEADER(CurveSettingsView, QWidget)
 public:
-    void setOwner(Plot* owner);
     ~CurveSettingsView();
     void localeWasChanged();
 public slots:
+    void setOwner(Plot* owner);
     void show();
+protected:
+    bool event(QEvent* evt);
 private:
     void setXYData(const QModelIndex& index);
     void setColorData(const QModelIndex& index);

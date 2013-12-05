@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>228</width>
-    <height>137</height>
+    <width>184</width>
+    <height>170</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -133,16 +133,32 @@ QGroupBox::title {
         <property name="styleSheet">
          <string notr="true">QToolButton{
     border-style: outset;
-    border-width: 1px;
+    border-width: 0px;
     font: bold 14px;
     border-radius: 8px;
     min-width: 10em;
     color: #444444;
     height: 15px;
+background: qlineargradient(
+    x1: 0, y1: 0, x2: 0, y2: 1,
+    stop: 1.0      #999, 
+	stop: 0.75 #bbb,
+    stop: 0.5   #ddd, 
+    stop: 0.25 #eee, 
+    stop: 0.0    #fff
+);
 }
 QToolButton:pressed {
-color: #999999;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0      #fff, 
+	    stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0    #999
+    );
 }
+QToolButton:hover:enabled { color:#000 }
 QToolButton:disabled {
 color: #999999;
 }</string>
@@ -194,19 +210,54 @@ color: #999999;
      <property name="styleSheet">
       <string notr="true">QToolButton{
     border-style: outset;
-    border-width: 1px;
+    border-width: 0px;
     font: bold 14px;
     border-radius: 8px;
     min-width: 10em;
     color: #444444;
     height: 15px;
+background: qlineargradient(
+    x1: 0, y1: 0, x2: 0, y2: 1,
+    stop: 1.0      #999, 
+	stop: 0.75 #bbb,
+    stop: 0.5   #ddd, 
+    stop: 0.25 #eee, 
+    stop: 0.0    #fff
+);
 }
 QToolButton:pressed {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0      #fff, 
+	    stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0    #999
+    );
+}
+QToolButton:hover:enabled { color:#000 }
+QToolButton:disabled {
 color: #999999;
 }</string>
      </property>
      <property name="text">
       <string>Duplicate values</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="title">
+     <property name="toolTip">
+      <string>The plot's title.</string>
+     </property>
+     <property name="statusTip">
+      <string>The plot's title.</string>
+     </property>
+     <property name="whatsThis">
+      <string>The plot's title.</string>
+     </property>
+     <property name="accessibleName">
+      <string/>
      </property>
     </widget>
    </item>

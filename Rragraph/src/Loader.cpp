@@ -75,8 +75,7 @@ void Loader::append(const QString& row)
     QStringList column = simplifiedRow.split(" ");
     rearrange(column);
     for(int i = 0; i < samples->getHeaders().size(); ++i){
+        column[i].replace(',', '.');
         samples->pushBack(i, column[i].toDouble());
     }
 }
-
-

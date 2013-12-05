@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>279</width>
-    <height>267</height>
+    <width>269</width>
+    <height>303</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -110,7 +110,7 @@ QGroupBox::title {
          <string/>
         </property>
         <property name="prefix">
-         <string>Step  </string>
+         <string>Step </string>
         </property>
         <property name="minimum">
          <number>1</number>
@@ -187,11 +187,14 @@ QGroupBox::title {
         <property name="whatsThis">
          <string>Add value to X.</string>
         </property>
+        <property name="prefix">
+         <string/>
+        </property>
         <property name="suffix">
          <string> + X</string>
         </property>
         <property name="decimals">
-         <number>6</number>
+         <number>4</number>
         </property>
         <property name="minimum">
          <double>-1000000.000000000000000</double>
@@ -215,11 +218,14 @@ QGroupBox::title {
         <property name="whatsThis">
          <string>Add a value to Y.</string>
         </property>
+        <property name="prefix">
+         <string/>
+        </property>
         <property name="suffix">
          <string> + Y</string>
         </property>
         <property name="decimals">
-         <number>6</number>
+         <number>4</number>
         </property>
         <property name="minimum">
          <double>-1000000.000000000000000</double>
@@ -250,7 +256,7 @@ QGroupBox::title {
          <string> * Y</string>
         </property>
         <property name="decimals">
-         <number>6</number>
+         <number>4</number>
         </property>
         <property name="minimum">
          <double>-1000000.000000000000000</double>
@@ -305,38 +311,42 @@ QGroupBox::title {
        <number>3</number>
       </property>
       <item>
-       <widget class="QSpinBox" name="width">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>100</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="toolTip">
-         <string>Set curve width.</string>
-        </property>
-        <property name="whatsThis">
-         <string>Set curve width.</string>
-        </property>
-        <property name="suffix">
-         <string> px</string>
-        </property>
-        <property name="prefix">
-         <string>Width </string>
-        </property>
-        <property name="minimum">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <number>10</number>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="horizontalLayout" stretch="1">
+        <item>
+         <widget class="QSpinBox" name="width">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Set curve width.</string>
+          </property>
+          <property name="whatsThis">
+           <string>Set curve width.</string>
+          </property>
+          <property name="suffix">
+           <string> px</string>
+          </property>
+          <property name="prefix">
+           <string>Width </string>
+          </property>
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <number>10</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
        <widget class="QToolButton" name="color">
@@ -348,7 +358,7 @@ QGroupBox::title {
         </property>
         <property name="minimumSize">
          <size>
-          <width>172</width>
+          <width>170</width>
           <height>0</height>
          </size>
         </property>
@@ -361,19 +371,118 @@ QGroupBox::title {
         <property name="styleSheet">
          <string notr="true">QToolButton{
     border-style: outset;
-    border-width: 1px;
+    border-width: 0px;
     font: bold 14px;
     border-radius: 8px;
     min-width: 10em;
     color: #444444;
     height:15px;
+background: qlineargradient(
+    x1: 0, y1: 0, x2: 0, y2: 1,
+    stop: 1.0      #999, 
+	stop: 0.75 #bbb,
+    stop: 0.5   #ddd, 
+    stop: 0.25 #eee, 
+    stop: 0.0    #fff
+);
 }
+QToolButton:hover:enabled { color:#000 }
 QToolButton:pressed {
-color: #999999;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0      #fff, 
+	    stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0    #999
+    );
 }</string>
         </property>
         <property name="text">
          <string>Set curve color</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="title">
+      <string>Dash pattern</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <property name="spacing">
+       <number>3</number>
+      </property>
+      <property name="leftMargin">
+       <number>3</number>
+      </property>
+      <property name="topMargin">
+       <number>3</number>
+      </property>
+      <property name="rightMargin">
+       <number>3</number>
+      </property>
+      <property name="bottomMargin">
+       <number>3</number>
+      </property>
+      <item>
+       <widget class="QLineEdit" name="dashPattern">
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set dash pattern for the current curve.&lt;/p&gt;&lt;p&gt;Example: 21 10 5&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="statusTip">
+         <string>Set dash pattern for the current curve.</string>
+        </property>
+        <property name="whatsThis">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set dash pattern for the current curve.&lt;/p&gt;&lt;p&gt;Example: 21 10 5&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="setDashPattern">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QToolButton{
+    border-style: outset;
+    border-width: 0px;
+    font: bold 14px;
+    border-radius: 8px;
+    min-width: 10em;
+    color: #444444;
+    height:15px;
+background: qlineargradient(
+    x1: 0, y1: 0, x2: 0, y2: 1,
+    stop: 1.0      #999, 
+	stop: 0.75 #bbb,
+    stop: 0.5   #ddd, 
+    stop: 0.25 #eee, 
+    stop: 0.0    #fff
+);
+}
+QToolButton:hover:enabled { color:#000 }
+QToolButton:pressed {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0      #fff, 
+	    stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0    #999
+    );
+}</string>
+        </property>
+        <property name="text">
+         <string>Set dash pattern</string>
         </property>
        </widget>
       </item>

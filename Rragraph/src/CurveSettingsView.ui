@@ -17,7 +17,7 @@
    <string>Curves' creator</string>
   </property>
   <property name="modal">
-   <bool>true</bool>
+   <bool>false</bool>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2">
    <property name="spacing">
@@ -68,7 +68,7 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,1,1">
        <property name="spacing">
-        <number>3</number>
+        <number>2</number>
        </property>
        <item>
         <widget class="QToolButton" name="insert">
@@ -87,15 +87,32 @@
          <property name="styleSheet">
           <string notr="true">QToolButton{
     border-style: outset;
-    border-width: 1px;
+    border-width: 0px;
     font: bold 14px;
-    border-radius: 5px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px; 
     color: #444444;
     height:15px;
+background: qlineargradient(
+    x1: 0, y1: 0, x2: 0, y2: 1,
+    stop: 1.0      #999, 
+	stop: 0.75 #bbb,
+    stop: 0.5   #ddd, 
+    stop: 0.25 #eee, 
+    stop: 0.0    #fff
+);
 }
 QToolButton:pressed {
-color: #999999;
-}</string>
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0      #fff, 
+	    stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0    #999
+    );
+}
+QToolButton:hover:enabled { color:#000 }</string>
          </property>
          <property name="text">
           <string>Insert</string>
@@ -119,15 +136,31 @@ color: #999999;
          <property name="styleSheet">
           <string notr="true">QToolButton{
     border-style: outset;
-    border-width: 1px;
+    border-width:0px;
     font: bold 14px;
-    border-radius: 5px;
     color: #444444;
     height:15px;
+background: qlineargradient(
+    x1: 0, y1: 0, x2: 0, y2: 1,
+    stop: 1.0      #999, 
+	stop: 0.75 #bbb,
+    stop: 0.5   #ddd, 
+    stop: 0.25 #eee, 
+    stop: 0.0    #fff
+);
 }
 QToolButton:pressed {
-color: #f00;
-}</string>
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0      #fff, 
+	    stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0    #999
+    );
+	color:#f00
+}
+QToolButton:hover:enabled { color:#000 }</string>
          </property>
          <property name="text">
           <string>Replace</string>
@@ -151,15 +184,33 @@ color: #f00;
          <property name="styleSheet">
           <string notr="true">QToolButton{
     border-style: outset;
-    border-width: 1px;
+    border-width: 0px;
     font: bold 14px;
-    border-radius: 5px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px; 
     color: #444444;
     height:15px;
+background: qlineargradient(
+    x1: 0, y1: 0, x2: 0, y2: 1,
+    stop: 1.0      #999, 
+	stop: 0.75 #bbb,
+    stop: 0.5   #ddd, 
+    stop: 0.25 #eee, 
+    stop: 0.0    #fff
+);
 }
 QToolButton:pressed {
-	color: #f00;
-}</string>
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0      #fff, 
+	    stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0    #999
+    );
+	color:#f00
+}
+QToolButton:hover:enabled { color:#000 }</string>
          </property>
          <property name="text">
           <string>Remove</string>

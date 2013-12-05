@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = rragraph
 TEMPLATE = app
 CONFIG   += c++11
-DESTDIR = $$PWD/installer/packages/plotter/data
+DESTDIR = $$PWD/../installer/packages/plotter/data
 
 win32{
     RC_FILE = res/icon.rc
@@ -33,16 +33,19 @@ SOURCES += main.cpp \
     MdiArea.cpp \
     Project.cpp \
     MdiAreaRearranger.cpp \
-    Translator.cpp
+    Translator.cpp \
+    ExitMessage.cpp
 
 HEADERS  += \
     MainWindow.h \
     MdiArea.h \
     Project.h \
-    Translator.h
+    Translator.h \
+    ExitMessage.h
 
 FORMS += \
-    MainWindow.ui
+    MainWindow.ui \
+    ExitMessage.ui
 
 RESOURCES += \
     res.qrc

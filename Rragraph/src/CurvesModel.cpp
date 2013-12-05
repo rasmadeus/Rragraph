@@ -9,7 +9,8 @@ CurvesModel::CurvesModel(QObject *parent) :
     connect(Files::getInstance(), SIGNAL(wasLoaded(int)), SLOT(wasLoaded(int)));
 }
 
-Qt::ItemFlags CurvesModel::flags(const QModelIndex& index) const{
+Qt::ItemFlags CurvesModel::flags(const QModelIndex& index) const
+{
     Q_UNUSED(index)
     return Qt::ItemIsEnabled | Qt::ItemIsEditable;
 }
@@ -120,7 +121,6 @@ QVariant CurvesModel::data(const QModelIndex& index, int role) const
         case Qt::TextColorRole:   return textColorRole( index.column(), index.row(), curves);
         case Qt::BackgroundRole : return backgroundRole(index.column(), index.row(), curves);
     }
-
     return QVariant();
 }
 

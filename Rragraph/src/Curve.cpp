@@ -153,6 +153,12 @@ void Curve::serialize(QJsonObject& curves) const
     curve["symbolStyle"] = symbolStyle;
     curve["penColor"]    = QJsonValue::fromVariant(pen().color());
     curve["penWidth"]    = pen().width();
+
+    QString dashes = fromPenDashPattern(pen());
+    if(!dashes.isEmpty()){
+        curve["dashPattern"] = dashes;
+    }
+
     curves["curveSettings"] = curve;
 }
 
@@ -168,6 +174,38 @@ void Curve::restore(const QJsonObject& curves)
     const int penWidth = curve.value("penWidth").toVariant().toInt();
     QPen pen(penColor);
     pen.setWidth(penWidth);
+
+    if(curve.contains("dashPattern")){
+        pen = fillPenWithDashPattern(pen, curve.value("dashPattern").toString());
+    }
+
     setPen(pen);
     setSymbolStyle(curve.value("symbolStyle").toVariant().toInt());
+}
+#include <QDebug>
+QPen Curve::fillPenWithDashPattern(const QPen& src, const QString& dashes)
+{
+    QPen pen;
+    pen.setWidth(src.width());
+    pen.setColor(src.color());
+
+    if(dashes.isEmpty()){
+        return pen;
+    }
+    QVector<double> dashPattern;
+    foreach(const QString& dash, dashes.simplified().split(" ")){
+        const double dashValue = dash.toDouble();
+        dashPattern << dashValue;
+    }
+    pen.setDashPattern(dashPattern);
+    return pen;
+}
+
+QString Curve::fromPenDashPattern(const QPen& pen)
+{
+    QString dashes;
+    foreach(double dashValue, pen.dashPattern()){
+        dashes.append(QString("%1 ").arg(dashValue));
+    }
+    return dashes;
 }

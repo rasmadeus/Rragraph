@@ -6,7 +6,7 @@
 #include "LegendSettings.h"
 #include "ExportSettings.h"
 #include "Translator.h"
-
+#include "CommonPlotSettings.h"
 PlotSettingsView::PlotSettingsView(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::PlotSettingsView),
@@ -14,9 +14,10 @@ PlotSettingsView::PlotSettingsView(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    addView(new Axes(ui->toolBox), tr("Axes"));
-    addView(new LegendSettings(ui->toolBox), tr("Legend"));
-    addView(new ExportSettings(ui->toolBox), tr("Export"));
+    addView(new Axes(ui->toolBox),               tr("Axes"));
+    addView(new CommonPlotSettings(ui->toolBox), tr("Common property"));
+    addView(new LegendSettings(ui->toolBox),     tr("Legend"));
+    addView(new ExportSettings(ui->toolBox),     tr("Export"));
 }
 
 PlotSettingsView::~PlotSettingsView(){
@@ -26,8 +27,9 @@ PlotSettingsView::~PlotSettingsView(){
 void PlotSettingsView::localeWasChanged()
 {
     ui->toolBox->setItemText(0, tr("Axes"));
-    ui->toolBox->setItemText(1, tr("Legend"));
-    ui->toolBox->setItemText(2, tr("Export"));
+    ui->toolBox->setItemText(1, tr("Common property"));
+    ui->toolBox->setItemText(2, tr("Legend"));
+    ui->toolBox->setItemText(3, tr("Export"));
     foreach (PlotSettings* plotSettings, views) {
         plotSettings->localeWasChanged();
     }

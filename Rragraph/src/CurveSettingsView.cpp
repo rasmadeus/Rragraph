@@ -21,7 +21,6 @@ CurveSettingsView::CurveSettingsView(QWidget *parent) :
 
     ui->files->setModel(FilesModel::getInstance());
     ui->curveSettings->setModel(curvesModel);
-    ui->curveSettings->resizeColumnsToContents();
     ui->curveSettings->setItemDelegateForColumn(3, new DoubleDelegate(ui->curveSettings));
 
     connect(ui->files,            SIGNAL(clicked(QModelIndex)),   SLOT(setCurves(QModelIndex)));
@@ -32,6 +31,8 @@ CurveSettingsView::CurveSettingsView(QWidget *parent) :
     connect(ui->insert,           SIGNAL(clicked()),              SLOT(loadFiles()));
     connect(ui->replace,          SIGNAL(clicked()),              SLOT(reloadFile()));
     connect(Files::getInstance(), SIGNAL(wasRemovedAll()),        SLOT(wasRemovedAllFiles()));
+
+    ui->curveSettings->resizeColumnsToContents();
 
     restoreGeometry(QSettings().value("CurveSettingsView/geometry").toByteArray());
 }
@@ -155,4 +156,13 @@ void CurveSettingsView::clickedToCurvesView(const QModelIndex& index)
         case 3: ui->curveSettings->edit(index); break;
         case 4: setOtherData(index);            break;
     }
+}
+
+bool CurveSettingsView::event(QEvent* evt)
+{
+    if(evt->type() == QEvent::WindowDeactivate){
+        close();
+        return true;
+    }
+    return QDialog::event(evt);
 }

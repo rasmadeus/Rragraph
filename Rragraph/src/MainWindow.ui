@@ -53,7 +53,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>18</height>
+     <height>16</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -139,6 +139,7 @@ color: white;
     <addaction name="actionShowProjectsToolBar"/>
     <addaction name="actionShowPlotSettings"/>
     <addaction name="actionShowHeaders"/>
+    <addaction name="actionShowExitDialog"/>
     <addaction name="menuTileBehavior"/>
     <addaction name="menuLanguages"/>
    </widget>
@@ -155,9 +156,16 @@ color: white;
     <addaction name="actionPrint"/>
     <addaction name="actionAutoScale"/>
    </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
    <addaction name="menuProject"/>
    <addaction name="menuWindows_2"/>
    <addaction name="menuWindows"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QToolBar" name="projectsToolBar">
    <property name="windowTitle">
@@ -175,11 +183,13 @@ color: white;
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionSave"/>
    <addaction name="actionAddFiles"/>
    <addaction name="actionInsertPlot"/>
    <addaction name="actionPngExport"/>
    <addaction name="actionAutoScale"/>
    <addaction name="actionReload"/>
+   <addaction name="actionTile"/>
   </widget>
   <widget class="QDockWidget" name="plotSettings">
    <property name="styleSheet">
@@ -307,6 +317,10 @@ color: white;
    </property>
   </action>
   <action name="actionTile">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/rearrange.png</normaloff>:/res/rearrange.png</iconset>
+   </property>
    <property name="text">
     <string>Tile</string>
    </property>
@@ -457,6 +471,10 @@ color: white;
    </property>
   </action>
   <action name="actionSave">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/save.png</normaloff>:/res/save.png</iconset>
+   </property>
    <property name="text">
     <string>Save</string>
    </property>
@@ -550,6 +568,33 @@ color: white;
    </property>
    <property name="whatsThis">
     <string>Rearrange all windows as one column. Last window will be at he bottom.</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionCopyProjectFile">
+   <property name="text">
+    <string>Copy one to an other place</string>
+   </property>
+   <property name="toolTip">
+    <string>Copy the project file to an other place.</string>
+   </property>
+   <property name="statusTip">
+    <string>Copy the project file to an other place.</string>
+   </property>
+   <property name="whatsThis">
+    <string>Copy the project file to an other place.</string>
+   </property>
+  </action>
+  <action name="actionShowExitDialog">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show exit dialog</string>
    </property>
   </action>
  </widget>

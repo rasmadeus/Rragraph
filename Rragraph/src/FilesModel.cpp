@@ -26,4 +26,3 @@ void FilesModel::reset()
     beginResetModel();
     endResetModel();
 }
-

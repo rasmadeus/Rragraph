@@ -6,5 +6,7 @@
         <file>res/pngExport.png</file>
         <file>res/autoscale.png</file>
         <file>res/reload.png</file>
+        <file>res/rearrange.png</file>
+        <file>res/save.png</file>
     </qresource>
 </RCC>

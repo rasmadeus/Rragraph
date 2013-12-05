@@ -14,11 +14,12 @@ class Project : public QObject
     SINGLETON_HEADER(Project, QObject)
 public slots:
     void load();
-    void save();
-    void saveAs();
+    bool save();
+    bool saveAs();
     void reload();
     void close();
     void loadProjectFrom(QAction* action);
+    void copyProjectFile();
 public:
     const RestorablePath& getPath() const;
     QDir getProjectDir() const;
@@ -35,7 +36,7 @@ private slots:
 private:
     void ifSaveLastPathToSettings();
     void clearWindowsAndFiles();
-    void resave();
+    bool resave();
     void reloadPath();
     void showLoadingError();
     void showSavingError();

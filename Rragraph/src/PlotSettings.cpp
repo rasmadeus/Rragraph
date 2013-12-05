@@ -4,6 +4,7 @@ PlotSettings::PlotSettings(QWidget *parent) :
     QWidget(parent),
     owner(nullptr)
 {
+    setEnabled(false);
 }
 
 void PlotSettings::setPlot(Plot* owner){
@@ -14,8 +15,9 @@ void PlotSettings::setOwner(Plot* owner)
 {
     setPlot(owner);
     if(owner){
-        setNativeValues();
+        setNativeValues();        
     }
+    setEnabled(owner);
 }
 
 #include "MdiArea.h"
@@ -24,6 +26,8 @@ void PlotSettings::setOwner(Plot* owner)
 void PlotSettings::dublicateValues()
 {
     foreach (QMdiSubWindow* window, MdiArea::getInstance()->subWindowList()) {
-        dublicateValues(static_cast<Plot*>(window->widget()));
+        if(!window->isMinimized()){
+            dublicateValues(static_cast<Plot*>(window->widget()));
+        }
     }
 }

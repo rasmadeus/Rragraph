@@ -42,16 +42,10 @@ void ExportSettings::setExportSize()
 }
 
 #include "Exporter.h"
-void ExportSettings::exportPlot()
-{
-    if(owner){
-        Exporter().exportOne(owner);
-    }
+void ExportSettings::exportPlot(){
+    Exporter().exportOne(owner);
 }
 
-void ExportSettings::printPlot()
-{
-    if(owner){
-        Exporter().printOne(owner);
-    }    
+void ExportSettings::printPlot(){
+    Exporter().printOne(owner);
 }

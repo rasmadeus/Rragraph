@@ -25,8 +25,8 @@ Plot::Plot(QWidget *parent) :
     setAxisAutoScale(yLeft, false);
 
     connect(canvas, SIGNAL(zoomed()), SIGNAL(zoomed()));
-    connect(Files::getInstance(), SIGNAL(wasAdded(int)), SLOT(wasAdded(int)));
-    connect(Files::getInstance(), SIGNAL(wasRemoved(int)), SLOT(wasRemoved(int)));
+    connect(Files::getInstance(),     SIGNAL(wasAdded(int)),   SLOT(wasAdded(int)));
+    connect(Files::getInstance(),     SIGNAL(wasRemoved(int)), SLOT(wasRemoved(int)));
 
     connect(
         HeaderSamples::getInstance(),
@@ -35,7 +35,7 @@ Plot::Plot(QWidget *parent) :
     );
 
 }
-
+#include <QDebug>
 #include "Curves.h"
 Plot::~Plot(){
     delete legend;
@@ -60,6 +60,7 @@ void Plot::wasRemoved(int iFile){
     Curves* curves = this->curves[iFile];
     this->curves.remove(iFile);
     delete curves;
+    replot();
 }
 
 void Plot::wasAdded(int iFile)
@@ -105,6 +106,7 @@ void Plot::headerWasChanged(int iFile, int i, const QString& header){
 
 void Plot::autoSize()
 {
+    canvas->setZoomBase();
     setAxisAutoScale(xBottom);
     setAxisAutoScale(yLeft);
     replot();
@@ -176,6 +178,26 @@ static void parseSizeF(Plot* plot, const QJsonObject& obj)
     );
 }
 
+static QJsonObject serializeTitle(const QwtText& text)
+{
+    QJsonObject obj;
+    obj["text"] = text.text();
+    obj["color"] = QJsonValue::fromVariant(text.color());
+    obj["font"] =  QJsonValue::fromVariant(text.font());
+    return obj;
+}
+
+static void parseTitle(Plot* plot, const QJsonObject& obj)
+{
+    QwtText text;
+    text.setText(obj.value("text").toString());
+    text.setColor(obj.value("color").toVariant().value<QColor>());
+    text.setFont(obj.value("font").toVariant().value<QFont>());
+    plot->setTitle(text);
+}
+
+
+
 #include <QJsonArray>
 void Plot::serialize(QJsonArray& plots) const
 {
@@ -183,6 +205,9 @@ void Plot::serialize(QJsonArray& plots) const
     plot["axisX"] = serializeAxis(this, xBottom);
     plot["axisY"] = serializeAxis(this, yLeft);
     plot["exportSize"] = serializeSizeF(exportSize);
+    if(!title().text().isEmpty()){
+        plot["title"] = serializeTitle(title());
+    }
     legend->serialize(plot);
     plots.push_back(plot);
 }
@@ -193,6 +218,9 @@ void Plot::restore(const QJsonValue& value)
     parseAxis(this, xBottom, plot.value("axisX").toObject());
     parseAxis(this, yLeft, plot.value("axisY").toObject());
     parseSizeF(this, plot.value("exportSize").toObject());
+    if(plot.contains("title")){
+        parseTitle(this, plot.value("title").toObject());
+    }
     legend->restore(plot);
     replot();
 }

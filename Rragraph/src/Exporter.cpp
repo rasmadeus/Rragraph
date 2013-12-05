@@ -10,41 +10,14 @@ Exporter::Exporter():
 #include <QImageWriter>
 void Exporter::exportOne(Plot* src)
 {
-     const QList<QByteArray> imageFormats = QImageWriter::supportedImageFormats();
-     QStringList filter;
-    #ifndef QT_NO_PRINTER
-        filter += QString("PDF ") + tr("Documents") + " (*.pdf)";
-    #endif
-    #ifndef QWT_NO_SVG
-        filter += QString("SVG ") + tr("Documents") + " (*.svg)";
-    #endif
-    #ifndef QT_NO_PRINTER
-        filter += QString("Postscript ") + tr("Documents") + " (*.ps)";
-    #endif
-
-     if(imageFormats.size() > 0){
-         QString imageFilter(tr("Images"));
-         imageFilter += " (";
-         for(int i = 0; i < imageFormats.size(); i++){
-             if(i > 0){
-                 imageFilter += " ";
-             }
-             imageFilter += "*.";
-             imageFilter += imageFormats[i];
-         }
-         imageFilter += ")";
-         filter += imageFilter;
-    }
-
     const QString fileName = QFileDialog::getSaveFileName(
         src,
         tr("Export File Name"),
         exportPath(),
-        filter.join(";;"),
+        QString("Images(*.png)"),
         nullptr,
         QFileDialog::DontConfirmOverwrite
     );
-
     if(!fileName.isEmpty()){
         exportPath = fileName;
         renderDocument(src, fileName, src->getExportSize());
@@ -55,7 +28,8 @@ void Exporter::exportOne(Plot* src)
 #include <QPrintDialog>
 void Exporter::printOne(Plot* src)
 {
-    QPrinter printer(QPrinter::HighResolution);
+    QPrinter printer(QPrinter::HighResolution);   
+    printer.setPaperSize(QPrinter::A4);
     printer.setDocName("Plot");
     printer.setCreator("Rragraph 4.0");
     printer.setOrientation(QPrinter::Landscape);

@@ -5,6 +5,7 @@ class Curve;
 class Plot;
 class QColor;
 class QJsonObject;
+class QPen;
 
 #include <QHash>
 class Curves
@@ -24,6 +25,7 @@ public:
     void setOrdinateAddend(int i, double add);
     void setSymbolStep(int i, int step);
     void setSymbolStyle(int i, int style);
+    void setPen(int i, const QPen& pen);
     void update(int i);
     const QString& getHeader(int i) const;
     bool isX(int i) const;

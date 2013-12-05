@@ -38,7 +38,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <property name="spacing">
-      <number>3</number>
+      <number>0</number>
      </property>
      <item>
       <widget class="QToolButton" name="reset">
@@ -63,14 +63,31 @@
        <property name="styleSheet">
         <string notr="true">QToolButton{
     border-style: outset;
-    border-width: 1px;
-    font: bold 14px;
-    border-radius: 5px;
+    border-width: 0px;
+    font: bold 13px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 5px; 
     color: #444444;
-    height:15px;
+    height:14px;
+background: qlineargradient(
+    x1: 0, y1: 0, x2: 0, y2: 1,
+    stop: 1.0      #999, 
+	stop: 0.75 #bbb,
+    stop: 0.5   #ddd, 
+    stop: 0.25 #eee, 
+    stop: 0.0    #fff
+);
 }
+QToolButton:hover:enabled { color:#000 }
 QToolButton:pressed {
-	color: #999999;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0      #fff, 
+	    stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0    #999
+    );
 }</string>
        </property>
        <property name="text">

@@ -57,9 +57,56 @@
         <translation>تكرار هذه القيم إلى مؤامرات أخرى.</translation>
     </message>
     <message>
-        <location filename="../AxisPlotSettings.ui" line="158"/>
+        <location filename="../AxisPlotSettings.ui" line="161"/>
         <source>Duplicate values</source>
         <translation>القيم المكررة</translation>
+    </message>
+</context>
+<context>
+    <name>CommonPlotSettings</name>
+    <message>
+        <location filename="../CommonPlotSettings.ui" line="14"/>
+        <source>Form</source>
+        <translation>شكل</translation>
+    </message>
+    <message>
+        <location filename="../CommonPlotSettings.ui" line="55"/>
+        <location filename="../CommonPlotSettings.ui" line="58"/>
+        <location filename="../CommonPlotSettings.ui" line="61"/>
+        <source>Set title&apos;s color.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CommonPlotSettings.ui" line="81"/>
+        <source>Color</source>
+        <translation>اللون</translation>
+    </message>
+    <message>
+        <location filename="../CommonPlotSettings.ui" line="94"/>
+        <location filename="../CommonPlotSettings.ui" line="97"/>
+        <location filename="../CommonPlotSettings.ui" line="100"/>
+        <source>Set title&apos;s font.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CommonPlotSettings.ui" line="120"/>
+        <source>Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CommonPlotSettings.ui" line="152"/>
+        <source>Duplicate values</source>
+        <translation>القيم المكررة</translation>
+    </message>
+    <message>
+        <location filename="../CommonPlotSettings.cpp" line="43"/>
+        <source>Set title&apos;s color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CommonPlotSettings.cpp" line="55"/>
+        <source>Set title&apos;s font</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -87,9 +134,13 @@
         <translation>الخطوة علامة.</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="113"/>
         <source>Step  </source>
-        <translation>خطوة </translation>
+        <translation type="obsolete">خطوة </translation>
+    </message>
+    <message>
+        <location filename="../CurveSettings.ui" line="113"/>
+        <source>Step </source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../CurveSettings.ui" line="158"/>
@@ -103,102 +154,123 @@
         <translation>إضافة قيمة إلى X.</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="191"/>
+        <location filename="../CurveSettings.ui" line="194"/>
         <source> + X</source>
         <translation>+ يستأصل</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="213"/>
         <location filename="../CurveSettings.ui" line="216"/>
+        <location filename="../CurveSettings.ui" line="219"/>
         <source>Add a value to Y.</source>
         <translation>إضافة قيمة إلى Y.</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="219"/>
+        <location filename="../CurveSettings.ui" line="225"/>
         <source> + Y</source>
         <translation> + تنسيق</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="241"/>
-        <location filename="../CurveSettings.ui" line="244"/>
+        <location filename="../CurveSettings.ui" line="247"/>
+        <location filename="../CurveSettings.ui" line="250"/>
         <source>Multiply a value by Y.</source>
         <translation>مضاعفة قيمة من قبل Y.</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="250"/>
+        <location filename="../CurveSettings.ui" line="256"/>
         <source> * Y</source>
         <translation> * تنسيق</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="289"/>
+        <location filename="../CurveSettings.ui" line="295"/>
         <source>Pen</source>
         <translation>قلم</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="322"/>
-        <location filename="../CurveSettings.ui" line="325"/>
+        <location filename="../CurveSettings.ui" line="330"/>
+        <location filename="../CurveSettings.ui" line="333"/>
         <source>Set curve width.</source>
         <translation>تعيين العرض منحنى.</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="328"/>
+        <location filename="../CurveSettings.ui" line="336"/>
         <source> px</source>
         <translation>مقصف </translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="331"/>
+        <location filename="../CurveSettings.ui" line="339"/>
         <source>Width </source>
         <translation>عرض</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="356"/>
-        <location filename="../CurveSettings.ui" line="359"/>
+        <location filename="../CurveSettings.ui" line="366"/>
+        <location filename="../CurveSettings.ui" line="369"/>
         <source>Set curve color.</source>
         <translation> مجموعة اللون منحنى. </translation>
     </message>
     <message>
-        <location filename="../CurveSettings.ui" line="376"/>
+        <location filename="../CurveSettings.ui" line="386"/>
         <source>Set curve color</source>
         <translation>مجموعة اللون منحنى</translation>
     </message>
     <message>
+        <location filename="../CurveSettings.ui" line="396"/>
+        <source>Dash pattern</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CurveSettings.ui" line="420"/>
+        <location filename="../CurveSettings.ui" line="426"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Set dash pattern for the current curve.&lt;/p&gt;&lt;p&gt;Example: 21 10 5&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CurveSettings.ui" line="423"/>
+        <source>Set dash pattern for the current curve.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../CurveSettings.ui" line="453"/>
+        <source>Set dash pattern</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../CurveSettings.cpp" line="13"/>
-        <location filename="../CurveSettings.cpp" line="61"/>
+        <location filename="../CurveSettings.cpp" line="76"/>
         <source>Ellipse</source>
         <translation>القطع الناقص</translation>
     </message>
     <message>
         <location filename="../CurveSettings.cpp" line="14"/>
-        <location filename="../CurveSettings.cpp" line="62"/>
+        <location filename="../CurveSettings.cpp" line="77"/>
         <source>Rect</source>
         <translation>احداثيات</translation>
     </message>
     <message>
         <location filename="../CurveSettings.cpp" line="15"/>
-        <location filename="../CurveSettings.cpp" line="63"/>
+        <location filename="../CurveSettings.cpp" line="78"/>
         <source>Diamond</source>
         <translation>الماس</translation>
     </message>
     <message>
         <location filename="../CurveSettings.cpp" line="16"/>
-        <location filename="../CurveSettings.cpp" line="64"/>
+        <location filename="../CurveSettings.cpp" line="79"/>
         <source>Up triangle</source>
         <translation>حتى مثلث</translation>
     </message>
     <message>
         <location filename="../CurveSettings.cpp" line="17"/>
-        <location filename="../CurveSettings.cpp" line="65"/>
+        <location filename="../CurveSettings.cpp" line="80"/>
         <source>Down triangle</source>
         <translation>أسفل المثلث</translation>
     </message>
     <message>
         <location filename="../CurveSettings.cpp" line="18"/>
-        <location filename="../CurveSettings.cpp" line="66"/>
+        <location filename="../CurveSettings.cpp" line="81"/>
         <source>HLine</source>
         <translation>خط</translation>
     </message>
     <message>
-        <location filename="../CurveSettings.cpp" line="103"/>
+        <location filename="../CurveSettings.cpp" line="118"/>
         <source>Set the curve color</source>
         <translation>تعيين لون منحنى</translation>
     </message>
@@ -231,6 +303,39 @@
         <location filename="../CurveSettingsView.cpp" line="133"/>
         <source>Set the curve color</source>
         <translation>تعيين لون منحنى</translation>
+    </message>
+</context>
+<context>
+    <name>ExitMessage</name>
+    <message>
+        <location filename="../ExitMessage.ui" line="35"/>
+        <source>Exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ExitMessage.ui" line="59"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Would you like to save this project?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ExitMessage.ui" line="100"/>
+        <source>Yes</source>
+        <translation type="unfinished">نعم</translation>
+    </message>
+    <message>
+        <location filename="../ExitMessage.ui" line="122"/>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ExitMessage.ui" line="146"/>
+        <source>No</source>
+        <translation type="unfinished">لا</translation>
+    </message>
+    <message>
+        <location filename="../ExitMessage.ui" line="171"/>
+        <source>Do not show the dialog in other time!</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -275,30 +380,30 @@
         <translation>طباعة هذه المؤامرة على صفحة واحدة.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="122"/>
+        <location filename="../ExportSettings.ui" line="125"/>
         <source>Print</source>
         <translation>طباعة</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="135"/>
         <location filename="../ExportSettings.ui" line="138"/>
+        <location filename="../ExportSettings.ui" line="141"/>
         <source>Export this plot to a document.</source>
         <translation>تصدير هذه مؤامرة لمستند.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="155"/>
+        <location filename="../ExportSettings.ui" line="161"/>
         <source>Export</source>
         <translation>تصدير</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="170"/>
-        <location filename="../ExportSettings.ui" line="173"/>
         <location filename="../ExportSettings.ui" line="176"/>
+        <location filename="../ExportSettings.ui" line="179"/>
+        <location filename="../ExportSettings.ui" line="182"/>
         <source>Duplicate these values to other plots.</source>
         <translation>تكرار هذه القيم إلى مؤامرات أخرى.</translation>
     </message>
     <message>
-        <location filename="../ExportSettings.ui" line="192"/>
+        <location filename="../ExportSettings.ui" line="201"/>
         <source>Duplicate values</source>
         <translation>القيم المكررة</translation>
     </message>
@@ -408,9 +513,16 @@
         <translation>تكرار هذه القيم إلى مؤامرات أخرى.</translation>
     </message>
     <message>
-        <location filename="../LegendSettings.ui" line="209"/>
+        <location filename="../LegendSettings.ui" line="212"/>
         <source>Duplicate values</source>
         <translation>القيم المكررة</translation>
+    </message>
+    <message>
+        <location filename="../LegendSettings.ui" line="219"/>
+        <location filename="../LegendSettings.ui" line="222"/>
+        <location filename="../LegendSettings.ui" line="225"/>
+        <source>The plot&apos;s title.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../LegendSettings.cpp" line="10"/>
@@ -478,269 +590,304 @@
         <translation>اللغات</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="147"/>
+        <location filename="../MainWindow.ui" line="148"/>
         <source>Windows</source>
         <translation>نوافذ</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="164"/>
+        <location filename="../MainWindow.ui" line="161"/>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="172"/>
         <source>Project&apos;s operations</source>
         <translation>عمليات المشروع</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="192"/>
+        <location filename="../MainWindow.ui" line="202"/>
         <source>Plot settings</source>
         <translation>إعدادات مؤامرة</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="231"/>
+        <location filename="../MainWindow.ui" line="241"/>
         <source>Headers</source>
         <translation>رؤوس</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="245"/>
+        <location filename="../MainWindow.ui" line="255"/>
         <source>addFiles</source>
         <translation>إضافة ملفات</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="248"/>
-        <location filename="../MainWindow.ui" line="251"/>
-        <location filename="../MainWindow.ui" line="254"/>
+        <location filename="../MainWindow.ui" line="258"/>
+        <location filename="../MainWindow.ui" line="261"/>
+        <location filename="../MainWindow.ui" line="264"/>
         <source>If you want to add some raw files to your projects then you have to click this button.</source>
         <translation>إذا كنت ترغب في إضافة بعض الملفات الخام إلى المشاريع الخاصة بك ثم عليك أن تضغط على هذا الزر.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="265"/>
+        <location filename="../MainWindow.ui" line="275"/>
         <source>Show projects tool bar</source>
         <translation>وتظهر المشروعات شريط الادوات</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="268"/>
-        <location filename="../MainWindow.ui" line="271"/>
-        <location filename="../MainWindow.ui" line="274"/>
+        <location filename="../MainWindow.ui" line="278"/>
+        <location filename="../MainWindow.ui" line="281"/>
+        <location filename="../MainWindow.ui" line="284"/>
         <source>Show projects tool bar.</source>
         <translation>وتظهر المشروعات شريط الأدوات.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="283"/>
+        <location filename="../MainWindow.ui" line="293"/>
         <source>Insert Plot</source>
         <translation>إدراج القطعة</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="286"/>
-        <location filename="../MainWindow.ui" line="289"/>
-        <location filename="../MainWindow.ui" line="292"/>
+        <location filename="../MainWindow.ui" line="296"/>
+        <location filename="../MainWindow.ui" line="299"/>
+        <location filename="../MainWindow.ui" line="302"/>
         <source>Insert new plot.</source>
         <translation>إدراج مؤامرة جديدة.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="297"/>
+        <location filename="../MainWindow.ui" line="307"/>
         <source>Close all plots</source>
         <translation>إغلاق كافة المؤامرات</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="300"/>
-        <location filename="../MainWindow.ui" line="303"/>
-        <location filename="../MainWindow.ui" line="306"/>
+        <location filename="../MainWindow.ui" line="310"/>
+        <location filename="../MainWindow.ui" line="313"/>
+        <location filename="../MainWindow.ui" line="316"/>
         <source>Close all plots.</source>
         <translation>إغلاق كافة المؤامرات.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="311"/>
+        <location filename="../MainWindow.ui" line="325"/>
         <source>Tile</source>
         <translation>قرميدة</translation>
-    </message>
-    <message>
-        <location filename="../MainWindow.ui" line="314"/>
-        <location filename="../MainWindow.ui" line="317"/>
-        <location filename="../MainWindow.ui" line="320"/>
-        <source>Tile all plots.</source>
-        <translation>بلاط كل المؤامرات.</translation>
-    </message>
-    <message>
-        <location filename="../MainWindow.ui" line="325"/>
-        <source>Cascade</source>
-        <translation>تتالي</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="328"/>
         <location filename="../MainWindow.ui" line="331"/>
         <location filename="../MainWindow.ui" line="334"/>
+        <source>Tile all plots.</source>
+        <translation>بلاط كل المؤامرات.</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="339"/>
+        <source>Cascade</source>
+        <translation>تتالي</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="342"/>
+        <location filename="../MainWindow.ui" line="345"/>
+        <location filename="../MainWindow.ui" line="348"/>
         <source>Cascade all plots.</source>
         <translation>تتالي كل المؤامرات.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="345"/>
+        <location filename="../MainWindow.ui" line="359"/>
         <source>Show plot&apos; settings</source>
         <translation>يظهر من إعدادات مؤامرة &apos;</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="348"/>
-        <location filename="../MainWindow.ui" line="351"/>
-        <location filename="../MainWindow.ui" line="354"/>
+        <location filename="../MainWindow.ui" line="362"/>
+        <location filename="../MainWindow.ui" line="365"/>
+        <location filename="../MainWindow.ui" line="368"/>
         <source>Show plot&apos; settings.</source>
         <translation>يظهر من إعدادات مؤامرة &apos;.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="362"/>
+        <location filename="../MainWindow.ui" line="376"/>
         <source>Show headers</source>
         <translation>تظهر الرؤوس</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="365"/>
-        <location filename="../MainWindow.ui" line="368"/>
-        <location filename="../MainWindow.ui" line="371"/>
+        <location filename="../MainWindow.ui" line="379"/>
+        <location filename="../MainWindow.ui" line="382"/>
+        <location filename="../MainWindow.ui" line="385"/>
         <source>Show headers.</source>
         <translation>تظهر الرؤوس.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="380"/>
+        <location filename="../MainWindow.ui" line="394"/>
         <source>Export</source>
         <translation>تصدير</translation>
-    </message>
-    <message>
-        <location filename="../MainWindow.ui" line="383"/>
-        <location filename="../MainWindow.ui" line="386"/>
-        <location filename="../MainWindow.ui" line="389"/>
-        <source>Export all plots to PNG images.</source>
-        <translation>تصدير جميع المؤامرات إلى صور PNG.</translation>
-    </message>
-    <message>
-        <location filename="../MainWindow.ui" line="394"/>
-        <source>Print</source>
-        <translation>طباعة</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="397"/>
         <location filename="../MainWindow.ui" line="400"/>
         <location filename="../MainWindow.ui" line="403"/>
+        <source>Export all plots to PNG images.</source>
+        <translation>تصدير جميع المؤامرات إلى صور PNG.</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="408"/>
+        <source>Print</source>
+        <translation>طباعة</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="411"/>
+        <location filename="../MainWindow.ui" line="414"/>
+        <location filename="../MainWindow.ui" line="417"/>
         <source>Print all plots.</source>
         <translation>طباعة جميع المؤامرات.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="412"/>
+        <location filename="../MainWindow.ui" line="426"/>
         <source>Autoscale</source>
         <translation>مقياس تلقائي</translation>
-    </message>
-    <message>
-        <location filename="../MainWindow.ui" line="415"/>
-        <location filename="../MainWindow.ui" line="418"/>
-        <location filename="../MainWindow.ui" line="421"/>
-        <source>Autoscale all plots.</source>
-        <translation>السيارات الحجم في جميع المؤامرات.</translation>
-    </message>
-    <message>
-        <location filename="../MainWindow.ui" line="426"/>
-        <source>Load</source>
-        <translation>حمل</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="429"/>
         <location filename="../MainWindow.ui" line="432"/>
         <location filename="../MainWindow.ui" line="435"/>
+        <source>Autoscale all plots.</source>
+        <translation>السيارات الحجم في جميع المؤامرات.</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="440"/>
+        <source>Load</source>
+        <translation>حمل</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="443"/>
+        <location filename="../MainWindow.ui" line="446"/>
+        <location filename="../MainWindow.ui" line="449"/>
         <source>Load a project.</source>
         <translation>تحميل مشروع.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="438"/>
+        <location filename="../MainWindow.ui" line="452"/>
         <source>Ctrl+L</source>
         <translation>السيطرة + L</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="447"/>
+        <location filename="../MainWindow.ui" line="461"/>
         <source>Reload</source>
         <translation>تحديث</translation>
-    </message>
-    <message>
-        <location filename="../MainWindow.ui" line="450"/>
-        <location filename="../MainWindow.ui" line="453"/>
-        <location filename="../MainWindow.ui" line="456"/>
-        <source>Reload the project.</source>
-        <translation>تحديث المشروع.</translation>
-    </message>
-    <message>
-        <location filename="../MainWindow.ui" line="461"/>
-        <source>Save</source>
-        <translation>حفظ</translation>
     </message>
     <message>
         <location filename="../MainWindow.ui" line="464"/>
         <location filename="../MainWindow.ui" line="467"/>
         <location filename="../MainWindow.ui" line="470"/>
+        <source>Reload the project.</source>
+        <translation>تحديث المشروع.</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="479"/>
+        <source>Save</source>
+        <translation>حفظ</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="482"/>
+        <location filename="../MainWindow.ui" line="485"/>
+        <location filename="../MainWindow.ui" line="488"/>
         <source>Save this project.</source>
         <translation>حفظ هذا المشروع.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="475"/>
+        <location filename="../MainWindow.ui" line="493"/>
         <source>Save as</source>
         <translation>حفظ ك</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="478"/>
-        <location filename="../MainWindow.ui" line="481"/>
-        <location filename="../MainWindow.ui" line="484"/>
+        <location filename="../MainWindow.ui" line="496"/>
+        <location filename="../MainWindow.ui" line="499"/>
+        <location filename="../MainWindow.ui" line="502"/>
         <source>Save this project as...</source>
         <translation>حفظ هذا المشروع ...</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="489"/>
+        <location filename="../MainWindow.ui" line="507"/>
         <source>Close project</source>
         <translation>إغلاق المشروع</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="492"/>
-        <location filename="../MainWindow.ui" line="495"/>
-        <location filename="../MainWindow.ui" line="498"/>
+        <location filename="../MainWindow.ui" line="510"/>
+        <location filename="../MainWindow.ui" line="513"/>
+        <location filename="../MainWindow.ui" line="516"/>
         <source>Close all loaded files and windows.</source>
         <translation>إغلاق الملفات ونافذة تحميل كافة.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="509"/>
+        <location filename="../MainWindow.ui" line="527"/>
         <source>Grid (horizontal behavior)</source>
         <translation>شبكة (السلوك الأفقي)</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="512"/>
-        <location filename="../MainWindow.ui" line="515"/>
-        <location filename="../MainWindow.ui" line="518"/>
+        <location filename="../MainWindow.ui" line="530"/>
+        <location filename="../MainWindow.ui" line="533"/>
+        <location filename="../MainWindow.ui" line="536"/>
         <source>Rearrange all windows as grid with vertical behavior.</source>
         <translation>إعادة ترتيب جميع النوافذ كما الشبكة مع السلوك العمودي.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="526"/>
+        <location filename="../MainWindow.ui" line="544"/>
         <source>One column</source>
         <translation>عمود واحد</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="529"/>
-        <location filename="../MainWindow.ui" line="532"/>
-        <location filename="../MainWindow.ui" line="535"/>
+        <location filename="../MainWindow.ui" line="547"/>
+        <location filename="../MainWindow.ui" line="550"/>
+        <location filename="../MainWindow.ui" line="553"/>
         <source>Rearrange all windows as one column. Last window will be at he top.</source>
         <translation>إعادة ترتيب جميع النوافذ كما عمود واحد. سوف تكون على الإطار الأخير كان أعلى.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="543"/>
+        <location filename="../MainWindow.ui" line="561"/>
         <source>One column reverse</source>
         <translation>واحد عكس العمود</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="546"/>
-        <location filename="../MainWindow.ui" line="549"/>
-        <location filename="../MainWindow.ui" line="552"/>
+        <location filename="../MainWindow.ui" line="564"/>
+        <location filename="../MainWindow.ui" line="567"/>
+        <location filename="../MainWindow.ui" line="570"/>
         <source>Rearrange all windows as one column. Last window will be at he bottom.</source>
         <translation>إعادة ترتيب جميع النوافذ كما عمود واحد. سوف تكون على الإطار الأخير انه القاع.</translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="575"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="580"/>
+        <source>Copy one to an other place</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="583"/>
+        <source>Copy the project file to an other place.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.ui" line="591"/>
+        <source>Show exit dialog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="209"/>
+        <source>About Rragraph</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MainWindow.cpp" line="210"/>
+        <source>Rragraph is a lightweight plotter. &lt;br&gt;Current version 4.0.&lt;br&gt;Developer: rasmadeus@gmail.com&lt;br&gt;&lt;a href=&quot;https://github.com/rasmadeus/Rragraph&quot;&gt;You can download source code here&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;&quot;&gt;Licence - LGPL v.2.1.&lt;/a&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>MdiArea</name>
     <message>
-        <location filename="../MdiArea.cpp" line="42"/>
-        <location filename="../MdiArea.cpp" line="161"/>
+        <location filename="../MdiArea.cpp" line="53"/>
+        <location filename="../MdiArea.cpp" line="172"/>
         <source>Plot №%1</source>
         <translation>مؤامرة %1</translation>
     </message>
     <message>
-        <location filename="../MdiArea.cpp" line="57"/>
+        <location filename="../MdiArea.cpp" line="68"/>
         <source>Save to</source>
         <translation>حفظ ل</translation>
     </message>
@@ -754,30 +901,35 @@
     </message>
     <message>
         <location filename="../PlotSettingsView.cpp" line="17"/>
+        <location filename="../PlotSettingsView.cpp" line="29"/>
         <source>Axes</source>
         <translation>محاور</translation>
     </message>
     <message>
         <location filename="../PlotSettingsView.cpp" line="18"/>
         <location filename="../PlotSettingsView.cpp" line="30"/>
-        <source>Legend</source>
-        <translation>أسطورة</translation>
+        <source>Common property</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../PlotSettingsView.cpp" line="19"/>
         <location filename="../PlotSettingsView.cpp" line="31"/>
+        <source>Legend</source>
+        <translation>أسطورة</translation>
+    </message>
+    <message>
+        <location filename="../PlotSettingsView.cpp" line="20"/>
+        <location filename="../PlotSettingsView.cpp" line="32"/>
         <source>Export</source>
         <translation>تصدير</translation>
     </message>
     <message>
-        <location filename="../PlotSettingsView.cpp" line="28"/>
         <source>Absciss</source>
-        <translation>يستأص</translation>
+        <translation type="obsolete">يستأص</translation>
     </message>
     <message>
-        <location filename="../PlotSettingsView.cpp" line="29"/>
         <source>Ordinate</source>
-        <translation>تنسيق</translation>
+        <translation type="obsolete">تنسيق</translation>
     </message>
 </context>
 <context>
@@ -827,46 +979,61 @@
         <source>The file for saving is not available!</source>
         <translation>ملف لتوفير غير متوفر!</translation>
     </message>
+    <message>
+        <location filename="../Project.cpp" line="263"/>
+        <source>Copy error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Project.cpp" line="263"/>
+        <source>You have to open a project!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../Project.cpp" line="268"/>
+        <source>New name</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../CurvesModel.cpp" line="45"/>
+        <location filename="../CurvesModel.cpp" line="46"/>
         <source>Absciss</source>
         <translation>يستأص</translation>
     </message>
     <message>
-        <location filename="../CurvesModel.cpp" line="46"/>
+        <location filename="../CurvesModel.cpp" line="47"/>
         <source>Ordinates</source>
         <translation>احداثيات</translation>
     </message>
     <message>
-        <location filename="../CurvesModel.cpp" line="47"/>
+        <location filename="../CurvesModel.cpp" line="48"/>
         <source>Color</source>
         <translation>اللون</translation>
     </message>
     <message>
-        <location filename="../CurvesModel.cpp" line="48"/>
+        <location filename="../CurvesModel.cpp" line="49"/>
         <source>Scale</source>
         <translation>جدول</translation>
     </message>
     <message>
-        <location filename="../CurvesModel.cpp" line="49"/>
+        <location filename="../CurvesModel.cpp" line="50"/>
         <source>Other</source>
         <translation>آخر</translation>
     </message>
     <message>
-        <location filename="../CurvesModel.cpp" line="77"/>
+        <location filename="../CurvesModel.cpp" line="78"/>
         <source>Yes</source>
         <translation>نعم</translation>
     </message>
     <message>
-        <location filename="../CurvesModel.cpp" line="77"/>
+        <location filename="../CurvesModel.cpp" line="78"/>
         <source>No</source>
         <translation>لا</translation>
     </message>
     <message>
-        <location filename="../CurvesModel.cpp" line="79"/>
+        <location filename="../CurvesModel.cpp" line="80"/>
         <source>other</source>
         <translation>آخر</translation>
     </message>

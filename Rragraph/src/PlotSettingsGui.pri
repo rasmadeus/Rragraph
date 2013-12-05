@@ -4,7 +4,8 @@ HEADERS += \
     PlotSettings.h \
     LegendSettings.h \
     ExportSettings.h \
-    Axes.h
+    Axes.h \
+    CommonPlotSettings.h
 
 SOURCES += \
     PlotSettingsView.cpp \
@@ -12,11 +13,13 @@ SOURCES += \
     PlotSettings.cpp \
     LegendSettings.cpp \
     ExportSettings.cpp \
-    Axes.cpp
+    Axes.cpp \
+    CommonPlotSettings.cpp
 
 FORMS += \
     PlotSettingsView.ui \
     AxisPlotSettings.ui \
     LegendSettings.ui \
     ExportSettings.ui \
-    Axes.ui
+    Axes.ui \
+    CommonPlotSettings.ui

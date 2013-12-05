@@ -17,14 +17,15 @@ CurveSettings::CurveSettings(QWidget *parent) :
     ui->symbolType->addItem(tr("Down triangle"), QwtSymbol::DTriangle);
     ui->symbolType->addItem(tr("HLine"),         QwtSymbol::HLine);
 
-    connect(ui->width,      SIGNAL(valueChanged(int)),        SLOT(setWidth(int)));
-    connect(ui->multY,      SIGNAL(valueChanged(double)),     SLOT(setScale(double)));
-    connect(ui->addendX,    SIGNAL(valueChanged(double)),     SLOT(setAddendX(double)));
-    connect(ui->addendY,    SIGNAL(valueChanged(double)),     SLOT(setAddendY(double)));
-    connect(ui->symbol,     SIGNAL(clicked(bool)),            SLOT(turnSymbol(bool)));
-    connect(ui->step,       SIGNAL(valueChanged(int)),        SLOT(setStep(int)));
-    connect(ui->symbolType, SIGNAL(currentIndexChanged(int)), SLOT(setSymbolStyle(int)));
-    connect(ui->color,      SIGNAL(clicked()),                SLOT(setColor()));
+    connect(ui->width,          SIGNAL(valueChanged(int)),        SLOT(setWidth(int)));
+    connect(ui->multY,          SIGNAL(valueChanged(double)),     SLOT(setScale(double)));
+    connect(ui->addendX,        SIGNAL(valueChanged(double)),     SLOT(setAddendX(double)));
+    connect(ui->addendY,        SIGNAL(valueChanged(double)),     SLOT(setAddendY(double)));
+    connect(ui->symbol,         SIGNAL(clicked(bool)),            SLOT(turnSymbol(bool)));
+    connect(ui->step,           SIGNAL(valueChanged(int)),        SLOT(setStep(int)));
+    connect(ui->symbolType,     SIGNAL(currentIndexChanged(int)), SLOT(setSymbolStyle(int)));
+    connect(ui->color,          SIGNAL(clicked()),                SLOT(setColor()));
+    connect(ui->setDashPattern, SIGNAL(clicked()),                SLOT(setDushPattern()));
 }
 
 CurveSettings::~CurveSettings(){
@@ -36,20 +37,34 @@ CurveSettings::~CurveSettings(){
 #include <qwt_symbol.h>
 void CurveSettings::setModel(Curves* curves, int row)
 {
+//1.
     this->curves = curves;
     this->row = row;
     curves->ifSetY(row);
     curve = curves->getCurve(row);
+//2.
     ui->width->setValue(curve->pen().width());
+//3.
     ui->addendX->setValue(curve->getAddendX());
     ui->addendY->setValue(curve->getAddendY());
     ui->multY->setValue(curve->getMultY());
+//4.
     ui->step->setValue(curve->getStep());
     const QwtSymbol* symbol = curve->symbol();
     ui->symbol->setChecked(symbol);
     if(symbol){
         ui->symbolType->setCurrentIndex(curve->getSymbolStyle());
     }
+//5.
+    QString text = Curve::fromPenDashPattern(curve->pen());
+    ui->dashPattern->setText(text);
+}
+
+void CurveSettings::setDushPattern()
+{
+    QPen pen = curves->getCurve(row)->pen();
+    pen = Curve::fillPenWithDashPattern(pen, ui->dashPattern->text());
+    curves->setPen(row, pen);
 }
 
 void CurveSettings::setWidth(int width){
@@ -107,4 +122,3 @@ void CurveSettings::setColor()
     }
     setVisible(true);
 }
-

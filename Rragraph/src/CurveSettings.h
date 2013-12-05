@@ -26,6 +26,7 @@ private slots:
     void setSymbolStyle(int i);
     void setStep(int step);
     void setColor();
+    void setDushPattern();
 private:
     Ui::CurveSettings* ui;
     Curve* curve;

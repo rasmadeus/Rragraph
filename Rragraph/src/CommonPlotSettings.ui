@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ExportSettings</class>
- <widget class="QWidget" name="ExportSettings">
+ <class>CommonPlotSettings</class>
+ <widget class="QWidget" name="CommonPlotSettings">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>217</width>
-    <height>221</height>
+    <width>183</width>
+    <height>107</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,79 +30,35 @@
     <number>3</number>
    </property>
    <item>
-    <widget class="QDoubleSpinBox" name="width">
-     <property name="toolTip">
-      <string>Set export width of plot.</string>
-     </property>
-     <property name="whatsThis">
-      <string>Set export width of plot.</string>
-     </property>
-     <property name="prefix">
-      <string>Width </string>
-     </property>
-     <property name="suffix">
-      <string> mm</string>
-     </property>
-     <property name="decimals">
-      <number>1</number>
-     </property>
-     <property name="minimum">
-      <double>50.000000000000000</double>
-     </property>
-     <property name="maximum">
-      <double>10000.000000000000000</double>
-     </property>
-     <property name="singleStep">
-      <double>10.000000000000000</double>
-     </property>
-    </widget>
+    <widget class="QLineEdit" name="title"/>
    </item>
    <item>
-    <widget class="QDoubleSpinBox" name="height">
-     <property name="toolTip">
-      <string>Set export height of plot.</string>
-     </property>
-     <property name="whatsThis">
-      <string>Set export height of plot.</string>
-     </property>
-     <property name="prefix">
-      <string>Height </string>
-     </property>
-     <property name="suffix">
-      <string> mm</string>
-     </property>
-     <property name="decimals">
-      <number>1</number>
-     </property>
-     <property name="minimum">
-      <double>50.000000000000000</double>
-     </property>
-     <property name="maximum">
-      <double>10000.000000000000000</double>
-     </property>
-     <property name="singleStep">
-      <double>10.000000000000000</double>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1">
+    <layout class="QHBoxLayout" name="horizontalLayout">
      <property name="spacing">
       <number>3</number>
      </property>
      <item>
-      <widget class="QToolButton" name="print">
+      <widget class="QToolButton" name="titleColor">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="toolTip">
-        <string>Print this plot on one page.</string>
+        <string>Set title's color.</string>
+       </property>
+       <property name="statusTip">
+        <string>Set title's color.</string>
        </property>
        <property name="whatsThis">
-        <string>Print this plot on one page.</string>
+        <string>Set title's color.</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QToolButton{
@@ -138,12 +94,12 @@ color: #999999;
 }</string>
        </property>
        <property name="text">
-        <string>Print</string>
+        <string>Color</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="exportTo">
+      <widget class="QToolButton" name="titleFont">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -151,10 +107,13 @@ color: #999999;
         </sizepolicy>
        </property>
        <property name="toolTip">
-        <string>Export this plot to a document.</string>
+        <string>Set title's font.</string>
+       </property>
+       <property name="statusTip">
+        <string>Set title's font.</string>
        </property>
        <property name="whatsThis">
-        <string>Export this plot to a document.</string>
+        <string>Set title's font.</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QToolButton{
@@ -190,28 +149,19 @@ color: #999999;
 }</string>
        </property>
        <property name="text">
-        <string>Export</string>
+        <string>Font</string>
        </property>
       </widget>
      </item>
     </layout>
    </item>
    <item>
-    <widget class="QToolButton" name="dublicate">
+    <widget class="QToolButton" name="toolButton">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
-     </property>
-     <property name="toolTip">
-      <string>Duplicate these values to other plots.</string>
-     </property>
-     <property name="statusTip">
-      <string>Duplicate these values to other plots.</string>
-     </property>
-     <property name="whatsThis">
-      <string>Duplicate these values to other plots.</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QToolButton{
@@ -219,6 +169,7 @@ color: #999999;
     border-width: 0px;
     font: bold 14px;
     border-radius: 8px;
+    min-width: 10em;
     color: #444444;
     height: 15px;
 background: qlineargradient(

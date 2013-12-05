@@ -20,6 +20,7 @@ Plot* MdiArea::insertPlot()
     window->setWindowIcon(QIcon(":/res/addPlot.png"));
     Plot* plot = new Plot(window);
     plot->connect(plot, SIGNAL(destroyed()), this, SLOT(retitle()));
+    plot->connect(plot, SIGNAL(destroyed()), this, SLOT(destroyedWindow()));
     window->setWidget(plot);
     window->setAttribute(Qt::WA_DeleteOnClose);
     addSubWindow(window);
@@ -28,11 +29,28 @@ Plot* MdiArea::insertPlot()
     return plot;
 }
 
+void MdiArea::destroyedWindow(){
+    if(subWindowList().isEmpty()){
+        emit noMoreWindow(nullptr);
+    }
+}
+
 #include <QAction>
 void MdiArea::changeTileType(QAction* action)
 {
     tileType = TileType(action->data().toInt());
     tile();
+}
+
+QList<QMdiSubWindow*> MdiArea::visibleWindows()
+{
+    QList<QMdiSubWindow*> windows;
+    foreach(QMdiSubWindow* window, subWindowList()){
+        if(!window->isMinimized()){
+            windows.push_back(window);
+        }
+    }
+    return windows;
 }
 
 void MdiArea::retitle()
@@ -81,6 +99,7 @@ void MdiArea::print()
     printer.setDocName("Plots");
     printer.setCreator("Rragraph 4.0");
     printer.setOrientation(QPrinter::Landscape);
+    printer.setPaperSize(QPrinter::A4);
 
     Exporter exporter;
     QPrintDialog dialog(&printer, this);

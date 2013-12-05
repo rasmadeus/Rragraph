@@ -26,7 +26,20 @@ private slots:
     void fillProjectMenu();
     void addLastProjectPaths();
     void localeWasChanged();
+    void showAbout();
+    void setExitMessageVisibility(bool isVisible);
 private:
+    void initFiles();
+    void initMdiArea();
+    void initSingletons();
+    void initProject();
+    void initTranslator();
+    void initProjectPaths();
+    void initTileBahavior();
+    void initDockWidgets();
+    void initLookAndFeel();
+    void initExitMessage();
+    void initHelper();
     void dragEnterEvent(QDragEnterEvent* evt);
     void dropEvent(QDropEvent* evt);
     Ui::MainWindow *ui;

@@ -10,6 +10,7 @@ class Canvas : public QwtPlotCanvas
     Q_OBJECT
 public:
     explicit Canvas(QwtPlot* parent);
+    void setZoomBase();
 signals:
     void zoomed();
 private:

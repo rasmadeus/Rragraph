@@ -205,6 +205,15 @@ void Curves::setSymbolStyle(int i, int style)
     owner->replot();
 }
 
+
+void Curves::setPen(int i, const QPen& pen)
+{
+    ifSetY(i);
+    Curve* curve = curves.value(i);
+    curve->setPen(pen);
+    owner->replot();
+}
+
 void Curves::resamples()
 {
     Files* files = Files::getInstance();

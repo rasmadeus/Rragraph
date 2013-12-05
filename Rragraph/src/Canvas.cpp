@@ -14,3 +14,6 @@ Canvas::Canvas(QwtPlot* parent) :
     setPalette(QPalette(Qt::white));
 }
 
+void Canvas::setZoomBase(){
+    zoomer->setZoomBase(false);
+}
