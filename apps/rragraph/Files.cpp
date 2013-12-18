@@ -77,10 +77,13 @@ void Files::load(const QStringList& paths)
         samples.push_back(sample);
         loaders.push_back(loader);
         emit wasAdded(samples.size() - 1);
-        loader->start();
     }
     if(!paths.isEmpty()){
         lastLoadedFilePath = paths.last();
+    }
+    //All files must be added before ones loaded.
+    foreach(Loader* loader, loaders) {
+        loader->start();
     }
 }
 

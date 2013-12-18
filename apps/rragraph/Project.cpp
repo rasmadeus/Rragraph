@@ -178,6 +178,9 @@ void Project::wasLoaded(int iFile)
 {
     MdiArea::getInstance()->restoreCurves(iFile, doc.object());
     HeaderSamples::getInstance()->restore(iFile, doc.object());
+    if(iFile == Files::getInstance()->countSamples() - 1){
+        doc = QJsonDocument();
+    }
 }
 
 void Project::applyProject()
