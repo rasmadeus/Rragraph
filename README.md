@@ -1,5 +1,5 @@
 Rragraph v 4.0
-==============
+============
 
 This is a lightweight plotter.
 

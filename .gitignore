@@ -23,3 +23,5 @@ Makefile
 build-*
 *~
 testData
+*.db
+*.desktop
