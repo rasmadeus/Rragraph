@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Installer>
+    <Name>Rragraph</Name>
+    <Version>4.0.0</Version>
+    <Title>Rragraph is a lightweight plotter</Title>
+    <Publisher>Fakel</Publisher>
+    <!-- Directory name is used in component.xml -->
+    <StartMenuDir>Fakel</StartMenuDir>
+    <TargetDir>@HomeDir@/Fakel/Rragraph</TargetDir>
+</Installer>
