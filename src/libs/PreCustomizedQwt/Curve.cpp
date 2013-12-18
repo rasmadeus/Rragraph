@@ -155,7 +155,6 @@ QPen Curve::fillPenWithDashPattern(const QPen& src, const QString& dashes)
     QPen pen;
     pen.setWidth(src.width());
     pen.setColor(src.color());
-
     if(dashes.isEmpty()){
         return pen;
     }

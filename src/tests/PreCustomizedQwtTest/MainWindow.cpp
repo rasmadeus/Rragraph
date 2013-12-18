@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QVector<double> y;
     for(double t = -10; t <= 10; t += 0.1){
         x << t;
-        y << 2 * sin(2 * M_PI * 5 * t);
+        y << 2 * sin(2 * t);
     }
     curve->setSamples(x, y);
     curve->attach(plot);

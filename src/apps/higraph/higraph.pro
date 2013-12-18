@@ -22,7 +22,7 @@ include(quickViewer/quickViewer.pri)
 qtcAddDeployment()
 
 win32{
-    RC_FILE = res/icon.rc
+   # RC_FILE = res/icon.rc
 }
 
 CONFIG += c++11

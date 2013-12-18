@@ -1,12 +1,11 @@
 <RCC>
     <qresource prefix="/">
-        <file>res/icon.ico</file>
-        <file>res/menu/help.png</file>
-        <file>res/menu/histogramm.png</file>
-        <file>res/menu/plus.png</file>
         <file>res/help/realLeaf1.png</file>
         <file>res/help/realLeaf2.png</file>
         <file>res/help/realLeaf3.png</file>
         <file>res/help/realLeaf4.png</file>
+        <file>res/menu/help.png</file>
+        <file>res/menu/histogram.png</file>
+        <file>res/menu/plus.png</file>
     </qresource>
 </RCC>

@@ -21,7 +21,7 @@ Rectangle {
             onTriggered:  view.currentIndex = 0
         }
         ImageButton{
-            source: "qrc:/res/menu/histogramm.png"
+            source: "qrc:/res/menu/histogram.png"
             onTriggered: view.currentIndex = 1
         }
         ImageButton{

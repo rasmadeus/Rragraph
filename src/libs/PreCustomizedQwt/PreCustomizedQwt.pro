@@ -1,10 +1,10 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2013-12-17T09:54:47
+# Project created by QtCreator 2013-12-19T09:49:38
 #
 #-------------------------------------------------
 
-QT       += widgets
+QT       += widgets svg
 
 TARGET = PreCustomizedQwt
 TEMPLATE = lib
@@ -16,14 +16,15 @@ SOURCES += \
     Plot.cpp \
     LegendItem.cpp \
     Grid.cpp \
-    Zoomer.cpp \
+    Curve.cpp \
     Canvas.cpp \
-    Curve.cpp
+    Zoomer.cpp
 
 HEADERS += \
     Plot.h \
     LegendItem.h \
     Grid.h \
-    Zoomer.h \
+    Curve.h \
     Canvas.h \
-    Curve.h
+    Zoomer.h
+
