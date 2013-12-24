@@ -2,8 +2,6 @@
 #define SAMPLESVIEWER_H
 
 class Samples;
-class SamplesManager;
-class SamplesQListModel;
 #include <QDialog>
 
 namespace Ui {
@@ -20,15 +18,9 @@ public:
 private slots:
     void loadFile();
     void haveBeenLoaded();
-
-    void loadFiles();
-    void removeFile();
 private:
     Ui::SamplesViewer *ui;
     Samples* samples;
-
-    SamplesManager* manager;
-    SamplesQListModel* model;
 };
 
 #endif // SAMPLESVIEWER_H

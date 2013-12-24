@@ -1,15 +1,34 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.0
 import QtQml.Models 2.1
-import "data"
+import QtQuick.Dialogs 1.0
 import "help"
+import "histogram"
 
 Rectangle {
     objectName: "root"
+    function getUrls(){
+        return fileDialog.fileUrls
+    }
 
-    width: 500
-    height: 500
 
+    width: 800
+    height: 700
+
+    signal pathsArePrepared()
+    FileDialog{
+        id: fileDialog
+        visible: false
+        selectMultiple: true
+        title: qsTr("Укажите файлы-данные")
+        nameFilters:["Текстовые файлы(*.txt)", "Все файлы(*)"]
+        onAccepted:{
+            pathsArePrepared()
+        }
+    }
+
+
+    signal closeAllFiles()
     RowLayout{
         id: menu
         anchors.top: parent.top
@@ -17,28 +36,32 @@ Rectangle {
         spacing: 10
         anchors.topMargin: 10
         ImageButton{
+            source: "qrc:/res/menu/close.png"
+            onTriggered: {
+                histogram.clear()
+                closeAllFiles()
+            }
+        }
+        ImageButton{
             source: "qrc:/res/menu/plus.png"
-            onTriggered:  view.currentIndex = 0
+            onTriggered: fileDialog.visible = true
         }
         ImageButton{
             source: "qrc:/res/menu/histogram.png"
-            onTriggered: view.currentIndex = 1
+            onTriggered: view.currentIndex = 0
         }
         ImageButton{
             source: "qrc:/res/menu/help.png"
-            onTriggered: view.currentIndex = 2
+            onTriggered: view.currentIndex = 1
         }
     }
 
     ObjectModel{
        objectName: "windowsModel"
        id: itemModel
-       Data{
-           objectName: "data"
-           width: view.width
-           height: view.height
-       }
-       Rectangle{
+       Histogram{
+           id: histogram
+           objectName: "histogram"
            width: view.width
            height: view.height
        }

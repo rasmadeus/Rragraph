@@ -8,7 +8,7 @@ QT       += widgets svg
 
 TARGET = PreCustomizedQwt
 TEMPLATE = lib
-CONFIG += staticlib c++11
+CONFIG += staticlib c++11 qwt
 
 include($$PWD/../../auxiliary/qwtPath.pri)
 

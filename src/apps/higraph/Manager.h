@@ -2,7 +2,6 @@
 #define MANAGER_H
 
 class SamplesManager;
-class SamplesQListModel;
 class QQmlContext;
 #include <QObject>
 
@@ -11,16 +10,18 @@ class Manager : public QObject
     Q_OBJECT
 public:
     explicit Manager(QQmlContext* rootContext, QObject* root, QObject* parent = 0);
-signals:
 private slots:
     void loadData();
+    void haveBeenLoaded(int i);
+    void move(int pos);
+    void moveAllToMoverPos();
 private:
     QQmlContext* rootContext;
     SamplesManager* samplesManager;
-    SamplesQListModel* samplesModel;
     QObject* root;
         QObject* windowsModel;
-            QObject* data;
+            QObject* histogram;
+                QObject* mover;
 };
 
 #endif // MANAGER_H

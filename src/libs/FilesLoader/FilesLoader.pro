@@ -12,14 +12,8 @@ CONFIG += staticlib c++11
 
 SOURCES += \
     Samples.cpp \
-    SamplesManager.cpp \
-    SampleSpeaker.cpp \
-    OrderSampleSpeakerExecutor.cpp \
-    SamplesQListModel.cpp
+    SamplesManager.cpp
 
 HEADERS += \
     Samples.h \
-    SamplesManager.h \
-    SampleSpeaker.h \
-    OrderSampleSpeakerExecutor.h \
-    SamplesQListModel.h
+    SamplesManager.h

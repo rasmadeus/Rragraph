@@ -2,14 +2,16 @@ import QtQuick 2.0
 
 Rectangle {
     property color mainColor: "#000"
+    property color secondColor: "#fff"
+    property bool isRevert: false
     gradient: Gradient {
         GradientStop{
-            position: 0.0;
-            color: "#fff";
+            position: isRevert ? 1 : 0;
+            color: secondColor
         }
         GradientStop{
-            position: 1.00;
-            color: mainColor;
+            position: isRevert ? 0 : 1;
+            color: mainColor
         }
     }
 }

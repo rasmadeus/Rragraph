@@ -13,6 +13,7 @@ public:
     const QStringList& getHeaders() const;
     const QVector<double>& getColumns(int i) const;
     int count() const;
+    int height() const;
     const QString& getPathToSrc() const;
     void load(const QString& pathToSrc);
     void reload();

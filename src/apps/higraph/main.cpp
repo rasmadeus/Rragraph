@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
 
     QuickViewer viewer;
     viewer.setMainQmlFile(QStringLiteral("qml/higraph/main.qml"));
-    viewer.showExpanded();
+    viewer.showMaximized();
 
     new Manager(viewer.rootContext(), viewer.rootObject());
     viewer.rootContext();

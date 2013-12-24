@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = PreCustomizedQwtTest
 TEMPLATE = app
 
-CONFIG += c++11
+CONFIG += c++11 qwt
 
 SOURCES += main.cpp\
         MainWindow.cpp

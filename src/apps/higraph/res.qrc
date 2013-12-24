@@ -7,5 +7,7 @@
         <file>res/menu/help.png</file>
         <file>res/menu/histogram.png</file>
         <file>res/menu/plus.png</file>
+        <file>res/icon.ico</file>
+        <file>res/menu/close.png</file>
     </qresource>
 </RCC>

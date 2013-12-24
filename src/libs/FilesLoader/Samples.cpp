@@ -22,7 +22,7 @@ public:
         columns[i].push_back(value);
     }
 };
-
+#include <QDebug>
 #include <QThread>
 #include <QFile>
 #include <QTextStream>
@@ -53,9 +53,9 @@ protected:
         stopCrane = false;
         QFile rawData(d->pathToSrc);
         if(rawData.open(QFile::ReadOnly)){
-            QTextStream rawDataStreamer(&rawData);
             d->locker.lock();
-                createHeaders(rawDataStreamer);
+                QTextStream rawDataStreamer(&rawData);
+                createHeaders(rawDataStreamer.readLine());
                 createColumns(rawDataStreamer);
             d->locker.unlock();
         }
@@ -63,13 +63,13 @@ protected:
     }
 
 private:
-    inline void createHeaders(QTextStream& rawDataStreamer)
+    inline void createHeaders(QString headers)
     {
         d->headers.clear();
         d->columns.clear();
         QRegExp rx("(\"[^\"]+\"|\\S+)");
         int pos = 0;
-        while((pos = rx.indexIn(rawDataStreamer.readLine(), pos)) != -1){
+        while((pos = rx.indexIn(headers, pos)) != -1){
             QString header = rx.cap(1);
             removeQuotes(header);
             d->headers.push_back(header);
@@ -96,7 +96,7 @@ private:
                 .replace(",", ".")
                 .split(" ");
             if(column.isEmpty()){
-                return;
+                continue;
             }
             rearrange(column);
             for(int i = 0; i < d->headers.size(); ++i){
@@ -155,6 +155,12 @@ int Samples::count() const
 {
     QMutexLocker locker(&d->locker);
     return d->headers.count();
+}
+
+int Samples::height() const
+{
+    QMutexLocker locker(&d->locker);
+    return d->columns.isEmpty() ? 0 : d->columns[0].size();
 }
 
 const QString& Samples::getPathToSrc() const

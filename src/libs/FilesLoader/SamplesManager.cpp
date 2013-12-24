@@ -10,13 +10,17 @@ SamplesManager::~SamplesManager()
     qDeleteAll(data);
 }
 
-#include <QMutexLocker>
 int SamplesManager::count() const
 {
     return data.count();
 }
 
 #include "Samples.h"
+int SamplesManager::height(int i) const
+{
+    return data[i]->height();
+}
+
 void SamplesManager::append(const QString& pathToSrc)
 {
     Samples* samples = new Samples();
@@ -64,4 +68,11 @@ const QVector<double>& SamplesManager::getColumnSamples(int i, int j) const
 const QString& SamplesManager::getPathToSamples(int i) const
 {
     return data[i]->getPathToSrc();
+}
+
+void SamplesManager::clear()
+{
+    while(count()){
+        remove(0);
+    }
 }

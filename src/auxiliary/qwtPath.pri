@@ -1,0 +1,1 @@
+include(c:/Dev/Qt5.1.1/Qwt-6.1.0/features/qwt.prf)
