@@ -21,6 +21,7 @@ public:
     const QStringList& getHeaderSamples(int i) const;
     const QVector<double>& getColumnSamples(int i, int j) const;
     const QString& getPathToSamples(int i) const;
+    bool isLoading(int i) const;
 public Q_SLOTS:
     void clear();
 Q_SIGNALS:

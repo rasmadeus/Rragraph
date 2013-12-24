@@ -41,7 +41,7 @@ ContentBackground{
     }
 
     function getDelegateHeight(value){
-        var res = maxValueRanger.value === 0 ? 10 : getRearrangedValue(value) / maxValueRanger.value * view.height
+        var res = maxValueRanger.value === 0 ? view.height : getRearrangedValue(value) / maxValueRanger.value * view.height
         return res > view.height ? view.height : res
     }
 
@@ -57,7 +57,6 @@ ContentBackground{
     Component{
         id: delegate
         ContentBackground{
-            isRevert: true
             y: view.height - height
             mainColor: Qt.rgba(Math.random(255), Math.random(255), Math.random(255));
             secondColor: histogram.mainColor
@@ -67,45 +66,88 @@ ContentBackground{
         }
     }
 
-    signal moverPosWasChanged()
-    Row{
-        id: histograMenu
-        anchors.horizontalCenter: parent.horizontalCenter
+    ListView{
+        id: view
+        anchors.fill: parent
+        anchors.leftMargin: 5
+        anchors.rightMargin: 5
+        anchors.topMargin: 5
+        keyNavigationWraps: true
+        model: model
+        delegate: delegate
+        orientation: ListView.Horizontal
+    }
+
+
+    Text{
         anchors.top: parent.top
-        Slider{
-            id: mover
-            objectName: "mover"
-            minimumValue: 0
-            maximumValue: 0
-            stepSize: 1
-            width: 200
-            updateValueWhileDragging: true
-            onValueChanged: moverPosWasChanged()
+        anchors.right: parent.horizontalCenter
+        anchors.topMargin: 10
+        anchors.rightMargin: 20
+        property double currentFileTime: 0
+        id: firstFileTime
+        objectName: "firstFileTime"
+        text: qsTr("t = ") + currentFileTime
+        color: "#2c6d0c"
+        font.pointSize: 15
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignHCenter
+    }
+
+    Text{
+        anchors.top: parent.top
+        anchors.left: parent.horizontalCenter
+        anchors.topMargin: 10
+        property double currentSliceMaxValue: 0
+        id: sliceMaxValue
+        objectName: "sliceMaxValue"
+        text: qsTr("max = ") + currentSliceMaxValue
+        color: "#2c6d0c"
+        font.pointSize: 15
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignHCenter
+    }
+
+    signal moverPosWasChanged()
+    Slider{
+        id: mover
+        objectName: "mover"
+        anchors.left: parent.left
+        anchors.bottom: parent.bottom
+        anchors.leftMargin: 10
+        anchors.bottomMargin: 0
+        minimumValue: 0
+        maximumValue: 0
+        stepSize: 1
+        width: 350
+        height: 30
+        updateValueWhileDragging: true
+        onValueChanged: moverPosWasChanged()
+    }
+
+    Row{
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.rightMargin: 10
+        anchors.bottomMargin: 0
+        spacing: 5
+        Text{
+            color: "#27a217"
+            text: qsTr("Относительная высота экрана")
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            height: 26
         }
+
         Slider{
             id: maxValueRanger
-            objectName: "maxValueRanger"
             minimumValue: 0
             maximumValue: 100
             value: 3
             stepSize: 1
             width: 200
-            anchors.top: parent.top
+            height: 30
             updateValueWhileDragging: true
         }
-    }
-    ListView{
-        id: view
-        anchors.top: histograMenu.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.leftMargin: 20
-        anchors.rightMargin: 20
-        anchors.topMargin: 10
-        keyNavigationWraps: true
-        model: model
-        delegate: delegate
-        orientation: ListView.Horizontal
     }
 }

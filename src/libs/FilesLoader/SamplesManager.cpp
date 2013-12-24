@@ -76,3 +76,8 @@ void SamplesManager::clear()
         remove(0);
     }
 }
+
+bool SamplesManager::isLoading(int i) const
+{
+    return data[i]->isLoading();
+}

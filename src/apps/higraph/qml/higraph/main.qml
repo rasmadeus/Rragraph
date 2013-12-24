@@ -28,34 +28,6 @@ Rectangle {
     }
 
 
-    signal closeAllFiles()
-    RowLayout{
-        id: menu
-        anchors.top: parent.top
-        anchors.horizontalCenter: parent.horizontalCenter
-        spacing: 10
-        anchors.topMargin: 10
-        ImageButton{
-            source: "qrc:/res/menu/close.png"
-            onTriggered: {
-                histogram.clear()
-                closeAllFiles()
-            }
-        }
-        ImageButton{
-            source: "qrc:/res/menu/plus.png"
-            onTriggered: fileDialog.visible = true
-        }
-        ImageButton{
-            source: "qrc:/res/menu/histogram.png"
-            onTriggered: view.currentIndex = 0
-        }
-        ImageButton{
-            source: "qrc:/res/menu/help.png"
-            onTriggered: view.currentIndex = 1
-        }
-    }
-
     ObjectModel{
        objectName: "windowsModel"
        id: itemModel
@@ -74,13 +46,42 @@ Rectangle {
     ListView {
         id: view
         anchors.fill: parent
-        anchors.topMargin: menu.height + 20
         model: itemModel
         preferredHighlightBegin: 0; preferredHighlightEnd: 0
         highlightRangeMode: ListView.StrictlyEnforceRange
         orientation: ListView.Horizontal
         snapMode: ListView.SnapOneItem; flickDeceleration: 1000
         cacheBuffer: 200
+    }
+
+    signal closeAllFiles()
+    RowLayout{
+        id: menu
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        spacing: 10
+        anchors.bottomMargin: 10
+        ImageButton{
+            source: "qrc:/res/menu/close.png"
+            visible: view.currentIndex == 0
+            onTriggered: {
+                histogram.clear()
+                closeAllFiles()
+            }
+        }
+        ImageButton{
+            source: "qrc:/res/menu/plus.png"
+            visible: view.currentIndex == 0
+            onTriggered: fileDialog.visible = true
+        }
+        ImageButton{
+            source: "qrc:/res/menu/histogram.png"
+            onTriggered: view.currentIndex = 0
+        }
+        ImageButton{
+            source: "qrc:/res/menu/help.png"
+            onTriggered: view.currentIndex = 1
+        }
     }
 
 }

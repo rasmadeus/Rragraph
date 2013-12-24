@@ -16,12 +16,15 @@ private slots:
     void move(int pos);
     void moveAllToMoverPos();
 private:
+    bool firstFileWasLoaded;
     QQmlContext* rootContext;
     SamplesManager* samplesManager;
     QObject* root;
         QObject* windowsModel;
             QObject* histogram;
                 QObject* mover;
+                QObject* firstFileTime;
+                QObject* sliceMaxValue;
 };
 
 #endif // MANAGER_H

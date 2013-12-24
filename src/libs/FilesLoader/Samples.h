@@ -17,6 +17,7 @@ public:
     const QString& getPathToSrc() const;
     void load(const QString& pathToSrc);
     void reload();
+    bool isLoading() const;
 Q_SIGNALS:
     void haveBeenLoaded();
     void haveBeenLoaded(Samples*);

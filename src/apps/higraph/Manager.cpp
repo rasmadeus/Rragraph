@@ -4,6 +4,7 @@
 #include <QQmlContext>
 Manager::Manager(QQmlContext* rootContext, QObject* root, QObject *parent) :
     QObject(parent),
+    firstFileWasLoaded(false),
     rootContext(rootContext),
     root(root)
 {
@@ -15,6 +16,8 @@ Manager::Manager(QQmlContext* rootContext, QObject* root, QObject *parent) :
         histogram = windowsModel->findChild<QObject*>("histogram");
         if(histogram){
             mover = histogram->findChild<QObject*>("mover");
+            firstFileTime = histogram->findChild<QObject*>("firstFileTime");
+            sliceMaxValue = histogram->findChild<QObject*>("sliceMaxValue");
         }
     }
 
@@ -41,10 +44,12 @@ void Manager::loadData()
 #include <algorithm>
 void Manager::haveBeenLoaded(int i)
 {
-    const int maxSize = mover->property("maximumValue").toInt();
-    const int currentSize = samplesManager->height(i);
-    if(currentSize > maxSize){
+    if(!firstFileWasLoaded){
+        const int currentSize = samplesManager->height(i);
         mover->setProperty("maximumValue", currentSize - 1);
+    }
+    if(i == 0){
+        firstFileWasLoaded = true;
     }
     //j == 0 is time
     for(int j = 1; j < samplesManager->countSamples(i); ++j){
@@ -53,23 +58,37 @@ void Manager::haveBeenLoaded(int i)
             "append"
         );
     }
+    if(samplesManager->count() == 1){
+        moveAllToMoverPos();
+    }
 }
 
 void Manager::moveAllToMoverPos()
 {
     const int moverPos = mover->property("value").toInt();
+    if(!samplesManager->count() || !samplesManager->countSamples(0)){
+        firstFileTime->setProperty("currentFileTime", 0);
+    }
+    else{
+        firstFileTime->setProperty("currentFileTime", samplesManager->getColumnSamples(0, 0)[moverPos]);
+    }
+
     move(moverPos);
 }
 
+#include <algorithm>
 void Manager::move(int pos)
 {
     int modelIndex = 0;
     //iColumn == 0 is time
-
+    double maxValue = 0;
     for(int filesCounter = 0; filesCounter < samplesManager->count(); ++filesCounter){
         for(int iColumn = 1; iColumn < samplesManager->countSamples(filesCounter); ++iColumn){
             const QVector<double> values = samplesManager->getColumnSamples(filesCounter, iColumn);
             double value = values.size() <= pos ? 0 : values.at(pos);
+            if(value > maxValue){
+                maxValue = value;
+            }
             QMetaObject::invokeMethod(
                 histogram,
                 "setValue",
@@ -79,5 +98,5 @@ void Manager::move(int pos)
             ++modelIndex;
         }
     }
-
+    sliceMaxValue->setProperty("currentSliceMaxValue", maxValue);
 }

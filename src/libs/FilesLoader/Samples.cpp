@@ -187,3 +187,8 @@ void Samples::samplesHaveBeenLoaded()
 {
     emit haveBeenLoaded(this);
 }
+
+bool Samples::isLoading() const
+{
+    return d->loader->isRunning();
+}

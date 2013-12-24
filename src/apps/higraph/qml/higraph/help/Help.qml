@@ -5,7 +5,7 @@ Rectangle {
         anchors.fill: parent
     }
     Text{
-        color: "#e2800f"
+        color: "#693e0c"
         elide: Text.ElideMiddle
         anchors.top: parent.top
         anchors.left: parent.left
@@ -30,7 +30,7 @@ Rectangle {
             <h3>Лицензия</h3>
             General Public License v.1.0,<br>
             программа создана на базе ОАО МКБ \"Факел\" 80 отдел 9 бригада<br>
-            г. Химки, конец 2013 года
+            г. Химки, декабрь 2013 года
         ")
         smooth: true
         font.pointSize: 14
