@@ -2,12 +2,16 @@
 
 #include "SamplesManager.h"
 #include <QQmlContext>
+#include <QTimer>
 Manager::Manager(QQmlContext* rootContext, QObject* root, QObject *parent) :
     QObject(parent),
     firstFileWasLoaded(false),
     rootContext(rootContext),
     root(root)
 {
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), SLOT(incAll()));
+
     samplesManager = new SamplesManager(this);
     connect(samplesManager, SIGNAL(haveBeenLoaded(int)), SLOT(haveBeenLoaded(int)));
 
@@ -16,6 +20,12 @@ Manager::Manager(QQmlContext* rootContext, QObject* root, QObject *parent) :
         histogram = windowsModel->findChild<QObject*>("histogram");
         if(histogram){
             mover = histogram->findChild<QObject*>("mover");
+            connect(mover, SIGNAL(valueChanged()), SLOT(moveAllToMoverPos()));
+
+            starter = histogram->findChild<QObject*>("starter");
+            connect(starter, SIGNAL(start()), SLOT(start()));
+            connect(starter, SIGNAL(pause()), timer, SLOT(stop()));
+
             firstFileTime = histogram->findChild<QObject*>("firstFileTime");
             sliceMaxValue = histogram->findChild<QObject*>("sliceMaxValue");
         }
@@ -23,10 +33,14 @@ Manager::Manager(QQmlContext* rootContext, QObject* root, QObject *parent) :
 
     connect(root, SIGNAL(pathsArePrepared()), SLOT(loadData()));
     connect(root, SIGNAL(closeAllFiles()), samplesManager, SLOT(clear()));
-    connect(histogram, SIGNAL(moverPosWasChanged()), SLOT(moveAllToMoverPos()));
+    connect(root, SIGNAL(closeAllFiles()), SLOT(resetFileLoadingFlag()));
 }
 
-#include <QDebug>
+void Manager::resetFileLoadingFlag()
+{
+    firstFileWasLoaded = false;
+}
+
 #include <QUrl>
 #include <QVariant>
 void Manager::loadData()
@@ -46,7 +60,7 @@ void Manager::haveBeenLoaded(int i)
 {
     if(!firstFileWasLoaded){
         const int currentSize = samplesManager->height(i);
-        mover->setProperty("maximumValue", currentSize - 1);
+        mover->setProperty("maximumValue", currentSize - 2);
     }
     if(i == 0){
         firstFileWasLoaded = true;
@@ -99,4 +113,21 @@ void Manager::move(int pos)
         }
     }
     sliceMaxValue->setProperty("currentSliceMaxValue", maxValue);
+}
+
+void Manager::start()
+{
+    timer->start(150);
+}
+
+void Manager::incAll()
+{
+    const int moverPos = mover->property("value").toInt();
+    mover->setProperty("value", moverPos + 1);
+
+    const int maxPos = mover->property("maximumValue").toInt();
+    if(moverPos == maxPos){
+        timer->stop();
+        QMetaObject::invokeMethod(starter, "stop");
+    }
 }

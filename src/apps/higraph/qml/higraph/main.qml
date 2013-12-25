@@ -65,8 +65,8 @@ Rectangle {
             source: "qrc:/res/menu/close.png"
             visible: view.currentIndex == 0
             onTriggered: {
-                histogram.clear()
                 closeAllFiles()
+                histogram.clear()
             }
         }
         ImageButton{

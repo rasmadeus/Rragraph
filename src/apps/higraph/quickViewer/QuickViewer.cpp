@@ -54,7 +54,7 @@ void QuickViewer::setMainQmlFile(const QString &file)
 #ifdef Q_OS_ANDROID
     setSource(QUrl(QLatin1String("assets:/")+d->mainQmlFile));
 #else
-    setSource(QUrl::fromLocalFile(d->mainQmlFile));
+    setSource(d->mainQmlFile);
 #endif
 }
 

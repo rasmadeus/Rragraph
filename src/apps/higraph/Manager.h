@@ -3,6 +3,7 @@
 
 class SamplesManager;
 class QQmlContext;
+class QTimer;
 #include <QObject>
 
 class Manager : public QObject
@@ -15,14 +16,19 @@ private slots:
     void haveBeenLoaded(int i);
     void move(int pos);
     void moveAllToMoverPos();
+    void resetFileLoadingFlag();
+    void start();
+    void incAll();
 private:
     bool firstFileWasLoaded;
+    QTimer* timer;
     QQmlContext* rootContext;
     SamplesManager* samplesManager;
     QObject* root;
         QObject* windowsModel;
             QObject* histogram;
                 QObject* mover;
+                QObject* starter;
                 QObject* firstFileTime;
                 QObject* sliceMaxValue;
 };

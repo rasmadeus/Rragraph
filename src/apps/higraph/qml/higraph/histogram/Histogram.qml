@@ -38,6 +38,8 @@ ContentBackground{
         model.clear()
         mover.value = 0
         mover.maximumValue = 0
+        sliceMaxValue .currentSliceMaxValue = 0
+        firstFileTime.currentFileTime = 0
     }
 
     function getDelegateHeight(value){
@@ -80,12 +82,12 @@ ContentBackground{
 
 
     Text{
+        id: firstFileTime
         anchors.top: parent.top
         anchors.right: parent.horizontalCenter
         anchors.topMargin: 10
         anchors.rightMargin: 20
         property double currentFileTime: 0
-        id: firstFileTime
         objectName: "firstFileTime"
         text: qsTr("t = ") + currentFileTime
         color: "#2c6d0c"
@@ -95,11 +97,11 @@ ContentBackground{
     }
 
     Text{
+        id: sliceMaxValue
         anchors.top: parent.top
         anchors.left: parent.horizontalCenter
         anchors.topMargin: 10
         property double currentSliceMaxValue: 0
-        id: sliceMaxValue
         objectName: "sliceMaxValue"
         text: qsTr("max = ") + currentSliceMaxValue
         color: "#2c6d0c"
@@ -108,22 +110,47 @@ ContentBackground{
         horizontalAlignment: Text.AlignHCenter
     }
 
-    signal moverPosWasChanged()
-    Slider{
-        id: mover
-        objectName: "mover"
+    Row{
         anchors.left: parent.left
         anchors.bottom: parent.bottom
         anchors.leftMargin: 10
         anchors.bottomMargin: 0
-        minimumValue: 0
-        maximumValue: 0
-        stepSize: 1
-        width: 350
-        height: 30
-        updateValueWhileDragging: true
-        onValueChanged: moverPosWasChanged()
+        spacing: 5
+        Slider{
+            id: mover
+            objectName: "mover"
+            minimumValue: 0
+            maximumValue: 0
+            stepSize: 1
+            width: 350
+            height: 30
+            updateValueWhileDragging: true
+        }
+        ImageButton{
+            opacityAnimationIsActive: false
+            signal start()
+            signal pause()
+            id: starter
+            anchors.verticalCenter: mover.verticalCenter
+            rotation: 180
+            property bool isRunning: false
+            function stop(){
+                isRunning = false
+            }
+            objectName: "starter"
+            source: isRunning ? "qrc:/res/histogram/pause.png" : "qrc:/res/histogram/start.png"
+            onTriggered:{
+                isRunning = !isRunning
+                if(isRunning){
+                    start()
+                }
+                else{
+                    pause()
+                }
+            }
+        }
     }
+
 
     Row{
         anchors.right: parent.right

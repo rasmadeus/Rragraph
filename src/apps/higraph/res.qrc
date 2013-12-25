@@ -9,5 +9,14 @@
         <file>res/menu/plus.png</file>
         <file>res/icon.ico</file>
         <file>res/menu/close.png</file>
+        <file>res/histogram/pause.png</file>
+        <file>res/histogram/start.png</file>
+        <file>qml/higraph/data/Data.qml</file>
+        <file>qml/higraph/help/HelpBackground.qml</file>
+        <file>qml/higraph/help/Help.qml</file>
+        <file>qml/higraph/histogram/Histogram.qml</file>
+        <file>qml/higraph/main.qml</file>
+        <file>qml/higraph/ContentBackground.qml</file>
+        <file>qml/higraph/ImageButton.qml</file>
     </qresource>
 </RCC>
