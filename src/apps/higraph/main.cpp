@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
     QGuiApplication higraph(argc, argv);
 
     QuickViewer viewer;
-    viewer.setMainQmlFile("qrc:/qml/higraph/main.qml");
+    viewer.setMainQmlFile("qml/higraph/main.qml");
     viewer.showMaximized();
 
     new Manager(viewer.rootContext(), viewer.rootObject());

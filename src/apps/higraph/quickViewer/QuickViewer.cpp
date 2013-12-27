@@ -48,13 +48,14 @@ QuickViewer::~QuickViewer()
     delete d;
 }
 
-void QuickViewer::setMainQmlFile(const QString &file)
+void QuickViewer::setMainQmlFile(const QString& file)
 {
-    d->mainQmlFile = QuickViewerPrivate::adjustPath(file);
+    d->mainQmlFile =  QuickViewerPrivate::adjustPath(file);
+
 #ifdef Q_OS_ANDROID
     setSource(QUrl(QLatin1String("assets:/")+d->mainQmlFile));
 #else
-    setSource(d->mainQmlFile);
+    setSource(QUrl::fromLocalFile(d->mainQmlFile));
 #endif
 }
 

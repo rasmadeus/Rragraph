@@ -22,7 +22,7 @@ public:
         columns[i].push_back(value);
     }
 };
-#include <QDebug>
+
 #include <QThread>
 #include <QFile>
 #include <QTextStream>

@@ -38,8 +38,10 @@ ContentBackground{
         model.clear()
         mover.value = 0
         mover.maximumValue = 0
-        sliceMaxValue .currentSliceMaxValue = 0
-        firstFileTime.currentFileTime = 0
+        sliceTime.text = ""
+        sliceMaxValue.text = ""
+        sliceAverage.text = ""
+        numberSliceMaxValue.text = ""
     }
 
     function getDelegateHeight(value){
@@ -80,101 +82,86 @@ ContentBackground{
         orientation: ListView.Horizontal
     }
 
-
-    Text{
-        id: firstFileTime
-        anchors.top: parent.top
-        anchors.right: parent.horizontalCenter
-        anchors.topMargin: 10
-        anchors.rightMargin: 20
-        property double currentFileTime: 0
-        objectName: "firstFileTime"
-        text: qsTr("t = ") + currentFileTime
-        color: "#2c6d0c"
-        font.pointSize: 15
-        verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignHCenter
+    Rectangle{
+        id: infoBackground
+        anchors.centerIn: parent
+        border.color: "#090"
+        color: "#fff"
+        opacity: 0.5
+        border.width: 2
+        radius: 10
+        width: parent.width * 0.12
+        height: info.height + 20
+        visible: model.count
     }
 
-    Text{
-        id: sliceMaxValue
-        anchors.top: parent.top
-        anchors.left: parent.horizontalCenter
-        anchors.topMargin: 10
-        property double currentSliceMaxValue: 0
-        objectName: "sliceMaxValue"
-        text: qsTr("max = ") + currentSliceMaxValue
-        color: "#2c6d0c"
-        font.pointSize: 15
-        verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignHCenter
-    }
-
-    Row{
-        anchors.left: parent.left
-        anchors.bottom: parent.bottom
-        anchors.leftMargin: 10
-        anchors.bottomMargin: 0
-        spacing: 5
-        Slider{
-            id: mover
-            objectName: "mover"
-            minimumValue: 0
-            maximumValue: 0
-            stepSize: 1
-            width: 350
-            height: 30
-            updateValueWhileDragging: true
-        }
-        ImageButton{
-            opacityAnimationIsActive: false
-            signal start()
-            signal pause()
-            id: starter
-            anchors.verticalCenter: mover.verticalCenter
-            rotation: 180
-            property bool isRunning: false
-            function stop(){
-                isRunning = false
-            }
-            objectName: "starter"
-            source: isRunning ? "qrc:/res/histogram/pause.png" : "qrc:/res/histogram/start.png"
-            onTriggered:{
-                isRunning = !isRunning
-                if(isRunning){
-                    start()
-                }
-                else{
-                    pause()
-                }
-            }
-        }
-    }
-
-
-    Row{
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.rightMargin: 10
-        anchors.bottomMargin: 0
-        spacing: 5
+    Column{
+        id: info
+        x: infoBackground.x + 4
+        anchors.verticalCenter: infoBackground.verticalCenter
         Text{
-            color: "#27a217"
-            text: qsTr("Относительная высота экрана")
-            horizontalAlignment: Text.AlignHCenter
+            id: sliceTime
+            objectName: "sliceTime"
+            color: "#2c6d0c"
+            font.pointSize: 10
             verticalAlignment: Text.AlignVCenter
-            height: 26
+            horizontalAlignment: Text.AlignHCenter
         }
+        Text{
+            id: numberSliceMaxValue
+            objectName: "numberSliceMaxValue"
+            color: "#2c6d0c"
+            font.pointSize: 10
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+        }
+        Text{
+            id: sliceMaxValue
+            objectName: "sliceMaxValue"
+            color: "#2c6d0c"
+            font.pointSize: 10
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+        }
+        Text{
+            id: sliceAverage
+            objectName: "sliceAverage"
+            color: "#2c6d0c"
+            font.pointSize: 10
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+        }
+    }
 
-        Slider{
-            id: maxValueRanger
-            minimumValue: 0
-            maximumValue: 100
-            value: 3
-            stepSize: 1
-            width: 200
-            height: 30
-            updateValueWhileDragging: true
-        }
+    Slider{
+        id: mover
+        objectName: "mover"
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.leftMargin: 10
+        anchors.rightMargin: 10
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: -5
+        opacity: hovered ? 1: 0.5
+        minimumValue: 0
+        maximumValue: 0
+        stepSize: 1
+        height: 28
+        updateValueWhileDragging: true
+    }
+
+    Slider{
+        id: maxValueRanger
+        opacity: hovered ? 1 : 0.2
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.left: parent.left
+        minimumValue: 0
+        maximumValue: 100
+        value: 3
+        stepSize: 1
+        width: 30
+        height: parent.height * 0.2
+        orientation: Qt.Vertical
+        updateValueWhileDragging: true
     }
 }

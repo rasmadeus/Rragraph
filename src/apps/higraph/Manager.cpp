@@ -15,6 +15,13 @@ Manager::Manager(QQmlContext* rootContext, QObject* root, QObject *parent) :
     samplesManager = new SamplesManager(this);
     connect(samplesManager, SIGNAL(haveBeenLoaded(int)), SLOT(haveBeenLoaded(int)));
 
+    menu = root->findChild<QObject*>("menu");
+        if(menu){
+            starter = menu->findChild<QObject*>("starter");
+            connect(starter, SIGNAL(start()), SLOT(start()));
+            connect(starter, SIGNAL(pause()), timer, SLOT(stop()));
+        }
+
     windowsModel = root->findChild<QObject*>("windowsModel");
     if(windowsModel){
         histogram = windowsModel->findChild<QObject*>("histogram");
@@ -22,12 +29,10 @@ Manager::Manager(QQmlContext* rootContext, QObject* root, QObject *parent) :
             mover = histogram->findChild<QObject*>("mover");
             connect(mover, SIGNAL(valueChanged()), SLOT(moveAllToMoverPos()));
 
-            starter = histogram->findChild<QObject*>("starter");
-            connect(starter, SIGNAL(start()), SLOT(start()));
-            connect(starter, SIGNAL(pause()), timer, SLOT(stop()));
-
-            firstFileTime = histogram->findChild<QObject*>("firstFileTime");
-            sliceMaxValue = histogram->findChild<QObject*>("sliceMaxValue");
+            sliceTime           = histogram->findChild<QObject*>("sliceTime");
+            numberSliceMaxValue = histogram->findChild<QObject*>("numberSliceMaxValue");
+            sliceMaxValue       = histogram->findChild<QObject*>("sliceMaxValue");
+            sliceAverage        = histogram->findChild<QObject*>("sliceAverage");
         }
     }
 
@@ -59,8 +64,10 @@ void Manager::loadData()
 void Manager::haveBeenLoaded(int i)
 {
     if(!firstFileWasLoaded){
-        const int currentSize = samplesManager->height(i);
-        mover->setProperty("maximumValue", currentSize - 2);
+        const int currentSize = samplesManager->height(i);        
+        if(currentSize >= 2){
+            mover->setProperty("maximumValue",currentSize - 2);
+        }
     }
     if(i == 0){
         firstFileWasLoaded = true;
@@ -75,33 +82,53 @@ void Manager::haveBeenLoaded(int i)
     if(samplesManager->count() == 1){
         moveAllToMoverPos();
     }
+
+}
+
+#include <QString>
+static QString reduce(double value)
+{
+    QStringList digits = QString("%1").arg(value).split(".");
+    if(digits.size() > 1){
+        digits[1].remove(3, digits[1].size() - 3);
+        return digits[0] + "." + digits[1];
+    }
+    else{
+        return digits[0];
+    }
 }
 
 void Manager::moveAllToMoverPos()
 {
     const int moverPos = mover->property("value").toInt();
     if(!samplesManager->count() || !samplesManager->countSamples(0)){
-        firstFileTime->setProperty("currentFileTime", 0);
+        sliceTime->setProperty("text", 0);
     }
     else{
-        firstFileTime->setProperty("currentFileTime", samplesManager->getColumnSamples(0, 0)[moverPos]);
-    }
+        const QVector<double>& values = samplesManager->getColumnSamples(0,0);
 
+        if(moverPos < values.size()){
+            sliceTime->setProperty("text", "Время: " + reduce(values[moverPos]));
+        }
+    }
     move(moverPos);
 }
 
-#include <algorithm>
 void Manager::move(int pos)
 {
     int modelIndex = 0;
+    int maxValueIndex = 0;
+    double average = 0;
     //iColumn == 0 is time
     double maxValue = 0;
     for(int filesCounter = 0; filesCounter < samplesManager->count(); ++filesCounter){
-        for(int iColumn = 1; iColumn < samplesManager->countSamples(filesCounter); ++iColumn){
+         for(int iColumn = 1; iColumn < samplesManager->countSamples(filesCounter); ++iColumn){
             const QVector<double> values = samplesManager->getColumnSamples(filesCounter, iColumn);
             double value = values.size() <= pos ? 0 : values.at(pos);
+            average += value;
             if(value > maxValue){
                 maxValue = value;
+                maxValueIndex = modelIndex + 1;
             }
             QMetaObject::invokeMethod(
                 histogram,
@@ -112,8 +139,13 @@ void Manager::move(int pos)
             ++modelIndex;
         }
     }
-    sliceMaxValue->setProperty("currentSliceMaxValue", maxValue);
+
+    numberSliceMaxValue->setProperty("text", QString("Номер максимального: %1").arg(maxValueIndex));
+    sliceMaxValue->setProperty("text", "Максимальный: " + reduce(maxValue));
+    sliceAverage->setProperty("text", "Среднее: " + reduce(modelIndex ? average / modelIndex : 0));
 }
+
+
 
 void Manager::start()
 {

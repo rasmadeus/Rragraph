@@ -25,12 +25,15 @@ private:
     QQmlContext* rootContext;
     SamplesManager* samplesManager;
     QObject* root;
+        QObject* menu;
+            QObject* starter;
         QObject* windowsModel;
             QObject* histogram;
                 QObject* mover;
-                QObject* starter;
-                QObject* firstFileTime;
+                QObject* sliceTime;
+                QObject* numberSliceMaxValue;
                 QObject* sliceMaxValue;
+                QObject* sliceAverage;
 };
 
 #endif // MANAGER_H

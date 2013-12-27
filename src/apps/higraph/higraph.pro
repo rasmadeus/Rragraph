@@ -1,6 +1,8 @@
 # Add more folders to ship with the application, here
 folder_01.source = qml/higraph
 folder_01.target = qml
+installFolder.source = qml/higraph
+installFolder.target = qml
 DEPLOYMENTFOLDERS = folder_01
 
 # Additional import path used to resolve QML modules in Creator's code model
@@ -15,7 +17,8 @@ QML_IMPORT_PATH =
 SOURCES += main.cpp
 
 # Installation path
-# target.path =
+TARGET = Higraph
+target.path = $$PWD/../../../installer/packages/higraph/data/
 
 # Please do not modify the following two lines. Required for deployment.
 include(quickViewer/quickViewer.pri)

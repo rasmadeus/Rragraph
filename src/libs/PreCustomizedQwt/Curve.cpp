@@ -149,7 +149,6 @@ void Curve::drawSymbols(
     }
 }
 
-#include <QDebug>
 QPen Curve::fillPenWithDashPattern(const QPen& src, const QString& dashes)
 {
     QPen pen;

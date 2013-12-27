@@ -12,8 +12,8 @@ Rectangle {
     }
 
 
-    width: 800
-    height: 700
+    width: 200
+    height: 200
 
     signal pathsArePrepared()
     FileDialog{
@@ -57,10 +57,33 @@ Rectangle {
     signal closeAllFiles()
     RowLayout{
         id: menu
+        objectName: "menu"
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: 10
-        anchors.bottomMargin: 10
+        anchors.bottomMargin: 20
+        ImageButton{
+            id: starter
+            objectName: "starter"
+            opacityAnimationIsActive: false
+            visible: view.currentIndex == 0
+            signal start()
+            signal pause()
+            property bool isRunning: false
+            function stop(){
+                isRunning = false
+            }
+            source: isRunning ? "qrc:/res/histogram/pause.png" : "qrc:/res/histogram/start.png"
+            onTriggered:{
+                isRunning = !isRunning
+                if(isRunning){
+                    start()
+                }
+                else{
+                    pause()
+                }
+            }
+        }
         ImageButton{
             source: "qrc:/res/menu/close.png"
             visible: view.currentIndex == 0
