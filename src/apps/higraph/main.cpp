@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
     viewer.setMainQmlFile("qml/higraph/main.qml");
     viewer.showMaximized();
 
-    new Manager(viewer.rootContext(), viewer.rootObject());
+    new Manager(viewer.rootObject());
     viewer.rootContext();
 
     return higraph.exec();

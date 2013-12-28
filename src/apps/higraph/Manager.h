@@ -10,7 +10,7 @@ class Manager : public QObject
 {
     Q_OBJECT
 public:
-    explicit Manager(QQmlContext* rootContext, QObject* root, QObject* parent = 0);
+    explicit Manager(QObject* root, QObject* parent = 0);
 private slots:
     void loadData();
     void haveBeenLoaded(int i);
@@ -18,12 +18,14 @@ private slots:
     void moveAllToMoverPos();
     void resetFileLoadingFlag();
     void start();
-    void incAll();
+    void moveAllFurther();
 private:
+    static const int COUNT_MS_FOR_UPDATING = 150;
     bool firstFileWasLoaded;
     QTimer* timer;
-    QQmlContext* rootContext;
     SamplesManager* samplesManager;
+    QObject* findObject(QObject* parent, const QString& childName);
+    void findObjects();
     QObject* root;
         QObject* menu;
             QObject* starter;

@@ -3,42 +3,45 @@
 #include "SamplesManager.h"
 #include <QQmlContext>
 #include <QTimer>
-Manager::Manager(QQmlContext* rootContext, QObject* root, QObject *parent) :
+Manager::Manager(QObject* root, QObject *parent) :
     QObject(parent),
     firstFileWasLoaded(false),
-    rootContext(rootContext),
     root(root)
 {
     timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), SLOT(incAll()));
+    connect(timer, SIGNAL(timeout()), SLOT(moveAllFurther()));
 
     samplesManager = new SamplesManager(this);
     connect(samplesManager, SIGNAL(haveBeenLoaded(int)), SLOT(haveBeenLoaded(int)));
 
-    menu = root->findChild<QObject*>("menu");
-        if(menu){
-            starter = menu->findChild<QObject*>("starter");
-            connect(starter, SIGNAL(start()), SLOT(start()));
-            connect(starter, SIGNAL(pause()), timer, SLOT(stop()));
-        }
+    findObjects();
 
-    windowsModel = root->findChild<QObject*>("windowsModel");
-    if(windowsModel){
-        histogram = windowsModel->findChild<QObject*>("histogram");
-        if(histogram){
-            mover = histogram->findChild<QObject*>("mover");
-            connect(mover, SIGNAL(valueChanged()), SLOT(moveAllToMoverPos()));
 
-            sliceTime           = histogram->findChild<QObject*>("sliceTime");
-            numberSliceMaxValue = histogram->findChild<QObject*>("numberSliceMaxValue");
-            sliceMaxValue       = histogram->findChild<QObject*>("sliceMaxValue");
-            sliceAverage        = histogram->findChild<QObject*>("sliceAverage");
-        }
-    }
-
+    connect(starter, SIGNAL(start()), SLOT(start()));
+    connect(starter, SIGNAL(pause()), timer, SLOT(stop()));
+    connect(mover, SIGNAL(valueChanged()), SLOT(moveAllToMoverPos()));
     connect(root, SIGNAL(pathsArePrepared()), SLOT(loadData()));
     connect(root, SIGNAL(closeAllFiles()), samplesManager, SLOT(clear()));
     connect(root, SIGNAL(closeAllFiles()), SLOT(resetFileLoadingFlag()));
+}
+
+
+QObject* Manager::findObject(QObject* parent, const QString& childName)
+{
+    return parent->findChild<QObject*>(childName);
+}
+
+void Manager::findObjects()
+{
+    menu = findObject(root, "menu");
+        starter = findObject(menu, "starter");
+    windowsModel = findObject(root, "windowsModel");
+        histogram = findObject(windowsModel, "histogram");
+            mover = findObject(histogram, "mover");
+            sliceTime = findObject(histogram, "sliceTime");
+            numberSliceMaxValue = findObject(histogram, "numberSliceMaxValue");
+            sliceMaxValue = findObject(histogram, "sliceMaxValue");
+            sliceAverage = findObject(histogram, "sliceAverage");
 }
 
 void Manager::resetFileLoadingFlag()
@@ -58,9 +61,8 @@ void Manager::loadData()
         samplesManager->append(url.toLocalFile());
     }
 }
-
+#include <QDebug>
 #include <QColor>
-#include <algorithm>
 void Manager::haveBeenLoaded(int i)
 {
     if(!firstFileWasLoaded){
@@ -79,10 +81,8 @@ void Manager::haveBeenLoaded(int i)
             "append"
         );
     }
-    if(samplesManager->count() == 1){
-        moveAllToMoverPos();
-    }
 
+    moveAllToMoverPos();
 }
 
 #include <QString>
@@ -106,7 +106,6 @@ void Manager::moveAllToMoverPos()
     }
     else{
         const QVector<double>& values = samplesManager->getColumnSamples(0,0);
-
         if(moverPos < values.size()){
             sliceTime->setProperty("text", "Время: " + reduce(values[moverPos]));
         }
@@ -145,14 +144,12 @@ void Manager::move(int pos)
     sliceAverage->setProperty("text", "Среднее: " + reduce(modelIndex ? average / modelIndex : 0));
 }
 
-
-
 void Manager::start()
 {
-    timer->start(150);
+    timer->start(COUNT_MS_FOR_UPDATING);
 }
 
-void Manager::incAll()
+void Manager::moveAllFurther()
 {
     const int moverPos = mover->property("value").toInt();
     mover->setProperty("value", moverPos + 1);

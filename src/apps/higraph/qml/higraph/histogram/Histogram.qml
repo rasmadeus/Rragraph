@@ -31,8 +31,12 @@ ContentBackground{
     }
 
     function setValue(i, value){
-        model.get(i).value = getRearrangedValue(value)
-    }
+        try{
+            model.get(i).value = getRearrangedValue(value)
+        }
+        catch(error){
+        }
+     }
 
     function clear(){        
         model.clear()
@@ -67,9 +71,13 @@ ContentBackground{
             id: delegateBody
             width: getDelegateWidth()
             height: getDelegateHeight(value)
+            MouseArea{
+                id: delegateMouse
+                anchors.fill: parent
+                hoverEnabled: true
+            }
         }
     }
-
     ListView{
         id: view
         anchors.fill: parent
@@ -90,7 +98,7 @@ ContentBackground{
         opacity: 0.5
         border.width: 2
         radius: 10
-        width: parent.width * 0.12
+        width: Math.max(parent.width * 0.12, numberSliceMaxValue.width + 10)
         height: info.height + 20
         visible: model.count
     }
