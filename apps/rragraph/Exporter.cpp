@@ -4,13 +4,13 @@ Exporter::Exporter():
     exportPath("Exporter/exportPath")
 {
 }
-
+#include <QDebug>
 #include "Plot.h"
 #include <QFileDialog>
 #include <QImageWriter>
 void Exporter::exportOne(Plot* src)
 {
-    const QString fileName = QFileDialog::getSaveFileName(
+    QString fileName = QFileDialog::getSaveFileName(
         src,
         tr("Export File Name"),
         exportPath(),
@@ -19,6 +19,9 @@ void Exporter::exportOne(Plot* src)
         QFileDialog::DontConfirmOverwrite
     );
     if(!fileName.isEmpty()){
+        if(!fileName.contains(".png")){
+            fileName.append(".png");
+        }
         exportPath = fileName;
         renderDocument(src, fileName, src->getExportSize());
     }

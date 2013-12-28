@@ -33,6 +33,7 @@ signals:
     void lastLoadedPathsChanged();
 private slots:
     void wasLoaded(int iFile);
+    void wasRemovedOneFile();
 private:
     void ifSaveLastPathToSettings();
     void clearWindowsAndFiles();

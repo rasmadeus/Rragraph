@@ -56,6 +56,15 @@ bool Files::isLoading(int iFile) const{
     return loaders[iFile]->isRunning();
 }
 
+bool Files::allWasLoaded() const{
+    foreach(Loader* loader, loaders) {
+        if(loader->isRunning()){
+            return false;
+        }
+    }
+    return true;
+}
+
 bool Files::isOutOfRange(int iFile) const{
     return iFile < 0 || iFile >= countSamples() ? true : false;
 }

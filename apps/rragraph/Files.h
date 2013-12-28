@@ -28,6 +28,7 @@ public:
     QString getRelativePath(int iFile) const;
     QString getLastLoadedFilePath();
     bool isLoading(int iFile) const;
+    bool allWasLoaded() const;
     void serialize(QJsonObject& root);
     void restore(QJsonObject& root);
 public slots:

@@ -1,8 +1,5 @@
 unix{
-    LIBS += -L$$PWD/../../../../../../Programs/Qt/Qwt-6.1.0/lib/ -lqwt
-    INCLUDEPATH += $$PWD/../../../../../../Programs/Qt/Qwt-6.1.0/include
-    DEPENDPATH += $$PWD/../../../../../../Programs/Qt/Qwt-6.1.0/include
-    PRE_TARGETDEPS += $$PWD/../../../../../../Programs/Qt/Qwt-6.1.0/lib/libqwt.a
+    include(/home/rasmadeus/Programs/Qt/qwt-6.1.0/features/qwt.prf)
 }
 
 win32{
