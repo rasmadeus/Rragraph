@@ -100,10 +100,12 @@ Rectangle {
         ImageButton{
             source: "qrc:/res/menu/histogram.png"
             onTriggered: view.currentIndex = 0
+            visible: view.currentIndex == 1
         }
         ImageButton{
             source: "qrc:/res/menu/help.png"
             onTriggered: view.currentIndex = 1
+            visible: view.currentIndex == 0
         }
     }
 

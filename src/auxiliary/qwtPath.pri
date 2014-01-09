@@ -3,5 +3,5 @@ win32{
 }
 
 unix{
-     include(/home/rasmadeus/Programs/Qt/qwt-6.1.0/features/qwt.prf)
+     include(/home/rasmadeus/Programs/Qt/5.2/qwt-6.1.0/features/qwt.prf)
 }

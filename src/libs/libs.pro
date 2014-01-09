@@ -4,5 +4,6 @@ CONFIG += ordered
 
 SUBDIRS += \
     FilesLoader \
-    PreCustomizedQwt
+    PreCustomizedQwt \
+    RragraphProCreator
 

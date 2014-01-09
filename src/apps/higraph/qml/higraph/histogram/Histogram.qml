@@ -92,7 +92,8 @@ ContentBackground{
 
     Rectangle{
         id: infoBackground
-        anchors.centerIn: parent
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: parent.height * 0.33
         border.color: "#090"
         color: "#fff"
         opacity: 0.5
