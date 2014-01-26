@@ -32,11 +32,11 @@ void SamplesViewer::loadFile()
 void SamplesViewer::haveBeenLoaded()
 {
     ui->samples->append(samples->getPathToSrc());
-    int n = samples->count() ? samples->getColumns(0).size() : 0;
+    int n = samples->count() ? samples->getColumn(0).size() : 0;
     for(int j = 0; j < n; ++j){
         QString res;
         for(int i = 0; i < samples->count(); ++i){
-            res.append(QString("%1 ").arg(samples->getColumns(i)[j]));
+            res.append(QString("%1 ").arg(samples->getColumn(i)[j]));
         }
         ui->samples->append(res);
     }

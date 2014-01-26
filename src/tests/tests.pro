@@ -4,4 +4,6 @@ SUBDIRS += \
     TestSamplesLoader \
     SamplesThreadTests \
     PreCustomizedQwtTest \
-    RragraphProCreatorTest
+    RragraphProCreatorTest \
+    CurvesManagerTests \
+    SamplesManagerViewTest

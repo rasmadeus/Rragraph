@@ -2,10 +2,11 @@
 #define RRAGRAPHPROCREATOR_H
 
 /*!
-  Предоставляемый интефейс предназначен для формирования
-  проектного файла программы Rragraph версии 4.1.
-*/
+ * Предоставляемый интефейс предназначен для формирования
+ * проектного файла программы Rragraph версии 4.1.
+ */
 
+class GroupProCreator;
 #include <QJsonArray>
 #include <QString>
 
@@ -36,10 +37,9 @@ public:
     void clear();
 
     /*!
-     * \brief createGroup - Метод создаёт новую группу графиков.
-     * \param groupTitle - Заголовок группы.
+     * \brief appendGroup - Метод создаёт новую группу графиков.
      */
-    void createGroup(const QString& groupTitle);
+    void appendGroup(GroupProCreator& group);
 protected:
     /*!
      * \brief groups - Содержит описание  групп графиков.

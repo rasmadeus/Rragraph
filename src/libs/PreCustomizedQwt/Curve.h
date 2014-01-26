@@ -18,8 +18,9 @@ public:
     void setSamples(const QVector<double>& xData, const QVector<double>& yData);
     int getSymbolStyle() const;
     void setSymbolStyle(int style);
+    void setPen(const QPen& pen);
     static QPen fillPenWithDashPattern(const QPen& src, const QString& dashes);
-    static QString fromPenDashPattern(const QPen& pen);
+    static QString getDashPatternFromPen(const QPen& pen);
 protected:
     void drawSymbols(
         QPainter* painter,

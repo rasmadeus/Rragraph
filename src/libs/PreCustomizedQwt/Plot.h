@@ -16,7 +16,6 @@ class Plot : public QwtPlot
 public:
     explicit Plot(QWidget* parent = 0);
     ~Plot();
-    Curves* getCurves(int iFile);
     LegendItem* getLegend();
     void autoSize();
     void setExportSize(const QSizeF& size);

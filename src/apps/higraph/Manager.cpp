@@ -61,12 +61,13 @@ void Manager::loadData()
         samplesManager->append(url.toLocalFile());
     }
 }
-#include <QDebug>
+
 #include <QColor>
+#include <Samples.h>
 void Manager::haveBeenLoaded(int i)
 {
     if(!firstFileWasLoaded){
-        const int currentSize = samplesManager->height(i);        
+        const int currentSize = samplesManager->getSamples(i)->height();
         if(currentSize >= 2){
             mover->setProperty("maximumValue",currentSize - 2);
         }
@@ -75,7 +76,7 @@ void Manager::haveBeenLoaded(int i)
         firstFileWasLoaded = true;
     }
     //j == 0 is time
-    for(int j = 1; j < samplesManager->countSamples(i); ++j){
+    for(int j = 1; j < samplesManager->getSamples(i)->count(); ++j){
         QMetaObject::invokeMethod(
             histogram,
             "append"
@@ -101,11 +102,11 @@ static QString reduce(double value)
 void Manager::moveAllToMoverPos()
 {
     const int moverPos = mover->property("value").toInt();
-    if(!samplesManager->count() || !samplesManager->countSamples(0)){
+    if(!samplesManager->count() || !samplesManager->getSamples(0)->count()){
         sliceTime->setProperty("text", 0);
     }
     else{
-        const QVector<double>& values = samplesManager->getColumnSamples(0,0);
+        const QVector<double>& values = samplesManager->getSamples(0)->getColumn(0);
         if(moverPos < values.size()){
             sliceTime->setProperty("text", "Время: " + reduce(values[moverPos]));
         }
@@ -121,8 +122,8 @@ void Manager::move(int pos)
     //iColumn == 0 is time
     double maxValue = 0;
     for(int filesCounter = 0; filesCounter < samplesManager->count(); ++filesCounter){
-         for(int iColumn = 1; iColumn < samplesManager->countSamples(filesCounter); ++iColumn){
-            const QVector<double> values = samplesManager->getColumnSamples(filesCounter, iColumn);
+         for(int iColumn = 1; iColumn < samplesManager->getSamples(filesCounter)->count(); ++iColumn){
+            const QVector<double> values = samplesManager->getSamples(filesCounter)->getColumn(iColumn);
             double value = values.size() <= pos ? 0 : values.at(pos);
             average += value;
             if(value > maxValue){

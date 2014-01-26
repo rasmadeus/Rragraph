@@ -38,9 +38,8 @@ void RragraphProCreator::clear()
     groups = QJsonArray();
 }
 
-void RragraphProCreator::createGroup(const QString& groupTitle)
+#include "GroupProCreator.h"
+void RragraphProCreator::appendGroup(GroupProCreator& group)
 {
-    QJsonObject group;
-    group.insert("title", groupTitle);
-    groups.append(group);
+    group.fill(groups);
 }

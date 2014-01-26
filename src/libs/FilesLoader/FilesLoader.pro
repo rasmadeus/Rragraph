@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       -= gui
+QT       += widgets
 
 TARGET = FilesLoader
 TEMPLATE = lib
@@ -12,8 +12,17 @@ CONFIG += staticlib c++11
 
 SOURCES += \
     Samples.cpp \
-    SamplesManager.cpp
+    SamplesManager.cpp \
+    SamplesManagerModel.cpp \
+    SamplesManagerView.cpp \
+    ListModel.cpp
 
 HEADERS += \
     Samples.h \
-    SamplesManager.h
+    SamplesManager.h \
+    SamplesManagerModel.h \
+    SamplesManagerView.h \
+    ListModel.h
+
+FORMS += \
+    SamplesManagerView.ui

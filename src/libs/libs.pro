@@ -5,5 +5,6 @@ CONFIG += ordered
 SUBDIRS += \
     FilesLoader \
     PreCustomizedQwt \
-    RragraphProCreator
+    RragraphProCreator \
+    CurvesManager
 

@@ -10,6 +10,16 @@ TARGET = RragraphProCreator
 TEMPLATE = lib
 CONFIG += staticlib
 
-SOURCES += RragraphProCreator.cpp
+SOURCES += RragraphProCreator.cpp \
+    CurveProCreator.cpp \
+    ObjectProCreator.cpp \
+    PlotProCreator.cpp \
+    CurvesProCreator.cpp \
+    GroupProCreator.cpp
 
-HEADERS += RragraphProCreator.h
+HEADERS += RragraphProCreator.h \
+    CurveProCreator.h \
+    ObjectProCreator.h \
+    PlotProCreator.h \
+    CurvesProCreator.h \
+    GroupProCreator.h

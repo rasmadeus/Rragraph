@@ -76,6 +76,12 @@ void Curve::setSymbolStyle(int style)
     }
 }
 
+void Curve::setPen(const QPen& pen)
+{
+    setSymbolStyle(symbolStyle);
+    QwtPlotCurve::setPen(pen);
+}
+
 void Curve::setSamples(const QVector<double>& xData, const QVector<double>& yData)
 {
     QVector<double> x;
@@ -162,11 +168,14 @@ QPen Curve::fillPenWithDashPattern(const QPen& src, const QString& dashes)
         const double dashValue = dash.toDouble();
         dashPattern << dashValue;
     }
+    if(dashPattern.size() % 2  == 1){
+        dashPattern << 1;
+    }
     pen.setDashPattern(dashPattern);
     return pen;
 }
 
-QString Curve::fromPenDashPattern(const QPen& pen)
+QString Curve::getDashPatternFromPen(const QPen& pen)
 {
     QString dashes;
     foreach(double dashValue, pen.dashPattern()){

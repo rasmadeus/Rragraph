@@ -13,6 +13,9 @@ public:
     QStringList headers;
     QString pathToSrc;
     SamplesLoader* loader;
+    QStringList proxyHeaders;
+    double proxyColumnAddend;
+    double proxyColumnMult;
 
     SamplesPrivateData();
     ~SamplesPrivateData();
@@ -20,6 +23,23 @@ public:
     inline void pushBackColumnsValue(int i, double value)
     {
         columns[i].push_back(value);
+    }
+
+    inline bool proxyScaleIsEmpty() const
+    {
+        return proxyColumnAddend == 0 && proxyColumnMult == 1;
+    }
+
+    QVector<double> getProxyColumn(int i) const
+    {
+        QVector<double> res;
+        std::transform(
+            columns[i].begin(),
+            columns[i].end(),
+            std::back_inserter(res),
+            [this](double value){return proxyColumnMult * value + proxyColumnAddend;}
+        );
+        return res;
     }
 };
 
@@ -67,12 +87,14 @@ private:
     {
         d->headers.clear();
         d->columns.clear();
+        d->proxyHeaders.clear();
         QRegExp rx("(\"[^\"]+\"|\\S+)");
         int pos = 0;
         while((pos = rx.indexIn(headers, pos)) != -1){
             QString header = rx.cap(1);
             removeQuotes(header);
             d->headers.push_back(header);
+            d->proxyHeaders.push_back(header);
             d->columns.push_back(QVector<double>());
             pos += rx.matchedLength();
         }
@@ -116,7 +138,9 @@ private:
     bool stopCrane;
 };
 
-SamplesPrivateData::SamplesPrivateData()
+SamplesPrivateData::SamplesPrivateData():
+    proxyColumnAddend(0),
+    proxyColumnMult(1)
 {
     loader = new SamplesLoader(this);
 }
@@ -145,7 +169,7 @@ const QStringList& Samples::getHeaders() const
     return d->headers;
 }
 
-const QVector<double>& Samples::getColumns(int i) const
+const QVector<double>& Samples::getColumn(int i) const
 {
     QMutexLocker locker(&d->locker);
     return d->columns[i];
@@ -167,6 +191,12 @@ const QString& Samples::getPathToSrc() const
 {
     QMutexLocker locker(&d->locker);
     return d->pathToSrc;
+}
+
+QFileInfo Samples::getPathSrcFileInfo() const
+{
+    QMutexLocker locker(&d->locker);
+    return QFileInfo(d->pathToSrc);
 }
 
 void Samples::load(const QString& pathToSrc)
@@ -191,4 +221,45 @@ void Samples::samplesHaveBeenLoaded()
 bool Samples::isLoading() const
 {
     return d->loader->isRunning();
+}
+
+void Samples::waitLoading() const
+{
+    while(isLoading());
+}
+
+QStringList Samples::getProxyHeaders() const
+{
+    QMutexLocker locker(&d->locker);
+    return d->proxyHeaders;
+}
+
+void Samples::setProxyHeader(const QString& header, int i)
+{
+    QMutexLocker locker(&d->locker);
+    d->proxyHeaders[i] = header;
+}
+
+QVector<double> Samples::getProxyColumn(int i) const
+{
+    QMutexLocker locker(&d->locker);
+    return d->proxyScaleIsEmpty() ? d->columns[i] : d->getProxyColumn(i);
+}
+
+void Samples::setProxyColumnAddend(double addend)
+{
+    QMutexLocker locker(&d->locker);
+    d->proxyColumnAddend = addend;
+}
+
+void Samples::setProxyColumnMult(double mult)
+{
+    QMutexLocker locker(&d->locker);
+    d->proxyColumnMult = mult;
+}
+
+void Samples::resetProxyHeaders()
+{
+    QMutexLocker locker(&d->locker);
+    d->proxyHeaders = d->headers;
 }

@@ -16,16 +16,11 @@ int SamplesManager::count() const
 }
 
 #include "Samples.h"
-int SamplesManager::height(int i) const
-{
-    return data[i]->height();
-}
-
 void SamplesManager::append(const QString& pathToSrc)
 {
     Samples* samples = new Samples();
     data.push_back(samples);
-    emit haveBeenAppend(count());
+    emit haveBeenAdded(count() - 1);
     connect(samples, SIGNAL(haveBeenLoaded(Samples*)), SLOT(haveBeenLoaded(Samples*)));
     samples->load(pathToSrc);
 }
@@ -50,25 +45,11 @@ void SamplesManager::reload(int i)
     data[i]->reload();
 }
 
-int SamplesManager::countSamples(int i) const
+void SamplesManager::replace(int i, const QString& pathToSrc)
 {
-    return data[i]->count();
+    data[i]->load(pathToSrc);
 }
 
-const QStringList& SamplesManager::getHeaderSamples(int i) const
-{
-    return data[i]->getHeaders();
-}
-
-const QVector<double>& SamplesManager::getColumnSamples(int i, int j) const
-{
-    return data[i]->getColumns(j);
-}
-
-const QString& SamplesManager::getPathToSamples(int i) const
-{
-    return data[i]->getPathToSrc();
-}
 
 void SamplesManager::clear()
 {
@@ -77,7 +58,17 @@ void SamplesManager::clear()
     }
 }
 
-bool SamplesManager::isLoading(int i) const
+const Samples* SamplesManager::getSamples(int i) const
 {
-    return data[i]->isLoading();
+    return data[i];
+}
+
+const QVector<Samples*>& SamplesManager::getSamples() const
+{
+    return data;
+}
+
+bool SamplesManager::samplesExist(int i) const
+{
+    return i >= 0 && i < count();
 }
