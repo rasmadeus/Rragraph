@@ -4,8 +4,8 @@
 #include <SamplesManagerView.h>
 #include "CurvesFiller.h"
 #include "CurvesSettings.h"
-CurvesManagerView::CurvesManagerView(QWidget *parent) :
-    QWidget(parent),
+CurvesManagerView::CurvesManagerView(SamplesManager* samplesManager, QWidget *parent) :
+    QDialog(parent),
     curvesManager(nullptr),
     ui(new Ui::CurvesManagerView)
 {
@@ -20,6 +20,7 @@ CurvesManagerView::CurvesManagerView(QWidget *parent) :
 
     samplesManagerView = new SamplesManagerView(this);
     ui->samplesLayout->addWidget(samplesManagerView);
+    samplesManagerView->setSamplesManager(samplesManager);
     connect(samplesManagerView, SIGNAL(wasActivated(int)), SLOT(setCurvesToFiller(int)));
 }
 
@@ -31,8 +32,15 @@ CurvesManagerView::~CurvesManagerView()
 #include "CurvesManager.h"
 void CurvesManagerView::setCurvesManager(CurvesManager* curvesManager)
 {
-    this->curvesManager = curvesManager;
-    samplesManagerView->setSamplesManager(curvesManager->getSamplesManager());
+    {
+        this->curvesManager = curvesManager;
+    }
+    {
+        int activeRow = samplesManagerView->getActiveRow();
+        if(activeRow != -1){
+            setCurvesToFiller(activeRow);
+        }
+    }
 }
 
 #include <SamplesManager.h>

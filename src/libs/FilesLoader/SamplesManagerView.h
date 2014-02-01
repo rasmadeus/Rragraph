@@ -17,6 +17,7 @@ public:
     explicit SamplesManagerView(QWidget *parent = 0);
     ~SamplesManagerView();
     void setSamplesManager(SamplesManager* samplesManager);
+    int getActiveRow() const;
 signals:
     void wasActivated(int i);
 private slots:

@@ -10,6 +10,7 @@ public:
     explicit ListModel(QObject *parent = 0);
     Qt::ItemFlags flags(const QModelIndex& index) const;
     QVariant data(const QModelIndex& index, int role) const;
+    int getActiveRow() const;
 protected:
     virtual QString displayRole(const QModelIndex& index) const = 0;
     virtual QFont fontRole(const QModelIndex& index) const;

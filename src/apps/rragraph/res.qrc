@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/mainWindow/addPlot.png</file>
+        <file>res/mainWindow/closeAllPlots.png</file>
+        <file>res/mainWindow/tile.png</file>
+        <file>res/mainWindow/exportAllPlotsToImages.png</file>
+        <file>res/mainWindow/exportAllGroupsToImages.png</file>
+        <file>res/mainWindow/closeAllGroups.png</file>
+        <file>res/mainWindow/addGroup.png</file>
+        <file>res/mainWindow/plot.png</file>
+        <file>res/mainWindow/scalePlots.png</file>
+    </qresource>
+</RCC>

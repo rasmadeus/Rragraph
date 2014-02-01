@@ -6,12 +6,13 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-        CurvesManagerView* curvesManagerView = new CurvesManagerView();
+        SamplesManager* samplesManager = new SamplesManager();
+        CurvesManagerView* curvesManagerView = new CurvesManagerView(samplesManager);
+        curvesManagerView->setWindowTitle("Curves manager view");
         curvesManagerView->show();
         Plot* plot = new Plot();
         plot->show();
-        SamplesManager* samplesManager = new SamplesManager();
-        CurvesManager* curvesManager = new CurvesManager(samplesManager, plot);
+        CurvesManager* curvesManager = new CurvesManager(samplesManager, plot);        
         curvesManagerView->setCurvesManager(curvesManager);
     return a.exec();
 }

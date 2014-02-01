@@ -17,7 +17,7 @@ public:
     explicit Plot(QWidget* parent = 0);
     ~Plot();
     LegendItem* getLegend();
-    void autoSize();
+    void autoscale();
     void setExportSize(const QSizeF& size);
     const QSizeF& getExportSize() const;
     double axiStep(Axis axis) const;
@@ -27,11 +27,11 @@ protected:
     void keyPressEvent(QKeyEvent* evt);
     void keyReleaseEvent(QKeyEvent* evt);
     void mouseDoubleClickEvent(QMouseEvent* evt);
+    bool controlIsPressed;
 private:
     Canvas* canvas;
     Grid* grid;
     LegendItem* legend;
-    bool controlIsPressed;
     QSizeF exportSize;
 };
 

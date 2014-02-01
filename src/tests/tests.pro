@@ -6,4 +6,5 @@ SUBDIRS += \
     PreCustomizedQwtTest \
     RragraphProCreatorTest \
     CurvesManagerTests \
-    SamplesManagerViewTest
+    SamplesManagerViewTest \
+    AuxiliaryTests

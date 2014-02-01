@@ -47,3 +47,8 @@ void SamplesManagerView::replaceSamples()
         samplesManagerModel->replace(QFileDialog::getOpenFileName(this, tr("Load file")));
     }
 }
+
+int SamplesManagerView::getActiveRow() const
+{
+    return samplesManagerModel->getActiveRow();
+}

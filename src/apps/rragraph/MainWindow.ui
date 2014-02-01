@@ -1,24 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow" >
-  <property name="geometry" >
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>415</width>
+    <height>376</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QMenuBar" name="menuBar" />
-  <widget class="QToolBar" name="mainToolBar" />
-  <widget class="QWidget" name="centralWidget" />
-  <widget class="QStatusBar" name="statusBar" />
+  <property name="styleSheet">
+   <string notr="true">QMainWindow::separator{
+     background: rgb(100, 100, 100);
+     width: 1px;
+     height: 1px;
+}
+
+QMainWindow::separator:hover{
+    background: red;
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>3</number>
+    </property>
+    <property name="leftMargin">
+     <number>3</number>
+    </property>
+    <property name="topMargin">
+     <number>3</number>
+    </property>
+    <property name="rightMargin">
+     <number>3</number>
+    </property>
+    <property name="bottomMargin">
+     <number>3</number>
+    </property>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>415</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QMenu{
+    background-color: white;
+    margin: 1px; /* some spacing around the menu */
+}
+
+QMenu::item {
+    padding: 2px 25px 2px 20px;
+    border: 1px solid transparent; /* reserve space for selection border */
+}
+
+QMenu::item:selected {
+    border-color: #555555;
+}
+
+QMenu::icon:checked { /* appearance of a 'checked' icon */
+    background: gray;
+    border: 1px inset gray;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    left: 1px;
+}
+
+QMenu::separator {
+    height: 2px;
+    background: darkgray;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+QMenu::indicator {
+    width: 13px;
+    height: 13px;
+}
+QMenuBar {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 0      #777777, 
+        stop: 0.25 #999999,
+        stop: 0.5   #aaaaaa, 
+        stop: 0.75 #cccccc, 
+        stop: 1.0    #dddddd
+    );
+    color:black;
+}
+
+QMenuBar::item {
+    spacing: 3px; /* spacing between menu bar items */
+    padding: 1px 4px;
+    background: transparent;
+    border-radius: 2px;
+}
+
+QMenuBar::item:selected { /* when selected using mouse or keyboard */
+    color: white;
+}</string>
+   </property>
+   <widget class="QMenu" name="menuProject">
+    <property name="title">
+     <string>Project</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuGroups">
+    <property name="title">
+     <string>Groups</string>
+    </property>
+    <addaction name="actionAddOneGroup"/>
+    <addaction name="actionExportAllGroupsToImages"/>
+    <addaction name="actionCloseAllGroups"/>
+   </widget>
+   <widget class="QMenu" name="menuPlots">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="title">
+     <string>Plots</string>
+    </property>
+    <widget class="QMenu" name="menuPlotsTiling">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="title">
+      <string>Tiling</string>
+     </property>
+    </widget>
+    <addaction name="actionAddPlot"/>
+    <addaction name="actionCloseAllPlots"/>
+    <addaction name="actionTile"/>
+    <addaction name="actionExportPlotsToImages"/>
+    <addaction name="actionAutoScaleAllPlots"/>
+    <addaction name="menuPlotsTiling"/>
+   </widget>
+   <addaction name="menuProject"/>
+   <addaction name="menuGroups"/>
+   <addaction name="menuPlots"/>
+  </widget>
+  <widget class="QToolBar" name="toolBarPlots">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionAddPlot"/>
+   <addaction name="actionTile"/>
+   <addaction name="actionExportPlotsToImages"/>
+   <addaction name="actionAutoScaleAllPlots"/>
+   <addaction name="actionCloseAllPlots"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="toolBarGroups">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionAddOneGroup"/>
+   <addaction name="actionExportAllGroupsToImages"/>
+   <addaction name="actionCloseAllGroups"/>
+  </widget>
+  <action name="actionAddPlot">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/mainWindow/addPlot.png</normaloff>:/res/mainWindow/addPlot.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add plot to current group</string>
+   </property>
+   <property name="toolTip">
+    <string>Add new plot to current current group.</string>
+   </property>
+  </action>
+  <action name="actionCloseAllPlots">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/mainWindow/closeAllPlots.png</normaloff>:/res/mainWindow/closeAllPlots.png</iconset>
+   </property>
+   <property name="text">
+    <string>Close all plots</string>
+   </property>
+   <property name="toolTip">
+    <string>Close all plots of current group.</string>
+   </property>
+  </action>
+  <action name="actionTile">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/mainWindow/tile.png</normaloff>:/res/mainWindow/tile.png</iconset>
+   </property>
+   <property name="text">
+    <string>Tile</string>
+   </property>
+   <property name="toolTip">
+    <string>Tile plots of current group.</string>
+   </property>
+  </action>
+  <action name="actionExportPlotsToImages">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/mainWindow/exportAllPlotsToImages.png</normaloff>:/res/mainWindow/exportAllPlotsToImages.png</iconset>
+   </property>
+   <property name="text">
+    <string>Export plots to images.</string>
+   </property>
+   <property name="toolTip">
+    <string>Export all plots of current group to png format.</string>
+   </property>
+  </action>
+  <action name="actionExportAllGroupsToImages">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/mainWindow/exportAllGroupsToImages.png</normaloff>:/res/mainWindow/exportAllGroupsToImages.png</iconset>
+   </property>
+   <property name="text">
+    <string>Export all groups to images</string>
+   </property>
+   <property name="toolTip">
+    <string>Export all groups to png images.</string>
+   </property>
+  </action>
+  <action name="actionAddOneGroup">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/mainWindow/addGroup.png</normaloff>:/res/mainWindow/addGroup.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add one group</string>
+   </property>
+   <property name="toolTip">
+    <string>Add new group to project.</string>
+   </property>
+  </action>
+  <action name="actionCloseAllGroups">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/mainWindow/closeAllGroups.png</normaloff>:/res/mainWindow/closeAllGroups.png</iconset>
+   </property>
+   <property name="text">
+    <string>Close all groups.</string>
+   </property>
+   <property name="toolTip">
+    <string>Close all groups.</string>
+   </property>
+  </action>
+  <action name="actionVerticalStraight">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Vertical straight</string>
+   </property>
+   <property name="toolTip">
+    <string>The plots of current group will be rearranged as a vertical list. If you insert a new plot, he will be insert to top of plot's list.</string>
+   </property>
+  </action>
+  <action name="actionVerticalReverse">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Vertical reverse</string>
+   </property>
+   <property name="toolTip">
+    <string>The plots of current group will be rearranged at vertical. If you insert a new plot, he will be added in bottom of plot's list.</string>
+   </property>
+  </action>
+  <action name="actionGridHorizontal">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Grid horizontal</string>
+   </property>
+   <property name="toolTip">
+    <string>The plots of current group will be rearranged as grid. If you insert a new plot, he will be added in left position of top row.</string>
+   </property>
+  </action>
+  <action name="actionAutoScaleAllPlots">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/mainWindow/scalePlots.png</normaloff>:/res/mainWindow/scalePlots.png</iconset>
+   </property>
+   <property name="text">
+    <string>Auto scale all plots</string>
+   </property>
+   <property name="toolTip">
+    <string>Scale all plots of current groups.</string>
+   </property>
+  </action>
  </widget>
- <layoutDefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
- <resources/>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

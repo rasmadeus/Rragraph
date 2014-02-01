@@ -2,25 +2,26 @@
 #define CURVESMANAGERVIEW_H
 
 class Samples;
-class CurvesManager;
+class SamplesManager;
 class SamplesManagerView;
 class CurvesFiller;
 class CurvesSettings;
-#include <QWidget>
+class CurvesManager;
+#include <QDialog>
 
 namespace Ui {
 class CurvesManagerView;
 }
 
-class CurvesManagerView : public QWidget
+class CurvesManagerView : public QDialog
 {
     Q_OBJECT
 public:
-    explicit CurvesManagerView(QWidget *parent = 0);
+    explicit CurvesManagerView(SamplesManager* samplesManager, QWidget* parent = 0);
     ~CurvesManagerView();
     void setCurvesManager(CurvesManager* curvesManager);
 Q_SIGNALS:
-    void wasChoosen(Samples* samples);
+    void wasChoosen(const Samples* samples);
 private slots:
     void setCurvesToFiller(int i);
 private:

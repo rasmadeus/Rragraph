@@ -4,7 +4,7 @@
 #include "Canvas.h"
 #include "Grid.h"
 #include "LegendItem.h"
-Plot::Plot(QWidget *parent) :
+Plot::Plot(QWidget* parent) :
     QwtPlot(parent),
     controlIsPressed(false),
     exportSize(100, 100)
@@ -48,7 +48,7 @@ void Plot::keyReleaseEvent(QKeyEvent* evt)
     QwtPlot::keyReleaseEvent(evt);
 }
 
-void Plot::autoSize()
+void Plot::autoscale()
 {
     canvas->setZoomBase();
     setAxisAutoScale(xBottom);
@@ -61,7 +61,7 @@ void Plot::autoSize()
 void Plot::mouseDoubleClickEvent(QMouseEvent* evt)
 {
     Q_UNUSED(evt)
-    autoSize();
+    autoscale();
 }
 
 void Plot::setExportSize(const QSizeF& size)

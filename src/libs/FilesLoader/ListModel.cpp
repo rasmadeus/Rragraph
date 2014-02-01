@@ -56,3 +56,8 @@ void ListModel::resetModel()
     beginResetModel();
     endResetModel();
 }
+
+int ListModel::getActiveRow() const
+{
+    return activeRow;
+}
