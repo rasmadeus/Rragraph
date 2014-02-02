@@ -24,6 +24,7 @@ public:
     const Samples* getSamples() const;
     void clear();
     int count() const;
+    Plot* getOwner() const;
 private:
     void setSamplesForCurve(int iY);
     int iX;

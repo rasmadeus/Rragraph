@@ -1,5 +1,7 @@
 #include "PlotsGroups.h"
 
+Path PlotsGroups::exportPath("appSettings.ini", "paths/exportPath");
+
 PlotsGroups::PlotsGroups(QWidget* parent) :
     QTabWidget(parent)
 {
@@ -114,9 +116,27 @@ void PlotsGroups::addPlot()
     getGroup()->insertPlot();
 }
 
-void PlotsGroups::exportActiveGroup()
+void PlotsGroups::exportActiveGroupToPng()
 {
+    QString dir = exportPath.getExistingDirectory(this, tr("Export plots to"));
+    if(!dir.isEmpty()){
+        getGroup()->exportToPng(dir);
+    }
+}
 
+#include <QDir>
+void PlotsGroups::exportToPng()
+{
+    QString dir = exportPath.getExistingDirectory(this, tr("Export all groups to"));
+    if(!dir.isEmpty()){
+        QDir creator;
+        for(int i = 0; i < groups.size(); ++i){
+            QString subDir = dir + "/" + tabText(i);
+            if(creator.mkdir(subDir)){
+                groups[i]->exportToPng(subDir);
+            }
+        }
+    }
 }
 
 void PlotsGroups::autoScaleActiveGroup()

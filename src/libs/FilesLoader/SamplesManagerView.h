@@ -3,16 +3,16 @@
 
 class SamplesManager;
 class SamplesManagerModel;
+#include "Path.h"
 #include <QWidget>
 
 namespace Ui {
-class SamplesManagerView;
+    class SamplesManagerView;
 }
 
 class SamplesManagerView : public QWidget
 {
     Q_OBJECT
-
 public:
     explicit SamplesManagerView(QWidget *parent = 0);
     ~SamplesManagerView();
@@ -20,6 +20,7 @@ public:
     int getActiveRow() const;
 signals:
     void wasActivated(int i);
+    void wasCleaned();
 private slots:
     void insertNewSamples();
     void removeSamples();
@@ -27,6 +28,7 @@ private slots:
 private:
     Ui::SamplesManagerView *ui;
     SamplesManagerModel* samplesManagerModel;
+    static Path samplesLoadingPath;
 };
 
 #endif // SAMPLESMANAGERVIEW_H

@@ -14,6 +14,9 @@ CurveSettings::CurveSettings(QWidget *parent) :
     connect(ui->curve, SIGNAL(clicked(bool)), SLOT(setCurveVisible(bool)));
     connect(ui->symbolStyle, SIGNAL(activated(int)), SLOT(setSymbolStyle(int)));
     connect(ui->dashPattern, SIGNAL(textChanged(QString)), SLOT(setCurveDashPattern(QString)));
+    connect(ui->addendX, SIGNAL(valueChanged(double)), SLOT(setAddendX(double)));
+    connect(ui->addendY, SIGNAL(valueChanged(double)), SLOT(setAddendY(double)));
+    connect(ui->multY, SIGNAL(valueChanged(double)), SLOT(setMultY(double)));
     setDataFromCurve();    
 }
 
@@ -37,11 +40,14 @@ void CurveSettings::fillSymbol()
     ui->symbolStyle->addItem(tr("Star2"),     QwtSymbol::Star2);
 }
 
+#include <Plot.h>
 #include <Curve.h>
+#include "Curves.h"
 void CurveSettings::setSymbolStyle(int i)
 {
     curve->setSymbolStyle(ui->symbolStyle->itemData(i).toInt());
     update();
+    curves->getOwner()->replot();
 }
 
 CurveSettings::~CurveSettings()
@@ -49,9 +55,10 @@ CurveSettings::~CurveSettings()
     delete ui;
 }
 
-void CurveSettings::setCurve(Curve* curve)
+void CurveSettings::setCurve(Curves* curves, Curve* curve)
 {
     this->curve = curve;
+    this->curves = curves;
     setDataFromCurve();
 }
 
@@ -95,6 +102,7 @@ void CurveSettings::setCurveColor()
     if(color.isValid()){
         pen.setColor(color);
         curve->setPen(pen);
+        curves->getOwner()->replot();
     }
 }
 
@@ -104,6 +112,7 @@ void CurveSettings::setCurveWidth(int width)
     pen.setWidth(width);
     curve->setPen(pen);
     update();
+    curves->getOwner()->replot();
 }
 
 #include <QPainter>
@@ -126,11 +135,37 @@ bool CurveSettings::eventFilter(QObject* obj, QEvent* evt)
 void CurveSettings::setCurveVisible(bool clicked)
 {
     curve->setVisible(clicked);
+    if(!clicked){
+        curve->detach();
+    }
+    else{
+        curve->attach(curves->getOwner());
+    }
+    curves->getOwner()->replot();
 }
 
 void CurveSettings::setCurveDashPattern(const QString& dashPattern)
 {
     QPen pen = curve->pen();
     curve->setPen(Curve::fillPenWithDashPattern(pen, dashPattern));
+    curves->getOwner()->replot();
     update();
+}
+
+void CurveSettings::setAddendX(double addend)
+{
+    curve->setAddendX(addend);
+    curves->resamples();
+}
+
+void CurveSettings::setAddendY(double addend)
+{
+    curve->setAddendY(addend);
+    curves->resamples();
+}
+
+void CurveSettings::setMultY(double mult)
+{
+    curve->setMultY(mult);
+    curves->resamples();
 }

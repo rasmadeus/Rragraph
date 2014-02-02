@@ -1,6 +1,8 @@
 #include "SamplesManagerView.h"
 #include "ui_SamplesManagerView.h"
 
+Path SamplesManagerView::samplesLoadingPath("appSettings.ini","paths/samplesLoadingPath");
+
 #include "SamplesManagerModel.h"
 SamplesManagerView::SamplesManagerView(QWidget *parent) :
     QWidget(parent),
@@ -14,6 +16,7 @@ SamplesManagerView::SamplesManagerView(QWidget *parent) :
     connect(ui->replaceSamples, SIGNAL(clicked()), SLOT(replaceSamples()));
     connect(ui->samplesList, SIGNAL(pressed(QModelIndex)), samplesManagerModel, SLOT(setActiveRow(QModelIndex)));
     connect(samplesManagerModel, SIGNAL(wasActivated(int)), SIGNAL(wasActivated(int)));
+    connect(samplesManagerModel, SIGNAL(wasCleaned()), SIGNAL(wasCleaned()));
 }
 
 SamplesManagerView::~SamplesManagerView()
@@ -27,11 +30,9 @@ void SamplesManagerView::setSamplesManager(SamplesManager* samplesManager)
 }
 
 #include <QFileDialog>
-#include "SamplesManager.h"
 void SamplesManagerView::insertNewSamples()
 {
-    QStringList pathsToSrc = QFileDialog::getOpenFileNames(this, tr("Load files"));
-    foreach(const QString& path, pathsToSrc){
+    foreach(const QString& path, samplesLoadingPath.getOpenFileNames(this, tr("Load data files"))){
         samplesManagerModel->append(path);
     }
 }
@@ -44,7 +45,10 @@ void SamplesManagerView::removeSamples()
 void SamplesManagerView::replaceSamples()
 {
     if(samplesManagerModel->rowCount()){
-        samplesManagerModel->replace(QFileDialog::getOpenFileName(this, tr("Load file")));
+        QString path = samplesLoadingPath.getOpenFileName(this, tr("Replace with"));
+        if(!path.isEmpty()){
+            samplesManagerModel->replace(path);
+        }
     }
 }
 

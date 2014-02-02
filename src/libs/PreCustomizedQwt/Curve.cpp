@@ -78,8 +78,8 @@ void Curve::setSymbolStyle(int style)
 
 void Curve::setPen(const QPen& pen)
 {
-    setSymbolStyle(symbolStyle);
     QwtPlotCurve::setPen(pen);
+    setSymbolStyle(symbolStyle);
 }
 
 void Curve::setSamples(const QVector<double>& xData, const QVector<double>& yData)

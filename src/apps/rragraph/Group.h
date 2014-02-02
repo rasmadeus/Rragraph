@@ -1,7 +1,7 @@
 #ifndef GROUP_H
 #define GROUP_H
 
-class CurvesCustomizer;
+class CurvesManagerView;
 class SamplesManager;
 class PlotWithCurves;
 #include <QMdiArea>
@@ -29,14 +29,15 @@ public slots:
     PlotWithCurves* insertPlot();
     void tile();
     void autoscale();
+    void exportToPng(const QString& dir);
 private slots:
     void retitle();
 private:
-    void forEachPlotDo(const std::function<void (PlotWithCurves*)>& action);
+    void forEachPlotDo(const std::function<void (QMdiSubWindow*, PlotWithCurves*)>& action);
     TileType tileType;
     QString name;
     SamplesManager* samplesManager;
-    CurvesCustomizer* curvesCustomizer;
+    CurvesManagerView* curvesManagerView;
 };
 
 #endif // GROUP_H

@@ -32,3 +32,13 @@ Curve* CurvesModel::getCurve() const
 {
     return curves->getCurveFrom(activeRow);
 }
+
+Plot* CurvesModel::getOwner() const
+{
+    return curves->getOwner();
+}
+
+Curves* CurvesModel::getCurves() const
+{
+    return curves;
+}

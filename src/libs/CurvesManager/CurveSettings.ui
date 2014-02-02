@@ -224,7 +224,7 @@ QToolButton:disabled{
           </widget>
          </item>
          <item>
-          <widget class="QDoubleSpinBox" name="addendY_2">
+          <widget class="QDoubleSpinBox" name="addendY">
            <property name="toolTip">
             <string>Addend for current curve's ordinate.</string>
            </property>

@@ -68,6 +68,11 @@ void Curves::setX(int iX)
     }
 }
 
+Plot* Curves::getOwner() const
+{
+    return owner;
+}
+
 void Curves::setY(int iY)
 {
     if(curves.contains(iY)){

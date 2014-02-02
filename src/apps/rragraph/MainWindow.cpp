@@ -25,6 +25,7 @@ void MainWindow::createPlotsGroups()
     connect(ui->actionAddOneGroup, SIGNAL(triggered()), plotsGroups, SLOT(addPlots()));
     connect(ui->actionCloseAllGroups, SIGNAL(triggered()), plotsGroups, SLOT(closeGroups()));
     connect(ui->actionAutoScaleAllPlots, SIGNAL(triggered()), plotsGroups, SLOT(autoScaleActiveGroup()));
+    connect(ui->actionExportAllGroupsToImages, SIGNAL(triggered()), plotsGroups, SLOT(exportToPng()));
     connect(plotsGroups, SIGNAL(hasGroups(bool)), ui->menuPlots, SLOT(setEnabled(bool)));
     connect(plotsGroups, SIGNAL(hasGroups(bool)), ui->toolBarPlots, SLOT(setEnabled(bool)));
     connect(plotsGroups, SIGNAL(groupChanged(Group*)), SLOT(setActiveActionOfTilingMenu(Group*)));
@@ -35,7 +36,7 @@ void MainWindow::routePlotsMenu()
     connect(ui->actionAddPlot, SIGNAL(triggered()), plotsGroups, SLOT(addPlot()));
     connect(ui->actionCloseAllPlots, SIGNAL(triggered()), plotsGroups, SLOT(clearActiveGroup()));
     connect(ui->actionTile, SIGNAL(triggered()), plotsGroups, SLOT(tileActiveGroup()));
-    connect(ui->actionExportPlotsToImages, SIGNAL(triggered()), plotsGroups, SLOT(exportActiveGroup()));
+    connect(ui->actionExportPlotsToImages, SIGNAL(triggered()), plotsGroups, SLOT(exportActiveGroupToPng()));
 }
 
 #include <QActionGroup>

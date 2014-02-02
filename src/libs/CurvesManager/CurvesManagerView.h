@@ -24,12 +24,16 @@ Q_SIGNALS:
     void wasChoosen(const Samples* samples);
 private slots:
     void setCurvesToFiller(int i);
+    void setSamplesPathToWindowTitle(int i);
+    void setRawWindowTitle();
+    void updateCurvesToFiller(int i);
 private:
+    Ui::CurvesManagerView *ui;
     SamplesManagerView* samplesManagerView;
     CurvesFiller* curvesFiller;
     CurvesSettings* curvesSettings;
     CurvesManager* curvesManager;
-    Ui::CurvesManagerView *ui;
+    SamplesManager* samplesManager;
 };
 
 #endif // CURVESMANAGERVIEW_H

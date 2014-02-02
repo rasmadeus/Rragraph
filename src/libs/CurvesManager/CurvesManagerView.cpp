@@ -4,10 +4,12 @@
 #include <SamplesManagerView.h>
 #include "CurvesFiller.h"
 #include "CurvesSettings.h"
+#include <SamplesManager.h>
 CurvesManagerView::CurvesManagerView(SamplesManager* samplesManager, QWidget *parent) :
     QDialog(parent),
+    ui(new Ui::CurvesManagerView),
     curvesManager(nullptr),
-    ui(new Ui::CurvesManagerView)
+    samplesManager(samplesManager)
 {
     ui->setupUi(this);
 
@@ -22,6 +24,10 @@ CurvesManagerView::CurvesManagerView(SamplesManager* samplesManager, QWidget *pa
     ui->samplesLayout->addWidget(samplesManagerView);
     samplesManagerView->setSamplesManager(samplesManager);
     connect(samplesManagerView, SIGNAL(wasActivated(int)), SLOT(setCurvesToFiller(int)));
+    connect(samplesManagerView, SIGNAL(wasActivated(int)), SLOT(setSamplesPathToWindowTitle(int)));
+    connect(samplesManagerView, SIGNAL(wasCleaned()), SLOT(setRawWindowTitle()));
+
+    connect(samplesManager, SIGNAL(haveBeenLoaded(int)), SLOT(updateCurvesToFiller(int)));
 }
 
 CurvesManagerView::~CurvesManagerView()
@@ -50,4 +56,23 @@ void CurvesManagerView::setCurvesToFiller(int i)
     curvesFiller->setCurves(curves);
     curvesSettings->setCurves(curves);
     emit wasChoosen(curvesManager->getSamplesManager()->getSamples(i));
+}
+
+#include <Samples.h>
+void CurvesManagerView::setSamplesPathToWindowTitle(int i)
+{
+    setWindowTitle(samplesManager->getSamples(i)->getPathToSrc());
+}
+
+void CurvesManagerView::setRawWindowTitle()
+{
+    setWindowTitle(tr("Curves manager"));
+    curvesFiller->setCurves(nullptr);
+}
+
+void CurvesManagerView::updateCurvesToFiller(int i)
+{
+    if(i == samplesManagerView->getActiveRow()){
+        setCurvesToFiller(i);
+    }
 }

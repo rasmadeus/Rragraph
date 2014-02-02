@@ -17,6 +17,8 @@ public:
     void replace(const QString& pathToSrc);
 protected:
     QString displayRole(const QModelIndex& index) const;
+signals:
+    void wasCleaned();
 private:
     SamplesManager* samplesManager;
 };

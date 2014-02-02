@@ -1,6 +1,9 @@
 #include <QApplication>
 #include <CurveSettings.h>
 #include <Curve.h>
+#include <Plot.h>
+#include <Curves.h>
+#include <Samples.h>
 int main(int argc, char *argv[])
 {
     QApplication CurveSettingsTest(argc, argv);
@@ -11,6 +14,6 @@ int main(int argc, char *argv[])
         curve.setPen(pen);
         CurveSettings curveSettings;
         curveSettings.show();
-        curveSettings.setCurve(&curve);
+        curveSettings.setCurve(new Curves(new Plot(), new Samples()), &curve);
     return CurveSettingsTest.exec();
 }

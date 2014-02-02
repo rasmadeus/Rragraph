@@ -1,6 +1,7 @@
 #ifndef CURVESMODEL_H
 #define CURVESMODEL_H
 
+class Plot;
 class Curve;
 class Curves;
 #include "ListModel.h"
@@ -13,6 +14,8 @@ public:
     void setCurves(Curves* curves);
     int rowCount(const QModelIndex& parent = QModelIndex()) const;
     Curve* getCurve() const;
+    Plot* getOwner() const;
+    Curves* getCurves() const;
 protected:
     QString displayRole(const QModelIndex& index) const;
 private:

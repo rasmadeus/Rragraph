@@ -3,19 +3,19 @@
 
 class SamplesManager;
 class CurvesManager;
-class CurvesCustomizer;
+class CurvesManagerView;
 #include <Plot.h>
 
 class PlotWithCurves : public Plot
 {
     Q_OBJECT
 public:
-    PlotWithCurves(SamplesManager* samplesManager, CurvesCustomizer* curvesCustomizer, QWidget* parent = 0);
+    PlotWithCurves(SamplesManager* samplesManager, CurvesManagerView *curvesManagerView, QWidget* parent = 0);
     ~PlotWithCurves();
 protected:
     void mousePressEvent(QMouseEvent* event);
 private:
-    CurvesCustomizer* curvesCustomizer;
+    CurvesManagerView* curvesManagerView;
     CurvesManager* curvesManager;
 };
 

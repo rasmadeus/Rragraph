@@ -23,7 +23,7 @@ CurvesSettings::~CurvesSettings()
 
 void CurvesSettings::setCurveSettings()
 {
-    curveSettings->setCurve(curvesModel->getCurve());
+    curveSettings->setCurve(curvesModel->getCurves(), curvesModel->getCurve());
 }
 
 void CurvesSettings::setCurves(Curves* curves)

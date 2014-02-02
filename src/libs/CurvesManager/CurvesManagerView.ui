@@ -2,22 +2,23 @@
 <ui version="4.0">
  <class>CurvesManagerView</class>
  <widget class="QDialog" name="CurvesManagerView">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>546</width>
-    <height>335</height>
+    <width>536</width>
+    <height>398</height>
    </rect>
   </property>
-  <property name="minimumSize">
-   <size>
-    <width>400</width>
-    <height>0</height>
-   </size>
-  </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Curves manager</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../apps/rragraph/res.qrc">
+    <normaloff>:/res/mainWindow/curvesManager.png</normaloff>:/res/mainWindow/curvesManager.png</iconset>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1,2">
    <property name="spacing">
@@ -58,6 +59,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../apps/rragraph/res.qrc"/>
+ </resources>
  <connections/>
 </ui>

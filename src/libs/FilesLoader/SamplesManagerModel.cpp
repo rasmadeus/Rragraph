@@ -12,6 +12,7 @@ void SamplesManagerModel::setSamplesManager(SamplesManager* samplesManager)
     beginResetModel();
         activeRow = -1;
         this->samplesManager = samplesManager;
+        connect(samplesManager, SIGNAL(haveBeenAdded(int)), SLOT(resetModel()));
     endResetModel();
 }
 
@@ -24,9 +25,7 @@ int SamplesManagerModel::rowCount(const QModelIndex& parent) const
 void SamplesManagerModel::append(const QString& pathToSrc)
 {
     if(samplesManager){
-        beginResetModel();
-            samplesManager->append(pathToSrc);
-        endResetModel();
+        samplesManager->append(pathToSrc);
     }
 }
 
@@ -36,10 +35,13 @@ void SamplesManagerModel::remove()
         if(samplesManager->samplesExist(activeRow)){
             beginResetModel();
                 samplesManager->remove(activeRow);
-                if(activeRow > 0){
-                    --activeRow;
-                }
+                --activeRow;
             endResetModel();
+            if(activeRow >= 0){
+                emit wasActivated(activeRow);
+            }else{
+                emit wasCleaned();
+            }
         }
     }
 }
@@ -48,9 +50,7 @@ void SamplesManagerModel::replace(const QString& pathToSrc)
 {
     if(samplesManager){
         if(samplesManager->samplesExist(activeRow)){
-            beginResetModel();
-                samplesManager->replace(activeRow, pathToSrc);
-            endResetModel();
+            samplesManager->replace(activeRow, pathToSrc);
         }
     }
 }

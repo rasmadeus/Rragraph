@@ -15,14 +15,16 @@ SOURCES += \
     SamplesManager.cpp \
     SamplesManagerModel.cpp \
     SamplesManagerView.cpp \
-    ListModel.cpp
+    ListModel.cpp \
+    Path.cpp
 
 HEADERS += \
     Samples.h \
     SamplesManager.h \
     SamplesManagerModel.h \
     SamplesManagerView.h \
-    ListModel.h
+    ListModel.h \
+    Path.h
 
 FORMS += \
     SamplesManagerView.ui

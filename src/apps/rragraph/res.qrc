@@ -9,5 +9,6 @@
         <file>res/mainWindow/addGroup.png</file>
         <file>res/mainWindow/plot.png</file>
         <file>res/mainWindow/scalePlots.png</file>
+        <file>res/mainWindow/curvesManager.png</file>
     </qresource>
 </RCC>

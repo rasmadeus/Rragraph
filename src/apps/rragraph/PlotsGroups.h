@@ -3,6 +3,7 @@
 
 class Group;
 #include <QTabWidget>
+#include <Path.h>
 
 class PlotsGroups : public QTabWidget
 {
@@ -15,9 +16,10 @@ public slots:
     void clearActiveGroup();
     void tileActiveGroup();
     void addPlot();
-    void exportActiveGroup();
+    void exportActiveGroupToPng();
+    void exportToPng();
     void autoScaleActiveGroup();
-    void setGroupTiling(QAction* action);
+    void setGroupTiling(QAction* action);    
 signals:
     void hasGroups(bool);
     void groupChanged(Group* plots);
@@ -30,6 +32,7 @@ private:
     void setLookAndFeel();
     void retitle();
     QVector<Group*> groups;
+    static Path exportPath;
 };
 
 #endif // PLOTSGROUPS_H1

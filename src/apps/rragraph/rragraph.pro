@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui printsupport
 CONFIG += c++11
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -42,14 +42,11 @@ include($$PWD/PlotsGroups.pri)
 include($$PWD/Plots.pri)
 
 SOURCES += main.cpp\
-        MainWindow.cpp \
-    CurvesCustomizer.cpp
+        MainWindow.cpp
 
-HEADERS  += MainWindow.h \
-    CurvesCustomizer.h
+HEADERS  += MainWindow.h
 
-FORMS    += MainWindow.ui \
-    CurvesCustomizer.ui
+FORMS    += MainWindow.ui
 
 RESOURCES += \
     res.qrc

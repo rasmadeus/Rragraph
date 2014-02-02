@@ -1,6 +1,7 @@
 #ifndef CURVESETTINGS_H
 #define CURVESETTINGS_H
 
+class Curves;
 #include <QWidget>
 
 namespace Ui {
@@ -15,7 +16,7 @@ class CurveSettings : public QWidget
 public:
     explicit CurveSettings(QWidget *parent = 0);
     ~CurveSettings();
-    void setCurve(Curve* curve);
+    void setCurve(Curves* curves, Curve* curve);
 protected:
     bool eventFilter(QObject* obj, QEvent* evt);
 private slots:
@@ -24,12 +25,16 @@ private slots:
     void setCurveVisible(bool clicked);
     void setSymbolStyle(int i);
     void setCurveDashPattern(const QString& dashPattern);
+    void setAddendX(double addend);
+    void setAddendY(double addend);
+    void setMultY(double mult);
 private:
     void setDataFromCurve();
     void restore();
     void fillSymbol();
     Ui::CurveSettings *ui;
     Curve* curve;
+    Curves* curves;
 };
 
 #endif // CURVESETTINGS_H

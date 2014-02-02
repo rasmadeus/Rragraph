@@ -1,7 +1,7 @@
 #include "Group.h"
 
 #include <SamplesManager.h>
-#include "CurvesCustomizer.h"
+#include <CurvesManagerView.h>
 Group::Group(QWidget* parent) :
     QMdiArea(parent),
     tileType(GRID_HORIZONTAL)
@@ -9,7 +9,7 @@ Group::Group(QWidget* parent) :
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     samplesManager = new SamplesManager();
-    curvesCustomizer = new CurvesCustomizer(samplesManager, this);
+    curvesManagerView = new CurvesManagerView(samplesManager, this);
 }
 
 Group::~Group()
@@ -24,7 +24,7 @@ PlotWithCurves* Group::insertPlot()
     QMdiSubWindow* window = new QMdiSubWindow;
     window->setMinimumSize(250, 150);
     window->setWindowIcon(QIcon(":/res/mainWindow/plot.png"));
-    PlotWithCurves* plot = new PlotWithCurves(samplesManager, curvesCustomizer, window);
+    PlotWithCurves* plot = new PlotWithCurves(samplesManager, curvesManagerView, window);
     plot->connect(plot, SIGNAL(destroyed()), this, SLOT(retitle()));
     window->setWidget(plot);
     window->setAttribute(Qt::WA_DeleteOnClose);
@@ -83,19 +83,32 @@ Group::TileType Group::getTileType() const
     return tileType;
 }
 
-void Group::forEachPlotDo(const std::function<void (PlotWithCurves *)>& action)
+void Group::forEachPlotDo(const std::function<void (QMdiSubWindow*, PlotWithCurves*)>& action)
 {
     foreach(QMdiSubWindow* window, subWindowList()){
-        action(static_cast<PlotWithCurves*>(window->widget()));
+        action(window, static_cast<PlotWithCurves*>(window->widget()));
     }
 }
 
 void Group::autoscale()
 {
-    forEachPlotDo([](PlotWithCurves* plot){plot->autoscale();});
+    forEachPlotDo([](QMdiSubWindow*, PlotWithCurves* plot){plot->autoscale();});
 }
 
 SamplesManager* Group::getSamplesManager() const
 {
     return samplesManager;
+}
+
+#include <qwt_plot_renderer.h>
+void Group::exportToPng(const QString& dir)
+{
+    QwtPlotRenderer exporter;
+    forEachPlotDo(
+        [&](QMdiSubWindow* window, PlotWithCurves* plot){
+            QString plotTitle = window->windowTitle();
+            QString fileName = dir + "/" + plotTitle + ".png";
+            exporter.renderDocument(plot, fileName, plot->getExportSize());
+        }
+    );
 }

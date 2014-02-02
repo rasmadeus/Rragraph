@@ -112,17 +112,13 @@ private:
     inline void createColumns(QTextStream& rawDataStreamer)
     {
         while(!(rawDataStreamer.atEnd() || stopCrane)){
-            QStringList column = rawDataStreamer
-                .readLine()
-                .simplified()
-                .replace(",", ".")
-                .split(" ");
-            if(column.isEmpty()){
-                continue;
-            }
-            rearrange(column);
-            for(int i = 0; i < d->headers.size(); ++i){
-                d->pushBackColumnsValue(i, column[i].toDouble());
+            QString line = rawDataStreamer.readLine().simplified();
+            if(!line.isEmpty()){
+                QStringList column = line.replace(",", ".").split(" ");
+                rearrange(column);
+                for(int i = 0; i < d->headers.size(); ++i){
+                    d->pushBackColumnsValue(i, column[i].toDouble());
+                }
             }
         }
     }
@@ -177,7 +173,6 @@ const QVector<double>& Samples::getColumn(int i) const
 
 int Samples::count() const
 {
-    QMutexLocker locker(&d->locker);
     return d->headers.count();
 }
 
@@ -189,13 +184,11 @@ int Samples::height() const
 
 const QString& Samples::getPathToSrc() const
 {
-    QMutexLocker locker(&d->locker);
-    return d->pathToSrc;
+     return d->pathToSrc;
 }
 
 QFileInfo Samples::getPathSrcFileInfo() const
 {
-    QMutexLocker locker(&d->locker);
     return QFileInfo(d->pathToSrc);
 }
 
@@ -248,13 +241,11 @@ QVector<double> Samples::getProxyColumn(int i) const
 
 void Samples::setProxyColumnAddend(double addend)
 {
-    QMutexLocker locker(&d->locker);
     d->proxyColumnAddend = addend;
 }
 
 void Samples::setProxyColumnMult(double mult)
 {
-    QMutexLocker locker(&d->locker);
     d->proxyColumnMult = mult;
 }
 
