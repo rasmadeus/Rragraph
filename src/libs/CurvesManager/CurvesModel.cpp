@@ -6,15 +6,15 @@ CurvesModel::CurvesModel(QObject *parent) :
 {
 }
 
+#include "Curves.h"
 void CurvesModel::setCurves(Curves* curves)
 {
     beginResetModel();
         this->curves = curves;
-        activeRow = -1;
+        activeRow = -1;  
     endResetModel();
 }
 
-#include "Curves.h"
 int CurvesModel::rowCount(const QModelIndex& parent) const
 {
     Q_UNUSED(parent)

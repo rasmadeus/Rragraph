@@ -1,6 +1,7 @@
 #ifndef CURVESETTINGS_H
 #define CURVESETTINGS_H
 
+class Plot;
 class Curves;
 #include <QWidget>
 
@@ -34,6 +35,7 @@ private:
     void fillSymbol();
     Ui::CurveSettings *ui;
     Curve* curve;
+    Plot* owner;
     Curves* curves;
 };
 

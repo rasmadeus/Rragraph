@@ -10,5 +10,10 @@
         <file>res/mainWindow/plot.png</file>
         <file>res/mainWindow/scalePlots.png</file>
         <file>res/mainWindow/curvesManager.png</file>
+        <file>res/mainWindow/loadProject.png</file>
+        <file>res/mainWindow/reloadProject.png</file>
+        <file>res/mainWindow/saveProject.png</file>
+        <file>res/mainWindow/Bicubik.OTF</file>
+        <file>res/mainWindow/copySettings.png</file>
     </qresource>
 </RCC>

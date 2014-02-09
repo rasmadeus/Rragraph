@@ -20,7 +20,7 @@ public:
     void autoscale();
     void setExportSize(const QSizeF& size);
     const QSizeF& getExportSize() const;
-    double axiStep(Axis axis) const;
+    double axisStep(Axis axis) const;
 Q_SIGNALS:
     void zoomed();
 protected:

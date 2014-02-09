@@ -74,7 +74,7 @@ const QSizeF& Plot::getExportSize() const
     return exportSize;
 }
 
-double Plot::axiStep(Axis axis) const
+double Plot::axisStep(Axis axis) const
 {
     const QList<double> ticks = axisScaleDiv(axis).ticks(QwtScaleDiv::MajorTick);
     return (ticks.size() > 1) ? (ticks[1] - ticks[0]) : 0;

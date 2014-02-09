@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 class Group;
-class PlotsGroups;
+class Groups;
 
 #include <QMainWindow>
 
@@ -22,8 +22,9 @@ private:
     void createPlotsGroups();
     void routePlotsMenu();
     void createPlotsTilingMenu();
+    void createPlotSettingsView();
     Ui::MainWindow *ui;
-    PlotsGroups* plotsGroups;
+    Groups* plotsGroups;
 };
 
 #endif // MAINWINDOW_H

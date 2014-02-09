@@ -27,6 +27,7 @@ public:
     Plot* getOwner() const;
 private:
     void setSamplesForCurve(int iY);
+    void updateCurveTitle(int iY);
     int iX;
     Plot* owner;
     const Samples* samples;

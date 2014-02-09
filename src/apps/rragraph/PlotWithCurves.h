@@ -10,7 +10,7 @@ class PlotWithCurves : public Plot
 {
     Q_OBJECT
 public:
-    PlotWithCurves(SamplesManager* samplesManager, CurvesManagerView *curvesManagerView, QWidget* parent = 0);
+    PlotWithCurves(SamplesManager* samplesManager, CurvesManagerView* curvesManagerView, QWidget* parent = 0);
     ~PlotWithCurves();
 protected:
     void mousePressEvent(QMouseEvent* event);

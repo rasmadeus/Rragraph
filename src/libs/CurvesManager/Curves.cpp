@@ -37,6 +37,7 @@ void Curves::resamples()
         }
         else{
             setSamplesForCurve(iY);
+            updateCurveTitle(iY);
         }
     }
     owner->replot();
@@ -120,4 +121,10 @@ QList<int> Curves::getCurvesKeys() const
 const Samples* Curves::getSamples() const
 {
     return samples;
+}
+
+void Curves::updateCurveTitle(int iY)
+{
+    Curve* curve = curves.value(iY);
+    curve->setTitle(samples->getProxyHeaders()[iY]);
 }

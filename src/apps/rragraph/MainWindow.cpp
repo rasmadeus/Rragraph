@@ -1,7 +1,7 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 
-#include "PlotsGroups.h"
+#include "Groups.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     createPlotsGroups();
     routePlotsMenu();
     createPlotsTilingMenu();
-
+    createPlotSettingsView();
 }
 
 MainWindow::~MainWindow()
@@ -20,7 +20,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::createPlotsGroups()
 {
-    plotsGroups = new PlotsGroups(this);
+    plotsGroups = new Groups(this);
     setCentralWidget(plotsGroups);
     connect(ui->actionAddOneGroup, SIGNAL(triggered()), plotsGroups, SLOT(addPlots()));
     connect(ui->actionCloseAllGroups, SIGNAL(triggered()), plotsGroups, SLOT(closeGroups()));
@@ -64,3 +64,13 @@ void MainWindow::setActiveActionOfTilingMenu(Group* plots)
     }
 }
 
+#include "PlotSettingsView.h"
+void MainWindow::createPlotSettingsView()
+{
+    PlotSettingsView* plotSettingsView = new PlotSettingsView(this);
+    ui->commonSettings->setWidget(plotSettingsView);
+    connect(plotsGroups, SIGNAL(wasActivated(QMdiSubWindow*)), plotSettingsView, SLOT(catchAndTorturePlot(QMdiSubWindow*)));
+    connect(plotsGroups, SIGNAL(groupChanged(Group*)), plotSettingsView, SLOT(catchAndTortureGroup(Group*)));
+    connect(plotsGroups, SIGNAL(noMoreGroup()), plotSettingsView, SLOT(freeGroup()));
+    connect(plotSettingsView, SIGNAL(groupNameWasChanged()), plotsGroups, SLOT(retitle()));
+}

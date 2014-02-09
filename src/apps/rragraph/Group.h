@@ -4,6 +4,7 @@
 class CurvesManagerView;
 class SamplesManager;
 class PlotWithCurves;
+class PlotSettings;
 #include <QMdiArea>
 #include <functional>
 
@@ -23,9 +24,12 @@ public:
     void setTileType(TileType tileType);
     TileType getTileType() const;
     SamplesManager* getSamplesManager() const;
+    void dublicateSettings(PlotSettings* plotSettings);
+    bool isEmpty() const;
+    const QString& getName() const;
+    bool nameIsEmpty() const;
 public slots:
     void setName(const QString& name);
-    bool nameIsEmpty() const;
     PlotWithCurves* insertPlot();
     void tile();
     void autoscale();

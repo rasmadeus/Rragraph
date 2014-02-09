@@ -16,9 +16,31 @@ include($$PWD/../../auxiliary/qwtPath.pri)
 
 HEADERS += \
     PlotWithCurves.h \
-    Group.h
+    PlotSettingsView.h \
+    PlotSettings.h \
+    CommonPlotSettings.h \
+    AxisPlotSettings.h \
+    ExportPlotSettings.h \
+    LegendPlotSettings.h \
+    FontColorSettingsAble.h \
+    GroupSettings.h
 
 SOURCES += \
-    PlotsRearranger.cpp \
     PlotWithCurves.cpp \
-    Group.cpp
+    PlotSettingsView.cpp \ 
+    PlotSettings.cpp \
+    CommonPlotSettings.cpp \
+    AxisPlotSettings.cpp \
+    ExportPlotSettings.cpp \
+    LegendPlotSettings.cpp \
+    FontColorSettingsAble.cpp \
+    GroupSettings.cpp
+
+FORMS += \
+    PlotSettingsView.ui \
+    CommonPlotSettings.ui \
+    AxisPlotSettings.ui \
+    ExportPlotSettings.ui \
+    LegendPlotSettings.ui \
+    GroupSettings.ui
+

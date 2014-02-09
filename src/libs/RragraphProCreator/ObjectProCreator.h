@@ -35,7 +35,7 @@ protected:
     void insertProperty(const QString& key, const QVariant& value);
 
     /*!
-     * \brief obj - Хранит текущие настройки. Объявлен как mutable, так как может изменяется из
+     * \brief obj - Хранит текущие настройки. Объявлен как mutable, так как изменяется из
      * константной функции fill(...) const.
      */
     mutable QJsonObject obj;

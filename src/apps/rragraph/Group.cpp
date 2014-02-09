@@ -67,6 +67,11 @@ void Group::setName(const QString& name)
     this->name = name;
 }
 
+const QString& Group::getName() const
+{
+    return name;
+}
+
 bool Group::nameIsEmpty() const
 {
     return name.isEmpty();
@@ -109,6 +114,22 @@ void Group::exportToPng(const QString& dir)
             QString plotTitle = window->windowTitle();
             QString fileName = dir + "/" + plotTitle + ".png";
             exporter.renderDocument(plot, fileName, plot->getExportSize());
+        }
+    );
+}
+
+bool Group::isEmpty() const
+{
+    return subWindowList().isEmpty();
+}
+
+#include "PlotSettings.h"
+void Group::dublicateSettings(PlotSettings* plotSettings)
+{
+    forEachPlotDo(
+        [&](QMdiSubWindow* window, PlotWithCurves* plot){
+            Q_UNUSED(window)
+            plotSettings->copySettingsTo(plot);
         }
     );
 }

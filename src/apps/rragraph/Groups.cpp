@@ -1,8 +1,8 @@
-#include "PlotsGroups.h"
+#include "Groups.h"
 
-Path PlotsGroups::exportPath("appSettings.ini", "paths/exportPath");
+Path Groups::exportPath("appSettings.ini", "paths/exportPath");
 
-PlotsGroups::PlotsGroups(QWidget* parent) :
+Groups::Groups(QWidget* parent) :
     QTabWidget(parent)
 {
     setStyles();
@@ -12,7 +12,7 @@ PlotsGroups::PlotsGroups(QWidget* parent) :
     connect(this, SIGNAL(currentChanged(int)), SLOT(createGroupChangedSignal(int)));
 }
 
-void PlotsGroups::setStyles()
+void Groups::setStyles()
 {
     setStyleSheet(
         "QTabBar::tab{"
@@ -48,7 +48,7 @@ void PlotsGroups::setStyles()
     );
 }
 
-void PlotsGroups::setLookAndFeel()
+void Groups::setLookAndFeel()
 {
     setTabsClosable(true);
     setMovable(true);
@@ -57,7 +57,7 @@ void PlotsGroups::setLookAndFeel()
 }
 
 #include "Group.h"
-void PlotsGroups::addPlots()
+void Groups::addPlots()
 {
     Group* plots = new Group(this);
     groups << plots;
@@ -67,56 +67,61 @@ void PlotsGroups::addPlots()
         emit hasGroups(true);
     }
     setCurrentIndex(count() - 1);
+    connect(plots, SIGNAL(subWindowActivated(QMdiSubWindow*)), SIGNAL(wasActivated(QMdiSubWindow*)));
 }
 
-void PlotsGroups::closeGroup(int i)
+void Groups::closeGroup(int i)
 {
     removeTab(i);
     delete groups.takeAt(i);
     retitle();
     if(groups.isEmpty()){
         emit hasGroups(false);
+        emit noMoreGroup();
     }
 }
 
-void PlotsGroups::closeGroups()
+void Groups::closeGroups()
 {
     while(!groups.isEmpty()){
         closeGroup(0);
     }
 }
 
-void PlotsGroups::retitle()
+void Groups::retitle()
 {
     int iName = 0;
     for(int i = 0; i < count(); ++i){
-        if(groups[i]->nameIsEmpty()){
-            setTabText(i, tr("Group №%1").arg(++iName));
-        }
+        const QString tabText(
+            groups[i]->nameIsEmpty()     ?
+            tr("Group №%1").arg(++iName) :
+            groups[i]->getName()
+        );
+        setTabText(i, tabText);
     }
 }
 
-Group* PlotsGroups::getGroup() const
+Group* Groups::getGroup() const
 {
     return groups[currentIndex()];
 }
 
-void PlotsGroups::clearActiveGroup()
+void Groups::clearActiveGroup()
 {
     getGroup()->closeAllSubWindows();
 }
 
-void PlotsGroups::tileActiveGroup()
+void Groups::tileActiveGroup()
 {
     getGroup()->tile();
 }
 
-void PlotsGroups::addPlot()
+void Groups::addPlot()
 {
     getGroup()->insertPlot();
 }
 
-void PlotsGroups::exportActiveGroupToPng()
+void Groups::exportActiveGroupToPng()
 {
     QString dir = exportPath.getExistingDirectory(this, tr("Export plots to"));
     if(!dir.isEmpty()){
@@ -125,7 +130,7 @@ void PlotsGroups::exportActiveGroupToPng()
 }
 
 #include <QDir>
-void PlotsGroups::exportToPng()
+void Groups::exportToPng()
 {
     QString dir = exportPath.getExistingDirectory(this, tr("Export all groups to"));
     if(!dir.isEmpty()){
@@ -139,18 +144,18 @@ void PlotsGroups::exportToPng()
     }
 }
 
-void PlotsGroups::autoScaleActiveGroup()
+void Groups::autoScaleActiveGroup()
 {
     getGroup()->autoscale();
 }
 
 #include <QAction>
-void PlotsGroups::setGroupTiling(QAction* action)
+void Groups::setGroupTiling(QAction* action)
 {
     getGroup()->setTileType(Group::TileType(action->data().toInt()));
 }
 
-void PlotsGroups::createGroupChangedSignal(int i)
+void Groups::createGroupChangedSignal(int i)
 {
     if(i != -1){
         emit groupChanged(getGroup());

@@ -76,8 +76,16 @@ void CurveSettings::restore()
         ui->curve->setChecked(curve->isVisible());
     }
     {
+        ui->dashPattern->setText(Curve::getDashPatternFromPen(curve->pen()));
+    }
+    {
         QPen pen = curve->pen();
         ui->width->setValue(pen.width());
+    }
+    {
+        ui->addendX->setValue(curve->getAddendX());
+        ui->addendY->setValue(curve->getAddendY());
+        ui->multY->setValue(curve->getMultY());
     }
     {
         int iSymbolStyle = curve->getSymbolStyle();
@@ -88,9 +96,6 @@ void CurveSettings::restore()
                 break;
             }
         }
-    }
-    {
-        ui->dashPattern->setText(Curve::getDashPatternFromPen(curve->pen()));
     }
 }
 

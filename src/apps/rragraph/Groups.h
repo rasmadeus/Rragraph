@@ -1,15 +1,16 @@
-#ifndef PLOTSGROUPS_H
-#define PLOTSGROUPS_H
+#ifndef GROUPS_H
+#define GROUPS_H
 
+class QMdiSubWindow;
 class Group;
 #include <QTabWidget>
 #include <Path.h>
 
-class PlotsGroups : public QTabWidget
+class Groups : public QTabWidget
 {
     Q_OBJECT
 public:
-    explicit PlotsGroups(QWidget* parent = 0);
+    explicit Groups(QWidget* parent = 0);
 public slots:
     void addPlots();
     void closeGroups();
@@ -19,10 +20,13 @@ public slots:
     void exportActiveGroupToPng();
     void exportToPng();
     void autoScaleActiveGroup();
-    void setGroupTiling(QAction* action);    
+    void setGroupTiling(QAction* action);
+    void retitle();
 signals:
     void hasGroups(bool);
+    void noMoreGroup();
     void groupChanged(Group* plots);
+    void wasActivated(QMdiSubWindow*);
 private slots:
     void closeGroup(int i);
     void createGroupChangedSignal(int i);
@@ -30,9 +34,8 @@ private:
     Group* getGroup() const;
     void setStyles();
     void setLookAndFeel();
-    void retitle();
     QVector<Group*> groups;
     static Path exportPath;
 };
 
-#endif // PLOTSGROUPS_H1
+#endif // GROUPS_H
