@@ -5,6 +5,7 @@ class SamplesLoader;
 #include <QVector>
 #include <QMutexLocker>
 #include <QStringList>
+#include <QHash>
 class SamplesPrivateData
 {
 public:
@@ -13,9 +14,9 @@ public:
     QStringList headers;
     QString pathToSrc;
     SamplesLoader* loader;
-    QStringList proxyHeaders;
-    double proxyColumnAddend;
-    double proxyColumnMult;
+    QHash<int, QString> proxyHeaders;
+    QHash<int, double> proxyColumnsAddend;
+    QHash<int, double> proxyColumnsMult;
 
     SamplesPrivateData();
     ~SamplesPrivateData();
@@ -25,9 +26,9 @@ public:
         columns[i].push_back(value);
     }
 
-    inline bool proxyScaleIsEmpty() const
+    inline bool proxyScaleIsEmpty(int i) const
     {
-        return proxyColumnAddend == 0 && proxyColumnMult == 1;
+        return !(proxyColumnsMult.contains(i) || proxyColumnsAddend.contains(i));
     }
 
     QVector<double> getProxyColumn(int i) const
@@ -37,7 +38,11 @@ public:
             columns[i].begin(),
             columns[i].end(),
             std::back_inserter(res),
-            [this](double value){return proxyColumnMult * value + proxyColumnAddend;}
+            [this, i](double value){
+                const double mult = proxyColumnsMult.contains(i) ? proxyColumnsMult[i] : 1;
+                const double addend = proxyColumnsAddend.contains(i) ? proxyColumnsAddend[i] : 0;
+                return mult * value + addend;
+            }
         );
         return res;
     }
@@ -88,13 +93,14 @@ private:
         d->headers.clear();
         d->columns.clear();
         d->proxyHeaders.clear();
+        d->proxyColumnsAddend.clear();
+        d->proxyColumnsMult.clear();
         QRegExp rx("(\"[^\"]+\"|\\S+)");
         int pos = 0;
         while((pos = rx.indexIn(headers, pos)) != -1){
             QString header = rx.cap(1);
             removeQuotes(header);
             d->headers.push_back(header);
-            d->proxyHeaders.push_back(header);
             d->columns.push_back(QVector<double>());
             pos += rx.matchedLength();
         }
@@ -134,9 +140,7 @@ private:
     bool stopCrane;
 };
 
-SamplesPrivateData::SamplesPrivateData():
-    proxyColumnAddend(0),
-    proxyColumnMult(1)
+SamplesPrivateData::SamplesPrivateData()
 {
     loader = new SamplesLoader(this);
 }
@@ -221,36 +225,73 @@ void Samples::waitLoading() const
     while(isLoading());
 }
 
-QStringList Samples::getProxyHeaders() const
+const QString& Samples::getProxyHeader(int i) const
 {
-    QMutexLocker locker(&d->locker);
-    return d->proxyHeaders;
+    return d->proxyHeaders.contains(i) ? d->proxyHeaders[i] : d->headers[i];
 }
 
 void Samples::setProxyHeader(const QString& header, int i)
 {
-    QMutexLocker locker(&d->locker);
-    d->proxyHeaders[i] = header;
+    if(header != d->headers[i]){
+        d->proxyHeaders[i] = header;
+    }
+    else{
+        d->proxyHeaders.take(i);
+    }
+    emit proxyDataWasChanged();
 }
 
 QVector<double> Samples::getProxyColumn(int i) const
 {
-    QMutexLocker locker(&d->locker);
-    return d->proxyScaleIsEmpty() ? d->columns[i] : d->getProxyColumn(i);
+    return d->proxyScaleIsEmpty(i) ? d->columns[i] : d->getProxyColumn(i);
 }
 
-void Samples::setProxyColumnAddend(double addend)
+double Samples::getProxyColumnAddend(int i) const
 {
-    d->proxyColumnAddend = addend;
+    return d->proxyColumnsAddend.contains(i) ? d->proxyColumnsAddend[i] : 0;
 }
 
-void Samples::setProxyColumnMult(double mult)
+double Samples::getProxyColumnMult(int i) const
 {
-    d->proxyColumnMult = mult;
+    return d->proxyColumnsMult.contains(i) ? d->proxyColumnsMult[i] : 1;
+}
+
+void Samples::setProxyColumnAddend(double addend, int i)
+{
+    if(addend){
+        d->proxyColumnsAddend[i] = addend;
+    }
+    else{
+        d->proxyColumnsAddend.take(i);
+    }
+    emit proxyDataWasChanged();
+}
+
+void Samples::setProxyColumnMult(double mult, int i)
+{
+    if(mult != 1){
+        d->proxyColumnsMult[i] = mult;
+    }
+    else{
+        d->proxyColumnsMult.take(i);
+    }
+    emit proxyDataWasChanged();
 }
 
 void Samples::resetProxyHeaders()
 {
-    QMutexLocker locker(&d->locker);
-    d->proxyHeaders = d->headers;
+    d->proxyHeaders.clear();
+    emit proxyDataWasChanged();
+}
+
+void Samples::resetProxyMult()
+{
+    d->proxyColumnsMult.clear();
+    emit proxyDataWasChanged();
+}
+
+void Samples::resetProxyAddend()
+{
+    d->proxyColumnsAddend.clear();
+    emit proxyDataWasChanged();
 }

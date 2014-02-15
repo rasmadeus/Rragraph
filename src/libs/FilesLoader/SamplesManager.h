@@ -18,7 +18,7 @@ public:
     void remove(int i);
     void reload(int i);
     void replace(int i, const QString& pathToSrc);
-    const Samples* getSamples(int i) const;
+    Samples* getSamples(int i) const;
     const QVector<Samples*>& getSamples() const;
 public Q_SLOTS:
     void clear();
@@ -28,6 +28,7 @@ Q_SIGNALS:
     void haveBeenAdded(int i);
     void haveBeenLoaded(int i);
     void haveBeenRemoved(int i);
+    void proxyDataWasChanged();
 private slots:
     void haveBeenLoaded(Samples* samples);
 private:

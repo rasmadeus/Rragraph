@@ -147,6 +147,7 @@ void CurveSettings::setCurveVisible(bool clicked)
         curve->attach(curves->getOwner());
     }
     curves->getOwner()->replot();
+    emit visibilityCurveChanged();
 }
 
 void CurveSettings::setCurveDashPattern(const QString& dashPattern)

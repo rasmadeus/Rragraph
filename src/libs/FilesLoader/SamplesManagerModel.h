@@ -15,6 +15,9 @@ public:
     void append(const QString& pathToSrc);
     void remove();
     void replace(const QString& pathToSrc);
+    SamplesManager* getSamplesManager() const;
+private slots:
+    void updateActiveRow(int iRemovedSamples);
 protected:
     QString displayRole(const QModelIndex& index) const;
 signals:

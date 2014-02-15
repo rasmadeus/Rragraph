@@ -11,8 +11,13 @@ void SamplesManagerModel::setSamplesManager(SamplesManager* samplesManager)
 {
     beginResetModel();
         activeRow = -1;
+        if(this->samplesManager){
+            disconnect(this->samplesManager, SIGNAL(haveBeenAdded(int)), this, SLOT(resetModel()));
+            disconnect(this->samplesManager, SIGNAL(isAboutToRemove(int)), this, SLOT(updateActiveRow()));
+        }
         this->samplesManager = samplesManager;
         connect(samplesManager, SIGNAL(haveBeenAdded(int)), SLOT(resetModel()));
+        connect(samplesManager, SIGNAL(isAboutToRemove(int)), SLOT(updateActiveRow(int)));
     endResetModel();
 }
 
@@ -35,15 +40,23 @@ void SamplesManagerModel::remove()
         if(samplesManager->samplesExist(activeRow)){
             beginResetModel();
                 samplesManager->remove(activeRow);
-                --activeRow;
-            endResetModel();
-            if(activeRow >= 0){
-                emit wasActivated(activeRow);
-            }else{
-                emit wasCleaned();
-            }
+            endResetModel();          
         }
     }
+}
+
+void SamplesManagerModel::updateActiveRow(int iRemovedSamples)
+{
+    beginResetModel();
+    if(iRemovedSamples <= activeRow){
+        --activeRow;
+        if(activeRow >= 0){
+            emit wasActivated(activeRow);
+        }else{
+            emit wasCleaned();
+        }
+    }
+    endResetModel();
 }
 
 void SamplesManagerModel::replace(const QString& pathToSrc)
@@ -60,4 +73,9 @@ QString SamplesManagerModel::displayRole(const QModelIndex &index) const
 {
     const Samples* samples = samplesManager->getSamples(index.row());
     return samples->getPathSrcFileInfo().fileName();
+}
+
+SamplesManager* SamplesManagerModel::getSamplesManager() const
+{
+    return samplesManager;
 }

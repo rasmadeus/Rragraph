@@ -21,11 +21,16 @@ CurvesFiller::~CurvesFiller()
 void CurvesFiller::setCurves(Curves* curves)
 {
     model->setCurves(curves);
-    ui->filler->resizeColumnsToContents();
     ui->filler->resizeRowsToContents();
+    ui->filler->resizeColumnToContents(0);
 }
 
 void CurvesFiller::setModelData(const QModelIndex& index)
 {
     model->setData(index);
+}
+
+void CurvesFiller::resetModel()
+{
+    model->resetModel();
 }

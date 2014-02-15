@@ -22,6 +22,7 @@ public slots:
     void autoScaleActiveGroup();
     void setGroupTiling(QAction* action);
     void retitle();
+    Group* getGroup() const;
 signals:
     void hasGroups(bool);
     void noMoreGroup();
@@ -31,7 +32,6 @@ private slots:
     void closeGroup(int i);
     void createGroupChangedSignal(int i);
 private:
-    Group* getGroup() const;
     void setStyles();
     void setLookAndFeel();
     QVector<Group*> groups;

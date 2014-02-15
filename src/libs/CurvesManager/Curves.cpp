@@ -88,7 +88,7 @@ void Curves::setY(int iY)
         }
     }
     else{
-        Curve* curve = new Curve(samples->getProxyHeaders()[iY]);
+        Curve* curve = new Curve(samples->getProxyHeader(iY));
         curves[iY] = curve;
         setSamplesForCurve(iY);
         curve->attach(owner);
@@ -126,5 +126,5 @@ const Samples* Curves::getSamples() const
 void Curves::updateCurveTitle(int iY)
 {
     Curve* curve = curves.value(iY);
-    curve->setTitle(samples->getProxyHeaders()[iY]);
+    curve->setTitle(samples->getProxyHeader(iY));
 }

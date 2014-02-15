@@ -16,7 +16,11 @@ SOURCES += \
     SamplesManagerModel.cpp \
     SamplesManagerView.cpp \
     ListModel.cpp \
-    Path.cpp
+    Path.cpp \
+    SamplesProxyModel.cpp \
+    SamplesProxyView.cpp \
+    DoubleDelegate.cpp \
+    StringDelegate.cpp
 
 HEADERS += \
     Samples.h \
@@ -24,7 +28,12 @@ HEADERS += \
     SamplesManagerModel.h \
     SamplesManagerView.h \
     ListModel.h \
-    Path.h
+    Path.h \
+    SamplesProxyModel.h \
+    SamplesProxyView.h \
+    DoubleDelegate.h \
+    StringDelegate.h
 
 FORMS += \
-    SamplesManagerView.ui
+    SamplesManagerView.ui \
+    SamplesProxyView.ui

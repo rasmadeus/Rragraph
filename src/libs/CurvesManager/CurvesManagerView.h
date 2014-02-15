@@ -27,7 +27,13 @@ private slots:
     void setSamplesPathToWindowTitle(int i);
     void setRawWindowTitle();
     void updateCurvesToFiller(int i);
+    void curvesFillerToNullData();
 private:
+    void saveSettings();
+    void restoreSettings();
+    void createCurvesFiller();
+    void createCurvesSettings();
+    void createSamplesManagerView();
     Ui::CurvesManagerView *ui;
     SamplesManagerView* samplesManagerView;
     CurvesFiller* curvesFiller;

@@ -18,6 +18,7 @@ public:
     ~SamplesManagerView();
     void setSamplesManager(SamplesManager* samplesManager);
     int getActiveRow() const;
+    SamplesManager* getSamplesManager() const;
 signals:
     void wasActivated(int i);
     void wasCleaned();
@@ -25,7 +26,11 @@ private slots:
     void insertNewSamples();
     void removeSamples();
     void replaceSamples();
+    void enabledChangableActions();
+    void disabledChangableActions();
 private:
+    void createSamplesManagerModel();
+    void routeManagerActions();
     Ui::SamplesManagerView *ui;
     SamplesManagerModel* samplesManagerModel;
     static Path samplesLoadingPath;

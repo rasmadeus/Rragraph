@@ -9,14 +9,26 @@ SamplesManagerView::SamplesManagerView(QWidget *parent) :
     ui(new Ui::SamplesManagerView)
 {
     ui->setupUi(this);
+    createSamplesManagerModel();
+    routeManagerActions();
+}
+
+void SamplesManagerView::createSamplesManagerModel()
+{
     samplesManagerModel = new SamplesManagerModel(this);
+    connect(samplesManagerModel, SIGNAL(wasActivated(int)), SIGNAL(wasActivated(int)));
+    connect(samplesManagerModel, SIGNAL(wasCleaned()), SIGNAL(wasCleaned()));
+    connect(samplesManagerModel, SIGNAL(wasCleaned()), SLOT(disabledChangableActions()));
+    connect(samplesManagerModel, SIGNAL(wasActivated(int)), SLOT(enabledChangableActions()));
     ui->samplesList->setModel(samplesManagerModel);
+}
+
+void SamplesManagerView::routeManagerActions()
+{
     connect(ui->insertNewSamples, SIGNAL(clicked()), SLOT(insertNewSamples()));
     connect(ui->removeSamples, SIGNAL(clicked()), SLOT(removeSamples()));
     connect(ui->replaceSamples, SIGNAL(clicked()), SLOT(replaceSamples()));
     connect(ui->samplesList, SIGNAL(pressed(QModelIndex)), samplesManagerModel, SLOT(setActiveRow(QModelIndex)));
-    connect(samplesManagerModel, SIGNAL(wasActivated(int)), SIGNAL(wasActivated(int)));
-    connect(samplesManagerModel, SIGNAL(wasCleaned()), SIGNAL(wasCleaned()));
 }
 
 SamplesManagerView::~SamplesManagerView()
@@ -44,15 +56,32 @@ void SamplesManagerView::removeSamples()
 
 void SamplesManagerView::replaceSamples()
 {
-    if(samplesManagerModel->rowCount()){
-        QString path = samplesLoadingPath.getOpenFileName(this, tr("Replace with"));
-        if(!path.isEmpty()){
-            samplesManagerModel->replace(path);
-        }
+    QString path = samplesLoadingPath.getOpenFileName(this, tr("Replace with"));
+    if(!path.isEmpty()){
+        samplesManagerModel->replace(path);
     }
 }
 
 int SamplesManagerView::getActiveRow() const
 {
     return samplesManagerModel->getActiveRow();
+}
+
+SamplesManager* SamplesManagerView::getSamplesManager() const
+{
+    return samplesManagerModel->getSamplesManager();
+}
+
+void SamplesManagerView::enabledChangableActions()
+{
+    if(!ui->removeSamples->isEnabled()){
+        ui->removeSamples->setEnabled(true);
+        ui->replaceSamples->setEnabled(true);
+    }
+}
+
+void SamplesManagerView::disabledChangableActions()
+{
+    ui->removeSamples->setEnabled(false);
+    ui->replaceSamples->setEnabled(false);
 }

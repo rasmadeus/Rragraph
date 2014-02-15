@@ -18,6 +18,8 @@ public:
     Qt::ItemFlags flags(const QModelIndex& index) const;
 signals:
     void dataWasSetted();
+public Q_SLOTS:
+    void resetModel();
 private:
     bool isActiveX(const QModelIndex& index) const;
     bool isActiveY(const QModelIndex& index) const;

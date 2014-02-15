@@ -81,7 +81,7 @@ QString CurvesFillerModel::getDisplayRole(const QModelIndex& index) const
 //The best header is the short header.
 QString CurvesFillerModel::getReducedHeader(int i) const
 {
-    QString header = curves->getSamples()->getProxyHeaders()[i];
+    QString header = curves->getSamples()->getProxyHeader(i);
     while(header.size() > 5){
         header.remove(header.size() - 1, 1);
     }
@@ -123,4 +123,10 @@ Qt::ItemFlags CurvesFillerModel::flags(const QModelIndex& index) const
 bool CurvesFillerModel::isActiveXorY(const QModelIndex& index) const
 {
     return isActiveX(index) || isActiveY(index);
+}
+
+void CurvesFillerModel::resetModel()
+{
+    beginResetModel();
+    endResetModel();
 }

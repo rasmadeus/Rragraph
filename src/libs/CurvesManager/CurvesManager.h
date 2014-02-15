@@ -18,6 +18,8 @@ public:
     Plot* getPlot() const;
     int count() const;
     Curves* getCurves(int i) const;
+public slots:
+    void resamples();
 private slots:
     void newSamplesWasAdded(int i);
     void samplesWasLoaded(int i);

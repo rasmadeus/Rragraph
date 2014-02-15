@@ -17,6 +17,8 @@ public:
     explicit CurvesFiller(QWidget *parent = 0);
     ~CurvesFiller();
     void setCurves(Curves* curves);
+public Q_SLOTS:
+    void resetModel();
 signals:
     void dataWasSetted();
 private slots:

@@ -11,11 +11,36 @@ MainWindow::MainWindow(QWidget *parent) :
     routePlotsMenu();
     createPlotsTilingMenu();
     createPlotSettingsView();
+    restoreVisibilityActionsState();
+    restoreSettings();
+    createSamplesManager();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+#include <QSettings>
+void MainWindow::restoreSettings()
+{
+    QSettings settings("appSettings.ini", QSettings::IniFormat);
+    restoreGeometry(settings.value("widgets/MainWindowGeometry").toByteArray());
+    restoreState(settings.value("widgets/MainWindowState").toByteArray());
+}
+
+void MainWindow::restoreVisibilityActionsState()
+{
+
+    ui->actionVisibilityGroupsToolBar->setChecked(ui->toolBarGroups->isVisible());
+    ui->actionVisibilityPlotsToolBar->setChecked(ui->toolBarPlots->isVisible());
+}
+
+void MainWindow::saveSettings()
+{
+    QSettings settings("appSettings.ini", QSettings::IniFormat);
+    settings.setValue("widgets/MainWindowGeometry", saveGeometry());
+    settings.setValue("widgets/MainWindowState", saveState());
 }
 
 void MainWindow::createPlotsGroups()
@@ -28,6 +53,7 @@ void MainWindow::createPlotsGroups()
     connect(ui->actionExportAllGroupsToImages, SIGNAL(triggered()), plotsGroups, SLOT(exportToPng()));
     connect(plotsGroups, SIGNAL(hasGroups(bool)), ui->menuPlots, SLOT(setEnabled(bool)));
     connect(plotsGroups, SIGNAL(hasGroups(bool)), ui->toolBarPlots, SLOT(setEnabled(bool)));
+    connect(plotsGroups, SIGNAL(hasGroups(bool)), ui->menuPlotsTiling, SLOT(setEnabled(bool)));
     connect(plotsGroups, SIGNAL(groupChanged(Group*)), SLOT(setActiveActionOfTilingMenu(Group*)));
 }
 
@@ -73,4 +99,29 @@ void MainWindow::createPlotSettingsView()
     connect(plotsGroups, SIGNAL(groupChanged(Group*)), plotSettingsView, SLOT(catchAndTortureGroup(Group*)));
     connect(plotsGroups, SIGNAL(noMoreGroup()), plotSettingsView, SLOT(freeGroup()));
     connect(plotSettingsView, SIGNAL(groupNameWasChanged()), plotsGroups, SLOT(retitle()));
+}
+
+void MainWindow::closeEvent(QCloseEvent* event)
+{
+    /*!
+     * \brief saveSettings - Если сохранять настройки в деструкторе, тогда
+     * будет отеряно свойство видимости открепляемых виджетов.
+     * Поэтому вызываем отсюда.
+     */
+    saveSettings();
+    return QMainWindow::closeEvent(event);
+}
+
+#include <SamplesProxyView.h>
+void MainWindow::createSamplesManager()
+{
+    samplesProxyView = new SamplesProxyView(this);
+    connect(ui->actionShowSamplesManager, SIGNAL(triggered()), SLOT(showSamplesProxyView()));
+    connect(plotsGroups, SIGNAL(hasGroups(bool)), ui->actionShowSamplesManager, SLOT(setEnabled(bool)));
+}
+
+void MainWindow::showSamplesProxyView()
+{
+    samplesProxyView->setSamplesManager(plotsGroups->getGroup()->getSamplesManager());
+    samplesProxyView->show();
 }

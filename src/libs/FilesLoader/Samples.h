@@ -21,15 +21,20 @@ public:
     void reload();
     bool isLoading() const;
     void waitLoading() const;
-    QStringList getProxyHeaders() const;
+    const QString& getProxyHeader(int i) const;
     void setProxyHeader(const QString& header, int i);
     QVector<double> getProxyColumn(int i) const;
-    void setProxyColumnAddend(double addend);
-    void setProxyColumnMult(double mult);
+    void setProxyColumnAddend(double addend, int i);
+    void setProxyColumnMult(double mult, int i);
+    double getProxyColumnAddend(int i) const;
+    double getProxyColumnMult(int i) const;
     void resetProxyHeaders();
+    void resetProxyAddend();
+    void resetProxyMult();
 Q_SIGNALS:
     void haveBeenLoaded();
     void haveBeenLoaded(Samples*);
+    void proxyDataWasChanged();
 private slots:
     void samplesHaveBeenLoaded();
 private:

@@ -22,6 +22,7 @@ void SamplesManager::append(const QString& pathToSrc)
     data.push_back(samples);
     emit haveBeenAdded(count() - 1);
     connect(samples, SIGNAL(haveBeenLoaded(Samples*)), SLOT(haveBeenLoaded(Samples*)));
+    connect(samples, SIGNAL(proxyDataWasChanged()), SIGNAL(proxyDataWasChanged()));
     samples->load(pathToSrc);
 }
 
@@ -58,7 +59,7 @@ void SamplesManager::clear()
     }
 }
 
-const Samples* SamplesManager::getSamples(int i) const
+Samples* SamplesManager::getSamples(int i) const
 {
     return data[i];
 }

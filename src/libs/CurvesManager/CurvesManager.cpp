@@ -15,6 +15,7 @@ CurvesManager::CurvesManager(SamplesManager* samplesManager, Plot* owner, QObjec
         connect(samplesManager, SIGNAL(haveBeenAdded(int)), SLOT(newSamplesWasAdded(int)));
         connect(samplesManager, SIGNAL(haveBeenLoaded(int)), SLOT(samplesWasLoaded(int)));
         connect(samplesManager, SIGNAL(haveBeenRemoved(int)), SLOT(samplesIsGoingToRemove(int)));
+        connect(samplesManager, SIGNAL(proxyDataWasChanged()), SLOT(resamples()));
     }
 
 }
@@ -63,4 +64,11 @@ void CurvesManager::samplesIsGoingToRemove(int i)
 void CurvesManager::pushBack(const Samples *samples)
 {
     data << new Curves(owner, samples);
+}
+#include <QDebug>
+void CurvesManager::resamples()
+{
+    foreach(Curves* curves, data){
+       curves->resamples();
+    }
 }

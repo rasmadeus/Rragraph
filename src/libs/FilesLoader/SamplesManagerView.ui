@@ -96,6 +96,9 @@ QToolButton:disabled{
      </item>
      <item>
       <widget class="QToolButton" name="removeSamples">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -145,6 +148,9 @@ QToolButton:disabled{
      </item>
      <item>
       <widget class="QToolButton" name="replaceSamples">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
          <horstretch>0</horstretch>

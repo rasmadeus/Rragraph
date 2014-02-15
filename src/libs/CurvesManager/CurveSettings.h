@@ -18,6 +18,8 @@ public:
     explicit CurveSettings(QWidget *parent = 0);
     ~CurveSettings();
     void setCurve(Curves* curves, Curve* curve);
+Q_SIGNALS:
+    void visibilityCurveChanged();
 protected:
     bool eventFilter(QObject* obj, QEvent* evt);
 private slots:

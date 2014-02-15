@@ -145,7 +145,7 @@ QGroupBox::title {
             <string notr="true">QToolButton{
     border-style: outset;
     border-width: 0px;
-    font: bold 14px;
+    font: 14px;
     border-radius: 8px;
     color: #444444;
     height: 18px;
