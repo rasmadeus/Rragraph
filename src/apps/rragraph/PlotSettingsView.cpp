@@ -20,6 +20,24 @@ PlotSettingsView::~PlotSettingsView()
     delete ui;
 }
 
+#include "GroupSettings.h"
+void PlotSettingsView::createGroupSettings()
+{
+    groupSettings = new GroupSettings(this);
+    ui->mainLayout->addWidget(groupSettings);
+    connect(groupSettings, SIGNAL(groupNameWasChanged()), SIGNAL(groupNameWasChanged()));
+}
+
+#include "PlotSettings.h"
+void PlotSettingsView::retraslate()
+{
+    foreach(PlotSettings* plotSettings, settings){
+        plotSettings->retranslate();
+    }
+    ui->retranslateUi(this);
+    groupSettings->retranslate();
+}
+
 #include <QMdiSubWindow>
 void PlotSettingsView::catchAndTorturePlot(QMdiSubWindow* window)
 {
@@ -31,14 +49,6 @@ void PlotSettingsView::catchAndTorturePlot(QMdiSubWindow* window)
             toDefaultState();
         }
     }
-}
-
-#include "GroupSettings.h"
-void PlotSettingsView::createGroupSettings()
-{
-    groupSettings = new GroupSettings(this);
-    ui->mainLayout->addWidget(groupSettings);
-    connect(groupSettings, SIGNAL(groupNameWasChanged()), SIGNAL(groupNameWasChanged()));
 }
 
 #include "Group.h"
@@ -77,7 +87,6 @@ void PlotSettingsView::unlockPlot()
 }
 
 #include "PlotWithCurves.h"
-#include "PlotSettings.h"
 void PlotSettingsView::toNewState(QMdiSubWindow* window)
 {
     plot = static_cast<PlotWithCurves*>(window->widget());

@@ -15,6 +15,11 @@ GroupSettings::~GroupSettings()
     delete ui;
 }
 
+void GroupSettings::retranslate()
+{
+    ui->retranslateUi(this);
+}
+
 #include "Group.h"
 void GroupSettings::setGroupName(const QString& name)
 {

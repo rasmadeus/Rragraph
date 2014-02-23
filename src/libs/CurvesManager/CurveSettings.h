@@ -18,6 +18,7 @@ public:
     explicit CurveSettings(QWidget *parent = 0);
     ~CurveSettings();
     void setCurve(Curves* curves, Curve* curve);
+    void retranslate();
 Q_SIGNALS:
     void visibilityCurveChanged();
 protected:

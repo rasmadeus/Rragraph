@@ -15,6 +15,7 @@ public:
     explicit LegendPlotSettings(QWidget *parent = 0);
     ~LegendPlotSettings();
     void copySettingsTo(Plot* plot);
+    void retranslate();
 protected:
     void fillFromPlot();
 private slots:

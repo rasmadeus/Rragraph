@@ -6,6 +6,7 @@ class SamplesLoader;
 #include <QMutexLocker>
 #include <QStringList>
 #include <QHash>
+#include <QJsonObject>
 class SamplesPrivateData
 {
 public:
@@ -17,7 +18,7 @@ public:
     QHash<int, QString> proxyHeaders;
     QHash<int, double> proxyColumnsAddend;
     QHash<int, double> proxyColumnsMult;
-
+    QJsonObject sampleSettings;
     SamplesPrivateData();
     ~SamplesPrivateData();
 
@@ -156,6 +157,7 @@ Samples::Samples(QObject *parent) :
     d = new SamplesPrivateData();
     connect(d->loader, SIGNAL(finished()), SIGNAL(haveBeenLoaded()));
     connect(d->loader, SIGNAL(finished()), SLOT(samplesHaveBeenLoaded()));
+    connect(this, SIGNAL(haveBeenLoaded()), SLOT(tryRestoreProxySettings()));
 }
 
 Samples::~Samples()
@@ -293,5 +295,59 @@ void Samples::resetProxyMult()
 void Samples::resetProxyAddend()
 {
     d->proxyColumnsAddend.clear();
+    emit proxyDataWasChanged();
+}
+
+#include <QJsonObject>
+#include <QJsonArray>
+template <class T>
+void serializeValues(const QHash<int, T>& values, const QString& key, QJsonObject& sampleSettings)
+{
+    if(!values.isEmpty()){
+        QJsonObject valuesSettings;
+        foreach(int i, values.keys()){
+            valuesSettings.insert(QString("%1").arg(i), QJsonValue::fromVariant(values[i]));
+        }
+        sampleSettings.insert(key, valuesSettings);
+    }
+}
+
+#include <QJsonValue>
+#include <QDebug>
+template <class T>
+void restoreValues(QHash<int, T>& values, const int border, const QString& key, const QJsonObject& sampleSettings)
+{
+    if(sampleSettings.contains(key)){
+        QJsonObject valuesSettings = sampleSettings.value(key).toObject();
+        foreach(const QString& i, valuesSettings.keys()){
+            const int index = i.toInt();
+            if(index < border){
+                values[index] = valuesSettings.value(i).toVariant().value<T>();
+            }
+        }
+    }
+}
+
+#include "Path.h"
+void Samples::serialize(QJsonArray& samplesSettings, const Path& proPath) const
+{
+    QJsonObject sampleSettings;
+    sampleSettings.insert("path", proPath.getRelativePath(getPathToSrc()));
+    serializeValues<QString>(d->proxyHeaders, "proxyHeaders", sampleSettings);
+    serializeValues<double>(d->proxyColumnsMult, "proxyColumnsMult", sampleSettings);
+    serializeValues<double>(d->proxyColumnsAddend, "proxyColumnsAddend", sampleSettings);
+    samplesSettings.append(sampleSettings);
+}
+
+void Samples::restore(const QJsonObject& sampleSettings)
+{
+    d->sampleSettings = sampleSettings;
+}
+
+void Samples::tryRestoreProxySettings()
+{
+    restoreValues<QString>(d->proxyHeaders, count(), "proxyHeaders", d->sampleSettings);
+    restoreValues<double>(d->proxyColumnsMult, count(), "proxyColumnsMult", d->sampleSettings);
+    restoreValues<double>(d->proxyColumnsAddend, count(), "proxyColumnsAddend", d->sampleSettings);
     emit proxyDataWasChanged();
 }

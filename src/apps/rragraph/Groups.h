@@ -1,6 +1,7 @@
 #ifndef GROUPS_H
 #define GROUPS_H
 
+class Path;
 class QMdiSubWindow;
 class Group;
 #include <QTabWidget>
@@ -12,7 +13,7 @@ class Groups : public QTabWidget
 public:
     explicit Groups(QWidget* parent = 0);
 public slots:
-    void addPlots();
+    Group* addGroup();
     void closeGroups();
     void clearActiveGroup();
     void tileActiveGroup();
@@ -23,6 +24,9 @@ public slots:
     void setGroupTiling(QAction* action);
     void retitle();
     Group* getGroup() const;
+    void serialize(QJsonObject& root, const Path& proPath) const;
+    void restore(const QJsonObject& root, const Path& proPath);
+    void retranslate();
 signals:
     void hasGroups(bool);
     void noMoreGroup();

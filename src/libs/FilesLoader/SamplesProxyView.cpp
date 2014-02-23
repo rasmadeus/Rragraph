@@ -116,3 +116,9 @@ void SamplesProxyView::restoreWindowTitle()
 {
     setWindowTitle(tr("Proxy settings"));
 }
+
+void SamplesProxyView::retranslate()
+{
+    ui->retranslateUi(this);
+    samplesManagerView->retranslate();
+}

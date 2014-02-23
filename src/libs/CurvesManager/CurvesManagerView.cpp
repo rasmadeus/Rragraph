@@ -17,6 +17,22 @@ CurvesManagerView::CurvesManagerView(SamplesManager* samplesManager, QWidget *pa
     restoreSettings();
 }
 
+#include "CurvesFiller.h"
+void CurvesManagerView::createCurvesFiller()
+{
+    curvesFiller = new CurvesFiller(this);
+    ui->curvesFillerLayout->addWidget(curvesFiller);
+}
+
+#include "CurvesSettings.h"
+void CurvesManagerView::createCurvesSettings()
+{
+    curvesSettings = new CurvesSettings(this);
+    ui->curvesSettingsLayout->addWidget(curvesSettings);
+    connect(curvesFiller, SIGNAL(dataWasSetted()), curvesSettings, SLOT(resetView()));
+    connect(curvesSettings, SIGNAL(visibilityCurveChanged()), curvesFiller, SLOT(resetModel()));
+}
+
 CurvesManagerView::~CurvesManagerView()
 {
     saveSettings();
@@ -40,22 +56,6 @@ void CurvesManagerView::restoreSettings()
         ).toByteArray()
     );
 
-}
-
-#include "CurvesFiller.h"
-void CurvesManagerView::createCurvesFiller()
-{
-    curvesFiller = new CurvesFiller(this);
-    ui->curvesFillerLayout->addWidget(curvesFiller);
-}
-
-#include "CurvesSettings.h"
-void CurvesManagerView::createCurvesSettings()
-{
-    curvesSettings = new CurvesSettings(this);
-    ui->curvesSettingsLayout->addWidget(curvesSettings);
-    connect(curvesFiller, SIGNAL(dataWasSetted()), curvesSettings, SLOT(resetView()));
-    connect(curvesSettings, SIGNAL(visibilityCurveChanged()), curvesFiller, SLOT(resetModel()));
 }
 
 #include <SamplesManagerView.h>
@@ -116,4 +116,11 @@ void CurvesManagerView::curvesFillerToNullData()
 {
     curvesFiller->setCurves(nullptr);
     curvesSettings->setCurves(nullptr);
+}
+
+void CurvesManagerView::retranslate()
+{
+    ui->retranslateUi(this);
+    curvesSettings->retranslate();
+    samplesManagerView->retranslate();
 }

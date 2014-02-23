@@ -1,6 +1,7 @@
 #ifndef SAMPLES_H
 #define SAMPLES_H
 
+class Path;
 class SamplesPrivateData;
 
 #include <QFileInfo>
@@ -31,12 +32,15 @@ public:
     void resetProxyHeaders();
     void resetProxyAddend();
     void resetProxyMult();
+    void serialize(QJsonArray& samplesSettings, const Path& proPath) const;
+    void restore(const QJsonObject& sampleSettings);
 Q_SIGNALS:
     void haveBeenLoaded();
     void haveBeenLoaded(Samples*);
     void proxyDataWasChanged();
 private slots:
     void samplesHaveBeenLoaded();
+    void tryRestoreProxySettings();
 private:
     SamplesPrivateData* d;
 };

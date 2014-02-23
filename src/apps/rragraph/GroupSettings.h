@@ -15,6 +15,7 @@ public:
     explicit GroupSettings(QWidget *parent = 0);
     ~GroupSettings();
     void setGroup(Group* group);
+    void retranslate();
 signals:
     void groupNameWasChanged();
 private slots:

@@ -11,6 +11,8 @@ public:
     void setBackgroundOpacity(int alpha);
     Qt::AlignmentFlag getHorPos() const;
     Qt::AlignmentFlag getVerPos() const;
+    void serialize(QJsonObject& plotSettings) const;
+    void restore(const QJsonObject& plotSettings);
 };
 
 #endif // LEGENDITEM_H

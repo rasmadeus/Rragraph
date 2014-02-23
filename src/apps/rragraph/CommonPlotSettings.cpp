@@ -17,6 +17,11 @@ CommonPlotSettings::~CommonPlotSettings()
     delete ui;
 }
 
+void CommonPlotSettings::retranslate()
+{
+    ui->retranslateUi(this);
+}
+
 #include <Plot.h>
 void CommonPlotSettings::fillFromPlot()
 {

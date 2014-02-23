@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Rragraph - lightweight plotter</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="res.qrc">
+    <normaloff>:/res/mainWindow/mainIcon.png</normaloff>:/res/mainWindow/mainIcon.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow::separator{
@@ -98,11 +102,6 @@ QMenuBar::item:selected { /* when selected using mouse or keyboard */
     <property name="title">
      <string>Project</string>
     </property>
-    <addaction name="actionLoadProject"/>
-    <addaction name="actionSaveProject"/>
-    <addaction name="separator"/>
-    <addaction name="separator"/>
-    <addaction name="actionReloadProject"/>
    </widget>
    <widget class="QMenu" name="menuGroups">
     <property name="title">
@@ -142,19 +141,34 @@ QMenuBar::item:selected { /* when selected using mouse or keyboard */
     <addaction name="actionVisibilityPlotsToolBar"/>
     <addaction name="actionVisibilityGroupsToolBar"/>
     <addaction name="separator"/>
+    <addaction name="actionShowExitDialog"/>
+    <addaction name="separator"/>
     <addaction name="actionVisibilityCommonSettings"/>
    </widget>
    <widget class="QMenu" name="menuSamples">
     <property name="title">
      <string>Settings</string>
     </property>
+    <widget class="QMenu" name="menuLanguages">
+     <property name="title">
+      <string>Languages</string>
+     </property>
+    </widget>
     <addaction name="actionShowSamplesManager"/>
+    <addaction name="menuLanguages"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
    </widget>
    <addaction name="menuProject"/>
    <addaction name="menuGroups"/>
    <addaction name="menuPlots"/>
    <addaction name="menuView"/>
    <addaction name="menuSamples"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QToolBar" name="toolBarPlots">
    <property name="enabled">
@@ -220,18 +234,21 @@ QMenuBar::item:selected { /* when selected using mouse or keyboard */
    <widget class="QWidget" name="dockWidgetContents"/>
   </widget>
   <action name="actionAddPlot">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="res.qrc">
      <normaloff>:/res/mainWindow/addPlot.png</normaloff>:/res/mainWindow/addPlot.png</iconset>
    </property>
    <property name="text">
-    <string>Add plot to current group</string>
+    <string>Add</string>
    </property>
    <property name="toolTip">
-    <string>Add new plot to current current group.</string>
+    <string>Add new plot to current group.</string>
    </property>
    <property name="statusTip">
-    <string>Add new plot to current current group.</string>
+    <string>Add new plot to current group.</string>
    </property>
   </action>
   <action name="actionCloseAllPlots">
@@ -240,7 +257,7 @@ QMenuBar::item:selected { /* when selected using mouse or keyboard */
      <normaloff>:/res/mainWindow/closeAllPlots.png</normaloff>:/res/mainWindow/closeAllPlots.png</iconset>
    </property>
    <property name="text">
-    <string>Close all plots</string>
+    <string>Close all</string>
    </property>
    <property name="toolTip">
     <string>Close all plots of current group.</string>
@@ -285,7 +302,7 @@ QMenuBar::item:selected { /* when selected using mouse or keyboard */
      <normaloff>:/res/mainWindow/exportAllGroupsToImages.png</normaloff>:/res/mainWindow/exportAllGroupsToImages.png</iconset>
    </property>
    <property name="text">
-    <string>Export all groups to images</string>
+    <string>Export</string>
    </property>
    <property name="toolTip">
     <string>Export all groups to png images.</string>
@@ -300,7 +317,7 @@ QMenuBar::item:selected { /* when selected using mouse or keyboard */
      <normaloff>:/res/mainWindow/addGroup.png</normaloff>:/res/mainWindow/addGroup.png</iconset>
    </property>
    <property name="text">
-    <string>Add one group</string>
+    <string>Add</string>
    </property>
    <property name="toolTip">
     <string>Add new group to project.</string>
@@ -315,7 +332,7 @@ QMenuBar::item:selected { /* when selected using mouse or keyboard */
      <normaloff>:/res/mainWindow/closeAllGroups.png</normaloff>:/res/mainWindow/closeAllGroups.png</iconset>
    </property>
    <property name="text">
-    <string>Close all groups.</string>
+    <string>Close all</string>
    </property>
    <property name="toolTip">
     <string>Close all groups.</string>
@@ -372,7 +389,7 @@ QMenuBar::item:selected { /* when selected using mouse or keyboard */
      <normaloff>:/res/mainWindow/scalePlots.png</normaloff>:/res/mainWindow/scalePlots.png</iconset>
    </property>
    <property name="text">
-    <string>Auto scale all plots</string>
+    <string>Autoscale</string>
    </property>
    <property name="toolTip">
     <string>Scale all plots of current groups.</string>
@@ -387,7 +404,7 @@ QMenuBar::item:selected { /* when selected using mouse or keyboard */
      <normaloff>:/res/mainWindow/loadProject.png</normaloff>:/res/mainWindow/loadProject.png</iconset>
    </property>
    <property name="text">
-    <string>Load project</string>
+    <string>Load</string>
    </property>
    <property name="toolTip">
     <string>Load project.</string>
@@ -402,7 +419,7 @@ QMenuBar::item:selected { /* when selected using mouse or keyboard */
      <normaloff>:/res/mainWindow/reloadProject.png</normaloff>:/res/mainWindow/reloadProject.png</iconset>
    </property>
    <property name="text">
-    <string>Reload project</string>
+    <string>Reload</string>
    </property>
    <property name="toolTip">
     <string>Reload current project.</string>
@@ -417,7 +434,7 @@ QMenuBar::item:selected { /* when selected using mouse or keyboard */
      <normaloff>:/res/mainWindow/saveProject.png</normaloff>:/res/mainWindow/saveProject.png</iconset>
    </property>
    <property name="text">
-    <string>Save project</string>
+    <string>Save</string>
    </property>
    <property name="toolTip">
     <string>Save current project.</string>
@@ -476,6 +493,44 @@ QMenuBar::item:selected { /* when selected using mouse or keyboard */
    </property>
    <property name="text">
     <string>Show samples manager</string>
+   </property>
+  </action>
+  <action name="actionSaveAs">
+   <property name="text">
+    <string>Save as</string>
+   </property>
+   <property name="toolTip">
+    <string>Save project as</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="text">
+    <string>Close</string>
+   </property>
+   <property name="toolTip">
+    <string>Close project</string>
+   </property>
+  </action>
+  <action name="actionShowExitDialog">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show exit dialog</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+   <property name="toolTip">
+    <string>Show information about Rragraph</string>
+   </property>
+   <property name="statusTip">
+    <string>Show information about Rragraph</string>
    </property>
   </action>
  </widget>

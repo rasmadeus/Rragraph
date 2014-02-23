@@ -22,6 +22,12 @@ CurvesSettings::~CurvesSettings()
     delete ui;
 }
 
+void CurvesSettings::retranslate()
+{
+    ui->retranslateUi(this);
+    curveSettings->retranslate();
+}
+
 void CurvesSettings::setCurveSettings()
 {
     curveSettings->setCurve(curvesModel->getCurves(), curvesModel->getCurve());

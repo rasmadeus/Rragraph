@@ -20,6 +20,31 @@ CurveSettings::CurveSettings(QWidget *parent) :
     setDataFromCurve();    
 }
 
+void CurveSettings::retranslate()
+{
+    {
+        ui->retranslateUi(this);
+    }
+    {
+        ui->symbolStyle->setItemText(0, tr("No symbol"));
+        ui->symbolStyle->setItemText(1, tr("Ellipse"));
+        ui->symbolStyle->setItemText(2, tr("Rect"));
+        ui->symbolStyle->setItemText(3, tr("Diamond"));
+        ui->symbolStyle->setItemText(4, tr("Triangle"));
+        ui->symbolStyle->setItemText(5, tr("DTriangle"));
+        ui->symbolStyle->setItemText(6, tr("UTriangle"));
+        ui->symbolStyle->setItemText(7, tr("LTriangle"));
+        ui->symbolStyle->setItemText(8, tr("RTriangle"));
+        ui->symbolStyle->setItemText(9, tr("Cross"));
+        ui->symbolStyle->setItemText(10, tr("XCross"));
+        ui->symbolStyle->setItemText(11, tr("HLine"));
+        ui->symbolStyle->setItemText(12, tr("VLine"));
+        ui->symbolStyle->setItemText(13, tr("Star1"));
+        ui->symbolStyle->setItemText(14, tr("Star2"));
+    }
+}
+
+
 #include <qwt_symbol.h>
 void CurveSettings::fillSymbol()
 {

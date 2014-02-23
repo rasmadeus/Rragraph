@@ -20,6 +20,7 @@ public slots:
     void resetHeaders();
     void resetAddend();
     void resetMult();
+    void resetModel();
 private:
     Samples* samples;
 };

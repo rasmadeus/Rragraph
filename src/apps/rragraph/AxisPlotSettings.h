@@ -15,6 +15,7 @@ public:
     explicit AxisPlotSettings(QwtPlot::Axis axis, QWidget* parent = 0);
     ~AxisPlotSettings();
     void copySettingsTo(Plot* plot);
+    void retranslate();
 protected:
     void fillFromPlot();
     void setPlot(Plot* plot);

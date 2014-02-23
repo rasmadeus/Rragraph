@@ -88,12 +88,21 @@ void Curves::setY(int iY)
         }
     }
     else{
-        Curve* curve = new Curve(samples->getProxyHeader(iY));
-        curves[iY] = curve;
-        setSamplesForCurve(iY);
-        curve->attach(owner);
+        append(create(iY), iY);
     }
     owner->replot();
+}
+
+void Curves::append(Curve* curve, int iY)
+{
+    curves[iY] = curve;
+    setSamplesForCurve(iY);
+    curve->attach(owner);
+}
+
+Curve* Curves::create(int iY)
+{
+    return new Curve(samples->getProxyHeader(iY));
 }
 
 Curve* Curves::getCurve(int iY) const
@@ -127,4 +136,39 @@ void Curves::updateCurveTitle(int iY)
 {
     Curve* curve = curves.value(iY);
     curve->setTitle(samples->getProxyHeader(iY));
+}
+
+#include <QJsonArray>
+#include <QJsonObject>
+void Curves::serialize(QJsonArray& curvesSettings) const
+{
+    QJsonObject curvesValues;
+    curvesValues.insert("x", iX);
+    foreach(int iY, curves.keys()){
+        curvesValues.insert(QString("%1").arg(iY), curves[iY]->serialize());
+    }
+    curvesSettings.append(curvesValues);
+}
+
+void Curves::restore(const QJsonObject& curvesValues)
+{
+    foreach(const QString& key, curvesValues.keys()){
+        const int i = key.toInt();
+        if(i < samples->count()){
+            if(key == "x"){
+                iX = i;
+            }
+            else{
+                Curve* curve = create(i);
+                curve->restore(curvesValues.value(key).toObject());
+                append(curve, i);
+            }
+        }
+    }
+    resamples();
+}
+
+bool Curves::isEmpty() const
+{
+    return curves.isEmpty();
 }

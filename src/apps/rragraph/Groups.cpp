@@ -57,17 +57,26 @@ void Groups::setLookAndFeel()
 }
 
 #include "Group.h"
-void Groups::addPlots()
+Group* Groups::addGroup()
 {
-    Group* plots = new Group(this);
-    groups << plots;
-    addTab(plots, "");
+    Group* group = new Group(this);
+    groups << group;
+    addTab(group, "");
     retitle();    
     if(count() == 1){
         emit hasGroups(true);
     }
     setCurrentIndex(count() - 1);
-    connect(plots, SIGNAL(subWindowActivated(QMdiSubWindow*)), SIGNAL(wasActivated(QMdiSubWindow*)));
+    connect(group, SIGNAL(subWindowActivated(QMdiSubWindow*)), SIGNAL(wasActivated(QMdiSubWindow*)));
+    return group;
+}
+
+void Groups::retranslate()
+{
+    retitle();
+    foreach(Group* group, groups){
+        group->retranslate();
+    }
 }
 
 void Groups::closeGroup(int i)
@@ -94,7 +103,7 @@ void Groups::retitle()
     for(int i = 0; i < count(); ++i){
         const QString tabText(
             groups[i]->nameIsEmpty()     ?
-            tr("Group №%1").arg(++iName) :
+            tr("Group") +  QString(" №%1").arg(++iName) :
             groups[i]->getName()
         );
         setTabText(i, tabText);
@@ -122,21 +131,19 @@ void Groups::addPlot()
 }
 
 void Groups::exportActiveGroupToPng()
-{
-    QString dir = exportPath.getExistingDirectory(this, tr("Export plots to"));
-    if(!dir.isEmpty()){
-        getGroup()->exportToPng(dir);
+{    
+    if(exportPath.setExistingDirectory(this, tr("Export plots to"))){
+        getGroup()->exportToPng(exportPath.getPath());
     }
 }
 
 #include <QDir>
 void Groups::exportToPng()
 {
-    QString dir = exportPath.getExistingDirectory(this, tr("Export all groups to"));
-    if(!dir.isEmpty()){
+    if(exportPath.setExistingDirectory(this, tr("Export all groups to"))){
         QDir creator;
         for(int i = 0; i < groups.size(); ++i){
-            QString subDir = dir + "/" + tabText(i);
+            QString subDir = exportPath.getPath() + "/" + tabText(i);
             if(creator.mkdir(subDir)){
                 groups[i]->exportToPng(subDir);
             }
@@ -159,5 +166,34 @@ void Groups::createGroupChangedSignal(int i)
 {
     if(i != -1){
         emit groupChanged(getGroup());
+    }
+}
+
+#include <QJsonObject>
+#include <QJsonArray>
+void Groups::serialize(QJsonObject& root, const Path& proPath) const
+{
+    if(!groups.isEmpty()){
+        QJsonArray groupsSettings;
+        foreach(Group* group, groups){
+            group->serialize(groupsSettings, proPath);
+        }
+        root.insert("groups", groupsSettings);
+    }
+}
+
+void Groups::restore(const QJsonObject& root, const Path& proPath)
+{
+    if(root.contains("groups")){
+        foreach(const QJsonValue& group, root.value("groups").toArray()){
+            addGroup()->restore(group.toObject(), proPath);
+        }
+        retitle();
+        if(!groups.isEmpty()){
+            emit groupChanged(groups.last()); //Чтобы установить активную группу для настроек.
+            if(!groups.last()->isEmpty()){
+                emit wasActivated(groups.last()->subWindowList().last()); //Чтобы установить активный график для настроек.
+            }
+        }
     }
 }

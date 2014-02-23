@@ -13,7 +13,8 @@
         <file>res/mainWindow/loadProject.png</file>
         <file>res/mainWindow/reloadProject.png</file>
         <file>res/mainWindow/saveProject.png</file>
-        <file>res/mainWindow/Bicubik.OTF</file>
         <file>res/mainWindow/copySettings.png</file>
+        <file>res/mainWindow/mainIcon.png</file>
+        <file>res/mainWindow/FrizQuadrataCTT Regular.ttf</file>
     </qresource>
 </RCC>

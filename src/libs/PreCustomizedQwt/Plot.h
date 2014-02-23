@@ -28,7 +28,6 @@ protected:
     void keyReleaseEvent(QKeyEvent* evt);
     void mouseDoubleClickEvent(QMouseEvent* evt);
     bool controlIsPressed;
-private:
     Canvas* canvas;
     Grid* grid;
     LegendItem* legend;

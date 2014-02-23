@@ -1,6 +1,7 @@
 #ifndef GROUP_H
 #define GROUP_H
 
+class Path;
 class CurvesManagerView;
 class SamplesManager;
 class PlotWithCurves;
@@ -28,6 +29,9 @@ public:
     bool isEmpty() const;
     const QString& getName() const;
     bool nameIsEmpty() const;
+    void serialize(QJsonArray& groupsSettings, const Path& proPath) const;
+    void restore(const QJsonObject& groupSettings, const Path& proPath);
+    void retranslate();
 public slots:
     void setName(const QString& name);
     PlotWithCurves* insertPlot();
@@ -37,7 +41,9 @@ public slots:
 private slots:
     void retitle();
 private:
-    void forEachPlotDo(const std::function<void (QMdiSubWindow*, PlotWithCurves*)>& action);
+    void serializePlots(QJsonObject& groupSettings) const;
+    void restorePlots(const QJsonObject& groupSettings);
+    void forEachPlotDo(const std::function<void (QMdiSubWindow*, PlotWithCurves*)>& action) const;
     TileType tileType;
     QString name;
     SamplesManager* samplesManager;

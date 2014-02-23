@@ -17,6 +17,11 @@ ExportPlotSettings::~ExportPlotSettings()
     delete ui;
 }
 
+void ExportPlotSettings::retranslate()
+{
+    ui->retranslateUi(this);
+}
+
 #include <Plot.h>
 void ExportPlotSettings::copySettingsTo(Plot* plot)
 {
@@ -40,7 +45,26 @@ void ExportPlotSettings::setExportSize()
     copySettingsTo(plot);
 }
 
+#include <QPrinter>
+#include <QPrintDialog>
+#include <qwt_plot_renderer.h>
+#include <QApplication>
 void ExportPlotSettings::printCurrentPlot() const
 {
-
+    QPrinter printer(QPrinter::HighResolution);
+    printer.setPaperSize(QPrinter::A4);
+    printer.setDocName("Plot");
+    printer.setCreator(QApplication::applicationVersion());
+    printer.setOrientation(QPrinter::Landscape);
+    QPrintDialog dialog(&printer, plot);
+    if(dialog.exec()){
+        QwtPlotRenderer renderer;
+        if(printer.colorMode() == QPrinter::GrayScale){
+            renderer.setDiscardFlag(QwtPlotRenderer::DiscardBackground);
+            renderer.setDiscardFlag(QwtPlotRenderer::DiscardCanvasBackground);
+            renderer.setDiscardFlag(QwtPlotRenderer::DiscardCanvasFrame);
+            renderer.setLayoutFlag(QwtPlotRenderer::FrameWithScales);
+        }
+        renderer.renderTo(plot, printer);
+    }
 }

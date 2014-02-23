@@ -5,6 +5,9 @@ class Plot;
 class Samples;
 class Curve;
 class QModelIndex;
+class CurvesProCreator;
+class QJsonArray;
+class QJsonObject;
 #include <QHash>
 
 class Curves
@@ -25,9 +28,14 @@ public:
     void clear();
     int count() const;
     Plot* getOwner() const;
+    void serialize(QJsonArray& curvesSettings) const;
+    void restore(const QJsonObject& curvesValues);
+    bool isEmpty() const;
 private:
     void setSamplesForCurve(int iY);
     void updateCurveTitle(int iY);
+    Curve* create(int iY);
+    void append(Curve* curve, int iY);
     int iX;
     Plot* owner;
     const Samples* samples;

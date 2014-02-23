@@ -17,6 +17,7 @@ public:
     explicit SamplesProxyView(QWidget* parent = 0);
     ~SamplesProxyView();
     void setSamplesManager(SamplesManager* samplesManager);
+    void retranslate();
 private slots:
     void setSamples(int i);
     void disabledResetGroup();

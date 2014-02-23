@@ -22,6 +22,23 @@ LegendPlotSettings::~LegendPlotSettings()
     delete ui;
 }
 
+void LegendPlotSettings::retranslate()
+{
+    {
+        ui->retranslateUi(this);
+    }
+    {
+        ui->horPos->setItemText(0, tr("Left"));
+        ui->horPos->setItemText(1, tr("Center"));
+        ui->horPos->setItemText(2, tr("Right"));
+    }
+    {
+        ui->verPos->setItemText(0, tr("Top"));
+        ui->verPos->setItemText(1, tr("Center"));
+        ui->verPos->setItemText(2, tr("Bottom"));
+    }
+}
+
 #include <Plot.h>
 #include <LegendItem.h>
 void LegendPlotSettings::copySettingsTo(Plot* plot)

@@ -17,6 +17,7 @@ public:
     explicit CurvesSettings(QWidget *parent = 0);
     ~CurvesSettings();
     void setCurves(Curves* curves);
+    void retranslate();
 Q_SIGNALS:
     void visibilityCurveChanged();
 public slots:

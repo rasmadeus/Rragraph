@@ -20,6 +20,7 @@ public:
     explicit CurvesManagerView(SamplesManager* samplesManager, QWidget* parent = 0);
     ~CurvesManagerView();
     void setCurvesManager(CurvesManager* curvesManager);
+    void retranslate();
 Q_SIGNALS:
     void wasChoosen(const Samples* samples);
 private slots:

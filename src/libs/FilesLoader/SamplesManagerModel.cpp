@@ -13,7 +13,7 @@ void SamplesManagerModel::setSamplesManager(SamplesManager* samplesManager)
         activeRow = -1;
         if(this->samplesManager){
             disconnect(this->samplesManager, SIGNAL(haveBeenAdded(int)), this, SLOT(resetModel()));
-            disconnect(this->samplesManager, SIGNAL(isAboutToRemove(int)), this, SLOT(updateActiveRow()));
+            disconnect(this->samplesManager, SIGNAL(isAboutToRemove(int)), this, SLOT(updateActiveRow(int)));
         }
         this->samplesManager = samplesManager;
         connect(samplesManager, SIGNAL(haveBeenAdded(int)), SLOT(resetModel()));

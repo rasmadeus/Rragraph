@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += widgets
+QT       += widgets core
 
 TARGET = FilesLoader
 TEMPLATE = lib

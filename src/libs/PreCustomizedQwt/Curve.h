@@ -21,6 +21,8 @@ public:
     void setPen(const QPen& pen);
     static QPen fillPenWithDashPattern(const QPen& src, const QString& dashes);
     static QString getDashPatternFromPen(const QPen& pen);
+    QJsonObject serialize() const;
+    void restore(const QJsonObject& curveSettings);
 protected:
     void drawSymbols(
         QPainter* painter,

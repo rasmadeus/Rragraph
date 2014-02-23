@@ -40,13 +40,21 @@ else:unix: PRE_TARGETDEPS += $$OUT_PWD/../../libs/FilesLoader/libFilesLoader.a
 
 include($$PWD/Groups.pri)
 include($$PWD/PlotWithCurves.pri)
+include($$PWD/Project.pri)
 
 SOURCES += main.cpp\
-        MainWindow.cpp
+        MainWindow.cpp \
+    ExitMessage.cpp \
+    Translator.cpp
 
-HEADERS  += MainWindow.h
+HEADERS  += MainWindow.h \
+    ExitMessage.h \
+    Translator.h
 
-FORMS    += MainWindow.ui
+FORMS    += MainWindow.ui \
+    ExitMessage.ui
 
 RESOURCES += \
     res.qrc
+
+TRANSLATIONS += $$PWD/ts/app_ru.ts

@@ -22,6 +22,11 @@ AxisPlotSettings::~AxisPlotSettings()
     delete ui;
 }
 
+void AxisPlotSettings::retranslate()
+{
+    ui->retranslateUi(this);
+}
+
 #include "PlotWithCurves.h"
 void AxisPlotSettings::fillFromPlot()
 {

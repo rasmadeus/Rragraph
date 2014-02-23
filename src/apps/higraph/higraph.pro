@@ -35,7 +35,7 @@ include(QmlToObject.pri)
 RESOURCES += \
     res.qrc
 
-
+QT       += widgets core
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../libs/FilesLoader/release/ -lFilesLoader
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../libs/FilesLoader/debug/ -lFilesLoader

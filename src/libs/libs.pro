@@ -5,6 +5,7 @@ CONFIG += ordered
 SUBDIRS += \
     FilesLoader \
     PreCustomizedQwt \
-    RragraphProCreator \
     CurvesManager
 
+
+TRANSLATIONS += $$PWD/../apps/rragraph/ts/libs_app_ru.ts

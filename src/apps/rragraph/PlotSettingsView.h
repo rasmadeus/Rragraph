@@ -25,6 +25,7 @@ public slots:
     void freeGroup();
     void lockPlot();
     void unlockPlot();
+    void retraslate();
 signals:
     void groupNameWasChanged();
 private slots:

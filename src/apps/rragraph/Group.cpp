@@ -17,6 +17,12 @@ Group::~Group()
     delete samplesManager;
 }
 
+void Group::retranslate()
+{
+    retitle();
+    curvesManagerView->retranslate();
+}
+
 #include <QMdiSubWindow>
 #include "PlotWithCurves.h"
 PlotWithCurves* Group::insertPlot()
@@ -38,7 +44,7 @@ void Group::retitle()
 {
     foreach(QMdiSubWindow* window, subWindowList()){
         window->setWindowTitle(
-            tr("Plot №%1").arg(
+            tr("Plot ") +  QString("№%1").arg(
                 subWindowList().indexOf(window) + 1
             )
         );
@@ -88,7 +94,7 @@ Group::TileType Group::getTileType() const
     return tileType;
 }
 
-void Group::forEachPlotDo(const std::function<void (QMdiSubWindow*, PlotWithCurves*)>& action)
+void Group::forEachPlotDo(const std::function<void (QMdiSubWindow*, PlotWithCurves*)>& action) const
 {
     foreach(QMdiSubWindow* window, subWindowList()){
         action(window, static_cast<PlotWithCurves*>(window->widget()));
@@ -132,4 +138,61 @@ void Group::dublicateSettings(PlotSettings* plotSettings)
             plotSettings->copySettingsTo(plot);
         }
     );
+}
+
+#include <QJsonArray>
+#include <QJsonObject>
+void serializeExistString(const QString& name, QJsonObject& groupSettings)
+{
+    if(!name.isEmpty()){
+        groupSettings.insert("name", name);
+    }
+}
+
+void restoreExistString(QString& name, const QJsonObject& groupSettings)
+{
+    if(groupSettings.contains("name")){
+        name = groupSettings.value("name").toString();
+    }
+}
+
+void Group::serialize(QJsonArray& groupsSettings, const Path& proPath) const
+{
+    QJsonObject groupSettings;
+        groupSettings.insert("tileType", QJsonValue::fromVariant(tileType));
+        serializeExistString(name, groupSettings);
+        serializePlots(groupSettings);
+        samplesManager->serialize(groupSettings, proPath);        
+    groupsSettings.append(groupSettings);
+}
+
+void Group::restore(const QJsonObject& groupSettings, const Path& proPath)
+{
+    tileType = TileType(groupSettings.value("tileType").toInt());
+    restoreExistString(name, groupSettings);
+    restorePlots(groupSettings);
+    samplesManager->restore(groupSettings, proPath);
+}
+
+void Group::serializePlots(QJsonObject& groupSettings) const
+{
+    if(!isEmpty()){
+        QJsonArray plots;
+        forEachPlotDo(
+            [&](QMdiSubWindow* window, PlotWithCurves* plot){
+                Q_UNUSED(window)
+                plot->serialize(plots);
+            }
+        );
+        groupSettings.insert("group", plots);
+    }
+}
+
+void Group::restorePlots(const QJsonObject& groupSettings)
+{
+    if(groupSettings.contains("group")){
+        foreach(const QJsonValue& group, groupSettings.value("group").toArray()){
+            insertPlot()->restore(group.toObject());
+        }
+    }
 }

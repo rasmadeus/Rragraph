@@ -1,16 +1,20 @@
 #include "SamplesManagerView.h"
 #include "ui_SamplesManagerView.h"
 
-Path SamplesManagerView::samplesLoadingPath("appSettings.ini","paths/samplesLoadingPath");
-
 #include "SamplesManagerModel.h"
 SamplesManagerView::SamplesManagerView(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::SamplesManagerView)
+    ui(new Ui::SamplesManagerView),
+    samplesLoadingPath("appSettings.ini","paths/samplesLoadingPath")
 {
     ui->setupUi(this);
     createSamplesManagerModel();
     routeManagerActions();
+}
+
+void SamplesManagerView::retranslate()
+{
+    ui->retranslateUi(this);
 }
 
 void SamplesManagerView::createSamplesManagerModel()
@@ -56,9 +60,8 @@ void SamplesManagerView::removeSamples()
 
 void SamplesManagerView::replaceSamples()
 {
-    QString path = samplesLoadingPath.getOpenFileName(this, tr("Replace with"));
-    if(!path.isEmpty()){
-        samplesManagerModel->replace(path);
+    if(samplesLoadingPath.setOpenFileName(this, tr("Replace with"))){
+        samplesManagerModel->replace(samplesLoadingPath.getPath());
     }
 }
 

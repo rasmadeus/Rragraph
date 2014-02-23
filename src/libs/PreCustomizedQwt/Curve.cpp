@@ -183,3 +183,47 @@ QString Curve::getDashPatternFromPen(const QPen& pen)
     }
     return dashes;
 }
+
+#include <QJsonObject>
+void serializeDashPattern(QJsonObject& curveSettings, const QPen& pen)
+{
+    const QString dashPattern = Curve::getDashPatternFromPen(pen);
+    if(!dashPattern.isEmpty()){
+        curveSettings.insert("dashPattern", dashPattern);
+    }
+}
+
+#include <QJsonArray>
+QJsonObject Curve::serialize() const
+{
+    QJsonObject curveSettings;
+    curveSettings.insert("isVisible", isVisible());
+    curveSettings.insert("symbolStyle", QJsonValue::fromVariant(symbolStyle));
+    curveSettings.insert("addendX", QJsonValue::fromVariant(addendX));
+    curveSettings.insert("addendY", QJsonValue::fromVariant(addendY));
+    curveSettings.insert("multY", QJsonValue::fromVariant(multY));
+    curveSettings.insert("step", QJsonValue::fromVariant(step));
+    curveSettings.insert("penColor", QJsonValue::fromVariant(pen().color()));
+    curveSettings.insert("penWidth", QJsonValue::fromVariant(pen().width()));
+    serializeDashPattern(curveSettings, pen());
+    return curveSettings;
+}
+
+QPen restorePen(const QJsonObject& curveSettings)
+{
+    QPen pen;
+    pen.setWidth(curveSettings.value("penWidth").toInt(1));
+    pen.setColor(curveSettings.value("penColor").toVariant().value<QColor>());
+    return Curve::fillPenWithDashPattern(pen, curveSettings.value("dashPattern").toString());
+}
+
+void Curve::restore(const QJsonObject& curveSettings)
+{
+    setVisible(curveSettings.value("isVisible").toBool());
+    setSymbolStyle(curveSettings.value("symbolStyle").toInt());
+    setAddendX(curveSettings.value("addendX").toDouble(0));
+    setAddendY(curveSettings.value("addendY").toDouble(0));
+    setMultY(curveSettings.value("multY").toDouble(1));
+    setStep(curveSettings.value("step").toInt(1));
+    setPen(restorePen(curveSettings));
+}

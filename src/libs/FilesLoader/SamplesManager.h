@@ -1,6 +1,7 @@
 #ifndef SAMPLESMODEL_H
 #define SAMPLESMODEL_H
 
+class Path;
 class Samples;
 #include <QObject>
 #include <QMutex>
@@ -14,12 +15,15 @@ public:
     ~SamplesManager();
     bool samplesExist(int i) const;
     int count() const;
-    void append(const QString& pathToSrc);
+    Samples* append(const QString& pathToSrc);
+    void append(const QStringList& paths);
     void remove(int i);
     void reload(int i);
     void replace(int i, const QString& pathToSrc);
     Samples* getSamples(int i) const;
     const QVector<Samples*>& getSamples() const;
+    void serialize(QJsonObject& groupSettings, const Path& proPath) const;
+    void restore(const QJsonObject& groupSettings, const Path& proPath);
 public Q_SLOTS:
     void clear();
 Q_SIGNALS:

@@ -42,3 +42,26 @@ Qt::AlignmentFlag LegendItem::getVerPos() const
     }
     return Qt::AlignBottom;
 }
+
+#include <QJsonObject>
+void LegendItem::serialize(QJsonObject& plotSettings) const
+{
+    plotSettings.insert("legendVisibility", QJsonValue::fromVariant(isVisible()));
+    plotSettings.insert("legendHorPos", QJsonValue::fromVariant(getHorPos()));
+    plotSettings.insert("legendVerPos", QJsonValue::fromVariant(getVerPos()));
+    plotSettings.insert("legendBackgroundOpacity", QJsonValue::fromVariant(backgroundBrush().color().alpha()));
+    plotSettings.insert("legendFont", QJsonValue::fromVariant(font()));
+    plotSettings.insert("legendColumns", QJsonValue::fromVariant(maxColumns()));
+}
+
+void LegendItem::restore(const QJsonObject& plotSettings)
+{
+    setVisible(plotSettings.value("legendVisibility").toBool());
+    setAlignment(
+        Qt::AlignmentFlag(plotSettings.value("legendHorPos").toInt()) |
+        Qt::AlignmentFlag(plotSettings.value("legendVerPos").toInt())
+    );
+    setBackgroundOpacity(plotSettings.value("legendBackgroundOpacity").toInt());
+    setFont(plotSettings.value("legendFont").toVariant().value<QFont>());
+    setMaxColumns(plotSettings.value("legendColumns").toVariant().value<uint>());
+}

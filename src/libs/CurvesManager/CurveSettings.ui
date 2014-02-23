@@ -139,7 +139,10 @@ QGroupBox::title {
             </sizepolicy>
            </property>
            <property name="toolTip">
-            <string>Set color for current time.</string>
+            <string>Set color for current line.</string>
+           </property>
+           <property name="statusTip">
+            <string/>
            </property>
            <property name="styleSheet">
             <string notr="true">QToolButton{

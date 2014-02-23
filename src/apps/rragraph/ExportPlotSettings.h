@@ -15,6 +15,7 @@ public:
     explicit ExportPlotSettings(QWidget *parent = 0);
     ~ExportPlotSettings();
     void copySettingsTo(Plot* plot);
+    void retranslate();
 protected:
     void fillFromPlot();
 protected slots:

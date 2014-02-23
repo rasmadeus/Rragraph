@@ -14,6 +14,7 @@ public:
     explicit CommonPlotSettings(QWidget *parent = 0);
     ~CommonPlotSettings();
     void copySettingsTo(Plot* plot);
+    void retranslate();
 protected:
     void fillFromPlot();
     QwtText getText() const;

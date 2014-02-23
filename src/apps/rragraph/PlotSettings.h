@@ -12,6 +12,7 @@ public:
     void setEasyMark(Plot* plot);
     virtual void toDefaultState();
     virtual void copySettingsTo(Plot* plot) = 0;
+    virtual void retranslate() = 0;
 signals:
     void dublicateSettings();
     void copyFrom(PlotSettings* plotSettings);

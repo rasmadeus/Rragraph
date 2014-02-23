@@ -16,7 +16,7 @@ int SamplesManager::count() const
 }
 
 #include "Samples.h"
-void SamplesManager::append(const QString& pathToSrc)
+Samples* SamplesManager::append(const QString& pathToSrc)
 {
     Samples* samples = new Samples();
     data.push_back(samples);
@@ -24,6 +24,15 @@ void SamplesManager::append(const QString& pathToSrc)
     connect(samples, SIGNAL(haveBeenLoaded(Samples*)), SLOT(haveBeenLoaded(Samples*)));
     connect(samples, SIGNAL(proxyDataWasChanged()), SIGNAL(proxyDataWasChanged()));
     samples->load(pathToSrc);
+    return samples;
+}
+
+#include <QStringList>
+void SamplesManager::append(const QStringList &paths)
+{
+    foreach(const QString& path, paths){
+        append(path);
+    }
 }
 
 void SamplesManager::haveBeenLoaded(Samples* samples)
@@ -72,4 +81,29 @@ const QVector<Samples*>& SamplesManager::getSamples() const
 bool SamplesManager::samplesExist(int i) const
 {
     return i >= 0 && i < count();
+}
+
+#include <QJsonObject>
+#include <QJsonArray>
+#include "Path.h"
+void SamplesManager::serialize(QJsonObject& groupSettings, const Path& proPath) const
+{
+    if(!data.isEmpty()){
+        QJsonArray samplesSettings;
+        foreach(Samples* samples, data){
+            samples->serialize(samplesSettings, proPath);
+        }
+        groupSettings.insert("Samples", samplesSettings);
+    }
+}
+
+void SamplesManager::restore(const QJsonObject& groupSettings, const Path& proPath)
+{
+    if(groupSettings.contains("Samples")){
+        foreach(const QJsonValue& sampleValue, groupSettings.value("Samples").toArray()){
+            const QJsonObject sampleSettings = sampleValue.toObject();
+            const QString relativePath = sampleSettings.value("path").toString();
+            append(proPath.getAbsolutePath(relativePath))->restore(sampleSettings);
+        }
+    }
 }
