@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ru_RU">
+<TS version="2.0" language="ru_RU">
 <context>
     <name>CurveSettings</name>
     <message>
@@ -69,82 +69,97 @@
         <translation>Внешней вид линии.</translation>
     </message>
     <message>
-        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="26"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="29"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="51"/>
         <source>No symbol</source>
         <translation>Без маркера</translation>
     </message>
     <message>
-        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="27"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="30"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="52"/>
         <source>Ellipse</source>
         <translation>Эллипс</translation>
     </message>
     <message>
-        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="28"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="31"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="53"/>
         <source>Rect</source>
         <translation>Прямоугольник</translation>
     </message>
     <message>
-        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="29"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="32"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="54"/>
         <source>Diamond</source>
         <translation>Ромб</translation>
     </message>
     <message>
-        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="30"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="33"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="55"/>
         <source>Triangle</source>
         <translation>Треугольник</translation>
     </message>
     <message>
-        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="31"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="34"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="56"/>
         <source>DTriangle</source>
         <translation>Треугольник вниз</translation>
     </message>
     <message>
-        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="32"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="35"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="57"/>
         <source>UTriangle</source>
         <translation>Треугольник наверх</translation>
     </message>
     <message>
-        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="33"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="36"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="58"/>
         <source>LTriangle</source>
         <translation>Треугольник налево</translation>
     </message>
     <message>
-        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="34"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="37"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="59"/>
         <source>RTriangle</source>
         <translation>Треугльник направо</translation>
     </message>
     <message>
-        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="35"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="38"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="60"/>
         <source>Cross</source>
         <translation>+</translation>
     </message>
     <message>
-        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="36"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="39"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="61"/>
         <source>XCross</source>
         <translation>X</translation>
     </message>
     <message>
-        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="37"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="40"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="62"/>
         <source>HLine</source>
         <translation>Горизонтальная линия</translation>
     </message>
     <message>
-        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="38"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="41"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="63"/>
         <source>VLine</source>
         <translation>Вертикальная линия</translation>
     </message>
     <message>
-        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="39"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="42"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="64"/>
         <source>Star1</source>
         <translation>Звёздочка №1</translation>
     </message>
     <message>
-        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="40"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="43"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="65"/>
         <source>Star2</source>
         <translation>Звёздочка №2</translation>
     </message>
     <message>
-        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="106"/>
+        <location filename="../../../libs/CurvesManager/CurveSettings.cpp" line="131"/>
         <source>Curve color</source>
         <translation>Цвет линии</translation>
     </message>
@@ -235,12 +250,12 @@
         <translation>=</translation>
     </message>
     <message>
-        <location filename="../../../libs/FilesLoader/SamplesManagerView.cpp" line="46"/>
+        <location filename="../../../libs/FilesLoader/SamplesManagerView.cpp" line="51"/>
         <source>Load data files</source>
         <translation>Загрузить файлы с данными</translation>
     </message>
     <message>
-        <location filename="../../../libs/FilesLoader/SamplesManagerView.cpp" line="58"/>
+        <location filename="../../../libs/FilesLoader/SamplesManagerView.cpp" line="63"/>
         <source>Replace with</source>
         <translation>Заменить данные файлом</translation>
     </message>
@@ -289,7 +304,7 @@
     <message>
         <location filename="../../../libs/FilesLoader/SamplesProxyView.ui" line="209"/>
         <source>Mult</source>
-        <translation type="unfinished">x</translation>
+        <translation>x</translation>
     </message>
 </context>
 </TS>

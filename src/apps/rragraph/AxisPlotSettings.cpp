@@ -7,7 +7,6 @@ AxisPlotSettings::AxisPlotSettings(QwtPlot::Axis axis, QWidget *parent) :
     axis(axis)
 {
     ui->setupUi(this);
-    ui->axisGroup->setTitle(tr(axis == QwtPlot::xBottom ? "Absciss settings" : "Ordinate settings"));
     connect(ui->min, SIGNAL(valueChanged(double)), SLOT(updateScale()));
     connect(ui->max, SIGNAL(valueChanged(double)), SLOT(updateScale()));
     connect(ui->step, SIGNAL(valueChanged(double)), SLOT(updateScale()));

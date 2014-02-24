@@ -81,6 +81,7 @@ void Project::load()
 
 void Project::load(const QString& path)
 {
+    d->currentProjectPath.setPath(path);
     d->load(path);
     emit wasReplaced(path);
 }

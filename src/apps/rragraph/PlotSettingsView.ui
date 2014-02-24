@@ -26,7 +26,7 @@
    <string notr="true">QGroupBox {
     border: 1px solid darkgray;
     border-radius: 3px;
-    margin-top: 2ex;
+    margin-top: 15px;
 }
 QGroupBox::title {
     subcontrol-origin: margin;

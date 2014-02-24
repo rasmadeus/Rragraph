@@ -168,7 +168,7 @@ void Group::serialize(QJsonArray& groupsSettings, const Path& proPath) const
 
 void Group::restore(const QJsonObject& groupSettings, const Path& proPath)
 {
-    tileType = TileType(groupSettings.value("tileType").toInt());
+    tileType = TileType(groupSettings.value("tileType").toVariant().toInt());
     restoreExistString(name, groupSettings);
     restorePlots(groupSettings);
     samplesManager->restore(groupSettings, proPath);

@@ -5,7 +5,7 @@
 
 void setAppFont()
 {
-    int appFontId = QFontDatabase::addApplicationFont(":/res/mainWindow/FrizQuadrataCTT Regular.ttf");
+    int appFontId = QFontDatabase::addApplicationFont(":/res/mainWindow/8251429.ttf");
     if(!appFontId){
         QApplication::setFont(QFont(QFontDatabase::applicationFontFamilies(appFontId).first(), 11));
     }

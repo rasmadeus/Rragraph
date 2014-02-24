@@ -313,7 +313,6 @@ void serializeValues(const QHash<int, T>& values, const QString& key, QJsonObjec
 }
 
 #include <QJsonValue>
-#include <QDebug>
 template <class T>
 void restoreValues(QHash<int, T>& values, const int border, const QString& key, const QJsonObject& sampleSettings)
 {

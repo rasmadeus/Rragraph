@@ -24,6 +24,7 @@ public:
 protected:
     void closeEvent(QCloseEvent* event);
     void dropEvent(QDropEvent* event);
+    void dragEnterEvent(QDragEnterEvent* event);
 private slots:
     void setActiveActionOfTilingMenu(Group* plots);
     void showSamplesProxyView();

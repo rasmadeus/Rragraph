@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ru_RU">
+<TS version="2.0" language="ru_RU">
 <context>
     <name>AxisPlotSettings</name>
     <message>
         <location filename="../AxisPlotSettings.ui" line="14"/>
         <source>Form</source>
         <translation>Окно</translation>
+    </message>
+    <message>
+        <location filename="../AxisPlotSettings.ui" line="35"/>
+        <source>Axis</source>
+        <translation>Ось</translation>
     </message>
     <message>
         <location filename="../AxisPlotSettings.ui" line="56"/>
@@ -243,7 +248,7 @@
 <context>
     <name>Group</name>
     <message>
-        <location filename="../Group.cpp" line="41"/>
+        <location filename="../Group.cpp" line="47"/>
         <source>Plot </source>
         <translation>График </translation>
     </message>
@@ -270,17 +275,17 @@
 <context>
     <name>Groups</name>
     <message>
-        <location filename="../Groups.cpp" line="98"/>
+        <location filename="../Groups.cpp" line="107"/>
         <source>Group</source>
         <translation>Группа</translation>
     </message>
     <message>
-        <location filename="../Groups.cpp" line="127"/>
+        <location filename="../Groups.cpp" line="136"/>
         <source>Export plots to</source>
         <translation>Экспортировать графики </translation>
     </message>
     <message>
-        <location filename="../Groups.cpp" line="135"/>
+        <location filename="../Groups.cpp" line="144"/>
         <source>Export all groups to</source>
         <translation>Экспортировать все группы</translation>
     </message>
@@ -288,7 +293,7 @@
 <context>
     <name>LanguagesMenu</name>
     <message>
-        <location filename="../Translator.cpp" line="46"/>
+        <location filename="../Translator.cpp" line="66"/>
         <source>English</source>
         <translation>Русский</translation>
     </message>
@@ -342,7 +347,7 @@
     </message>
     <message>
         <location filename="../LegendPlotSettings.ui" line="185"/>
-        <location filename="../LegendPlotSettings.cpp" line="82"/>
+        <location filename="../LegendPlotSettings.cpp" line="99"/>
         <source>Set legend font</source>
         <translation>Шрифт</translation>
     </message>
@@ -353,28 +358,34 @@
         <translation>Вертикальное положение легенды на текущем графике.</translation>
     </message>
     <message>
-        <location filename="../LegendPlotSettings.cpp" line="60"/>
+        <location filename="../LegendPlotSettings.cpp" line="31"/>
+        <location filename="../LegendPlotSettings.cpp" line="77"/>
         <source>Left</source>
         <translation>Слева</translation>
     </message>
     <message>
-        <location filename="../LegendPlotSettings.cpp" line="61"/>
-        <location filename="../LegendPlotSettings.cpp" line="66"/>
+        <location filename="../LegendPlotSettings.cpp" line="32"/>
+        <location filename="../LegendPlotSettings.cpp" line="37"/>
+        <location filename="../LegendPlotSettings.cpp" line="78"/>
+        <location filename="../LegendPlotSettings.cpp" line="83"/>
         <source>Center</source>
         <translation>В центре</translation>
     </message>
     <message>
-        <location filename="../LegendPlotSettings.cpp" line="62"/>
+        <location filename="../LegendPlotSettings.cpp" line="33"/>
+        <location filename="../LegendPlotSettings.cpp" line="79"/>
         <source>Right</source>
         <translation>Справа</translation>
     </message>
     <message>
-        <location filename="../LegendPlotSettings.cpp" line="65"/>
+        <location filename="../LegendPlotSettings.cpp" line="36"/>
+        <location filename="../LegendPlotSettings.cpp" line="82"/>
         <source>Top</source>
         <translation>Наверху</translation>
     </message>
     <message>
-        <location filename="../LegendPlotSettings.cpp" line="67"/>
+        <location filename="../LegendPlotSettings.cpp" line="38"/>
+        <location filename="../LegendPlotSettings.cpp" line="84"/>
         <source>Bottom</source>
         <translation>Внизу</translation>
     </message>
@@ -382,306 +393,306 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../MainWindow.ui" line="14"/>
-        <location filename="../MainWindow.cpp" line="172"/>
+        <location filename="../MainWindow.ui" line="17"/>
+        <location filename="../MainWindow.cpp" line="175"/>
         <source>Rragraph - lightweight plotter</source>
         <translation>Rragraph - простенькая программка для построения графиков</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="103"/>
+        <location filename="../MainWindow.ui" line="106"/>
         <source>Project</source>
         <translation>Проект</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="108"/>
+        <location filename="../MainWindow.ui" line="111"/>
         <source>Groups</source>
         <translation>Листы</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="119"/>
+        <location filename="../MainWindow.ui" line="122"/>
         <source>Plots</source>
         <translation>Графики</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="126"/>
+        <location filename="../MainWindow.ui" line="129"/>
         <source>Tiling</source>
         <translation>Расположение</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="138"/>
+        <location filename="../MainWindow.ui" line="141"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="150"/>
+        <location filename="../MainWindow.ui" line="153"/>
         <source>Settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="154"/>
+        <location filename="../MainWindow.ui" line="157"/>
         <source>Languages</source>
         <translation>Язык приложения</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="162"/>
+        <location filename="../MainWindow.ui" line="165"/>
         <source>Help</source>
         <translation>Помощь</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="178"/>
+        <location filename="../MainWindow.ui" line="181"/>
         <source>Actions for plots</source>
         <translation>Операции над графиками</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="195"/>
+        <location filename="../MainWindow.ui" line="198"/>
         <source>Actions for groups</source>
         <translation>Операции над листами</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="209"/>
+        <location filename="../MainWindow.ui" line="212"/>
         <source>Actions for project</source>
         <translation>Операции с проектом</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="229"/>
-        <location filename="../MainWindow.ui" line="487"/>
+        <location filename="../MainWindow.ui" line="232"/>
+        <location filename="../MainWindow.ui" line="490"/>
         <source>Common settings</source>
         <translation>Настройки</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="245"/>
-        <location filename="../MainWindow.ui" line="320"/>
+        <location filename="../MainWindow.ui" line="248"/>
+        <location filename="../MainWindow.ui" line="323"/>
         <source>Add</source>
         <translation>Добавить</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="248"/>
         <location filename="../MainWindow.ui" line="251"/>
+        <location filename="../MainWindow.ui" line="254"/>
         <source>Add new plot to current group.</source>
         <translation>Добавить новый график в текущий лист.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="260"/>
-        <location filename="../MainWindow.ui" line="335"/>
+        <location filename="../MainWindow.ui" line="263"/>
+        <location filename="../MainWindow.ui" line="338"/>
         <source>Close all</source>
         <translation>Закрыть все</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="263"/>
         <location filename="../MainWindow.ui" line="266"/>
+        <location filename="../MainWindow.ui" line="269"/>
         <source>Close all plots of current group.</source>
         <translation>Очистить текущий лист от графиков.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="275"/>
+        <location filename="../MainWindow.ui" line="278"/>
         <source>Tile</source>
         <translation>Упорядочить</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="278"/>
         <location filename="../MainWindow.ui" line="281"/>
+        <location filename="../MainWindow.ui" line="284"/>
         <source>Tile plots of current group.</source>
         <translation>Упорядочить все графики текущего листа.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="290"/>
+        <location filename="../MainWindow.ui" line="293"/>
         <source>Export plots to images.</source>
         <translation>Экспортировать графики текущего листа в картинки.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="293"/>
         <location filename="../MainWindow.ui" line="296"/>
+        <location filename="../MainWindow.ui" line="299"/>
         <source>Export all plots of current group to png format.</source>
         <translation>Экспортировать все графики текущего листа в png формат.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="305"/>
+        <location filename="../MainWindow.ui" line="308"/>
         <source>Export</source>
         <translation>Экспорт</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="308"/>
         <location filename="../MainWindow.ui" line="311"/>
+        <location filename="../MainWindow.ui" line="314"/>
         <source>Export all groups to png images.</source>
         <translation>Экспортировать все листы в png картинки.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="323"/>
         <location filename="../MainWindow.ui" line="326"/>
+        <location filename="../MainWindow.ui" line="329"/>
         <source>Add new group to project.</source>
         <translation>Добавить новый лист.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="338"/>
         <location filename="../MainWindow.ui" line="341"/>
+        <location filename="../MainWindow.ui" line="344"/>
         <source>Close all groups.</source>
         <translation>Закрыть все листы.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="349"/>
+        <location filename="../MainWindow.ui" line="352"/>
         <source>Vertical straight</source>
         <translation>Вертикально наверх</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="352"/>
         <location filename="../MainWindow.ui" line="355"/>
+        <location filename="../MainWindow.ui" line="358"/>
         <source>The plots of current group will be rearranged as a vertical list. If you insert a new plot, he will be insert to top of plot&apos;s list.</source>
         <translation>Графики текущего листа будут расположены в одну колонку. Новый график добавляется наверх.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="363"/>
+        <location filename="../MainWindow.ui" line="366"/>
         <source>Vertical reverse</source>
         <translation>Вертикально вниз</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="366"/>
         <location filename="../MainWindow.ui" line="369"/>
+        <location filename="../MainWindow.ui" line="372"/>
         <source>The plots of current group will be rearranged at vertical. If you insert a new plot, he will be added in bottom of plot&apos;s list.</source>
         <translation>Графики текущего листа будут расположены в одну колонку. Новый график добавляется вниз.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="377"/>
+        <location filename="../MainWindow.ui" line="380"/>
         <source>Grid horizontal</source>
         <translation>Сеткой</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="380"/>
         <location filename="../MainWindow.ui" line="383"/>
+        <location filename="../MainWindow.ui" line="386"/>
         <source>The plots of current group will be rearranged as grid. If you insert a new plot, he will be added in left position of top row.</source>
         <translation>Графики текущего листа будут распологаться плиткой.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="392"/>
+        <location filename="../MainWindow.ui" line="395"/>
         <source>Autoscale</source>
         <translation>Автомасштабировать</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="395"/>
         <location filename="../MainWindow.ui" line="398"/>
+        <location filename="../MainWindow.ui" line="401"/>
         <source>Scale all plots of current groups.</source>
         <translation>Автомасштабировать все графики текущего листа.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="407"/>
+        <location filename="../MainWindow.ui" line="410"/>
         <source>Load</source>
         <translation>Загрузить</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="410"/>
         <location filename="../MainWindow.ui" line="413"/>
+        <location filename="../MainWindow.ui" line="416"/>
         <source>Load project.</source>
         <translation>Загрузить проект.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="422"/>
+        <location filename="../MainWindow.ui" line="425"/>
         <source>Reload</source>
         <translation>Перезагрузить</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="425"/>
         <location filename="../MainWindow.ui" line="428"/>
+        <location filename="../MainWindow.ui" line="431"/>
         <source>Reload current project.</source>
         <translation>Перезагрузить текущий проект.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="437"/>
+        <location filename="../MainWindow.ui" line="440"/>
         <source>Save</source>
         <translation>Сохранить</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="440"/>
         <location filename="../MainWindow.ui" line="443"/>
+        <location filename="../MainWindow.ui" line="446"/>
         <source>Save current project.</source>
         <translation>Сохранить проект.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="454"/>
+        <location filename="../MainWindow.ui" line="457"/>
         <source>Project tool bar</source>
         <translation>Действия с проектом</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="465"/>
+        <location filename="../MainWindow.ui" line="468"/>
         <source>Plots tool bar</source>
         <translation>Действия с текущим листом</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="476"/>
+        <location filename="../MainWindow.ui" line="479"/>
         <source>Groups tool bar</source>
         <translation>Действия с листами</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="495"/>
+        <location filename="../MainWindow.ui" line="498"/>
         <source>Show samples manager</source>
         <translation>Управление данными</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="500"/>
+        <location filename="../MainWindow.ui" line="503"/>
         <source>Save as</source>
         <translation>Сохранить как</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="503"/>
+        <location filename="../MainWindow.ui" line="506"/>
         <source>Save project as</source>
         <translation>Действие позволяет сохранить проект под другим именем и в другом месте</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="508"/>
+        <location filename="../MainWindow.ui" line="511"/>
         <source>Close</source>
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="511"/>
+        <location filename="../MainWindow.ui" line="514"/>
         <source>Close project</source>
         <translation>Закрыть текущий проект</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="522"/>
+        <location filename="../MainWindow.ui" line="525"/>
         <source>Show exit dialog</source>
         <translation>Спрашивать о сохранении при выходе</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="527"/>
+        <location filename="../MainWindow.ui" line="530"/>
         <source>About</source>
         <translation>О программе</translation>
     </message>
     <message>
-        <location filename="../MainWindow.ui" line="530"/>
         <location filename="../MainWindow.ui" line="533"/>
+        <location filename="../MainWindow.ui" line="536"/>
         <source>Show information about Rragraph</source>
         <translation>Показать информацию о программе Rragraph</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="51"/>
+        <location filename="../MainWindow.cpp" line="73"/>
         <source>About </source>
         <translation>О программе </translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="52"/>
+        <location filename="../MainWindow.cpp" line="74"/>
         <source> is a lightweight plotter.</source>
         <translation> простенький построитель графиков.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="53"/>
+        <location filename="../MainWindow.cpp" line="75"/>
         <source>Current version: </source>
         <translation>Текущая версия: </translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="54"/>
+        <location filename="../MainWindow.cpp" line="76"/>
         <source>Developer: </source>
         <translation>Разработчик: </translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="55"/>
+        <location filename="../MainWindow.cpp" line="77"/>
         <source>Testers, generators of ideas: Kojnev A.N, Demin V.N.</source>
         <translation>Тестеры, генераторы идей: Кожнев А.Н., Дёмин В.Н.</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="56"/>
+        <location filename="../MainWindow.cpp" line="78"/>
         <source>You can download source code here</source>
         <translation>Исходный код доступен для загрузки отсюда</translation>
     </message>
     <message>
-        <location filename="../MainWindow.cpp" line="57"/>
+        <location filename="../MainWindow.cpp" line="79"/>
         <source>Licence</source>
         <translation>Лицензия</translation>
     </message>
@@ -697,22 +708,22 @@
 <context>
     <name>Project</name>
     <message>
-        <location filename="../Project.cpp" line="84"/>
+        <location filename="../Project.cpp" line="74"/>
         <source>Load project</source>
         <translation>Загрузить проект</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="85"/>
+        <location filename="../Project.cpp" line="75"/>
         <source>Rragraph pro file</source>
         <translation>Проектный файл rragraph</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="85"/>
+        <location filename="../Project.cpp" line="75"/>
         <source>All files</source>
         <translation>Все файлы</translation>
     </message>
     <message>
-        <location filename="../Project.cpp" line="132"/>
+        <location filename="../Project.cpp" line="127"/>
         <source>Open project</source>
         <translation>Открыть проект</translation>
     </message>

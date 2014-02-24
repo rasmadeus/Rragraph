@@ -11,6 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = rragraph
 TEMPLATE = app
 
+DESTDIR = $$PWD/../../../installer/rragraph
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../libs/CurvesManager/release/ -lCurvesManager
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../libs/CurvesManager/debug/ -lCurvesManager
@@ -58,3 +59,7 @@ RESOURCES += \
     res.qrc
 
 TRANSLATIONS += $$PWD/ts/app_ru.ts
+
+win32{
+    RC_FILE = $$PWD/res/icon.rc
+}

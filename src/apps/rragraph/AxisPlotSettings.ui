@@ -32,7 +32,7 @@
    <item>
     <widget class="QGroupBox" name="axisGroup">
      <property name="title">
-      <string/>
+      <string>Axis</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <property name="spacing">

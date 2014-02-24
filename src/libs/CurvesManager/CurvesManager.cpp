@@ -59,7 +59,8 @@ void CurvesManager::samplesWasLoaded(int i)
 
 void CurvesManager::samplesIsGoingToRemove(int i)
 {
-    delete data.takeAt(i);
+    delete data[i];
+    data.remove(i);
 }
 
 void CurvesManager::pushBack(const Samples *samples)

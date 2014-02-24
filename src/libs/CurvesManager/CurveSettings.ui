@@ -41,7 +41,7 @@
       <string notr="true">QGroupBox {
     border: 1px solid darkgray;
     border-radius: 3px;
-    margin-top: 2ex;
+    margin-top: 13px;
 }
 QGroupBox::title {
     subcontrol-origin: margin;
@@ -62,19 +62,19 @@ QGroupBox::title {
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <property name="spacing">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="leftMargin">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="topMargin">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="rightMargin">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="bottomMargin">
-       <number>3</number>
+       <number>0</number>
       </property>
       <item>
        <widget class="QFrame" name="frame">

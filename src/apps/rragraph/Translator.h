@@ -13,6 +13,8 @@ class Translator : public QObject
     Q_OBJECT
 public:
     explicit Translator(QMenu* languagesMenu, QObject* parent = 0);
+    ~Translator();
+    void tryRestoreLocale();
 signals:
     void localeWasChanged();
 private slots:
@@ -24,10 +26,12 @@ private:
     void createLocale(const QString& language, const QString& locale);
     void initLocalesActions();
     void installTranslators();
+    QString locale(QAction* action) const;
     QDir tsDir;
     QActionGroup* languages;
     QTranslator appTs;
     QTranslator libsAppTs;
+    QTranslator qtTs;
 };
 
 #endif // TRANSLATOR_H

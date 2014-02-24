@@ -82,7 +82,8 @@ void Groups::retranslate()
 void Groups::closeGroup(int i)
 {
     removeTab(i);
-    delete groups.takeAt(i);
+    delete groups[i];
+    groups.remove(i);
     retitle();
     if(groups.isEmpty()){
         emit hasGroups(false);

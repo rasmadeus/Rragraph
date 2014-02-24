@@ -7,7 +7,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    setAcceptDrops(true);
     createPlotsGroups();
     routePlotsMenu();
     createPlotsTilingMenu();
@@ -19,7 +18,6 @@ MainWindow::MainWindow(QWidget *parent) :
     createRecentlyProjectPaths();
     initAbout();
     createTranslator();
-
 }
 
 MainWindow::~MainWindow()
@@ -32,6 +30,7 @@ void MainWindow::createTranslator()
 {
     translator = new Translator(ui->menuLanguages, this);
     connect(translator, SIGNAL(localeWasChanged()), SLOT(retranslate()));
+    translator->tryRestoreLocale();
 }
 
 #include <SamplesProxyView.h>
@@ -255,5 +254,13 @@ void MainWindow::dropEvent(QDropEvent* evt)
             paths << url.toLocalFile();
         }
         processArgs(paths);
+    }
+}
+
+#include <QDragEnterEvent>
+void MainWindow::dragEnterEvent(QDragEnterEvent* event)
+{
+    if(event->mimeData()->hasFormat("text/uri-list")){
+        event->acceptProposedAction();
     }
 }

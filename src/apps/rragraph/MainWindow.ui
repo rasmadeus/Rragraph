@@ -10,12 +10,15 @@
     <height>781</height>
    </rect>
   </property>
+  <property name="acceptDrops">
+   <bool>true</bool>
+  </property>
   <property name="windowTitle">
    <string>Rragraph - lightweight plotter</string>
   </property>
   <property name="windowIcon">
    <iconset resource="res.qrc">
-    <normaloff>:/res/mainWindow/mainIcon.png</normaloff>:/res/mainWindow/mainIcon.png</iconset>
+    <normaloff>:/res/mainWindow/mainIcon.ico</normaloff>:/res/mainWindow/mainIcon.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow::separator{
@@ -36,7 +39,7 @@ QMainWindow::separator:hover{
      <x>0</x>
      <y>0</y>
      <width>1184</width>
-     <height>17</height>
+     <height>18</height>
     </rect>
    </property>
    <property name="styleSheet">

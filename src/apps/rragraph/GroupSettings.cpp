@@ -26,7 +26,7 @@ void GroupSettings::setGroupName(const QString& name)
     group->setName(name);
     emit groupNameWasChanged();
 }
-#include <QDebug>
+
 void GroupSettings::setGroup(Group* group)
 {
     this->group = group;

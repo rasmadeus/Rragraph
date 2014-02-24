@@ -58,10 +58,10 @@ void LegendItem::restore(const QJsonObject& plotSettings)
 {
     setVisible(plotSettings.value("legendVisibility").toBool());
     setAlignment(
-        Qt::AlignmentFlag(plotSettings.value("legendHorPos").toInt()) |
-        Qt::AlignmentFlag(plotSettings.value("legendVerPos").toInt())
+        Qt::AlignmentFlag(plotSettings.value("legendHorPos").toVariant().toInt()) |
+        Qt::AlignmentFlag(plotSettings.value("legendVerPos").toVariant().toInt())
     );
-    setBackgroundOpacity(plotSettings.value("legendBackgroundOpacity").toInt());
+    setBackgroundOpacity(plotSettings.value("legendBackgroundOpacity").toVariant().toInt());
     setFont(plotSettings.value("legendFont").toVariant().value<QFont>());
     setMaxColumns(plotSettings.value("legendColumns").toVariant().value<uint>());
 }

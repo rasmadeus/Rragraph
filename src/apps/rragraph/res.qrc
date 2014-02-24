@@ -14,7 +14,7 @@
         <file>res/mainWindow/reloadProject.png</file>
         <file>res/mainWindow/saveProject.png</file>
         <file>res/mainWindow/copySettings.png</file>
-        <file>res/mainWindow/mainIcon.png</file>
-        <file>res/mainWindow/FrizQuadrataCTT Regular.ttf</file>
+        <file>res/mainWindow/mainIcon.ico</file>
+        <file>res/mainWindow/8251429.ttf</file>
     </qresource>
 </RCC>

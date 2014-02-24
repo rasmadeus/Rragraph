@@ -212,7 +212,7 @@ QJsonObject Curve::serialize() const
 QPen restorePen(const QJsonObject& curveSettings)
 {
     QPen pen;
-    pen.setWidth(curveSettings.value("penWidth").toInt(1));
+    pen.setWidth(curveSettings.value("penWidth").toVariant().toInt());
     pen.setColor(curveSettings.value("penColor").toVariant().value<QColor>());
     return Curve::fillPenWithDashPattern(pen, curveSettings.value("dashPattern").toString());
 }
@@ -220,10 +220,10 @@ QPen restorePen(const QJsonObject& curveSettings)
 void Curve::restore(const QJsonObject& curveSettings)
 {
     setVisible(curveSettings.value("isVisible").toBool());
-    setSymbolStyle(curveSettings.value("symbolStyle").toInt());
+    setSymbolStyle(curveSettings.value("symbolStyle").toVariant().toInt());
     setAddendX(curveSettings.value("addendX").toDouble(0));
     setAddendY(curveSettings.value("addendY").toDouble(0));
     setMultY(curveSettings.value("multY").toDouble(1));
-    setStep(curveSettings.value("step").toInt(1));
+    setStep(curveSettings.value("step").toVariant().toInt());
     setPen(restorePen(curveSettings));
 }

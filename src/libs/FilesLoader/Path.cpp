@@ -1,5 +1,4 @@
 #include "Path.h"
-#include <QDebug>
 #include <QSettings>
 
 Path::Path(const QString& settingsFilePath, const QString& settingsKey):
