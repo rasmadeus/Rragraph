@@ -1,23 +1,33 @@
 #include "Path.h"
-#include <QSettings>
 
-Path::Path(const QString& settingsFilePath, const QString& settingsKey):
-    settingsKey(settingsKey),
-    settingsFilePath(settingsFilePath)
+QString Path::getTemplate(Templates type)
+{
+    static const char* templates[] = {
+        QT_TR_NOOP("All files (*)")
+    };
+    switch(type){
+         case ALL_FILES: return QObject::tr(templates[0]);
+         default:        return QObject::tr(templates[0]);
+    }
+}
+
+Path::Path(const QString& settingsKey):
+    settingsKey(settingsKey)
 {
 }
 
+#include <Settings.h>
 Path::~Path()
 {
     if(!path.isEmpty()){
-        QSettings(settingsFilePath, QSettings::IniFormat).setValue(settingsKey, path);
+        Settings::obj()->set(settingsKey, path);
     }
 }
 
 QString Path::getLastPath() const
 {
     return path.isEmpty()                                                                ?
-        QSettings(settingsFilePath, QSettings::IniFormat) .value(settingsKey).toString() :
+        Settings::obj()->get(settingsKey).toString() :
         path;
 }
 
@@ -42,9 +52,9 @@ bool Path::setOpenFileName(QWidget* parent, const QString& comment, const QStrin
     return updateIfExist(openFileName);
 }
 
-bool Path::setSaveFileName(QWidget* parent, const QString& comment)
+bool Path::setSaveFileName(QWidget* parent, const QString& comment, const QString& filter)
 {
-    QString saveFileName = QFileDialog::getSaveFileName(parent, comment, getLastPath());
+    QString saveFileName = QFileDialog::getSaveFileName(parent, comment, getLastPath(), filter);
     return updateIfExist(saveFileName);
 }
 
@@ -92,4 +102,9 @@ QString Path::getRelativePath(const QString& absolutePath) const
 QString Path::getAbsolutePath(const QString& relativePath) const
 {
     return getPathInfo().absoluteDir().absoluteFilePath(relativePath);
+}
+
+void Path::clear()
+{
+    path = "";
 }

@@ -47,6 +47,11 @@ public:
         );
         return res;
     }
+
+    bool isComment(const QString& testedLine) const
+    {
+        return !testedLine.isEmpty() && testedLine[0] == '!' ? true : false;
+    }
 };
 
 #include <QThread>
@@ -80,8 +85,8 @@ protected:
         QFile rawData(d->pathToSrc);
         if(rawData.open(QFile::ReadOnly)){
             d->locker.lock();
-                QTextStream rawDataStreamer(&rawData);
-                createHeaders(rawDataStreamer.readLine());
+                QTextStream rawDataStreamer(&rawData);                
+                createHeaders(rawDataStreamer);
                 createColumns(rawDataStreamer);
             d->locker.unlock();
         }
@@ -89,6 +94,17 @@ protected:
     }
 
 private:
+    inline void createHeaders(QTextStream& rawDataStreamer)
+    {
+        while (true){
+            QString line = rawDataStreamer.readLine();
+            if(!d->isComment(line.simplified())){
+                createHeaders(line);
+                return;
+            }
+        }
+    }
+
     inline void createHeaders(QString headers)
     {
         d->headers.clear();
@@ -120,7 +136,7 @@ private:
     {
         while(!(rawDataStreamer.atEnd() || stopCrane)){
             QString line = rawDataStreamer.readLine().simplified();
-            if(!line.isEmpty()){
+            if(!d->isComment(line)){
                 QStringList column = line.replace(",", ".").split(" ");
                 rearrange(column);
                 for(int i = 0; i < d->headers.size(); ++i){
@@ -167,13 +183,11 @@ Samples::~Samples()
 
 const QStringList& Samples::getHeaders() const
 {
-    QMutexLocker locker(&d->locker);
     return d->headers;
 }
 
 const QVector<double>& Samples::getColumn(int i) const
 {
-    QMutexLocker locker(&d->locker);
     return d->columns[i];
 }
 
@@ -184,7 +198,6 @@ int Samples::count() const
 
 int Samples::height() const
 {
-    QMutexLocker locker(&d->locker);
     return d->columns.isEmpty() ? 0 : d->columns[0].size();
 }
 

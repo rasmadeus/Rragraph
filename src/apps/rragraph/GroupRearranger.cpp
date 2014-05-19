@@ -1,16 +1,88 @@
 #include "Group.h"
 
+class Iterator
+{
+public:
+    enum Type
+    {
+        STRAIGHT,
+        REVERSE
+    };
+
+    static Iterator* make(Type type, const QList<QMdiSubWindow *>& windows);
+
+    Iterator(const QList<QMdiSubWindow*>& windows):
+        windows(windows)
+    {
+    }
+
+    virtual ~Iterator()
+    {
+    }
+    virtual QMdiSubWindow* next() = 0;
+protected:
+    int i;
+    QList<QMdiSubWindow*> windows;
+};
+
+class StraightIterator: public Iterator
+{
+public:
+    StraightIterator(const QList<QMdiSubWindow*>& windows):
+        Iterator(windows)
+    {
+        i = windows.size() - 1;
+    }
+protected:
+    QMdiSubWindow* next()
+    {
+        return windows[i--];
+    }
+};
+
+class ReverseIterator: public Iterator
+{
+public:
+    ReverseIterator(const QList<QMdiSubWindow*>& windows):
+        Iterator(windows)
+    {
+        i = 0;
+    }
+protected:
+    QMdiSubWindow* next()
+    {
+        return windows[i++];
+    }
+};
+
+Iterator* Iterator::make(Type type, const QList<QMdiSubWindow*>& windows)
+{
+    switch(type){
+        case STRAIGHT: return new StraightIterator(windows);
+        case REVERSE:  return new ReverseIterator(windows);
+        default:       return new StraightIterator(windows);
+    }
+}
+
 #include <QScrollBar>
 class Rearranger
 {
 public:
-    Rearranger(Group* plots):
+    Rearranger(Group* plots, Iterator::Type ITERATOR_TYPE):
         mdiArea(plots)
     {
         windows = plots->visibleWindows();
+        iterator = Iterator::make(ITERATOR_TYPE, windows);
     }
+
+    virtual ~Rearranger()
+    {
+        delete iterator;
+    }
+
     virtual void rearrange() = 0;
 protected:
+
     void moveScrollBarToMin(QScrollBar* scrollBar)
     {
         const int min = scrollBar->minimum();
@@ -44,23 +116,26 @@ protected:
 
     Group* mdiArea;
     QList<QMdiSubWindow*> windows;
+    Iterator* iterator;
 };
+
+
 
 #include <QMdiSubWindow>
 class Vertical: public Rearranger
 {
 public:
-    Vertical(Group* plots):
-        Rearranger(plots)
+    Vertical(Group* plots, Iterator::Type ITERATOR_TYPE):
+        Rearranger(plots, ITERATOR_TYPE)
     {
-    }
+    }    
 
     void rearrange()
     {
         moveScrollBarsToMin();
         QPoint position(0, 0);
         for(int i = 0; i < windows.size() ; ++i){
-            QMdiSubWindow* window = next();
+            QMdiSubWindow* window = iterator->next();
             QRect rect(
                 0,
                 0,
@@ -72,32 +147,23 @@ public:
             position.setY(position.y() + window->height());
         }
     }
-protected:
-    virtual QMdiSubWindow* next() = 0;
+
 };
 
 class VerticalStraight: public Vertical
 {
 public:
     VerticalStraight(Group* plots):
-        Vertical(plots),
-        i(windows.size() - 1)
+        Vertical(plots, Iterator::STRAIGHT)
     {
     }
-protected:
-    QMdiSubWindow* next(){
-        return windows.at(i--);
-    }
-private:
-    int i;
 };
 
 class VerticalReverse: public Vertical
 {
 public:
     VerticalReverse(Group* plots):
-        Vertical(plots),
-        i(0)
+        Vertical(plots, Iterator::REVERSE)
     {
     }
     void rearrange()
@@ -105,21 +171,14 @@ public:
         Vertical::rearrange();
         moveScrollBarsToMax();
     }
-protected:
-    QMdiSubWindow* next(){
-        return windows.at(i++);
-    }
-private:
-    int i;
 };
 
-
 #include <QtMath>
-class GridHorizontal: public Rearranger
+class GridRearranger: public Rearranger
 {
 public:
-    GridHorizontal(Group* plots):
-        Rearranger(plots)
+    GridRearranger(Group* plots, Iterator::Type ITERATOR_TYPE):
+        Rearranger(plots, ITERATOR_TYPE)
     {
     }
     void rearrange()
@@ -129,7 +188,6 @@ public:
         }
         moveScrollBarsToMin();
 
-
         const int n = windows.size();
         const int nCols = qSqrt(double(n));
         const int nRows = n / nCols;
@@ -138,25 +196,24 @@ public:
         const int widthBase = qMax(width() / nCols, double(250));
         const int widthSpecial = nSpecialWindows ? qMax(width() / nSpecialWindows,double(250)) : 0;
 
-        int i = n - 1;
         int x = 0;
         int y = nSpecialWindows ? heightBase : 0;
 
         for(int s = 0; s < nSpecialWindows; ++s){
-            tileGeometry(i, x, widthSpecial, heightBase, s == nSpecialWindows - 1);
+            tileGeometry(x, widthSpecial, heightBase, s == (nSpecialWindows - 1));
         }
         for(int r = 0; r < nRows; ++r){
             x = 0;
             for(int c = 0; c < nCols; ++c){
-                tileGeometry(i, x, widthBase, heightBase, c == nCols - 1, y);
+                tileGeometry(x, widthBase, heightBase, c == (nCols - 1), y);
             }
             y += heightBase;
         }
     }
 private:
-    void tileGeometry(int& i, int& x, const int& width, const int& height, bool isLast, int y = 0)
+    void tileGeometry(int& x, const int& width, const int& height, bool isLast, int y = 0)
     {
-        QMdiSubWindow* window = windows.at(i--);
+        QMdiSubWindow* window = iterator->next();
         int error = 0;
         if(isLast){
             error = x + width - mdiArea->viewport()->geometry().right();
@@ -170,13 +227,37 @@ private:
     }
 };
 
+class GridStraight: public GridRearranger
+{
+public:
+    GridStraight(Group* plots):
+        GridRearranger(plots, Iterator::STRAIGHT)
+    {
+    }
+};
+
+class GridReverse: public GridRearranger
+{
+public:
+    GridReverse(Group* plots):
+        GridRearranger(plots, Iterator::REVERSE)
+    {
+    }
+    void rearrange()
+    {
+        GridRearranger::rearrange();
+        moveScrollBarsToMax();
+    }
+};
+
 void Group::tile()
 {
     switch(tileType){
-        case GRID_HORIZONTAL   : GridHorizontal(this).rearrange();   break;
+        case GRID_STRAIGHT     : GridStraight(this).rearrange();     break;
+        case GRID_REVERSE      : GridReverse(this).rearrange();      break;
         case VERTICAL_STRAIGHT : VerticalStraight(this).rearrange(); break;
         case VERTICAL_REVERSE  : VerticalReverse(this).rearrange();  break;
-        default                : GridHorizontal(this).rearrange();   break;
+        default                : GridStraight(this).rearrange();     break;
     }
 }
 

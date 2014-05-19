@@ -6,11 +6,12 @@
 #include <QTextStream>
 #include <QJsonObject>
 #include "Groups.h"
+#include <QApplication>
 class Project::ProjectPrivateData
 {
 public:
     ProjectPrivateData(Groups* groups):
-        currentProjectPath("appSettings.ini","paths/lastProjectPath"),
+        currentProjectPath("paths/lastProjectPath"),
         groups(groups)
     {
     }
@@ -29,7 +30,7 @@ public:
             pro = QJsonDocument::fromJson(proFile.readAll());
             groups->restore(pro.object(), currentProjectPath);
         }
-    }
+    }    
 
     void save(const QString& pathToPro)
     {
@@ -50,6 +51,11 @@ public:
         pro.setObject(root);
     }
 
+    QString rragraphProFilter() const
+    {
+        return tr("Rragraph pro file") + "(*.rgf);;" + Path::getTemplate(Path::ALL_FILES);
+    }
+
     Path currentProjectPath;
     QJsonDocument pro;
     Groups* groups;
@@ -57,7 +63,8 @@ public:
 
 #include <QWidget>
 Project::Project(Groups* groups, QWidget* parent) :
-    QObject(parent)
+    QObject(parent),
+    parent(parent)
 {
     d = new ProjectPrivateData(groups);
 }
@@ -70,9 +77,9 @@ Project::~Project()
 void Project::load()
 {
     const bool ok = d->currentProjectPath.setOpenFileName(
-        static_cast<QWidget*>(this->parent()),
+        parent,
         tr("Load project"),
-        tr("Rragraph pro file") + "(*.rgf);;" + tr("All files") + "(*)"
+        d->rragraphProFilter()
     );
     if(ok){
         load(d->currentProjectPath.getPath());
@@ -81,9 +88,12 @@ void Project::load()
 
 void Project::load(const QString& path)
 {
-    d->currentProjectPath.setPath(path);
-    d->load(path);
-    emit wasReplaced(path);
+    emit beginReading();
+        emit wasClosed();
+        d->currentProjectPath.setPath(path);
+        d->load(path);
+        emit wasReplaced(path);
+    emit endReading();
 }
 
 #include <QAction>
@@ -95,17 +105,19 @@ void Project::load(QAction* action)
 
 void Project::reload()
 {
+    emit wasClosed();
     if(d->currentProjectPath.isEmpty()){
         load();
     }
     else{
-        load(d->currentProjectPath.getPath());
+        load(d->currentProjectPath.getPath());        
     }
 }
 
 void Project::close()
 {
-    d->close();
+    d->groups->toDefaultState();
+    d->currentProjectPath.clear();
     emit wasClosed();
 }
 
@@ -123,12 +135,51 @@ bool Project::save()
 bool Project::saveAs()
 {
     const bool ok = d->currentProjectPath.setSaveFileName(
-        static_cast<QWidget*>(this->parent()),
-        tr("Open project")
-     );
+        parent,
+        tr("Save project as"),
+        d->rragraphProFilter()
+    );
     if(ok){
         d->save(d->currentProjectPath.getPath());
         emit wasReplaced(d->currentProjectPath.getPath());
     }
     return ok;
+}
+
+#include <QFileDialog>
+#include <QMessageBox>
+void Project::forKojnevAlexandrNikolayevich()
+{
+    const QString destDir = QFileDialog::getExistingDirectory(parent, tr("Copy there"), d->currentProjectPath.getPath());
+    if(!destDir.isEmpty()){
+        const QString newPath = destDir + "/" + d->currentProjectPath.getPathInfo().fileName();
+        if (newPath != d->currentProjectPath.getPath()){
+            QFile::remove(newPath);
+        }
+        if(QFile::copy(d->currentProjectPath.getPath(), newPath)){
+            load(newPath);
+        }
+        else{
+            QMessageBox::warning(parent, tr("Copy error"), tr("I can't copy pro file to that folder!"));
+        }
+    }
+}
+
+#include <VersionConverter.h>
+void Project::forDeminValeriyNikolayevich()
+{
+    const bool ok = d->currentProjectPath.setOpenFileName(
+        parent,
+        tr("Load project"),
+        d->rragraphProFilter()
+    );
+    if(ok){
+        emit beginReading();
+            emit wasClosed();
+                d->pro = jumpFromThirdToFourth(d->currentProjectPath.getPath());
+                d->groups->closeGroups();
+                d->groups->restore(d->pro.object(), d->currentProjectPath);
+            emit wasReplaced(d->currentProjectPath.getPath());
+        emit endReading();
+    }
 }

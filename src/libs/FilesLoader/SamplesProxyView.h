@@ -14,20 +14,19 @@ class SamplesProxyView : public QDialog
 {
     Q_OBJECT
 public:
-    explicit SamplesProxyView(QWidget* parent = 0);
+    explicit SamplesProxyView(SamplesManager* samplesManager, QWidget* parent = 0);
     ~SamplesProxyView();
-    void setSamplesManager(SamplesManager* samplesManager);
-    void retranslate();
 private slots:
     void setSamples(int i);
     void disabledResetGroup();
     void enabledResetGroup();
     void checkEnabledResetGroup(int i);
     void updateEnabledResetGroup(int i);
-    void resetProxyView();
     void setSamplesPathToWindowTitle(int i);
     void restoreWindowTitle();
 private:
+    void setSamplesManager(SamplesManager* samplesManager);
+    void reset();
     void createSamplesManagerView();
     void createSamplesProxyModel();
     void routeProxyViewActions();

@@ -1,0 +1,1363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PlotSettings</class>
+ <widget class="QWidget" name="PlotSettings">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>172</width>
+    <height>632</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>576</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <property name="spacing">
+    <number>3</number>
+   </property>
+   <property name="leftMargin">
+    <number>3</number>
+   </property>
+   <property name="topMargin">
+    <number>3</number>
+   </property>
+   <property name="rightMargin">
+    <number>3</number>
+   </property>
+   <property name="bottomMargin">
+    <number>3</number>
+   </property>
+   <item>
+    <widget class="QGroupBox" name="groupBox_6">
+     <property name="title">
+      <string>Plot's title</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <property name="spacing">
+       <number>3</number>
+      </property>
+      <property name="leftMargin">
+       <number>3</number>
+      </property>
+      <property name="topMargin">
+       <number>3</number>
+      </property>
+      <property name="rightMargin">
+       <number>3</number>
+      </property>
+      <property name="bottomMargin">
+       <number>3</number>
+      </property>
+      <item>
+       <widget class="QLineEdit" name="plotTitle">
+        <property name="toolTip">
+         <string>Set current plot's title.</string>
+        </property>
+        <property name="statusTip">
+         <string>Set current plot's title.</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <property name="spacing">
+         <number>3</number>
+        </property>
+        <item>
+         <widget class="QToolButton" name="plotTitleFont">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>17</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Set title's font of current plot.</string>
+          </property>
+          <property name="statusTip">
+           <string>Set title's font of current plot.</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QToolButton{
+    border-style: outset;
+    border-width: 0px;
+    font: 12px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    color: #444444;
+    height: 17px;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #999, 
+        stop: 0.75 #bbb,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #eee, 
+        stop: 0.0   #fff
+    );
+}
+QToolButton:pressed {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #fff, 
+        stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0   #999
+    );
+}
+QToolButton:hover:enabled{
+    color:#000
+}
+QToolButton:disabled{
+    color: #999999;
+}</string>
+          </property>
+          <property name="text">
+           <string>Title font</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="plotTitleColor">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>17</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Set title's color of current plot.</string>
+          </property>
+          <property name="statusTip">
+           <string>Set title's color of current plot.</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QToolButton{
+    border-style: outset;
+    border-width: 0px;
+    font: 12px;
+    color: #444444;
+    height: 17px;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #999, 
+        stop: 0.75 #bbb,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #eee, 
+        stop: 0.0   #fff
+    );
+}
+QToolButton:pressed {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #fff, 
+        stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0   #999
+    );
+}
+QToolButton:hover:enabled{
+    color:#000
+}
+QToolButton:disabled{
+    color: #999999;
+}</string>
+          </property>
+          <property name="text">
+           <string>Title color</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="copyPlotTitle">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>17</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Copy these common's settings to all plots of current group.</string>
+          </property>
+          <property name="statusTip">
+           <string>Copy these common's settings to all plots of current group.</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QToolButton{
+    border-style: outset;
+    border-width: 0px;
+    font: 14px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: #444444;
+    height: 17px;
+	width:20px;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #999, 
+        stop: 0.75 #bbb,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #eee, 
+        stop: 0.0   #fff
+    );
+}
+QToolButton:pressed {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #fff, 
+        stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0   #999
+    );
+}
+QToolButton:hover:enabled{
+    color:#000
+}
+QToolButton:disabled{
+    color: #999999;
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../../apps/rragraph/res.qrc">
+            <normaloff>:/res/mainWindow/copySettings.png</normaloff>:/res/mainWindow/copySettings.png</iconset>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="axisGroup">
+     <property name="title">
+      <string>Absciss</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="spacing">
+       <number>3</number>
+      </property>
+      <property name="leftMargin">
+       <number>3</number>
+      </property>
+      <property name="topMargin">
+       <number>3</number>
+      </property>
+      <property name="rightMargin">
+       <number>3</number>
+      </property>
+      <property name="bottomMargin">
+       <number>3</number>
+      </property>
+      <item>
+       <widget class="QDoubleSpinBox" name="xMin">
+        <property name="toolTip">
+         <string>Set minimum for current plot's axis.</string>
+        </property>
+        <property name="statusTip">
+         <string>Set minimum for current plot's axis.</string>
+        </property>
+        <property name="prefix">
+         <string>Minimum </string>
+        </property>
+        <property name="decimals">
+         <number>3</number>
+        </property>
+        <property name="minimum">
+         <double>-1000000.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>1000000.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QDoubleSpinBox" name="xMax">
+        <property name="toolTip">
+         <string>Set maximum for current plot's axis.</string>
+        </property>
+        <property name="statusTip">
+         <string>Set maximum for current plot's axis.</string>
+        </property>
+        <property name="prefix">
+         <string>Maximum </string>
+        </property>
+        <property name="decimals">
+         <number>3</number>
+        </property>
+        <property name="minimum">
+         <double>-1000000.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>1000000.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QDoubleSpinBox" name="xStep">
+        <property name="toolTip">
+         <string>Set step for current plot's axis.</string>
+        </property>
+        <property name="statusTip">
+         <string>Set step for current plot's axis.</string>
+        </property>
+        <property name="prefix">
+         <string>Step </string>
+        </property>
+        <property name="decimals">
+         <number>3</number>
+        </property>
+        <property name="minimum">
+         <double>-1000000.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>1000000.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="xTitle">
+        <property name="toolTip">
+         <string>Set title for current plot's axis.</string>
+        </property>
+        <property name="statusTip">
+         <string>Set title for current plot's axis.</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="4,4,1">
+        <property name="spacing">
+         <number>3</number>
+        </property>
+        <item>
+         <widget class="QToolButton" name="xFont">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>17</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Set current axis font.</string>
+          </property>
+          <property name="statusTip">
+           <string>Set current axis font.</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QToolButton{
+    border-style: outset;
+    border-width: 0px;
+    font: 12px;
+    color: #444444;
+    height: 17px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #999, 
+        stop: 0.75 #bbb,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #eee, 
+        stop: 0.0   #fff
+    );
+}
+QToolButton:pressed {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #fff, 
+        stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0   #999
+    );
+}
+QToolButton:hover:enabled{
+    color:#000
+}
+QToolButton:disabled{
+    color: #999999;
+}</string>
+          </property>
+          <property name="text">
+           <string>Title font</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="xColor">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>17</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Set current axis color.</string>
+          </property>
+          <property name="statusTip">
+           <string>Set current axis color.</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QToolButton{
+    border-style: outset;
+    border-width: 0px;
+    font: 12px;
+    color: #444444;
+    height: 17px;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #999, 
+        stop: 0.75 #bbb,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #eee, 
+        stop: 0.0   #fff
+    );
+}
+QToolButton:pressed {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #fff, 
+        stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0   #999
+    );
+}
+QToolButton:hover:enabled{
+    color:#000
+}
+QToolButton:disabled{
+    color: #999999;
+}</string>
+          </property>
+          <property name="text">
+           <string>Title color</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="copyX">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>17</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Copy these axis' settings to all plots of current group.</string>
+          </property>
+          <property name="statusTip">
+           <string>Copy these axis' settings to all plots of current group.</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QToolButton{
+    border-style: outset;
+    border-width: 0px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: #444444;
+    height: 17px;
+	width:20px;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #999, 
+        stop: 0.75 #bbb,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #eee, 
+        stop: 0.0   #fff
+    );
+}
+QToolButton:pressed {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #fff, 
+        stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0   #999
+    );
+}
+QToolButton:hover:enabled{
+    color:#000
+}
+QToolButton:disabled{
+    color: #999999;
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../../apps/rragraph/res.qrc">
+            <normaloff>:/res/mainWindow/copySettings.png</normaloff>:/res/mainWindow/copySettings.png</iconset>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="axisGroup_2">
+     <property name="title">
+      <string>Ordinate</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="spacing">
+       <number>3</number>
+      </property>
+      <property name="leftMargin">
+       <number>3</number>
+      </property>
+      <property name="topMargin">
+       <number>3</number>
+      </property>
+      <property name="rightMargin">
+       <number>3</number>
+      </property>
+      <property name="bottomMargin">
+       <number>3</number>
+      </property>
+      <item>
+       <widget class="QDoubleSpinBox" name="yMin">
+        <property name="toolTip">
+         <string>Set minimum for current plot's axis.</string>
+        </property>
+        <property name="statusTip">
+         <string>Set minimum for current plot's axis.</string>
+        </property>
+        <property name="prefix">
+         <string>Minimum </string>
+        </property>
+        <property name="decimals">
+         <number>3</number>
+        </property>
+        <property name="minimum">
+         <double>-1000000.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>1000000.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QDoubleSpinBox" name="yMax">
+        <property name="toolTip">
+         <string>Set maximum for current plot's axis.</string>
+        </property>
+        <property name="statusTip">
+         <string>Set maximum for current plot's axis.</string>
+        </property>
+        <property name="prefix">
+         <string>Maximum </string>
+        </property>
+        <property name="decimals">
+         <number>3</number>
+        </property>
+        <property name="minimum">
+         <double>-1000000.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>1000000.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QDoubleSpinBox" name="yStep">
+        <property name="toolTip">
+         <string>Set step for current plot's axis.</string>
+        </property>
+        <property name="statusTip">
+         <string>Set step for current plot's axis.</string>
+        </property>
+        <property name="prefix">
+         <string>Step </string>
+        </property>
+        <property name="decimals">
+         <number>3</number>
+        </property>
+        <property name="minimum">
+         <double>-1000000.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>1000000.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="yTitle">
+        <property name="toolTip">
+         <string>Set title for current plot's axis.</string>
+        </property>
+        <property name="statusTip">
+         <string>Set title for current plot's axis.</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="4,4,1">
+        <property name="spacing">
+         <number>3</number>
+        </property>
+        <item>
+         <widget class="QToolButton" name="yFont">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>17</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Set current axis font.</string>
+          </property>
+          <property name="statusTip">
+           <string>Set current axis font.</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QToolButton{
+    border-style: outset;
+    border-width: 0px;
+    font: 12px;
+    color: #444444;
+    height: 17px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #999, 
+        stop: 0.75 #bbb,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #eee, 
+        stop: 0.0   #fff
+    );
+}
+QToolButton:pressed {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #fff, 
+        stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0   #999
+    );
+}
+QToolButton:hover:enabled{
+    color:#000
+}
+QToolButton:disabled{
+    color: #999999;
+}</string>
+          </property>
+          <property name="text">
+           <string>Title font</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="yColor">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>17</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Set current axis color.</string>
+          </property>
+          <property name="statusTip">
+           <string>Set current axis color.</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QToolButton{
+    border-style: outset;
+    border-width: 0px;
+    font: 12px;
+    color: #444444;
+    height: 17px;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #999, 
+        stop: 0.75 #bbb,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #eee, 
+        stop: 0.0   #fff
+    );
+}
+QToolButton:pressed {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #fff, 
+        stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0   #999
+    );
+}
+QToolButton:hover:enabled{
+    color:#000
+}
+QToolButton:disabled{
+    color: #999999;
+}</string>
+          </property>
+          <property name="text">
+           <string>Title color</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="copyY">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>17</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Copy these axis' settings to all plots of current group.</string>
+          </property>
+          <property name="statusTip">
+           <string>Copy these axis' settings to all plots of current group.</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QToolButton{
+    border-style: outset;
+    border-width: 0px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: #444444;
+    height: 17px;
+	width:20px;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #999, 
+        stop: 0.75 #bbb,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #eee, 
+        stop: 0.0   #fff
+    );
+}
+QToolButton:pressed {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #fff, 
+        stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0   #999
+    );
+}
+QToolButton:hover:enabled{
+    color:#000
+}
+QToolButton:disabled{
+    color: #999999;
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../../apps/rragraph/res.qrc">
+            <normaloff>:/res/mainWindow/copySettings.png</normaloff>:/res/mainWindow/copySettings.png</iconset>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="settingsGroup">
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="title">
+      <string>Has legend</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_7">
+      <property name="spacing">
+       <number>3</number>
+      </property>
+      <property name="leftMargin">
+       <number>3</number>
+      </property>
+      <property name="topMargin">
+       <number>3</number>
+      </property>
+      <property name="rightMargin">
+       <number>3</number>
+      </property>
+      <property name="bottomMargin">
+       <number>3</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="spacing">
+         <number>3</number>
+        </property>
+        <item>
+         <widget class="QComboBox" name="verPos">
+          <property name="toolTip">
+           <string>Vertical legend position for current plot.</string>
+          </property>
+          <property name="statusTip">
+           <string>Vertical legend position for current plot.</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="horPos">
+          <property name="toolTip">
+           <string>Horizontal legend position for current plot.</string>
+          </property>
+          <property name="statusTip">
+           <string>Horizontal legend position for current plot.</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QSlider" name="opacity">
+        <property name="toolTip">
+         <string>Set legend's background opacity.</string>
+        </property>
+        <property name="statusTip">
+         <string>Set legend's background opacity.</string>
+        </property>
+        <property name="maximum">
+         <number>255</number>
+        </property>
+        <property name="singleStep">
+         <number>5</number>
+        </property>
+        <property name="pageStep">
+         <number>50</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="columnsCount">
+        <property name="toolTip">
+         <string>Set column's count for current plot's legend. </string>
+        </property>
+        <property name="statusTip">
+         <string>Set column's count for current plot's legend. </string>
+        </property>
+        <property name="suffix">
+         <string/>
+        </property>
+        <property name="prefix">
+         <string>Column's count </string>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <property name="spacing">
+         <number>3</number>
+        </property>
+        <item>
+         <widget class="QToolButton" name="legendFont">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>17</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Set font of current plot's legend.</string>
+          </property>
+          <property name="statusTip">
+           <string>Set font of current plot's legend.</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QToolButton{
+    border-style: outset;
+    border-width: 0px;
+    font: 12px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    color: #444444;
+    height: 17px;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #999, 
+        stop: 0.75 #bbb,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #eee, 
+        stop: 0.0   #fff
+    );
+}
+QToolButton:pressed {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #fff, 
+        stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0   #999
+    );
+}
+QToolButton:hover:enabled{
+    color:#000
+}
+QToolButton:disabled{
+    color: #999999;
+}</string>
+          </property>
+          <property name="text">
+           <string>Set legend font</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="copyLegend">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>17</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Copy these legend's settings to all plots of current group.</string>
+          </property>
+          <property name="statusTip">
+           <string>Copy these legend's settings to all plots of current group.</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QToolButton{
+    border-style: outset;
+    border-width: 0px;
+    font: 14px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: #444444;
+    height: 17px;
+	width:20px;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #999, 
+        stop: 0.75 #bbb,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #eee, 
+        stop: 0.0   #fff
+    );
+}
+QToolButton:pressed {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #fff, 
+        stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0   #999
+    );
+}
+QToolButton:hover:enabled{
+    color:#000
+}
+QToolButton:disabled{
+    color: #999999;
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../../apps/rragraph/res.qrc">
+            <normaloff>:/res/mainWindow/copySettings.png</normaloff>:/res/mainWindow/copySettings.png</iconset>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_4">
+     <property name="title">
+      <string>Export</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_8">
+      <property name="spacing">
+       <number>3</number>
+      </property>
+      <property name="leftMargin">
+       <number>3</number>
+      </property>
+      <property name="topMargin">
+       <number>3</number>
+      </property>
+      <property name="rightMargin">
+       <number>3</number>
+      </property>
+      <property name="bottomMargin">
+       <number>3</number>
+      </property>
+      <item>
+       <widget class="QSpinBox" name="resolution">
+        <property name="toolTip">
+         <string>Set resolution for this exporting plot.</string>
+        </property>
+        <property name="statusTip">
+         <string>Set resolution for this exporting plot.</string>
+        </property>
+        <property name="suffix">
+         <string> on inch</string>
+        </property>
+        <property name="prefix">
+         <string>Points </string>
+        </property>
+        <property name="minimum">
+         <number>30</number>
+        </property>
+        <property name="maximum">
+         <number>5000</number>
+        </property>
+        <property name="singleStep">
+         <number>5</number>
+        </property>
+        <property name="value">
+         <number>150</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="plotExportWidth">
+        <property name="toolTip">
+         <string>Set width for current plot's export size.</string>
+        </property>
+        <property name="statusTip">
+         <string>Set width for current plot's export size.</string>
+        </property>
+        <property name="suffix">
+         <string> mm</string>
+        </property>
+        <property name="prefix">
+         <string>Width </string>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+        <property name="value">
+         <number>100</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="plotExportHeight">
+        <property name="toolTip">
+         <string>Set height for current plot's export size.</string>
+        </property>
+        <property name="statusTip">
+         <string>Set height for current plot's export size.</string>
+        </property>
+        <property name="suffix">
+         <string> mm</string>
+        </property>
+        <property name="prefix">
+         <string>Height </string>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+        <property name="value">
+         <number>100</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <property name="spacing">
+         <number>3</number>
+        </property>
+        <item>
+         <widget class="QToolButton" name="printPlot">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>17</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Print current plot.</string>
+          </property>
+          <property name="statusTip">
+           <string>Print current plot.</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QToolButton{
+    border-style: outset;
+    border-width: 0px;
+    font: 12px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    color: #444444;
+    height: 17px;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #999, 
+        stop: 0.75 #bbb,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #eee, 
+        stop: 0.0   #fff
+    );
+}
+QToolButton:pressed {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #fff, 
+        stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0   #999
+    );
+}
+QToolButton:hover:enabled{
+    color:#000
+}
+QToolButton:disabled{
+    color: #999999;
+}</string>
+          </property>
+          <property name="text">
+           <string>Print</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="savePlotToImage">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>17</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Export to images this plot only.</string>
+          </property>
+          <property name="statusTip">
+           <string>Export to images this plot only.</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QToolButton{
+    border-style: outset;
+    border-width: 0px;
+    font: 12px;
+    color: #444444;
+    height: 17px;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #999, 
+        stop: 0.75 #bbb,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #eee, 
+        stop: 0.0   #fff
+    );
+}
+QToolButton:pressed {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #fff, 
+        stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0   #999
+    );
+}
+QToolButton:hover:enabled{
+    color:#000
+}
+QToolButton:disabled{
+    color: #999999;
+}</string>
+          </property>
+          <property name="text">
+           <string>Image</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="copyExport">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>17</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>Copy these export's settings to all plots of current group.</string>
+          </property>
+          <property name="statusTip">
+           <string>Copy these export's settings to all plots of current group.</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QToolButton{
+    border-style: outset;
+    border-width: 0px;
+    font: 14px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    color: #444444;
+    height: 17px;
+	width:20px;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #999, 
+        stop: 0.75 #bbb,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #eee, 
+        stop: 0.0   #fff
+    );
+}
+QToolButton:pressed {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 1.0   #fff, 
+        stop: 0.75 #eee,
+        stop: 0.5   #ddd, 
+        stop: 0.25 #bbb, 
+        stop: 0.0   #999
+    );
+}
+QToolButton:hover:enabled{
+    color:#000
+}
+QToolButton:disabled{
+    color: #999999;
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../../apps/rragraph/res.qrc">
+            <normaloff>:/res/mainWindow/copySettings.png</normaloff>:/res/mainWindow/copySettings.png</iconset>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../../apps/rragraph/res.qrc"/>
+ </resources>
+ <connections/>
+</ui>

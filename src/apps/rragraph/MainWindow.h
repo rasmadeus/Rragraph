@@ -4,9 +4,10 @@
 class Group;
 class Groups;
 class Project;
-class SamplesProxyView;
 class RecentlyProjectPaths;
 class Translator;
+class GroupSettings;
+class PlotSettings;
 
 #include <QMainWindow>
 
@@ -32,6 +33,12 @@ private slots:
     void fillProjectMenu();
     void showAbout();
     void retranslate();
+    void beginWaiting();
+    void endWaiting();
+    void tryReloadProject();
+    void tryCloseProject();
+    void tryClearWindows();
+    void tryClearGroups();
 private:
     void restoreVisibilityActionsState();
     void restoreSettings();
@@ -40,17 +47,18 @@ private:
     void routePlotsMenu();
     void createPlotsTilingMenu();
     void createPlotSettingsView();
-    void createSamplesManager();
+    void createSamplesProxyActions();
     void createProject();
     void createRecentlyProjectPaths();
     void initAbout();
     void createTranslator();
     Ui::MainWindow *ui;
     Groups* groups;
-    SamplesProxyView* samplesProxyView;
     Project* project;
     RecentlyProjectPaths* recentlyProjectPaths;
     Translator* translator;
+    GroupSettings* groupSettings;
+    PlotSettings* plotSettings;
 };
 
 #endif // MAINWINDOW_H

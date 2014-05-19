@@ -12,13 +12,12 @@ CurvesManager::CurvesManager(SamplesManager* samplesManager, Plot* owner, QObjec
         }
     }
     {
-        connect(samplesManager, SIGNAL(haveBeenAdded(int)), SLOT(newSamplesWasAdded(int)));
-        connect(samplesManager, SIGNAL(haveBeenLoaded(int)), SLOT(samplesWasLoaded(int)));
-        connect(samplesManager, SIGNAL(haveBeenRemoved(int)), SLOT(samplesIsGoingToRemove(int)));
+        connect(samplesManager, SIGNAL(haveBeenAdded(int)),    SLOT(newSamplesWasAdded(int)));
+        connect(samplesManager, SIGNAL(haveBeenLoaded(int)),   SLOT(samplesWasLoaded(int)));
+        connect(samplesManager, SIGNAL(haveBeenRemoved(int)),  SLOT(samplesIsGoingToRemove(int)));
         connect(samplesManager, SIGNAL(proxyDataWasChanged()), SLOT(resamples()));
-        connect(samplesManager, SIGNAL(haveBeenLoaded(int)), SLOT(tryRestoreCurves(int)));
+        connect(samplesManager, SIGNAL(haveBeenLoaded(int)),   SLOT(tryRestoreCurves(int)));
     }
-
 }
 
 CurvesManager::~CurvesManager()

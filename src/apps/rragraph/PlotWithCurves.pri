@@ -15,32 +15,10 @@ else:unix: PRE_TARGETDEPS += $$OUT_PWD/../../libs/PreCustomizedQwt/libPreCustomi
 include($$PWD/../../auxiliary/qwtPath.pri)
 
 HEADERS += \
-    PlotWithCurves.h \
-    PlotSettingsView.h \
-    PlotSettings.h \
-    CommonPlotSettings.h \
-    AxisPlotSettings.h \
-    ExportPlotSettings.h \
-    LegendPlotSettings.h \
-    FontColorSettingsAble.h \
-    GroupSettings.h
+    PlotWithCurves.h
 
 SOURCES += \
-    PlotWithCurves.cpp \
-    PlotSettingsView.cpp \ 
-    PlotSettings.cpp \
-    CommonPlotSettings.cpp \
-    AxisPlotSettings.cpp \
-    ExportPlotSettings.cpp \
-    LegendPlotSettings.cpp \
-    FontColorSettingsAble.cpp \
-    GroupSettings.cpp
+    PlotWithCurves.cpp
 
-FORMS += \
-    PlotSettingsView.ui \
-    CommonPlotSettings.ui \
-    AxisPlotSettings.ui \
-    ExportPlotSettings.ui \
-    LegendPlotSettings.ui \
-    GroupSettings.ui
+FORMS +=
 

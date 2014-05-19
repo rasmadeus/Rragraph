@@ -106,7 +106,7 @@ Curve* Curves::create(int iY)
 }
 
 Curve* Curves::getCurve(int iY) const
-{
+{    
     return curves.value(iY);
 }
 
@@ -123,7 +123,7 @@ Curve* Curves::getCurveFrom(int consecutiveIndex) const
 }
 
 QList<int> Curves::getCurvesKeys() const
-{
+{        
     return curves.keys();
 }
 
@@ -145,7 +145,9 @@ void Curves::serialize(QJsonArray& curvesSettings) const
     QJsonObject curvesValues;
     curvesValues.insert("x", iX);
     foreach(int iY, curves.keys()){
-        curvesValues.insert(QString("%1").arg(iY), curves[iY]->serialize());
+        if(curves[iY]->isVisible()){//Я думаю, нет смысла сохранять невидимые кривые.
+            curvesValues.insert(QString("%1").arg(iY), curves[iY]->serialize());
+        }
     }
     curvesSettings.append(curvesValues);
 }
@@ -153,17 +155,17 @@ void Curves::serialize(QJsonArray& curvesSettings) const
 void Curves::restore(const QJsonObject& curvesValues)
 {
     foreach(const QString& key, curvesValues.keys()){
-        const int i = key.toInt();
-        if(i < samples->count()){
-            if(key == "x"){
-                iX = i;
-            }
-            else{
+        if(key == "x"){
+            iX = curvesValues.value(key).toVariant().toInt();
+        }
+        else{
+            const int i = key.toInt();
+            if(i < samples->count()){
                 Curve* curve = create(i);
                 curve->restore(curvesValues.value(key).toObject());
                 append(curve, i);
             }
-        }
+        }        
     }
     resamples();
 }

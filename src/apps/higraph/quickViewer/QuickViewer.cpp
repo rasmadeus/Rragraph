@@ -40,7 +40,6 @@ QuickViewer::QuickViewer(QWindow *parent)
     connect(engine(), SIGNAL(quit()), SLOT(close()));
     setResizeMode(QQuickView::SizeRootObjectToView);
     setIcon(QIcon(":/res/icon.ico"));
-
 }
 
 QuickViewer::~QuickViewer()

@@ -6,6 +6,7 @@ PlotWithCurves::PlotWithCurves(SamplesManager* samplesManager, CurvesManagerView
     curvesManagerView(curvesManagerView)
 {
     curvesManager = new CurvesManager(samplesManager, this);
+    setPalette(QPalette(Qt::white));
 }
 
 PlotWithCurves::~PlotWithCurves()
@@ -18,9 +19,14 @@ PlotWithCurves::~PlotWithCurves()
 #include <QMouseEvent>
 void PlotWithCurves::mousePressEvent(QMouseEvent* event)
 {
-    if(!controlIsPressed && event->button() == Qt::RightButton){
-        curvesManagerView->setCurvesManager(curvesManager);
-        curvesManagerView->show();
+    if(event->button() == Qt::RightButton){
+        if(controlIsPressed){
+            setZoomBase();
+        }
+        else{
+            curvesManagerView->setCurvesManager(curvesManager);
+            curvesManagerView->show();
+        }
     }
     Plot::mousePressEvent(event);
 }
@@ -74,16 +80,19 @@ void PlotWithCurves::serialize(QJsonArray& plots) const
         serializeAxis(yLeft, "y", plotSettings);
         serializeQwtText(title(), "title", plotSettings);
         serializeSizeF(getExportSize(), "exportSize", plotSettings);
+        plotSettings.insert("resolution", getResolution());
         legend->serialize(plotSettings);
         curvesManager->serialize(plotSettings);
     plots.append(plotSettings);
 }
-
+#include <qwt_point_3d.h>
 void PlotWithCurves::restore(const QJsonObject& plotSettings)
 {
-    restoreAxis(xBottom, "x", plotSettings);
-    restoreAxis(yLeft, "y", plotSettings);
+    setResolution(plotSettings.value("resolution").toInt(150));
+    xBase = restoreAxis(xBottom, "x", plotSettings);
+    yBase = restoreAxis(yLeft, "y", plotSettings);
     setTitle(restoreQwtText("title", plotSettings));
+    setZoomStack();
     setExportSize(restoreSizeF("exportSize", plotSettings));
     legend->restore(plotSettings);
     curvesManager->restore(plotSettings);
@@ -102,17 +111,14 @@ void PlotWithCurves::serializeAxis(Axis axis, const QString& prefix, QJsonObject
     }
 }
 
-void PlotWithCurves::restoreAxis(Axis axis, const QString& prefix, const QJsonObject& plotSettings)
+
+QwtPoint3D PlotWithCurves::restoreAxis(Axis axis, const QString& prefix, const QJsonObject& plotSettings)
 {
-    {
         setAxisTitle(axis, restoreQwtText(prefix + "Title", plotSettings));
-    }
-    {
-        setAxisScale(
-            axis,
+        return QwtPoint3D(
             plotSettings.value(prefix + "Min").toDouble(0),
             plotSettings.value(prefix + "Max").toDouble(100),
             plotSettings.value(prefix + "Step").toDouble(10)
+
         );
-    }
 }

@@ -4,13 +4,14 @@
 #
 #-------------------------------------------------
 
-QT       += widgets svg
+QT       += widgets svg printsupport
 
 TARGET = PreCustomizedQwt
 TEMPLATE = lib
 CONFIG += staticlib c++11 qwt
 
 include($$PWD/../../auxiliary/qwtPath.pri)
+include($$PWD/PlotSettings.pri)
 
 SOURCES += \
     Plot.cpp \
@@ -28,3 +29,9 @@ HEADERS += \
     Canvas.h \
     Zoomer.h
 
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../FilesLoader/release/ -lFilesLoader
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../FilesLoader/debug/ -lFilesLoader
+else:unix: LIBS += -L$$OUT_PWD/../FilesLoader/ -lFilesLoader
+
+INCLUDEPATH += $$PWD/../FilesLoader
+DEPENDPATH += $$PWD/../FilesLoader

@@ -23,9 +23,18 @@ int CurvesModel::rowCount(const QModelIndex& parent) const
 
 #include "Curve.h"
 QString CurvesModel::displayRole(const QModelIndex& index) const
+{ 
+    return getCurve(index)->title().text();
+}
+
+QColor CurvesModel::textColorRole(const QModelIndex& index) const
 {
-    Curve* curve = curves->getCurve(index);    
-    return curve->title().text();
+    return getCurve(index)->isVisible() ? QColor(0, 0, 0) : QColor(200, 200, 200);
+}
+
+Curve* CurvesModel::getCurve(const QModelIndex& index) const
+{
+    return curves->getCurve(index);
 }
 
 Curve* CurvesModel::getCurve() const

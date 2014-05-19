@@ -1,13 +1,13 @@
 #ifndef EXITMESSAGE_H
 #define EXITMESSAGE_H
 
-#include <QDialog>
+#include "AskMessage.h"
 
 namespace Ui {
 class ExitMessage;
 }
 
-class ExitMessage : public QDialog
+class ExitMessage : public AskMessage
 {
     Q_OBJECT
 public:
@@ -17,15 +17,13 @@ public:
         DO_NOT_SAVE_PROJECT_AND_EXIT,
         GO_BACK
     };
-    explicit ExitMessage(QWidget *parent = 0);
+    explicit ExitMessage(QWidget* parent = 0);
     ~ExitMessage();
-    int exec();
 private slots:
     void yes();
     void no();
     void cancel();
 private:
-    Order order;
     Ui::ExitMessage *ui;
 };
 

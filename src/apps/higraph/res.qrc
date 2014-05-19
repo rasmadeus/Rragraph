@@ -11,5 +11,7 @@
         <file>res/menu/close.png</file>
         <file>res/histogram/pause.png</file>
         <file>res/histogram/start.png</file>
+        <file>res/histogram/next.png</file>
+        <file>res/histogram/prev.png</file>
     </qresource>
 </RCC>

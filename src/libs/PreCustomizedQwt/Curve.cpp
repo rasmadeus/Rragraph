@@ -17,6 +17,9 @@ Curve::Curve(const QString& name):
 
 void Curve::setStep(int step)
 {
+    if(step <= 0){
+        step = 1;
+    }
     this->step = step;
 }
 
@@ -138,13 +141,13 @@ void Curve::drawSymbols(
 
     mapper.setBoundingRect(canvasRect);
 
-    const int chunkSize = 500;
+    const int chunkSize = 10000;
 
     for(int i = from; i <= to; i += chunkSize){
         const int n = qMin(chunkSize, to - i + 1);
         const QPolygonF points = mapper.toPointsF(xMap, yMap, data(), i, i + n - 1);
 
-        QPolygonF samples;
+        QPolygonF samples;        
         for(int i = 0; i< points.size(); i += step){
             samples << points[i];
         }
@@ -197,7 +200,6 @@ void serializeDashPattern(QJsonObject& curveSettings, const QPen& pen)
 QJsonObject Curve::serialize() const
 {
     QJsonObject curveSettings;
-    curveSettings.insert("isVisible", isVisible());
     curveSettings.insert("symbolStyle", QJsonValue::fromVariant(symbolStyle));
     curveSettings.insert("addendX", QJsonValue::fromVariant(addendX));
     curveSettings.insert("addendY", QJsonValue::fromVariant(addendY));
@@ -219,7 +221,6 @@ QPen restorePen(const QJsonObject& curveSettings)
 
 void Curve::restore(const QJsonObject& curveSettings)
 {
-    setVisible(curveSettings.value("isVisible").toBool());
     setSymbolStyle(curveSettings.value("symbolStyle").toVariant().toInt());
     setAddendX(curveSettings.value("addendX").toDouble(0));
     setAddendY(curveSettings.value("addendY").toDouble(0));

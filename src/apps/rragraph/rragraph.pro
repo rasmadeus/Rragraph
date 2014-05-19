@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = rragraph
 TEMPLATE = app
 
-DESTDIR = $$PWD/../../../installer/rragraph
+DESTDIR = $$PWD/../../../installer/rragraph/windows_xp_32
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../libs/CurvesManager/release/ -lCurvesManager
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../libs/CurvesManager/debug/ -lCurvesManager
@@ -42,18 +42,16 @@ else:unix: PRE_TARGETDEPS += $$OUT_PWD/../../libs/FilesLoader/libFilesLoader.a
 include($$PWD/Groups.pri)
 include($$PWD/PlotWithCurves.pri)
 include($$PWD/Project.pri)
+include($$PWD/Messages.pri)
 
 SOURCES += main.cpp\
-        MainWindow.cpp \
-    ExitMessage.cpp \
+    MainWindow.cpp \
     Translator.cpp
 
 HEADERS  += MainWindow.h \
-    ExitMessage.h \
     Translator.h
 
-FORMS    += MainWindow.ui \
-    ExitMessage.ui
+FORMS    += MainWindow.ui
 
 RESOURCES += \
     res.qrc
@@ -63,3 +61,10 @@ TRANSLATIONS += $$PWD/ts/app_ru.ts
 win32{
     RC_FILE = $$PWD/res/icon.rc
 }
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../libs/Settings/release/ -lSettings
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../libs/Settings/debug/ -lSettings
+else:unix:!macx: LIBS += -L$$OUT_PWD/../../libs/Settings/ -lSettings
+
+INCLUDEPATH += $$PWD/../../libs/Settings
+DEPENDPATH += $$PWD/../../libs/Settings

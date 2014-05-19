@@ -18,6 +18,7 @@ public:
     ~CurvesSettings();
     void setCurves(Curves* curves);
     void retranslate();
+    void reset();
 Q_SIGNALS:
     void visibilityCurveChanged();
 public slots:

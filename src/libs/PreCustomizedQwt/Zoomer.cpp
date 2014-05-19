@@ -11,4 +11,5 @@ Zoomer::Zoomer(int xAxis, int yAxis, QWidget* canvas) :
     setRubberBandPen(QPen(Qt::black));
     setTrackerMode  (QwtPicker::ActiveOnly);
     setTrackerPen   (QPen(Qt::black));
+    setMaxStackDepth(20);
 }

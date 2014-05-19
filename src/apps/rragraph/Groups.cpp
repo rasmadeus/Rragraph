@@ -1,15 +1,14 @@
 #include "Groups.h"
 
-Path Groups::exportPath("appSettings.ini", "paths/exportPath");
-
 Groups::Groups(QWidget* parent) :
     QTabWidget(parent)
 {
     setStyles();
     setLookAndFeel();
     setFocusPolicy(Qt::NoFocus);
-    connect(this, SIGNAL(tabCloseRequested(int)), SLOT(closeGroup(int)));
+    connect(this, SIGNAL(tabCloseRequested(int)), SLOT(tryCloseGroup(int)));
     connect(this, SIGNAL(currentChanged(int)), SLOT(createGroupChangedSignal(int)));
+    connect(this, SIGNAL(groupChanged(Group*)), SLOT(emitAboutActiveGroup(Group*)));
 }
 
 void Groups::setStyles()
@@ -17,33 +16,32 @@ void Groups::setStyles()
     setStyleSheet(
         "QTabBar::tab{"
             "background: qlineargradient("
-                "x1: 0, y1: 0, x2: 0, y2: 1,"
-                "stop: 0 #fafafa,"
-                "stop: 0.4 #f4f4f4,"
-                "stop: 0.5 #e7e7e7,"
-                "stop: 1.0 #fafafa"
+                "x1: 0, y1: 0, x2: 1, y2: 0,"
+                "stop: 0 #ddd,"
+                "stop: 0.5 #bbb,"
+                "stop: 1.0 #ddd"
             ");"
             "border-bottom-right-radius: 6px;"
             "border-top-right-radius: 6px;"
-            "min-height: 8ex;"
+            "min-height: 15ex;"
+            "color: #888;"
             "width: 15px;"
             "padding: 2px;"
-            "border: 1px solid #C4C4C3;"
+            "border: 1px solid #C4C4C3;"                
         "}"
 
         "QTabBar::tab:selected{"
-            "background: qlineargradient("
-                "x1: 0, y1: 0, x2: 1, y2: 0,"
-                "stop: 0 #777777,"
-                "stop: 0.25 #999999,"
-                "stop: 0.5 #aaaaaa,"
-                "stop: 0.75 #cccccc,"
-                "stop: 1.0 #dddddd"
-            ");"
+                "background: qlineargradient("
+                    "x1: 0, y1: 0, x2: 1, y2: 0,"
+                    "stop: 0 #fff,"
+                    "stop: 0.5 #eee,"
+                    "stop: 1.0 #fff"
+                ");"
+                "color: #000;"
         "}"
 
         "QTabBar::tab:hover{"
-            "border: 1px solid #000;"
+            "color: #555;"
         "}"
     );
 }
@@ -60,7 +58,6 @@ void Groups::setLookAndFeel()
 Group* Groups::addGroup()
 {
     Group* group = new Group(this);
-    groups << group;
     addTab(group, "");
     retitle();    
     if(count() == 1){
@@ -68,32 +65,51 @@ Group* Groups::addGroup()
     }
     setCurrentIndex(count() - 1);
     connect(group, SIGNAL(subWindowActivated(QMdiSubWindow*)), SIGNAL(wasActivated(QMdiSubWindow*)));
+    connect(group, SIGNAL(noMorePlots()), SIGNAL(noMorePlots()));
     return group;
+}
+
+void Groups::emitAboutActiveGroup(Group* group)
+{
+    if (group->isEmpty()){
+        emit noMorePlots();
+    }
 }
 
 void Groups::retranslate()
 {
     retitle();
-    foreach(Group* group, groups){
-        group->retranslate();
+    for(int i = 0; i < count(); ++i){
+        getGroup(i)->retranslate();
     }
 }
 
 void Groups::closeGroup(int i)
 {
+    Group* group = getGroup(i);
     removeTab(i);
-    delete groups[i];
-    groups.remove(i);
     retitle();
-    if(groups.isEmpty()){
+    if(!count()){
         emit hasGroups(false);
         emit noMoreGroup();
     }
+    delete group;
+}
+
+#include "YesNoMessage.h"
+void Groups::tryCloseGroup(int i)
+{
+    YesNoMessage::proxyAction(
+        this,
+        true,
+        tr("close this tab?"),
+        [this, i](){closeGroup(i);}
+    );
 }
 
 void Groups::closeGroups()
 {
-    while(!groups.isEmpty()){
+    while(count()){
         closeGroup(0);
     }
 }
@@ -102,10 +118,11 @@ void Groups::retitle()
 {
     int iName = 0;
     for(int i = 0; i < count(); ++i){
+        Group* group = getGroup(i);
         const QString tabText(
-            groups[i]->nameIsEmpty()     ?
+            group->nameIsEmpty()     ?
             tr("Group") +  QString(" №%1").arg(++iName) :
-            groups[i]->getName()
+            group->getName()
         );
         setTabText(i, tabText);
     }
@@ -113,7 +130,12 @@ void Groups::retitle()
 
 Group* Groups::getGroup() const
 {
-    return groups[currentIndex()];
+    return getGroup(currentIndex());
+}
+
+Group* Groups::getGroup(int i) const
+{
+    return static_cast<Group*>(widget(i));
 }
 
 void Groups::clearActiveGroup()
@@ -131,24 +153,40 @@ void Groups::addPlot()
     getGroup()->insertPlot();
 }
 
+#include <Plot.h>
 void Groups::exportActiveGroupToPng()
 {    
-    if(exportPath.setExistingDirectory(this, tr("Export plots to"))){
-        getGroup()->exportToPng(exportPath.getPath());
+    if(Plot::exportPath.setExistingDirectory(this, tr("Export plots to"))){
+        emit beginExport();
+        getGroup()->exportToPng(Plot::exportPath.getPath());
+        emit endExport();
     }
 }
 
 #include <QDir>
+#include <QApplication>
 void Groups::exportToPng()
 {
-    if(exportPath.setExistingDirectory(this, tr("Export all groups to"))){
+    if(Plot::exportPath.setExistingDirectory(this, tr("Export all groups to"))){        
+        emit beginExport();
+        QApplication::processEvents();
         QDir creator;
-        for(int i = 0; i < groups.size(); ++i){
-            QString subDir = exportPath.getPath() + "/" + tabText(i);
-            if(creator.mkdir(subDir)){
-                groups[i]->exportToPng(subDir);
+        for(int i = 0; i < count(); ++i){            
+            QFileInfo subDir(Plot::exportPath.getPath() + "/" + tabText(i));
+            if(subDir.exists() || creator.mkdir(subDir.absoluteFilePath())){
+                getGroup(i)->exportToPng(subDir.absoluteFilePath());
             }
         }
+        emit endExport();
+    }
+}
+
+void Groups::exportActiveGroupToPdf()
+{
+    if(Plot::exportPath.setSaveFileName(this, tr("Export to pdf"), tr("Pdf documents") + "(*.pdf);;" + Path::getTemplate(Path::ALL_FILES))){
+        emit beginExport();
+        getGroup()->exportToPdf(Plot::exportPath.getPath());
+        emit endExport();
     }
 }
 
@@ -173,11 +211,11 @@ void Groups::createGroupChangedSignal(int i)
 #include <QJsonObject>
 #include <QJsonArray>
 void Groups::serialize(QJsonObject& root, const Path& proPath) const
-{
-    if(!groups.isEmpty()){
+{    
+    if(count()){
         QJsonArray groupsSettings;
-        foreach(Group* group, groups){
-            group->serialize(groupsSettings, proPath);
+        for(int i = 0; i < count(); ++i){
+            getGroup(i)->serialize(groupsSettings, proPath);
         }
         root.insert("groups", groupsSettings);
     }
@@ -186,15 +224,41 @@ void Groups::serialize(QJsonObject& root, const Path& proPath) const
 void Groups::restore(const QJsonObject& root, const Path& proPath)
 {
     if(root.contains("groups")){
-        foreach(const QJsonValue& group, root.value("groups").toArray()){
+        QApplication::processEvents();
+        foreach(const QJsonValue& group, root.value("groups").toArray()){            
             addGroup()->restore(group.toObject(), proPath);
         }
         retitle();
-        if(!groups.isEmpty()){
-            emit groupChanged(groups.last()); //Чтобы установить активную группу для настроек.
-            if(!groups.last()->isEmpty()){
-                emit wasActivated(groups.last()->subWindowList().last()); //Чтобы установить активный график для настроек.
-            }
-        }
+        activate();
     }
+}
+
+void Groups::activate()
+{
+    if(count()){
+        Group* lastGroup = getGroup(count() - 1);
+        emit groupChanged(lastGroup); //Чтобы установить активную группу для настроек.
+    }
+}
+
+Group* Groups::toDefaultState()
+{
+    closeGroups();
+    Group* res = addGroup();
+    res->insertPlot();
+    return res;
+}
+
+void Groups::copySettingsToActiveGroup(PlotSettingsFiller* filler)
+{
+    getGroup()->copySettings(filler);
+}
+
+#include <SamplesManager.h>
+void Groups::processArgs(const QStringList& args)
+{
+    if(!count()){
+        toDefaultState();
+    }
+    getGroup()->getSamplesManager()->append(args);
 }

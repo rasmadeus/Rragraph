@@ -12,9 +12,10 @@ CurvesSettings::CurvesSettings(QWidget *parent) :
     ui->curveSettingsLayout->addWidget(curveSettings);
     curvesModel = new CurvesModel(ui->curvesList);
     ui->curvesList->setModel(curvesModel);
-    connect(ui->curvesList, SIGNAL(pressed(QModelIndex)), curvesModel, SLOT(setActiveRow(QModelIndex)));
-    connect(ui->curvesList, SIGNAL(pressed(QModelIndex)), SLOT(setCurveSettings()));
-    connect(curveSettings, SIGNAL(visibilityCurveChanged()), SIGNAL(visibilityCurveChanged()));
+    connect(ui->curvesList, SIGNAL(pressed(QModelIndex)),     curvesModel, SLOT(setActiveRow(QModelIndex)));
+    connect(curveSettings,  SIGNAL(visibilityCurveChanged()), curvesModel, SLOT(resetModel()));
+    connect(ui->curvesList, SIGNAL(pressed(QModelIndex)),     SLOT(setCurveSettings()));
+    connect(curveSettings,  SIGNAL(visibilityCurveChanged()), SIGNAL(visibilityCurveChanged()));
 }
 
 CurvesSettings::~CurvesSettings()
@@ -36,12 +37,15 @@ void CurvesSettings::setCurveSettings()
 void CurvesSettings::setCurves(Curves* curves)
 {
     curvesModel->setCurves(curves);
-    if(!curves){
-        curveSettings->setCurve(nullptr, nullptr);
-    }
+    curveSettings->reset();
 }
 
 void CurvesSettings::resetView()
 {
     curvesModel->resetModel();
+}
+
+void CurvesSettings::reset()
+{
+    setCurves(nullptr);
 }

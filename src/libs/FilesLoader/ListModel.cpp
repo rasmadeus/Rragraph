@@ -41,12 +41,19 @@ QColor ListModel::backgroundRole(const QModelIndex& index) const
     return QColor(isActiveRow(index) ? "#ddd" : "#fff");
 }
 
+QColor ListModel::textColorRole(const QModelIndex& index) const
+{
+    Q_UNUSED(index);
+    return QColor(0, 0, 0);
+}
+
 QVariant ListModel::data(const QModelIndex& index, int role) const
 {
     switch(role){
-        case Qt::DisplayRole: return displayRole(index);
-        case Qt::FontRole: return fontRole(index);
+        case Qt::DisplayRole   : return displayRole(index);
+        case Qt::FontRole      : return fontRole(index);
         case Qt::BackgroundRole: return backgroundRole(index);
+        case Qt::TextColorRole : return textColorRole(index);
     }
     return QVariant();
 }

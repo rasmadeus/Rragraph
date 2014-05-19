@@ -34,7 +34,7 @@ private:
     void routeManagerActions();
     Ui::SamplesManagerView *ui;
     SamplesManagerModel* samplesManagerModel;
-    Path samplesLoadingPath;
+    static Path samplesLoadingPath;
 };
 
 #endif // SAMPLESMANAGERVIEW_H

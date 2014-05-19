@@ -4,7 +4,7 @@
 #include <CurvesManagerView.h>
 Group::Group(QWidget* parent) :
     QMdiArea(parent),
-    tileType(GRID_HORIZONTAL)
+    tileType(GRID_STRAIGHT)
 {
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
@@ -28,29 +28,38 @@ void Group::retranslate()
 PlotWithCurves* Group::insertPlot()
 {
     QMdiSubWindow* window = new QMdiSubWindow;
-    window->setMinimumSize(250, 150);
-    window->setWindowIcon(QIcon(":/res/mainWindow/plot.png"));
+    {
+        window->setMinimumSize(250, 150);
+        window->setWindowIcon(QIcon(":/res/mainWindow/closeAllPlots.png"));
+        window->setAttribute(Qt::WA_DeleteOnClose);
+    }
     PlotWithCurves* plot = new PlotWithCurves(samplesManager, curvesManagerView, window);
-    plot->connect(plot, SIGNAL(destroyed()), this, SLOT(retitle()));
-    window->setWidget(plot);
-    window->setAttribute(Qt::WA_DeleteOnClose);
-    addSubWindow(window);
-    window->show();
-    retitle();
+    {
+        plot->connect(plot, SIGNAL(destroyed()), this, SLOT(retitle()));
+        window->setWidget(plot);
+        addSubWindow(window);
+        window->show();
+        retitle();
+    }
     return plot;
 }
 
 void Group::retitle()
 {
-    foreach(QMdiSubWindow* window, subWindowList()){
-        window->setWindowTitle(
-            tr("Plot ") +  QString("№%1").arg(
-                subWindowList().indexOf(window) + 1
-            )
-        );
+    if(subWindowList().isEmpty()){
+        emit noMorePlots();
     }
-    if(!subWindowList().isEmpty()){
-        tile();
+    else{
+        foreach(QMdiSubWindow* window, subWindowList()){
+            window->setWindowTitle(
+                tr("Plot ") +  QString("№%1").arg(
+                    subWindowList().indexOf(window) + 1
+                )
+            );
+        }
+        if(!subWindowList().isEmpty()){
+            tile();
+        }
     }
 }
 
@@ -119,25 +128,64 @@ void Group::exportToPng(const QString& dir)
         [&](QMdiSubWindow* window, PlotWithCurves* plot){
             QString plotTitle = window->windowTitle();
             QString fileName = dir + "/" + plotTitle + ".png";
-            exporter.renderDocument(plot, fileName, plot->getExportSize());
+            plot->exportToPng(exporter, fileName);
         }
     );
+}
+
+
+#include <Plot.h>
+#include <QPainter>
+static void renderWindowTo(QMdiSubWindow* window, QPainter* painter, const QRectF& rect, QwtPlotRenderer& renderer)
+{
+    renderer.render(
+        static_cast<QwtPlot*>(window->widget()),
+        painter,
+        rect
+    );
+}
+
+#include <QPrinter>
+void Group::exportToPdf(const QString& fileName)
+{
+    QPrinter printer;
+    {
+        printer.setOutputFormat(QPrinter::PdfFormat);
+        printer.setPaperSize(QPrinter::A4);
+        printer.setPageMargins(20, 30, 20, 10, QPrinter::Millimeter);
+        printer.setOrientation(QPrinter::Landscape);
+        printer.setOutputFileName(fileName);
+    }
+    QRectF rect(0, 0, printer.width(), printer.height());
+    {
+        double aspect = rect.width() / rect.height();
+        if (( aspect < 1.0)){
+            rect.setHeight(aspect * rect.width());
+        }
+    }
+    {
+        QwtPlotRenderer renderer;
+        QPainter painter(&printer);
+        QList<QMdiSubWindow*> visibleWindows = this->visibleWindows();
+        if(!visibleWindows.isEmpty()){
+            {
+                renderWindowTo(visibleWindows.first(), &painter, rect, renderer);
+                visibleWindows.takeFirst();
+            }
+            {
+                foreach(QMdiSubWindow* window, visibleWindows){
+                    if(printer.newPage()){
+                        renderWindowTo(window, &painter, rect, renderer);
+                    }
+                }
+            }
+        }
+    }
 }
 
 bool Group::isEmpty() const
 {
     return subWindowList().isEmpty();
-}
-
-#include "PlotSettings.h"
-void Group::dublicateSettings(PlotSettings* plotSettings)
-{
-    forEachPlotDo(
-        [&](QMdiSubWindow* window, PlotWithCurves* plot){
-            Q_UNUSED(window)
-            plotSettings->copySettingsTo(plot);
-        }
-    );
 }
 
 #include <QJsonArray>
@@ -162,7 +210,7 @@ void Group::serialize(QJsonArray& groupsSettings, const Path& proPath) const
         groupSettings.insert("tileType", QJsonValue::fromVariant(tileType));
         serializeExistString(name, groupSettings);
         serializePlots(groupSettings);
-        samplesManager->serialize(groupSettings, proPath);        
+        samplesManager->serialize(groupSettings, proPath);
     groupsSettings.append(groupSettings);
 }
 
@@ -195,4 +243,15 @@ void Group::restorePlots(const QJsonObject& groupSettings)
             insertPlot()->restore(group.toObject());
         }
     }
+}
+
+#include <PlotSettings.h>
+void Group::copySettings(PlotSettingsFiller* filler)
+{
+    forEachPlotDo(
+        [&](QMdiSubWindow* window, PlotWithCurves* plot){
+            Q_UNUSED(window)
+            filler->fill(plot);
+        }
+    );
 }

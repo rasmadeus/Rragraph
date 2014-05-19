@@ -15,6 +15,7 @@ protected:
     virtual QString displayRole(const QModelIndex& index) const = 0;
     virtual QFont fontRole(const QModelIndex& index) const;
     virtual QColor backgroundRole(const QModelIndex& index) const;
+    virtual QColor textColorRole(const QModelIndex& index) const;
 public slots:
     void setActiveRow(const QModelIndex& index);
     void resetModel();

@@ -3,7 +3,13 @@
 Grid::Grid(QwtPlot* plot):
     QwtPlotGrid()
 {
-    setMajorPen(QPen(Qt::gray, 0, Qt::DotLine));
-    setMinorPen(QPen(Qt::gray, 0, Qt::DotLine));
+    static QPen pen;
+    pen.setColor(Qt::gray);
+    pen.setWidthF(0.5);
+    pen.setCapStyle(Qt::RoundCap);
+    pen.setJoinStyle(Qt::RoundJoin);
+    pen.setDashPattern(QVector<qreal>() << 4 << 4);
+    setMajorPen(pen);
+    setMinorPen(pen);
     attach(plot);
 }

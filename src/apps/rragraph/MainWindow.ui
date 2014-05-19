@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -30,7 +33,71 @@
 QMainWindow::separator:hover{
     background: red;
 }
-</string>
+
+QToolBar {
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 0      #fff, 
+        stop: 0.5   #eee, 
+        stop: 1.0    #ddd
+    );
+}
+QScrollBar:vertical{
+     background: #e4e4e4;
+     border-top-right-radius: 4px;
+     border-bottom-right-radius: 4px;
+     width: 12px;
+     margin: 0px;
+ }
+ QScrollBar::handle:vertical{
+     background-color: qlineargradient(
+		 x1: 0, y1: 0, x2: 1, y2: 0,
+         stop: 0 #888, stop: 1 #fff
+     );
+     border-radius: 4px;
+     min-height: 20px;
+     margin: 0px 2px 0px 2px;
+ }
+ QScrollBar::add-line:vertical {
+     background: none;
+     height: 0px;
+     subcontrol-position: right;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::sub-line:vertical {
+     background: none;
+     height: 0px;
+     subcontrol-position: left;
+     subcontrol-origin: margin;
+ }
+QScrollBar:horizontal{
+     background: #e4e4e4;
+     border-top-right-radius: 4px;
+     border-bottom-right-radius: 4px;
+     height: 12px;
+     margin: 0px;
+ }
+ QScrollBar::handle:horizontal {
+     background-color: qlineargradient(
+		 x1: 0, y1: 0, x2: 0, y2: 1,
+         stop: 1 #fff, stop: 0 #888
+     );
+     border-radius: 4px;
+     min-width: 20px;
+     margin: 2px 0px 2px 0px;
+ }
+ QScrollBar::add-line:horizontal {
+     background: none;
+     width: 0px;
+     subcontrol-position: right;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::sub-line:horizontal {
+     background: none;
+     width: 0px;
+     subcontrol-position: left;
+     subcontrol-origin: margin;
+ }</string>
   </property>
   <widget class="QWidget" name="centralWidget"/>
   <widget class="QMenuBar" name="menuBar">
@@ -39,7 +106,7 @@ QMainWindow::separator:hover{
      <x>0</x>
      <y>0</y>
      <width>1184</width>
-     <height>18</height>
+     <height>16</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -81,13 +148,25 @@ QMenu::indicator {
 QMenuBar {
     background: qlineargradient(
         x1: 0, y1: 0, x2: 0, y2: 1,
-        stop: 0      #777777, 
-        stop: 0.25 #999999,
-        stop: 0.5   #aaaaaa, 
-        stop: 0.75 #cccccc, 
-        stop: 1.0    #dddddd
+        stop: 0      #555, 
+        stop: 0.25 #777,
+        stop: 0.5   #999, 
+        stop: 0.75 #aaa, 
+        stop: 1.0    #ccc
     );
     color:black;
+}
+
+QMenuBar:disabled{
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 0      #888, 
+        stop: 0.25 #aaa,
+        stop: 0.5   #ccc, 
+        stop: 0.75 #ddd, 
+        stop: 1.0    #fff
+    );
+    color:#555;	
 }
 
 QMenuBar::item {
@@ -116,7 +195,7 @@ QMenuBar::item:selected { /* when selected using mouse or keyboard */
    </widget>
    <widget class="QMenu" name="menuPlots">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="title">
      <string>Plots</string>
@@ -132,7 +211,10 @@ QMenuBar::item:selected { /* when selected using mouse or keyboard */
     <addaction name="actionAddPlot"/>
     <addaction name="actionCloseAllPlots"/>
     <addaction name="actionTile"/>
+    <addaction name="separator"/>
     <addaction name="actionExportPlotsToImages"/>
+    <addaction name="actionExportPlotsToPdf"/>
+    <addaction name="separator"/>
     <addaction name="actionAutoScaleAllPlots"/>
     <addaction name="menuPlotsTiling"/>
    </widget>
@@ -145,6 +227,7 @@ QMenuBar::item:selected { /* when selected using mouse or keyboard */
     <addaction name="actionVisibilityGroupsToolBar"/>
     <addaction name="separator"/>
     <addaction name="actionShowExitDialog"/>
+    <addaction name="actionAskAboutDanger"/>
     <addaction name="separator"/>
     <addaction name="actionVisibilityCommonSettings"/>
    </widget>
@@ -173,6 +256,34 @@ QMenuBar::item:selected { /* when selected using mouse or keyboard */
    <addaction name="menuSamples"/>
    <addaction name="menuHelp"/>
   </widget>
+  <widget class="QToolBar" name="toolBarProject">
+   <property name="windowTitle">
+    <string>Actions for project</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionLoadProject"/>
+   <addaction name="actionSaveProject"/>
+   <addaction name="actionReloadProject"/>
+  </widget>
+  <widget class="QToolBar" name="toolBarGroups">
+   <property name="windowTitle">
+    <string>Actions for groups</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionAddOneGroup"/>
+   <addaction name="actionExportAllGroupsToImages"/>
+   <addaction name="actionCloseAllGroups"/>
+  </widget>
   <widget class="QToolBar" name="toolBarPlots">
    <property name="enabled">
     <bool>false</bool>
@@ -192,38 +303,75 @@ QMenuBar::item:selected { /* when selected using mouse or keyboard */
    <addaction name="actionAutoScaleAllPlots"/>
    <addaction name="actionCloseAllPlots"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
-  <widget class="QToolBar" name="toolBarGroups">
-   <property name="windowTitle">
-    <string>Actions for groups</string>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="styleSheet">
+    <string notr="true"> QStatusBar{
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 0      #fff, 
+        stop: 0.5   #eee, 
+        stop: 1.0    #aaa
+    );
+ }</string>
    </property>
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-   <addaction name="actionAddOneGroup"/>
-   <addaction name="actionExportAllGroupsToImages"/>
-   <addaction name="actionCloseAllGroups"/>
-  </widget>
-  <widget class="QToolBar" name="toolBarProject">
-   <property name="windowTitle">
-    <string>Actions for project</string>
-   </property>
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-   <addaction name="actionLoadProject"/>
-   <addaction name="actionSaveProject"/>
-   <addaction name="actionReloadProject"/>
   </widget>
   <widget class="QDockWidget" name="commonSettings">
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">QDockWidget {
+     border: 1px solid lightgray;
+ }
+
+ QDockWidget::title {
+     text-align: left;
+     padding-left: 35px;
+    background: qlineargradient(
+        x1: 0, y1: 0, x2: 0, y2: 1,
+        stop: 0      #fff, 
+        stop: 0.5   #eee, 
+        stop: 1.0    #aaa
+    );
+ }
+
+ QDockWidget::close-button, QDockWidget::float-button {
+     background: darkgray;
+     padding: 0px;
+     icon-size: 14px; /* maximum icon size */
+ }
+
+ QDockWidget::close-button:hover, QDockWidget::float-button:hover {
+     background: gray;
+ }
+
+ QDockWidget::close-button:pressed, QDockWidget::float-button:pressed {
+     padding: 1px -1px -1px 1px;
+ }
+
+ QDockWidget::close-button {
+     subcontrol-position: top left;
+     subcontrol-origin: margin;
+     position: absolute;
+     top: 0px; left: 0px; bottom: 0px;
+     width: 14px;
+ }
+
+ QDockWidget::float-button {
+     subcontrol-position: top left;
+     subcontrol-origin: margin;
+     position: absolute;
+     top: 0px; left: 16px; bottom: 0px;
+     width: 14px;
+ } 
+
+QGroupBox {
+    border: 1px solid darkgray;
+    border-radius: 3px;
+    margin-top: 15px;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top center;
+}</string>
    </property>
    <property name="allowedAreas">
     <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
@@ -234,7 +382,25 @@ QMenuBar::item:selected { /* when selected using mouse or keyboard */
    <attribute name="dockWidgetArea">
     <number>1</number>
    </attribute>
-   <widget class="QWidget" name="dockWidgetContents"/>
+   <widget class="QWidget" name="mainLayout">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+    </layout>
+   </widget>
   </widget>
   <action name="actionAddPlot">
    <property name="enabled">
@@ -290,7 +456,7 @@ QMenuBar::item:selected { /* when selected using mouse or keyboard */
      <normaloff>:/res/mainWindow/exportAllPlotsToImages.png</normaloff>:/res/mainWindow/exportAllPlotsToImages.png</iconset>
    </property>
    <property name="text">
-    <string>Export plots to images.</string>
+    <string>Export plots to images</string>
    </property>
    <property name="toolTip">
     <string>Export all plots of current group to png format.</string>
@@ -534,6 +700,67 @@ QMenuBar::item:selected { /* when selected using mouse or keyboard */
    </property>
    <property name="statusTip">
     <string>Show information about Rragraph</string>
+   </property>
+  </action>
+  <action name="actionCopyProFileTo">
+   <property name="text">
+    <string>Copy pro file to</string>
+   </property>
+   <property name="toolTip">
+    <string>Copy current pro file to in other place.</string>
+   </property>
+   <property name="statusTip">
+    <string>Copy current pro file to in other place.</string>
+   </property>
+  </action>
+  <action name="actionLoadVersionThree">
+   <property name="text">
+    <string>Load version three</string>
+   </property>
+   <property name="toolTip">
+    <string>Load rragraph pro file thiord version.</string>
+   </property>
+   <property name="statusTip">
+    <string>Load rragraph pro file thiord version.</string>
+   </property>
+  </action>
+  <action name="actionAskAboutDanger">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Ask about dangerous actions</string>
+   </property>
+   <property name="toolTip">
+    <string>Ask user about dangerous actions.</string>
+   </property>
+   <property name="statusTip">
+    <string>Ask user about dangerous actions.</string>
+   </property>
+  </action>
+  <action name="actionExportPlotsToPdf">
+   <property name="text">
+    <string>Export to PDF</string>
+   </property>
+   <property name="toolTip">
+    <string>Export active group to PDF document.</string>
+   </property>
+   <property name="statusTip">
+    <string>Export active group to PDF document.</string>
+   </property>
+  </action>
+  <action name="actionGridReverse">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Grid reverse</string>
+   </property>
+   <property name="toolTip">
+    <string>The plots of current group will be rearranged as grid. If you insert a new plot, he will be added in right position of bottom row.</string>
+   </property>
+   <property name="statusTip">
+    <string>The plots of current group will be rearranged as grid. If you insert a new plot, he will be added in right position of bottom row.</string>
    </property>
   </action>
  </widget>

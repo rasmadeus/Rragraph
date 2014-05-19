@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += widgets core
+QT       += widgets core printsupport
 
 
 QT       -= gui

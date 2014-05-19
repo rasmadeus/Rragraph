@@ -1,11 +1,12 @@
 #include "SamplesManagerView.h"
 #include "ui_SamplesManagerView.h"
 
+Path SamplesManagerView::samplesLoadingPath("paths/samplesLoadingPath");
+
 #include "SamplesManagerModel.h"
 SamplesManagerView::SamplesManagerView(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::SamplesManagerView),
-    samplesLoadingPath("appSettings.ini","paths/samplesLoadingPath")
+    ui(new Ui::SamplesManagerView)
 {
     ui->setupUi(this);
     createSamplesManagerModel();
@@ -21,8 +22,8 @@ void SamplesManagerView::createSamplesManagerModel()
 {
     samplesManagerModel = new SamplesManagerModel(this);
     connect(samplesManagerModel, SIGNAL(wasActivated(int)), SIGNAL(wasActivated(int)));
-    connect(samplesManagerModel, SIGNAL(wasCleaned()), SIGNAL(wasCleaned()));
-    connect(samplesManagerModel, SIGNAL(wasCleaned()), SLOT(disabledChangableActions()));
+    connect(samplesManagerModel, SIGNAL(wasCleaned()),      SIGNAL(wasCleaned()));
+    connect(samplesManagerModel, SIGNAL(wasCleaned()),      SLOT(disabledChangableActions()));
     connect(samplesManagerModel, SIGNAL(wasActivated(int)), SLOT(enabledChangableActions()));
     ui->samplesList->setModel(samplesManagerModel);
 }
@@ -30,9 +31,9 @@ void SamplesManagerView::createSamplesManagerModel()
 void SamplesManagerView::routeManagerActions()
 {
     connect(ui->insertNewSamples, SIGNAL(clicked()), SLOT(insertNewSamples()));
-    connect(ui->removeSamples, SIGNAL(clicked()), SLOT(removeSamples()));
-    connect(ui->replaceSamples, SIGNAL(clicked()), SLOT(replaceSamples()));
-    connect(ui->samplesList, SIGNAL(pressed(QModelIndex)), samplesManagerModel, SLOT(setActiveRow(QModelIndex)));
+    connect(ui->removeSamples,    SIGNAL(clicked()), SLOT(removeSamples()));
+    connect(ui->replaceSamples,   SIGNAL(clicked()), SLOT(replaceSamples()));
+    connect(ui->samplesList,      SIGNAL(pressed(QModelIndex)), samplesManagerModel, SLOT(setActiveRow(QModelIndex)));
 }
 
 SamplesManagerView::~SamplesManagerView()
@@ -48,7 +49,7 @@ void SamplesManagerView::setSamplesManager(SamplesManager* samplesManager)
 #include <QFileDialog>
 void SamplesManagerView::insertNewSamples()
 {
-    foreach(const QString& path, samplesLoadingPath.getOpenFileNames(this, tr("Load data files"))){
+    foreach(const QString& path, samplesLoadingPath.getOpenFileNames(this, tr("Load data files"), Path::getTemplate(Path::ALL_FILES))){
         samplesManagerModel->append(path);
     }
 }

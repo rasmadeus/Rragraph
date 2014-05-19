@@ -44,32 +44,31 @@ QString RecentlyProjectPaths::reducePath(const QString& path) const
     return path;
 }
 
-#include <QSettings>
+#include <Settings.h>
 #include <QFileInfo>
+#include <QApplication>
 QStringList RecentlyProjectPaths::getExistPaths() const
 {
     QStringList recentlyProPaths;
-    QSettings settings("appSettings.ini", QSettings::IniFormat);
-    const int n = settings.beginReadArray("recentlyProPaths");
+    const int n = Settings::obj()->get().beginReadArray("recentlyProPaths");
     for(int i = 0; i< n; ++i){
-        settings.setArrayIndex(i);
-        const QString proFile = settings.value("path").toString();
+        Settings::obj()->get().setArrayIndex(i);
+        const QString proFile = Settings::obj()->get("path").toString();
         if(QFileInfo(proFile).exists()){
             recentlyProPaths << proFile;
         }
     }
-    settings.endArray();
+    Settings::obj()->get().endArray();
     return recentlyProPaths;
 }
 
 void RecentlyProjectPaths::appendPath(const QString& pathToPro)
 {
-
     QStringList recenlyProPaths = getExistPaths();
     if(recenlyProPaths.contains(pathToPro)){
         recenlyProPaths.removeOne(pathToPro);
     }
-    if(recenlyProPaths.size() == 5){ //Show in menu only 5 items.
+    if(recenlyProPaths.size() == 5){//Show in menu only 5 items.
         recenlyProPaths.removeLast();
     }
     recenlyProPaths.push_front(pathToPro);
@@ -78,11 +77,11 @@ void RecentlyProjectPaths::appendPath(const QString& pathToPro)
 
 void RecentlyProjectPaths::write(const QStringList& recenlyProPaths)
 {
-    QSettings settings("appSettings.ini", QSettings::IniFormat);
-    settings.beginWriteArray("recentlyProPaths");
+
+    Settings::obj()->get().beginWriteArray("recentlyProPaths");
         for(int i = 0; i < recenlyProPaths.size(); ++i){
-            settings.setArrayIndex(i);
-            settings.setValue("path", recenlyProPaths[i]);
+            Settings::obj()->get().setArrayIndex(i);
+            Settings::obj()->set("path", recenlyProPaths[i]);
         }
-    settings.endArray();
+    Settings::obj()->get().endArray();
 }

@@ -6,6 +6,7 @@ class CurvesManagerView;
 class SamplesManager;
 class PlotWithCurves;
 class PlotSettings;
+class PlotSettingsFiller;
 #include <QMdiArea>
 #include <functional>
 
@@ -15,7 +16,8 @@ class Group : public QMdiArea
 public:
     enum TileType
        {
-           GRID_HORIZONTAL,
+           GRID_STRAIGHT,
+           GRID_REVERSE,
            VERTICAL_STRAIGHT,
            VERTICAL_REVERSE
        };
@@ -25,19 +27,22 @@ public:
     void setTileType(TileType tileType);
     TileType getTileType() const;
     SamplesManager* getSamplesManager() const;
-    void dublicateSettings(PlotSettings* plotSettings);
     bool isEmpty() const;
     const QString& getName() const;
     bool nameIsEmpty() const;
     void serialize(QJsonArray& groupsSettings, const Path& proPath) const;
     void restore(const QJsonObject& groupSettings, const Path& proPath);
     void retranslate();
+    void copySettings(PlotSettingsFiller* filler);
+signals:
+    void noMorePlots();
 public slots:
     void setName(const QString& name);
     PlotWithCurves* insertPlot();
     void tile();
     void autoscale();
     void exportToPng(const QString& dir);
+    void exportToPdf(const QString& fileName);
 private slots:
     void retitle();
 private:

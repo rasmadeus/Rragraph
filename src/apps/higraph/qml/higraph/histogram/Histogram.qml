@@ -71,6 +71,10 @@ ContentBackground{
             id: delegateBody
             width: getDelegateWidth()
             height: getDelegateHeight(value)
+            Text{
+                text: value
+            }
+
             MouseArea{
                 id: delegateMouse
                 anchors.fill: parent
@@ -141,12 +145,36 @@ ContentBackground{
             horizontalAlignment: Text.AlignHCenter
         }
     }
+    ImageButton{
+        id: stepNext
+        source: "qrc:/res/histogram/next.png"
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.rightMargin: 10
+        anchors.bottomMargin: 3
+        width: 14
+        height: 14
+        onTriggered: mover.value += 1
+    }
+
+    ImageButton{
+        id: stepPrev
+        source: "qrc:/res/histogram/prev.png"
+        anchors.right: stepNext.left
+        anchors.bottom: parent.bottom
+        anchors.rightMargin: 10
+        anchors.bottomMargin: 3
+        width: 14
+        height: 14
+        onTriggered: mover.value -= 1
+    }
+
 
     Slider{
         id: mover
         objectName: "mover"
         anchors.left: parent.left
-        anchors.right: parent.right
+        anchors.right: stepPrev.left
         anchors.leftMargin: 10
         anchors.rightMargin: 10
         anchors.bottom: parent.bottom
@@ -158,6 +186,7 @@ ContentBackground{
         height: 28
         updateValueWhileDragging: true
     }
+
 
     Slider{
         id: maxValueRanger

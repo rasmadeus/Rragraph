@@ -18,7 +18,6 @@ SOURCES += main.cpp
 
 # Installation path
 TARGET = Higraph
-target.path = $$PWD/../../../installer/packages/higraph/data/
 
 # Please do not modify the following two lines. Required for deployment.
 include(quickViewer/quickViewer.pri)
@@ -43,4 +42,12 @@ else:unix: LIBS += -L$$OUT_PWD/../../libs/FilesLoader/ -lFilesLoader
 
 INCLUDEPATH += $$PWD/../../libs/FilesLoader
 DEPENDPATH += $$PWD/../../libs/FilesLoader
+
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../libs/Settings/release/ -lSettings
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../libs/Settings/debug/ -lSettings
+else:unix:!macx: LIBS += -L$$OUT_PWD/../../libs/Settings/ -lSettings
+
+INCLUDEPATH += $$PWD/../../libs/Settings
+DEPENDPATH += $$PWD/../../libs/Settings
 

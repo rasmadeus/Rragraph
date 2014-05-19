@@ -18,7 +18,9 @@ public:
     Curves* getCurves() const;
 protected:
     QString displayRole(const QModelIndex& index) const;
+    QColor textColorRole(const QModelIndex& index) const;
 private:
+    Curve* getCurve(const QModelIndex& index) const;
     Curves* curves;
 };
 

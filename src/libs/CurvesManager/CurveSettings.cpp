@@ -9,14 +9,15 @@ CurveSettings::CurveSettings(QWidget *parent) :
     ui->setupUi(this);
     fillSymbol();
     ui->sample->installEventFilter(this);
-    connect(ui->color, SIGNAL(clicked()), SLOT(setCurveColor()));
-    connect(ui->width, SIGNAL(valueChanged(int)), SLOT(setCurveWidth(int)));
-    connect(ui->curve, SIGNAL(clicked(bool)), SLOT(setCurveVisible(bool)));
-    connect(ui->symbolStyle, SIGNAL(activated(int)), SLOT(setSymbolStyle(int)));
+    connect(ui->color,       SIGNAL(clicked()),            SLOT(setCurveColor()));
+    connect(ui->width,       SIGNAL(valueChanged(int)),    SLOT(setCurveWidth(int)));
+    connect(ui->curve,       SIGNAL(clicked(bool)),        SLOT(setCurveVisible(bool)));
+    connect(ui->symbolStyle, SIGNAL(activated(int)),       SLOT(setSymbolStyle(int)));
     connect(ui->dashPattern, SIGNAL(textChanged(QString)), SLOT(setCurveDashPattern(QString)));
-    connect(ui->addendX, SIGNAL(valueChanged(double)), SLOT(setAddendX(double)));
-    connect(ui->addendY, SIGNAL(valueChanged(double)), SLOT(setAddendY(double)));
-    connect(ui->multY, SIGNAL(valueChanged(double)), SLOT(setMultY(double)));
+    connect(ui->addendX,     SIGNAL(valueChanged(double)), SLOT(setAddendX(double)));
+    connect(ui->addendY,     SIGNAL(valueChanged(double)), SLOT(setAddendY(double)));
+    connect(ui->multY,       SIGNAL(valueChanged(double)), SLOT(setMultY(double)));
+    connect(ui->step,        SIGNAL(valueChanged(int)),    SLOT(setCurveStep(int)));
     setDataFromCurve();    
 }
 
@@ -26,16 +27,16 @@ void CurveSettings::retranslate()
         ui->retranslateUi(this);
     }
     {
-        ui->symbolStyle->setItemText(0, tr("No symbol"));
-        ui->symbolStyle->setItemText(1, tr("Ellipse"));
-        ui->symbolStyle->setItemText(2, tr("Rect"));
-        ui->symbolStyle->setItemText(3, tr("Diamond"));
-        ui->symbolStyle->setItemText(4, tr("Triangle"));
-        ui->symbolStyle->setItemText(5, tr("DTriangle"));
-        ui->symbolStyle->setItemText(6, tr("UTriangle"));
-        ui->symbolStyle->setItemText(7, tr("LTriangle"));
-        ui->symbolStyle->setItemText(8, tr("RTriangle"));
-        ui->symbolStyle->setItemText(9, tr("Cross"));
+        ui->symbolStyle->setItemText(0,  tr("No symbol"));
+        ui->symbolStyle->setItemText(1,  tr("Ellipse"));
+        ui->symbolStyle->setItemText(2,  tr("Rect"));
+        ui->symbolStyle->setItemText(3,  tr("Diamond"));
+        ui->symbolStyle->setItemText(4,  tr("Triangle"));
+        ui->symbolStyle->setItemText(5,  tr("DTriangle"));
+        ui->symbolStyle->setItemText(6,  tr("UTriangle"));
+        ui->symbolStyle->setItemText(7,  tr("LTriangle"));
+        ui->symbolStyle->setItemText(8,  tr("RTriangle"));
+        ui->symbolStyle->setItemText(9,  tr("Cross"));
         ui->symbolStyle->setItemText(10, tr("XCross"));
         ui->symbolStyle->setItemText(11, tr("HLine"));
         ui->symbolStyle->setItemText(12, tr("VLine"));
@@ -43,7 +44,6 @@ void CurveSettings::retranslate()
         ui->symbolStyle->setItemText(14, tr("Star2"));
     }
 }
-
 
 #include <qwt_symbol.h>
 void CurveSettings::fillSymbol()
@@ -85,6 +85,7 @@ void CurveSettings::setCurve(Curves* curves, Curve* curve)
     this->curve = curve;
     this->curves = curves;
     setDataFromCurve();
+    update();
 }
 
 void CurveSettings::setDataFromCurve()
@@ -102,6 +103,9 @@ void CurveSettings::restore()
     }
     {
         ui->dashPattern->setText(Curve::getDashPatternFromPen(curve->pen()));
+    }
+    {
+        ui->step->setValue(curve->getStep());
     }
     {
         QPen pen = curve->pen();
@@ -199,4 +203,16 @@ void CurveSettings::setMultY(double mult)
 {
     curve->setMultY(mult);
     curves->resamples();
+}
+
+void CurveSettings::setCurveStep(int step)
+{
+    curve->setStep(step);
+    curves->getOwner()->replot();
+    update();
+}
+
+void CurveSettings::reset()
+{
+    setCurve(nullptr, nullptr);
 }

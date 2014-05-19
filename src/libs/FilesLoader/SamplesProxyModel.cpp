@@ -68,14 +68,9 @@ Qt::ItemFlags SamplesProxyModel::flags(const QModelIndex& index) const
 
 void SamplesProxyModel::setSamples(Samples* samples)
 {
-    if(this->samples){
-        disconnect(this->samples, SIGNAL(haveBeenLoaded()), this, SLOT(resetModel()));
-    }
     beginResetModel();
         this->samples = samples;
-        if(samples){
-            connect(samples, SIGNAL(haveBeenLoaded()), SLOT(resetModel()));
-        }
+        connect(samples, SIGNAL(haveBeenLoaded()), SLOT(resetModel()));
     endResetModel();
 }
 

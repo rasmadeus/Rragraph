@@ -1,4 +1,6 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    LambdaTest
+    LambdaTest \
+    TestStaticVars \
+    TestFilesDialogBug

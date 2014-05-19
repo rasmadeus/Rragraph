@@ -1,16 +1,16 @@
 #include "SamplesProxyView.h"
 #include "ui_SamplesProxyView.h"
 
-SamplesProxyView::SamplesProxyView(QWidget *parent) :
+SamplesProxyView::SamplesProxyView(SamplesManager* samplesManager, QWidget* parent) :
     QDialog(parent),
-    ui(new Ui::SamplesProxyView),
-    samplesManager(nullptr)
+    ui(new Ui::SamplesProxyView)
 {
     ui->setupUi(this);
     createSamplesManagerView();
     createSamplesProxyModel();
     routeProxyViewActions();
     customizeProxyView();
+    setSamplesManager(samplesManager);
 }
 
 #include "SamplesManagerView.h"
@@ -19,11 +19,10 @@ void SamplesProxyView::createSamplesManagerView()
     samplesManagerView = new SamplesManagerView(this);
     ui->samplesLayout->addWidget(samplesManagerView);
     connect(samplesManagerView, SIGNAL(wasActivated(int)), SLOT(setSamples(int)));
-    connect(samplesManagerView, SIGNAL(wasCleaned()), SLOT(disabledResetGroup()));
-    connect(samplesManagerView, SIGNAL(wasCleaned()), SLOT(resetProxyView()));
+    connect(samplesManagerView, SIGNAL(wasCleaned()),      SLOT(disabledResetGroup()));
     connect(samplesManagerView, SIGNAL(wasActivated(int)), SLOT(checkEnabledResetGroup(int)));
     connect(samplesManagerView, SIGNAL(wasActivated(int)), SLOT(setSamplesPathToWindowTitle(int)));
-    connect(samplesManagerView, SIGNAL(wasCleaned()), SLOT(restoreWindowTitle()));
+    connect(samplesManagerView, SIGNAL(wasCleaned()),      SLOT(restoreWindowTitle()));
 }
 
 #include "SamplesProxyView.h"
@@ -31,8 +30,8 @@ void SamplesProxyView::createSamplesManagerView()
 void SamplesProxyView::createSamplesProxyModel()
 {
     samplesProxyModel = new SamplesProxyModel(ui->proxyView);
-    connect(ui->addendReset, SIGNAL(clicked()), samplesProxyModel, SLOT(resetAddend()));
-    connect(ui->multReset, SIGNAL(clicked()), samplesProxyModel, SLOT(resetMult()));
+    connect(ui->addendReset,  SIGNAL(clicked()), samplesProxyModel, SLOT(resetAddend()));
+    connect(ui->multReset,    SIGNAL(clicked()), samplesProxyModel, SLOT(resetMult()));
     connect(ui->headersReset, SIGNAL(clicked()), samplesProxyModel, SLOT(resetHeaders()));
 }
 
@@ -58,10 +57,7 @@ SamplesProxyView::~SamplesProxyView()
 
 #include "SamplesManager.h"
 void SamplesProxyView::setSamplesManager(SamplesManager* samplesManager)
-{
-    if(this->samplesManager){
-        disconnect(this->samplesManager, SIGNAL(haveBeenLoaded(int)), this, SLOT(updateEnabledResetGroup(int)));
-    }
+{      
     this->samplesManager = samplesManager;
     samplesManagerView->setSamplesManager(samplesManager);
     connect(samplesManager, SIGNAL(haveBeenLoaded(int)), SLOT(updateEnabledResetGroup(int)));
@@ -102,11 +98,6 @@ void SamplesProxyView::updateEnabledResetGroup(int i)
     }
 }
 
-void SamplesProxyView::resetProxyView()
-{
-    samplesProxyModel->setSamples(nullptr);
-}
-
 void SamplesProxyView::setSamplesPathToWindowTitle(int i)
 {
     setWindowTitle(samplesManager->getSamples(i)->getPathToSrc());
@@ -115,10 +106,4 @@ void SamplesProxyView::setSamplesPathToWindowTitle(int i)
 void SamplesProxyView::restoreWindowTitle()
 {
     setWindowTitle(tr("Proxy settings"));
-}
-
-void SamplesProxyView::retranslate()
-{
-    ui->retranslateUi(this);
-    samplesManagerView->retranslate();
 }

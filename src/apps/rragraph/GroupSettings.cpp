@@ -6,8 +6,8 @@ GroupSettings::GroupSettings(QWidget *parent) :
     ui(new Ui::GroupSettings)
 {
     ui->setupUi(this);
-    connect(ui->groupName, SIGNAL(textChanged(QString)), SLOT(setGroupName(QString)));
-    setEnabled(false);
+    connect(ui->groupName, SIGNAL(editingFinished()), SLOT(setGroupName()));
+    freeGroup();
 }
 
 GroupSettings::~GroupSettings()
@@ -18,18 +18,35 @@ GroupSettings::~GroupSettings()
 void GroupSettings::retranslate()
 {
     ui->retranslateUi(this);
+    setDefaultGroupName();
 }
 
 #include "Group.h"
-void GroupSettings::setGroupName(const QString& name)
+void GroupSettings::setGroupName()
 {
-    group->setName(name);
-    emit groupNameWasChanged();
+    if(group){ //Условие нужно, так как из-за freeGroup() генерируется сигнал textChanged.
+        group->setName(ui->groupName->text());
+        emit groupNameWasChanged();
+    }
 }
 
-void GroupSettings::setGroup(Group* group)
+void GroupSettings::catchGroup(Group* group)
 {
     this->group = group;
     ui->groupName->setText(group->getName());
     setEnabled(true);
+}
+
+void GroupSettings::freeGroup()
+{
+    setEnabled(false);
+    this->group = nullptr;
+    setDefaultGroupName();
+}
+
+void GroupSettings::setDefaultGroupName()
+{
+    if(!group){
+        ui->groupName->setText(tr("It isn't active group"));
+    }
 }

@@ -11,9 +11,17 @@ Canvas::Canvas(QwtPlot* parent) :
     setFrameStyle(QFrame::Box | QFrame::Plain);
     setBorderRadius(10);
     parent->setCanvas(this);
-    setPalette(QPalette(Qt::white));
+    setPalette(QPalette(Qt::white));    
 }
 
-void Canvas::setZoomBase(){
+void Canvas::setZoomBase()
+{
     zoomer->setZoomBase(false);
+}
+#include <QDebug>
+void Canvas::setZoomStack(const QRectF& rect)
+{
+    QStack<QRectF> rects;
+    rects.push_back(rect);
+    zoomer->setZoomStack(rects);
 }

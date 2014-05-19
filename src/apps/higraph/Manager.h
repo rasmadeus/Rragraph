@@ -18,7 +18,7 @@ private slots:
     void moveAllToMoverPos();
     void resetFileLoadingFlag();
     void start();
-    void moveAllFurther();
+    void moveAllFurther();    
 private:
     static const int COUNT_MS_FOR_UPDATING = 150;
     bool firstFileWasLoaded;

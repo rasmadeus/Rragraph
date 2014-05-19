@@ -5,6 +5,7 @@ class SamplesManager;
 class CurvesManager;
 class CurvesManagerView;
 class CurveProCreator;
+class QwtPoint3D;
 #include <Plot.h>
 
 class PlotWithCurves : public Plot
@@ -19,7 +20,7 @@ protected:
     void mousePressEvent(QMouseEvent* event);
 private:
     void serializeAxis(Axis axis, const QString& prefix, QJsonObject& plotSettings) const;
-    void restoreAxis(Axis axis, const QString& prefix, const QJsonObject& plotSettings);
+    QwtPoint3D restoreAxis(Axis axis, const QString& prefix, const QJsonObject& plotSettings);
     CurvesManagerView* curvesManagerView;
     CurvesManager* curvesManager;
 };

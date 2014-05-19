@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<Project>
+    <tileType>0</tileType>
+    <plot>
+        <Properties>
+            <AxesParameters is_autoscale="1">
+                <report width="257" height="160"/>
+                <axis type="absciss">
+                    <min>200</min>
+                    <max>1200</max>
+                    <step>200</step>
+                </axis>
+                <axis type="ordinate">
+                    <min>-4</min>
+                    <max>4</max>
+                    <step>1</step>
+                </axis>
+            </AxesParameters>
+            <ColumnsProperties>
+                <file path="DRPROGAPK.txt">
+                    <column header="Tick"/>
+                    <column header="adr0"/>
+                    <column header="adr1"/>
+                    <column header="adr2"/>
+                    <column header="adr3"/>
+                    <column header="OMx" style="Blue 1 marker"/>
+                    <column header="OMy"/>
+                    <column header="OMz"/>
+                    <index type="absciss" value="0"/>
+                    <index type="ordinate" value="5"/>
+                </file>
+            </ColumnsProperties>
+        </Properties>
+    </plot>
+    <plot>
+        <Properties>
+            <AxesParameters is_autoscale="1">
+                <report width="257" height="160"/>
+                <axis type="absciss">
+                    <min>200</min>
+                    <max>1200</max>
+                    <step>200</step>
+                </axis>
+                <axis type="ordinate">
+                    <min>-2</min>
+                    <max>3</max>
+                    <step>1</step>
+                </axis>
+            </AxesParameters>
+            <ColumnsProperties>
+                <file path="DRPROGAPK.txt">
+                    <column header="Tick"/>
+                    <column header="adr0"/>
+                    <column header="adr1"/>
+                    <column header="adr2"/>
+                    <column header="adr3"/>
+                    <column header="OMx"/>
+                    <column header="OMy" style="Red 1 marker"/>
+                    <column header="OMz"/>
+                    <index type="absciss" value="0"/>
+                    <index type="ordinate" value="6"/>
+                </file>
+            </ColumnsProperties>
+        </Properties>
+    </plot>
+    <plot>
+        <Properties>
+            <AxesParameters is_autoscale="1">
+                <report width="257" height="160"/>
+                <axis type="absciss">
+                    <min>200</min>
+                    <max>1200</max>
+                    <step>200</step>
+                </axis>
+                <axis type="ordinate">
+                    <min>-15</min>
+                    <max>15</max>
+                    <step>5</step>
+                </axis>
+            </AxesParameters>
+            <ColumnsProperties>
+                <file path="DRPROGAPK.txt">
+                    <column header="Tick"/>
+                    <column header="adr0"/>
+                    <column header="adr1"/>
+                    <column header="adr2" style="Red 1 marker"/>
+                    <column header="adr3"/>
+                    <column header="OMx"/>
+                    <column header="OMy"/>
+                    <column header="OMz"/>
+                    <index type="absciss" value="0"/>
+                    <index type="ordinate" value="3"/>
+                </file>
+            </ColumnsProperties>
+        </Properties>
+    </plot>
+    <plot>
+        <Properties>
+            <AxesParameters is_autoscale="1">
+                <report width="257" height="160"/>
+                <axis type="absciss">
+                    <min>200</min>
+                    <max>1200</max>
+                    <step>200</step>
+                </axis>
+                <axis type="ordinate">
+                    <min>-15</min>
+                    <max>15</max>
+                    <step>5</step>
+                </axis>
+            </AxesParameters>
+            <ColumnsProperties>
+                <file path="DRPROGAPK.txt">
+                    <column header="Tick"/>
+                    <column header="adr0"/>
+                    <column header="adr1"/>
+                    <column header="adr2" style="Black 1 marker"/>
+                    <column header="adr3" style="Blue 1 dot space"/>
+                    <column header="OMx"/>
+                    <column header="OMy"/>
+                    <column header="OMz"/>
+                    <index type="absciss" value="0"/>
+                    <index type="ordinate" value="1"/>
+                    <index type="ordinate" value="3"/>
+                    <index type="ordinate" value="4"/>
+                </file>
+            </ColumnsProperties>
+        </Properties>
+    </plot>
+    <Data>
+        <file path="DRPROGAPK.txt"/>
+    </Data>
+</Project>

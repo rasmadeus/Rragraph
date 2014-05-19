@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>192</width>
-    <height>279</height>
+    <width>167</width>
+    <height>303</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -117,6 +117,31 @@ QGroupBox::title {
           </widget>
          </item>
          <item>
+          <widget class="QSpinBox" name="step">
+           <property name="toolTip">
+            <string>Symbol's step</string>
+           </property>
+           <property name="suffix">
+            <string/>
+           </property>
+           <property name="prefix">
+            <string>Step </string>
+           </property>
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>10000</number>
+           </property>
+           <property name="singleStep">
+            <number>1</number>
+           </property>
+           <property name="value">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QComboBox" name="symbolStyle">
            <property name="toolTip">
             <string>Symbol's type of current type.</string>
@@ -183,33 +208,6 @@ QToolButton:disabled{
            </property>
           </widget>
          </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QFrame" name="frame_2">
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_3">
-         <property name="spacing">
-          <number>3</number>
-         </property>
-         <property name="leftMargin">
-          <number>3</number>
-         </property>
-         <property name="topMargin">
-          <number>3</number>
-         </property>
-         <property name="rightMargin">
-          <number>3</number>
-         </property>
-         <property name="bottomMargin">
-          <number>3</number>
-         </property>
          <item>
           <widget class="QDoubleSpinBox" name="addendX">
            <property name="toolTip">

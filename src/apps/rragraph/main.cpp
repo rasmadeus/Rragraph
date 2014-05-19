@@ -5,10 +5,7 @@
 
 void setAppFont()
 {
-    int appFontId = QFontDatabase::addApplicationFont(":/res/mainWindow/8251429.ttf");
-    if(!appFontId){
-        QApplication::setFont(QFont(QFontDatabase::applicationFontFamilies(appFontId).first(), 11));
-    }
+    QApplication::setFont(QFont("Sans", 10));
 }
 
 QStringList args()
@@ -24,9 +21,9 @@ int main(int argc, char *argv[])
     QApplication::setOrganizationName("Fakel");
     QApplication::setApplicationName("Rragraph");
     QApplication::setApplicationVersion("4.2.0.");
-    setAppFont();
+        setAppFont();
         MainWindow mainWindow;
         mainWindow.show();
-        mainWindow.processArgs(args());
+        mainWindow.processArgs(args());       
     return rragraph.exec();
 }

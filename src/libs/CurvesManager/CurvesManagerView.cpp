@@ -9,7 +9,6 @@ CurvesManagerView::CurvesManagerView(SamplesManager* samplesManager, QWidget *pa
     samplesManager(samplesManager)
 {
     ui->setupUi(this);
-
     createCurvesFiller();
     createCurvesSettings();
     createSamplesManagerView();
@@ -33,29 +32,22 @@ void CurvesManagerView::createCurvesSettings()
     connect(curvesSettings, SIGNAL(visibilityCurveChanged()), curvesFiller, SLOT(resetModel()));
 }
 
+
 CurvesManagerView::~CurvesManagerView()
 {
     saveSettings();
     delete ui;
 }
 
-#include <QSettings>
+#include <Settings.h>
 void CurvesManagerView::saveSettings()
 {
-    QSettings("appSettings.ini", QSettings::IniFormat).setValue(
-        "widgets/CurvesManagerView",
-         saveGeometry()
-    );
+    Settings::obj()->set("widgets/CurvesManagerView", saveGeometry());
 }
 
 void CurvesManagerView::restoreSettings()
 {
-    restoreGeometry(
-        QSettings("appSettings.ini", QSettings::IniFormat).value(
-            "widgets/CurvesManagerView"
-        ).toByteArray()
-    );
-
+    restoreGeometry(Settings::obj()->get("widgets/CurvesManagerView").toByteArray());
 }
 
 #include <SamplesManagerView.h>
@@ -66,8 +58,8 @@ void CurvesManagerView::createSamplesManagerView()
     samplesManagerView->setSamplesManager(samplesManager);
     connect(samplesManagerView, SIGNAL(wasActivated(int)), SLOT(setCurvesToFiller(int)));
     connect(samplesManagerView, SIGNAL(wasActivated(int)), SLOT(setSamplesPathToWindowTitle(int)));
-    connect(samplesManagerView, SIGNAL(wasCleaned()), SLOT(setRawWindowTitle()));
-    connect(samplesManagerView, SIGNAL(wasCleaned()), SLOT(curvesFillerToNullData()));
+    connect(samplesManagerView, SIGNAL(wasCleaned()),      SLOT(setRawWindowTitle()));
+    connect(samplesManagerView, SIGNAL(wasCleaned()),      SLOT(curvesFillerToNullData()));
 }
 
 #include "CurvesManager.h"
@@ -77,7 +69,10 @@ void CurvesManagerView::setCurvesManager(CurvesManager* curvesManager)
         this->curvesManager = curvesManager;
     }
     {
-        int activeRow = samplesManagerView->getActiveRow();
+        curvesSettings->reset();
+    }
+    {
+        const int activeRow = samplesManagerView->getActiveRow();
         if(activeRow != -1){
             setCurvesToFiller(activeRow);
         }

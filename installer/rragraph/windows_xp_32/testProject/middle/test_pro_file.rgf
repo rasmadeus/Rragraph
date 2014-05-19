@@ -1,0 +1,297 @@
+{
+    "groups": [
+        {
+            "Samples": [
+                {
+                    "path": "up/up_file.txt"
+                },
+                {
+                    "path": "middle_file.txt"
+                },
+                {
+                    "path": "../down_file.txt"
+                }
+            ],
+            "group": [
+                {
+                    "Curves": [
+                        {
+                            "1": {
+                                "addendX": 0,
+                                "addendY": 0,
+                                "multY": 1,
+                                "penColor": "#000000",
+                                "penWidth": 1,
+                                "step": 10,
+                                "symbolStyle": -1
+                            },
+                            "x": 0
+                        },
+                        {
+                            "x": 0
+                        },
+                        {
+                            "2": {
+                                "addendX": 0,
+                                "addendY": 0,
+                                "dashPattern": "2 2 ",
+                                "multY": 1,
+                                "penColor": "#ff0000",
+                                "penWidth": 2,
+                                "step": 2,
+                                "symbolStyle": 1
+                            },
+                            "x": 0
+                        }
+                    ],
+                    "exportSize": "100 100",
+                    "legendBackgroundOpacity": 0,
+                    "legendColumns": 1,
+                    "legendFont": "Sans,10,-1,5,50,0,0,0,0,0",
+                    "legendHorPos": 4,
+                    "legendVerPos": 128,
+                    "legendVisibility": true,
+                    "resolution": 150,
+                    "title": "test",
+                    "titleColor": "#000000",
+                    "titleFont": "Sans,10,-1,5,50,0,0,0,0,0",
+                    "xMax": 1,
+                    "xMin": -1,
+                    "xStep": 0.5,
+                    "xTitle": "test",
+                    "xTitleColor": "#000000",
+                    "xTitleFont": "Arial,12,-1,5,75,0,0,0,0,0",
+                    "yMax": 0.99999999999999989,
+                    "yMin": -1,
+                    "yStep": 0.5,
+                    "yTitle": "test",
+                    "yTitleColor": "#000000",
+                    "yTitleFont": "Arial,12,-1,5,75,0,0,0,0,0"
+                },
+                {
+                    "Curves": [
+                        {
+                            "x": 0
+                        },
+                        {
+                            "1": {
+                                "addendX": 0,
+                                "addendY": 0,
+                                "multY": 1,
+                                "penColor": "#ff00ff",
+                                "penWidth": 1,
+                                "step": 1,
+                                "symbolStyle": 3
+                            },
+                            "2": {
+                                "addendX": 0,
+                                "addendY": 1,
+                                "multY": 1,
+                                "penColor": "#0055ff",
+                                "penWidth": 1,
+                                "step": 10,
+                                "symbolStyle": -1
+                            },
+                            "x": 0
+                        },
+                        {
+                            "x": 0
+                        }
+                    ],
+                    "exportSize": "100 100",
+                    "legendBackgroundOpacity": 200,
+                    "legendColumns": 2,
+                    "legendFont": "Sans,10,-1,5,50,0,0,0,0,0",
+                    "legendHorPos": 4,
+                    "legendVerPos": 32,
+                    "legendVisibility": true,
+                    "resolution": 150,
+                    "title": "test",
+                    "titleColor": "#000000",
+                    "titleFont": "Sans,10,-1,5,50,0,0,0,0,0",
+                    "xMax": 1,
+                    "xMin": -1,
+                    "xStep": 0.5,
+                    "xTitle": "test",
+                    "xTitleColor": "#000000",
+                    "xTitleFont": "Arial,12,-1,5,75,0,0,0,0,0",
+                    "yMax": 2,
+                    "yMin": -1,
+                    "yStep": 0.5,
+                    "yTitle": "test",
+                    "yTitleColor": "#000000",
+                    "yTitleFont": "Arial,12,-1,5,75,0,0,0,0,0"
+                }
+            ],
+            "name": "test test test",
+            "tileType": 0
+        },
+        {
+            "Samples": [
+                {
+                    "path": "../down_file.txt"
+                }
+            ],
+            "group": [
+                {
+                    "Curves": [
+                        {
+                            "1": {
+                                "addendX": 0,
+                                "addendY": 0,
+                                "multY": 1,
+                                "penColor": "#000000",
+                                "penWidth": 1,
+                                "step": 10,
+                                "symbolStyle": -1
+                            },
+                            "2": {
+                                "addendX": 0,
+                                "addendY": 1,
+                                "multY": 3,
+                                "penColor": "#00aaff",
+                                "penWidth": 1,
+                                "step": 10,
+                                "symbolStyle": 5
+                            },
+                            "x": 0
+                        }
+                    ],
+                    "exportSize": "100 100",
+                    "legendBackgroundOpacity": 200,
+                    "legendColumns": 2,
+                    "legendFont": "Sans,10,-1,5,50,0,0,0,0,0",
+                    "legendHorPos": 4,
+                    "legendVerPos": 32,
+                    "legendVisibility": true,
+                    "resolution": 150,
+                    "xMax": 1,
+                    "xMin": -1,
+                    "xStep": 0.5,
+                    "yMax": 4,
+                    "yMin": -2,
+                    "yStep": 1
+                },
+                {
+                    "Curves": [
+                        {
+                            "1": {
+                                "addendX": 0,
+                                "addendY": 0,
+                                "multY": 1,
+                                "penColor": "#ff0000",
+                                "penWidth": 1,
+                                "step": 10,
+                                "symbolStyle": 1
+                            },
+                            "x": 0
+                        }
+                    ],
+                    "exportSize": "100 100",
+                    "legendBackgroundOpacity": 200,
+                    "legendColumns": 2,
+                    "legendFont": "Sans,10,-1,5,50,0,0,0,0,0",
+                    "legendHorPos": 4,
+                    "legendVerPos": 32,
+                    "legendVisibility": true,
+                    "resolution": 150,
+                    "title": "test",
+                    "titleColor": "#000000",
+                    "titleFont": "Sans,10,-1,5,50,0,0,0,0,0",
+                    "xMax": 1,
+                    "xMin": -1,
+                    "xStep": 0.5,
+                    "xTitle": "test",
+                    "xTitleColor": "#000000",
+                    "xTitleFont": "Arial,12,-1,5,75,0,0,0,0,0",
+                    "yMax": 1,
+                    "yMin": -1,
+                    "yStep": 0.5,
+                    "yTitle": "test",
+                    "yTitleColor": "#000000",
+                    "yTitleFont": "Arial,12,-1,5,75,0,0,0,0,0"
+                },
+                {
+                    "Curves": [
+                        {
+                            "1": {
+                                "addendX": 0,
+                                "addendY": 0,
+                                "multY": 1,
+                                "penColor": "#0055ff",
+                                "penWidth": 6,
+                                "step": 10,
+                                "symbolStyle": -1
+                            },
+                            "x": 0
+                        }
+                    ],
+                    "exportSize": "100 100",
+                    "legendBackgroundOpacity": 200,
+                    "legendColumns": 2,
+                    "legendFont": "Sans,10,-1,5,50,0,0,0,0,0",
+                    "legendHorPos": 4,
+                    "legendVerPos": 32,
+                    "legendVisibility": true,
+                    "resolution": 150,
+                    "title": "test",
+                    "titleColor": "#000000",
+                    "titleFont": "Sans,10,-1,5,50,0,0,0,0,0",
+                    "xMax": 1,
+                    "xMin": -1,
+                    "xStep": 0.5,
+                    "xTitle": "test",
+                    "xTitleColor": "#55aa00",
+                    "xTitleFont": "Andalus,14,-1,5,75,0,1,1,0,0",
+                    "yMax": 1,
+                    "yMin": -1,
+                    "yStep": 0.5,
+                    "yTitle": "test",
+                    "yTitleColor": "#ff007f",
+                    "yTitleFont": "Arial,10,-1,5,75,1,0,0,0,0"
+                },
+                {
+                    "Curves": [
+                        {
+                            "1": {
+                                "addendX": 0,
+                                "addendY": 0,
+                                "multY": 1,
+                                "penColor": "#000000",
+                                "penWidth": 1,
+                                "step": 10,
+                                "symbolStyle": -1
+                            },
+                            "2": {
+                                "addendX": 0,
+                                "addendY": 0,
+                                "multY": 1,
+                                "penColor": "#000000",
+                                "penWidth": 1,
+                                "step": 10,
+                                "symbolStyle": -1
+                            },
+                            "x": 0
+                        }
+                    ],
+                    "exportSize": "100 100",
+                    "legendBackgroundOpacity": 200,
+                    "legendColumns": 2,
+                    "legendFont": "Sans,10,-1,5,50,0,0,0,0,0",
+                    "legendHorPos": 4,
+                    "legendVerPos": 32,
+                    "legendVisibility": true,
+                    "resolution": 150,
+                    "xMax": 1,
+                    "xMin": -1,
+                    "xStep": 0.5,
+                    "yMax": 1,
+                    "yMin": -1,
+                    "yStep": 0.5
+                }
+            ],
+            "tileType": 0
+        }
+    ],
+    "rragraphVersion": "4.2.0"
+}

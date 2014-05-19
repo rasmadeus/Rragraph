@@ -26,7 +26,6 @@ private:
     bool isActiveXorY(const QModelIndex& index) const;
     bool samplesAvailaible() const;
     QString getDisplayRole(const QModelIndex& index) const;
-    QString getReducedHeader(int i) const;
     QColor getTextColorRole(const QModelIndex& index) const;
     QFont getFontRole(const QModelIndex& index) const;
     Curves* curves;

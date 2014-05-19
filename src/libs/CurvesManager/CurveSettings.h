@@ -19,6 +19,7 @@ public:
     ~CurveSettings();
     void setCurve(Curves* curves, Curve* curve);
     void retranslate();
+    void reset();
 Q_SIGNALS:
     void visibilityCurveChanged();
 protected:
@@ -26,6 +27,7 @@ protected:
 private slots:
     void setCurveColor();
     void setCurveWidth(int width);
+    void setCurveStep(int step);
     void setCurveVisible(bool clicked);
     void setSymbolStyle(int i);
     void setCurveDashPattern(const QString& dashPattern);

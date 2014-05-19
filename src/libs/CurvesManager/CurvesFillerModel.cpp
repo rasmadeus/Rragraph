@@ -72,20 +72,10 @@ bool CurvesFillerModel::isActiveY(const QModelIndex& index) const
 QString CurvesFillerModel::getDisplayRole(const QModelIndex& index) const
 {
     switch(index.column()){
-        case 0: return getReducedHeader(index.row());
+        case 0: return curves->getSamples()->getProxyHeader(index.row());
         case 1: return isActiveY(index) ? tr("Yes") : tr("No");
     }
     return QString();
-}
-
-//The best header is the short header.
-QString CurvesFillerModel::getReducedHeader(int i) const
-{
-    QString header = curves->getSamples()->getProxyHeader(i);
-    while(header.size() > 5){
-        header.remove(header.size() - 1, 1);
-    }
-    return header;
 }
 
 #include <QColor>
