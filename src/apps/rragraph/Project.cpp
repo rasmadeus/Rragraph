@@ -184,7 +184,7 @@ void Project::forDeminValeriyNikolayevich()
     }
 }
 
-const QString& Project::getPathToPro() const
+QString Project::getPathToPro() const
 {
     return d->currentProjectPath.getLastPath();
 }

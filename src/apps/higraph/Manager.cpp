@@ -16,7 +16,6 @@ Manager::Manager(QObject* root, QObject *parent) :
 
     findObjects();
 
-
     connect(starter, SIGNAL(start()), SLOT(start()));
     connect(starter, SIGNAL(pause()), timer, SLOT(stop()));
     connect(mover, SIGNAL(valueChanged()), SLOT(moveAllToMoverPos()));
@@ -69,7 +68,7 @@ void Manager::haveBeenLoaded(int i)
     if(!firstFileWasLoaded){
         const int currentSize = samplesManager->getSamples(i)->height();
         if(currentSize >= 2){
-            mover->setProperty("maximumValue",currentSize - 2);
+            mover->setProperty("maximumValue", currentSize - 2);
         }
     }
     if(i == 0){
