@@ -183,3 +183,8 @@ void Project::forDeminValeriyNikolayevich()
         emit endReading();
     }
 }
+
+const QString& Project::getPathToPro() const
+{
+    return d->currentProjectPath.getLastPath();
+}

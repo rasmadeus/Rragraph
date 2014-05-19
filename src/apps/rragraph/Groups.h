@@ -34,6 +34,7 @@ public slots:
     void activate();
     Group* toDefaultState();
     void copySettingsToActiveGroup(PlotSettingsFiller* filler);
+    void setInitialLoadingPath(const QString& path);
 signals:
     void hasGroups(bool);
     void noMoreGroup();

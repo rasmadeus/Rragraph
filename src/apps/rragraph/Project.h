@@ -23,6 +23,7 @@ public:
      * \param path путь к проекту.
      */
     void load(const QString& path);
+    const QString& getPathToPro() const;
 public slots:
     /*!
      * \brief load загружаем проект из внешнего источника.

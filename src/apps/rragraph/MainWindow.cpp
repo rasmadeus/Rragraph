@@ -211,6 +211,9 @@ void MainWindow::createProject()
         connect(project, SIGNAL(beginReading()),       SLOT(beginWaiting()));
         connect(project, SIGNAL(endReading()),         SLOT(endWaiting()));
     }
+    {
+        connect(project, SIGNAL(wasReplaced(QString)), groups, SLOT(setInitialLoadingPath(QString)));
+    }
 }
 
 #include "YesNoMessage.h"
@@ -276,6 +279,7 @@ void MainWindow::createSamplesProxyActions()
 void MainWindow::showSamplesProxyView()
 {
     SamplesProxyView* samplesProxyView = new SamplesProxyView(groups->getGroup()->getSamplesManager(), this);
+    samplesProxyView->setInitialLoadingPath(project->getPathToPro());
     samplesProxyView->show();
     samplesProxyView->exec();
     delete samplesProxyView;

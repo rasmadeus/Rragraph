@@ -20,6 +20,7 @@ public:
     int getActiveRow() const;
     SamplesManager* getSamplesManager() const;
     void retranslate();
+    void setInitialLoadingPath(const QString& path);
 signals:
     void wasActivated(int i);
     void wasCleaned();
@@ -33,8 +34,8 @@ private:
     void createSamplesManagerModel();
     void routeManagerActions();
     Ui::SamplesManagerView *ui;
-    SamplesManagerModel* samplesManagerModel;
-    static Path samplesLoadingPath;
+    SamplesManagerModel* samplesManagerModel;    
+    Path samplesLoadingPath;
 };
 
 #endif // SAMPLESMANAGERVIEW_H

@@ -262,3 +262,10 @@ void Groups::processArgs(const QStringList& args)
     }
     getGroup()->getSamplesManager()->append(args);
 }
+
+void Groups::setInitialLoadingPath(const QString& path)
+{
+    for(int i = 0; i < count(); ++i){
+        getGroup(i)->setInitialLoadingPath(path);
+    }
+}

@@ -255,3 +255,8 @@ void Group::copySettings(PlotSettingsFiller* filler)
         }
     );
 }
+
+void Group::setInitialLoadingPath(const QString& path)
+{
+    curvesManagerView->setInitialLoadingPath(path);
+}

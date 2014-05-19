@@ -34,6 +34,7 @@ public:
     void restore(const QJsonObject& groupSettings, const Path& proPath);
     void retranslate();
     void copySettings(PlotSettingsFiller* filler);
+    void setInitialLoadingPath(const QString& path);
 signals:
     void noMorePlots();
 public slots:

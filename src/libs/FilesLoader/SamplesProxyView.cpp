@@ -107,3 +107,8 @@ void SamplesProxyView::restoreWindowTitle()
 {
     setWindowTitle(tr("Proxy settings"));
 }
+
+void SamplesProxyView::setInitialLoadingPath(const QString& path)
+{
+    samplesManagerView->setInitialLoadingPath(path);
+}

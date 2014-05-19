@@ -119,3 +119,8 @@ void CurvesManagerView::retranslate()
     curvesSettings->retranslate();
     samplesManagerView->retranslate();
 }
+
+void CurvesManagerView::setInitialLoadingPath(const QString& path)
+{
+    samplesManagerView->setInitialLoadingPath(path);
+}

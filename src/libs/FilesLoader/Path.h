@@ -27,10 +27,10 @@ public:
     QString getRelativePath(const QString& absolutePath) const;
     QString getAbsolutePath(const QString& relativePath) const;
     void clear();
+    QString getLastPath() const;
 private:
     bool updateIfExist(const QString& path);
     void update(const QString& path);
-    QString getLastPath() const;
     QString path;
     QString settingsKey;
     QString settingsFilePath;

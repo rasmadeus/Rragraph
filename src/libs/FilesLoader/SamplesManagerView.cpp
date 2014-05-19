@@ -1,12 +1,11 @@
 #include "SamplesManagerView.h"
 #include "ui_SamplesManagerView.h"
 
-Path SamplesManagerView::samplesLoadingPath("paths/samplesLoadingPath");
-
 #include "SamplesManagerModel.h"
 SamplesManagerView::SamplesManagerView(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::SamplesManagerView)
+    ui(new Ui::SamplesManagerView),
+    samplesLoadingPath("paths/samplesLoadingPath")
 {
     ui->setupUi(this);
     createSamplesManagerModel();
@@ -88,4 +87,9 @@ void SamplesManagerView::disabledChangableActions()
 {
     ui->removeSamples->setEnabled(false);
     ui->replaceSamples->setEnabled(false);
+}
+
+void SamplesManagerView::setInitialLoadingPath(const QString& path)
+{
+    samplesLoadingPath.setPath(path);
 }

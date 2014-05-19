@@ -23,6 +23,8 @@ public:
     void retranslate();
 Q_SIGNALS:
     void wasChoosen(const Samples* samples);
+public slots:
+    void setInitialLoadingPath(const QString& path);
 private slots:
     void setCurvesToFiller(int i);
     void setSamplesPathToWindowTitle(int i);

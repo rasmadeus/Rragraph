@@ -16,6 +16,7 @@ class SamplesProxyView : public QDialog
 public:
     explicit SamplesProxyView(SamplesManager* samplesManager, QWidget* parent = 0);
     ~SamplesProxyView();
+    void setInitialLoadingPath(const QString& path);
 private slots:
     void setSamples(int i);
     void disabledResetGroup();
