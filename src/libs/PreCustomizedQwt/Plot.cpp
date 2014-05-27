@@ -4,8 +4,6 @@
 #include "Grid.h"
 #include "LegendItem.h"
 
-Path Plot::exportPath("paths/exportPath");
-
 Plot::Plot(QWidget* parent) :
     QwtPlot(parent),
     controlIsPressed(false),
@@ -27,13 +25,13 @@ void Plot::setZoomStack()
 {
     const QRectF rect(QPointF(xBase.x(), yBase.x()), QPointF(xBase.y(), yBase.y()));
     setZoomBase();
-    //canvas->setZoomStack(rect);
+    canvas->setZoomStack(rect);
 }
 
 void Plot::setZoomBase()
 {
     setAxisScale(xBottom, xBase.x(), xBase.y(), xBase.z());
-    setAxisScale(yLeft, yBase.x(), yBase.y(), yBase.z());
+    setAxisScale(yLeft, yBase.x(), yBase.y(), yBase.z());    
 }
 
 Plot::~Plot()
@@ -105,7 +103,8 @@ void Plot::exportToPng(QwtPlotRenderer& renderer, const QString& path)
 void Plot::exportToPng()
 {
     const QString filter = tr("Images") + "(*.png);;" + Path::getTemplate(Path::ALL_FILES);
-    if(Plot::exportPath.setSaveFileName(this, tr("Export current plot to image"), filter)){
+    Path exportPath("paths/exportPath");
+    if(exportPath.setSaveFileName(this, tr("Export current plot to image"), filter)){
         QwtPlotRenderer renderer;
         exportToPng(renderer, exportPath.getPath());
     }

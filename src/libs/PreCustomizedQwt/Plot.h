@@ -28,7 +28,6 @@ public:
     void exportToPng(QwtPlotRenderer& renderer, const QString& path);
     int getResolution() const;
     void setResolution(int resolution);
-    static Path exportPath;
     void setZoomStack();
     void setZoomBase();
 public Q_SLOTS:

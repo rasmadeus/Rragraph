@@ -1,7 +1,8 @@
 #include "Groups.h"
 
 Groups::Groups(QWidget* parent) :
-    QTabWidget(parent)
+    QTabWidget(parent),
+    exportPath("paths/exportPath")
 {
     setStyles();
     setLookAndFeel();
@@ -156,9 +157,9 @@ void Groups::addPlot()
 #include <Plot.h>
 void Groups::exportActiveGroupToPng()
 {    
-    if(Plot::exportPath.setExistingDirectory(this, tr("Export plots to"))){
+    if(exportPath.setExistingDirectory(this, tr("Export plots to"))){
         emit beginExport();
-        getGroup()->exportToPng(Plot::exportPath.getPath());
+        getGroup()->exportToPng(exportPath.getPath());
         emit endExport();
     }
 }
@@ -167,12 +168,12 @@ void Groups::exportActiveGroupToPng()
 #include <QApplication>
 void Groups::exportToPng()
 {
-    if(Plot::exportPath.setExistingDirectory(this, tr("Export all groups to"))){        
+    if(exportPath.setExistingDirectory(this, tr("Export all groups to"))){
         emit beginExport();
         QApplication::processEvents();
         QDir creator;
         for(int i = 0; i < count(); ++i){            
-            QFileInfo subDir(Plot::exportPath.getPath() + "/" + tabText(i));
+            QFileInfo subDir(exportPath.getPath() + "/" + tabText(i));
             if(subDir.exists() || creator.mkdir(subDir.absoluteFilePath())){
                 getGroup(i)->exportToPng(subDir.absoluteFilePath());
             }
@@ -183,9 +184,9 @@ void Groups::exportToPng()
 
 void Groups::exportActiveGroupToPdf()
 {
-    if(Plot::exportPath.setSaveFileName(this, tr("Export to pdf"), tr("Pdf documents") + "(*.pdf);;" + Path::getTemplate(Path::ALL_FILES))){
+    if(exportPath.setSaveFileName(this, tr("Export to pdf"), tr("Pdf documents") + "(*.pdf);;" + Path::getTemplate(Path::ALL_FILES))){
         emit beginExport();
-        getGroup()->exportToPdf(Plot::exportPath.getPath());
+        getGroup()->exportToPdf(exportPath.getPath());
         emit endExport();
     }
 }

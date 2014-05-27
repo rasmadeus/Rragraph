@@ -22,6 +22,7 @@ void PlotWithCurves::mousePressEvent(QMouseEvent* event)
     if(event->button() == Qt::RightButton){
         if(controlIsPressed){
             setZoomBase();
+            replot();
         }
         else{
             curvesManagerView->setCurvesManager(curvesManager);
@@ -85,17 +86,19 @@ void PlotWithCurves::serialize(QJsonArray& plots) const
         curvesManager->serialize(plotSettings);
     plots.append(plotSettings);
 }
+
 #include <qwt_point_3d.h>
 void PlotWithCurves::restore(const QJsonObject& plotSettings)
 {
-    setResolution(plotSettings.value("resolution").toInt(150));
     xBase = restoreAxis(xBottom, "x", plotSettings);
     yBase = restoreAxis(yLeft, "y", plotSettings);
+    setResolution(plotSettings.value("resolution").toInt(150));
     setTitle(restoreQwtText("title", plotSettings));
     setZoomStack();
     setExportSize(restoreSizeF("exportSize", plotSettings));
     legend->restore(plotSettings);
     curvesManager->restore(plotSettings);
+    setZoomBase();
 }
 
 void PlotWithCurves::serializeAxis(Axis axis, const QString& prefix, QJsonObject& plotSettings) const

@@ -51,6 +51,7 @@ private slots:
 private:
     void setStyles();
     void setLookAndFeel();
+    Path exportPath;
 };
 
 #endif // GROUPS_H
