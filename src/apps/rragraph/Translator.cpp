@@ -17,7 +17,9 @@ Translator::Translator(QMenu* languagesMenu, QObject* parent) :
 Translator::~Translator()
 {
     QAction* checked = languages->checkedAction();
-    Settings::obj()->set("locale", locale(checked));
+    if(checked){
+        Settings::obj()->set("locale", locale(checked));
+    }
 }
 
 void Translator::tryRestoreLocale()
